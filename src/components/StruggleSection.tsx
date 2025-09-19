@@ -11,8 +11,6 @@ interface StruggleSectionProps {
 }
 
 export default function StruggleSection({ data }: StruggleSectionProps) {
-  const { ring1, ring2, ring3 } = useMultiRippleAnimation();
-
   const features =
     data?.features?.length > 0
       ? data.features.map((f, i) => ({
@@ -25,7 +23,7 @@ export default function StruggleSection({ data }: StruggleSectionProps) {
 
   return (
     <section
-      className="relative py-24 text-white overflow-hidden"
+      className="relative py-12 sm:py-16 md:py-20 lg:py-24 pb-8 sm:pb-16 md:pb-32 lg:pb-48 text-white overflow-hidden"
       style={{
         backgroundImage: `url(${struggleFallback.backgroundSrc})`,
         backgroundSize: "cover",
@@ -33,22 +31,31 @@ export default function StruggleSection({ data }: StruggleSectionProps) {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section header */}
-        <div className="text-center mb-16">
-          <div className="inline-block text-[12px] uppercase tracking-wider text-[#68CA68] font-medium px-4 py-2 border border-[#2C4B38] rounded-full bg-[#13301F]">
+        <div className="text-center mb-8 sm:mb-12 md:mb-14 lg:mb-16">
+          <div
+            className="inline-block text-xs sm:text-[12px] uppercase tracking-wider text-[#68CA68] font-[400] px-3 sm:px-4 py-1.5 sm:py-2 border border-[#2C4B38] rounded-full bg-[#13301F]"
+            style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
+          >
             {data?.sectionLabel || struggleFallback.sectionLabel}
           </div>
-          <h2 className="mt-6 text-3xl md:text-5xl font-semibold text-white">
+          <h2
+            className="mt-4 sm:mt-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-[#d3d3d3] px-4 sm:px-0"
+            style={{ fontFamily: '"Funnel Display", sans-serif' }}
+          >
             {data?.title || struggleFallback.title}
           </h2>
-          <p className="text-gray-300 mt-4 max-w-2xl mx-auto">
+          <p
+            className="text-[#e8f6e3] mt-3 sm:mt-4 max-w-full sm:max-w-2xl mx-auto text-sm font-light px-4 sm:px-0"
+            style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
+          >
             {data?.subtitle || struggleFallback.subtitle}
           </p>
         </div>
 
         {/* Features grid */}
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
           {features.map((feature, index) => (
             <motion.div
               key={index}
@@ -56,21 +63,29 @@ export default function StruggleSection({ data }: StruggleSectionProps) {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2, duration: 0.8 }}
               viewport={{ once: true }}
-              className="rounded-[30px] p-6 backdrop-blur-[4px]"
+              className={`p-4 sm:p-6 backdrop-blur-[4px] overflow-hidden cursor-pointer transition-all duration-300 ease-in-out w-full max-w-[374px] mx-auto flex flex-col gap-4 sm:gap-6 ${
+                index === features.length - 1 ? "mb-32 sm:mb-0" : ""
+              }`}
               style={{
-                width: "374px",
-                height: "292px",
-                border: "1px solid #6D6D6D",
-                background: "rgba(255, 255, 255, 0.04)",
-                boxShadow: "0 1.441px 4px 0 rgba(0, 0, 0, 0.34)",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "flex-start",
-                gap: "24px",
+                minHeight: "250px",
+                height: "auto",
+                backgroundImage:
+                  "url(/assets/images/hiddenCost/bg-default.png)",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundImage =
+                  "url(/assets/images/hiddenCost/card-bg.png)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundImage =
+                  "url(/assets/images/hiddenCost/bg-default.png)";
               }}
             >
               {/* Icon */}
-              <div className="relative w-16 h-16 flex-shrink-0">
+              <div className="relative w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 flex-shrink-0">
                 <Image
                   src={(feature as any).iconSrc}
                   alt={feature.title}
@@ -80,8 +95,8 @@ export default function StruggleSection({ data }: StruggleSectionProps) {
               </div>
 
               {/* Content */}
-              <div className="flex flex-col gap-3">
-                <h3 className="text-xl font-semibold text-white">
+              <div className="flex flex-col gap-2 sm:gap-3 flex-grow">
+                <h3 className="text-lg sm:text-xl font-semibold text-white">
                   {feature.title}
                 </h3>
                 <p className="text-gray-300 leading-relaxed text-sm">

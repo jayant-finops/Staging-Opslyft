@@ -1,18 +1,17 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import Image from 'next/image'
-import { Hero } from '@/types/sanity'
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { Hero } from "@/types/sanity";
+import Button from "./Button";
 
 interface HeroSectionProps {
-  data: Hero
+  data: Hero;
 }
 
 export default function HeroSection2({ data }: HeroSectionProps) {
   return (
-    <section
-      className="relative min-h-[100vh] rounded-b-[56px] md:rounded-b-[80px] overflow-hidden"
-    >
+    <section className="relative min-h-[100vh] sm:min-h-[90vh] md:min-h-[100vh] rounded-b-[32px] sm:rounded-b-[56px] md:rounded-b-[80px] overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -25,18 +24,24 @@ export default function HeroSection2({ data }: HeroSectionProps) {
       </div>
 
       {/* Main content container */}
-      <div className="relative z-10 container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center w-full h-screen">
-        {/* Left side - Text content (same as HeroSection) */}
-        <div className="text-white space-y-8 lg:pr-8">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-8 items-start lg:items-center w-full min-h-[100vh] sm:min-h-[90vh] md:min-h-[100vh] py-8 lg:py-0">
+        {/* Left side - Text content */}
+        <div className="text-white space-y-6 sm:space-y-8 lg:pr-8 order-1 lg:order-1">
           {/* Green label */}
           <div className="inline-block">
-            <div className="text-[13px] uppercase tracking-wider text-[#68CA68] font-light px-4 py-2 border border-[#F0F7ED0A] rounded-full bg-[#F0F7ED0A] font-ibm-plex-sans">
-              {data?.subtitle || 'BUILT FOR ENGINEERING AND FINANCE TEAMS'}
+            <div
+              className="text-xs sm:text-[13px] uppercase tracking-wider text-[#68CA68] font-light px-3 sm:px-4 py-1.5 sm:py-2 border border-[#F0F7ED0A] rounded-full bg-[#F0F7ED0A] font-ibm-plex-sans"
+              style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
+            >
+              {data?.subtitle || "BUILT FOR ENGINEERING AND FINANCE TEAMS"}
             </div>
           </div>
 
           {/* Main heading */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight font-funnel-display">
+          <h1
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold leading-tight font-funnel-display"
+            style={{ fontFamily: '"Funnel Display", sans-serif' }}
+          >
             {data?.title || (
               <>
                 Context-Led Cloud
@@ -47,34 +52,31 @@ export default function HeroSection2({ data }: HeroSectionProps) {
           </h1>
 
           {/* Description */}
-          <p className="text-sm md:text-base text-gray-300 max-w-2xl leading-relaxed font-ibm-plex-sans font-light">
-            {data?.description || 'Opslyft automates FinOps with context-led, AI-powered insights and, actionable fixes for engineering teams so you can start cutting cloud waste in days, not months.'}
+          <p
+            className="text-sm sm:text-base text-[#b7b7b7] max-w-full sm:max-w-2xl leading-relaxed font-ibm-plex-sans font-light"
+            style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
+          >
+            {data?.description ||
+              "Opslyft automates FinOps with context-led, AI-powered insights and, actionable fixes for engineering teams so you can start cutting cloud waste in days, not months."}
           </p>
 
           {/* CTA Button */}
-          <div className="pt-4">
-            <button 
-              className="bg-[#24823D] hover:bg-[#1f6e33] text-white font-medium transition-all duration-300 transform hover:scale-105 rounded-xl inline-flex items-center justify-center"
-              style={{
-                padding: '22px 32px',
-                gap: '4px',
-                boxShadow: '1px 2px 0px 0px #E8F6E2'
-              }}
-            >
-              {data?.ctaText || 'Book a demo'}
-            </button>
+          <div className="pt-2 sm:pt-4">
+            <Button variant="primary" size="lg">
+              {data?.ctaText || "Book a demo"}
+            </Button>
           </div>
         </div>
 
         {/* Right side - Static laptop with subtle entrance only */}
-        <div className="relative overflow-visible">
+        <div className="relative overflow-visible order-2 lg:order-2 mb-8 lg:mb-0 mt-8 sm:mt-12 lg:mt-0">
           {/* Circles behind (one-time entrance) */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
             <motion.div
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1.05, opacity: 0.18 }}
-              transition={{ duration: 1, delay: 0.2, ease: 'easeOut' }}
-              className="absolute w-[140%] h-[140%] -translate-y-12 translate-x-16 lg:translate-x-64"
+              transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+              className="absolute w-[120%] sm:w-[130%] lg:w-[140%] h-[120%] sm:h-[130%] lg:h-[140%] -translate-y-4 sm:-translate-y-8 lg:-translate-y-12 translate-x-4 sm:translate-x-8 lg:translate-x-16 xl:translate-x-64"
             >
               <Image
                 src="/assets/images/hero-circles.png"
@@ -91,7 +93,7 @@ export default function HeroSection2({ data }: HeroSectionProps) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative transform-gpu w-[100%] sm:w-[100%] lg:w-[100%] xl:w-[120%] translate-x-6 sm:translate-x-10 lg:translate-x-48 translate-y-6 sm:translate-y-10 lg:translate-y-16" 
+            className="relative transform-gpu w-[90%] sm:w-[95%] md:w-[100%] lg:w-[100%] xl:w-[120%] translate-x-2 sm:translate-x-4 md:translate-x-6 lg:translate-x-48 translate-y-2 sm:translate-y-4 md:translate-y-6 lg:translate-y-16 mx-auto lg:mx-0"
           >
             <Image
               src="/assets/images/laptop-static.png"
@@ -105,7 +107,5 @@ export default function HeroSection2({ data }: HeroSectionProps) {
         </div>
       </div>
     </section>
-  )
+  );
 }
-
-
