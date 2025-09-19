@@ -65,19 +65,46 @@ export interface SolutionsSection {
     buttonText?: string
     image?: SanityImage
   }[]
+  ctaCard?: {
+    title: string
+    buttonText: string
+  }
 }
 
 export interface Footer {
   _id: string
   _type: 'footer'
-  companyName: string
-  logo?: SanityImage
-  links: {
+  logoSrc?: string
+  tagline?: string
+  newsletter?: {
     title: string
-    url: string
+    description: string
+    placeholder: string
+    buttonText: string
+  }
+  navigation?: {
+    title: string
+    links: {
+      title: string
+      url: string
+    }[]
   }[]
-  socialLinks: {
+  socialLinks?: {
     platform: string
     url: string
+    iconSrc?: string
   }[]
+  certifications?: {
+    name: string
+    src: string
+    alt: string
+  }[]
+  legal?: {
+    copyright: string
+    address: string
+    legalLinks: {
+      title: string
+      url: string
+    }[]
+  }
 }

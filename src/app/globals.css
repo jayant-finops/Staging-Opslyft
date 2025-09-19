@@ -1,10 +1,5 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -12,18 +7,12 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
+
 
 /* Smooth scrolling */
 html {
@@ -41,6 +30,17 @@ body {
   transform: translateZ(0);
   backface-visibility: hidden;
   perspective: 1000px;
+}
+
+/* Testimonials Swiper wrapper to match design-provided container props */
+.testimonials-wrapper {
+  display: inline-flex;
+  height: 391.547px;
+  padding-bottom: 1.278px;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 25.224px;
+  flex-shrink: 0;
 }
 
 /* Scroll snap for sections */
