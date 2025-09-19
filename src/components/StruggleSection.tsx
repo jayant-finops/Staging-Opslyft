@@ -2,12 +2,18 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useMultiRippleAnimation } from "@/hooks/useRippleAnimation";
+// import { useMultiRippleAnimation } from "@/hooks/useRippleAnimation";
 import { StruggleSection as StruggleSectionType } from "@/types/sanity";
 import { struggleFallback } from "@/data/struggle";
 
 interface StruggleSectionProps {
   data: StruggleSectionType;
+}
+
+interface ExtendedFeature {
+  title: string;
+  description: string;
+  iconSrc: string;
 }
 
 export default function StruggleSection({ data }: StruggleSectionProps) {
@@ -87,7 +93,7 @@ export default function StruggleSection({ data }: StruggleSectionProps) {
               {/* Icon */}
               <div className="relative w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 flex-shrink-0">
                 <Image
-                  src={(feature as any).iconSrc}
+                  src={(feature as ExtendedFeature).iconSrc}
                   alt={feature.title}
                   fill
                   className="object-contain"

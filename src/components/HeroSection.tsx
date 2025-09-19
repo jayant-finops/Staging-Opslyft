@@ -4,7 +4,7 @@ import { motion, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useLaptopZoomEffect } from "@/hooks/useScrollAnimation";
 import { Hero } from "@/types/sanity";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 
 interface HeroSectionProps {
   data: Hero;
@@ -14,21 +14,24 @@ export default function HeroSection({ data }: HeroSectionProps) {
   const { ref, scale, x, y, scrollYProgress } = useLaptopZoomEffect();
 
   // Image sequence for perceived rotation as we zoom
-  const frameSources = [
-    "/assets/images/laptop1.png",
-    "/assets/images/laptop2.png",
-    "/assets/images/laptop2.png",
-    "/assets/images/laptop2.png",
-    "/assets/images/laptop3.png",
-    "/assets/images/laptop3.png",
-    "/assets/images/laptop3.png",
-    "/assets/images/laptop4.png",
-    "/assets/images/laptop4.png",
-    "/assets/images/laptop4.png",
-    "/assets/images/laptop5.png",
-    "/assets/images/laptop5.png",
-    "/assets/images/laptop5.png",
-  ];
+  const frameSources = useMemo(
+    () => [
+      "/assets/images/laptop1.png",
+      "/assets/images/laptop2.png",
+      "/assets/images/laptop2.png",
+      "/assets/images/laptop2.png",
+      "/assets/images/laptop3.png",
+      "/assets/images/laptop3.png",
+      "/assets/images/laptop3.png",
+      "/assets/images/laptop4.png",
+      "/assets/images/laptop4.png",
+      "/assets/images/laptop4.png",
+      "/assets/images/laptop5.png",
+      "/assets/images/laptop5.png",
+      "/assets/images/laptop5.png",
+    ],
+    []
+  );
 
   // Preload frames to avoid flicker during scroll transitions
   useEffect(() => {
@@ -36,36 +39,162 @@ export default function HeroSection({ data }: HeroSectionProps) {
       const img = new window.Image();
       img.src = src;
     });
-  }, []);
+  }, [frameSources]);
 
   // Cross-fade opacities per frame across scroll progress
   const frameCount = frameSources.length;
   const fade = 1 / (frameCount * 3); // small overlap for smoother blend
-  const opacities = frameSources.map((_, index) => {
-    const start = index / frameCount;
-    const end = (index + 1) / frameCount;
-    if (index === 0) {
-      // First frame is visible on load and fades out after its segment
-      const input = [0, end, Math.min(1, end + fade)];
-      const output = [1, 1, 0];
-      return useTransform(scrollYProgress, input, output, { clamp: true });
-    }
-    if (index === frameCount - 1) {
-      // Last frame fades in near its segment and stays visible to the end
-      const input = [Math.max(0, start - fade), start, 1];
-      const output = [0, 1, 1];
-      return useTransform(scrollYProgress, input, output, { clamp: true });
-    }
-    // Middle frames cross-fade in/out around their segment
-    const input = [
-      Math.max(0, start - fade),
-      start,
-      end,
-      Math.min(1, end + fade),
-    ];
-    const output = [0, 1, 1, 0];
-    return useTransform(scrollYProgress, input, output, { clamp: true });
-  });
+
+  // Create opacity transforms for each frame
+  const opacity0 = useTransform(
+    scrollYProgress,
+    [0, 1 / frameCount, Math.min(1, 1 / frameCount + fade)],
+    [1, 1, 0],
+    { clamp: true }
+  );
+  const opacity1 = useTransform(
+    scrollYProgress,
+    [
+      Math.max(0, 1 / frameCount - fade),
+      1 / frameCount,
+      2 / frameCount,
+      Math.min(1, 2 / frameCount + fade),
+    ],
+    [0, 1, 1, 0],
+    { clamp: true }
+  );
+  const opacity2 = useTransform(
+    scrollYProgress,
+    [
+      Math.max(0, 2 / frameCount - fade),
+      2 / frameCount,
+      3 / frameCount,
+      Math.min(1, 3 / frameCount + fade),
+    ],
+    [0, 1, 1, 0],
+    { clamp: true }
+  );
+  const opacity3 = useTransform(
+    scrollYProgress,
+    [
+      Math.max(0, 3 / frameCount - fade),
+      3 / frameCount,
+      4 / frameCount,
+      Math.min(1, 4 / frameCount + fade),
+    ],
+    [0, 1, 1, 0],
+    { clamp: true }
+  );
+  const opacity4 = useTransform(
+    scrollYProgress,
+    [
+      Math.max(0, 4 / frameCount - fade),
+      4 / frameCount,
+      5 / frameCount,
+      Math.min(1, 5 / frameCount + fade),
+    ],
+    [0, 1, 1, 0],
+    { clamp: true }
+  );
+  const opacity5 = useTransform(
+    scrollYProgress,
+    [
+      Math.max(0, 5 / frameCount - fade),
+      5 / frameCount,
+      6 / frameCount,
+      Math.min(1, 6 / frameCount + fade),
+    ],
+    [0, 1, 1, 0],
+    { clamp: true }
+  );
+  const opacity6 = useTransform(
+    scrollYProgress,
+    [
+      Math.max(0, 6 / frameCount - fade),
+      6 / frameCount,
+      7 / frameCount,
+      Math.min(1, 7 / frameCount + fade),
+    ],
+    [0, 1, 1, 0],
+    { clamp: true }
+  );
+  const opacity7 = useTransform(
+    scrollYProgress,
+    [
+      Math.max(0, 7 / frameCount - fade),
+      7 / frameCount,
+      8 / frameCount,
+      Math.min(1, 8 / frameCount + fade),
+    ],
+    [0, 1, 1, 0],
+    { clamp: true }
+  );
+  const opacity8 = useTransform(
+    scrollYProgress,
+    [
+      Math.max(0, 8 / frameCount - fade),
+      8 / frameCount,
+      9 / frameCount,
+      Math.min(1, 9 / frameCount + fade),
+    ],
+    [0, 1, 1, 0],
+    { clamp: true }
+  );
+  const opacity9 = useTransform(
+    scrollYProgress,
+    [
+      Math.max(0, 9 / frameCount - fade),
+      9 / frameCount,
+      10 / frameCount,
+      Math.min(1, 10 / frameCount + fade),
+    ],
+    [0, 1, 1, 0],
+    { clamp: true }
+  );
+  const opacity10 = useTransform(
+    scrollYProgress,
+    [
+      Math.max(0, 10 / frameCount - fade),
+      10 / frameCount,
+      11 / frameCount,
+      Math.min(1, 11 / frameCount + fade),
+    ],
+    [0, 1, 1, 0],
+    { clamp: true }
+  );
+  const opacity11 = useTransform(
+    scrollYProgress,
+    [
+      Math.max(0, 11 / frameCount - fade),
+      11 / frameCount,
+      12 / frameCount,
+      Math.min(1, 12 / frameCount + fade),
+    ],
+    [0, 1, 1, 0],
+    { clamp: true }
+  );
+  const opacity12 = useTransform(
+    scrollYProgress,
+    [Math.max(0, 12 / frameCount - fade), 12 / frameCount, 1],
+    [0, 1, 1],
+    { clamp: true }
+  );
+
+  const opacities = [
+    opacity0,
+    opacity1,
+    opacity2,
+    opacity3,
+    opacity4,
+    opacity5,
+    opacity6,
+    opacity7,
+    opacity8,
+    opacity9,
+    opacity10,
+    opacity11,
+    opacity12,
+  ];
 
   return (
     <section className="relative min-h-[100vh]">

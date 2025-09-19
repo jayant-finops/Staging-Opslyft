@@ -2,15 +2,15 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Footer as FooterType } from "@/types/sanity";
+// import { Footer as FooterType } from "@/types/sanity";
 import { footerFallback } from "@/data/footer";
 
-interface FooterProps {
-  data: FooterType | null;
-}
+// interface FooterProps {
+//   data: FooterType | null;
+// }
 
-export default function Footer({ data }: FooterProps) {
-  const footer = data || footerFallback;
+export default function Footer() {
+  // const footer = data || footerFallback;
 
   return (
     <footer

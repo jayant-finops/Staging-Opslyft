@@ -1,4 +1,4 @@
-import HeroSection from "@/components/HeroSection";
+// import HeroSection from "@/components/HeroSection";
 import HeroSection2 from "@/components/HeroSection2";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import StruggleSection from "@/components/StruggleSection";
@@ -10,18 +10,16 @@ import {
   getTestimonials,
   getStruggleSection,
   getSolutionsSection,
-  getFooterData,
 } from "@/lib/sanity";
 
 export default async function Home() {
   // Fetch data from Sanity CMS (with fallbacks)
-  const [heroData, testimonials, struggleData, solutionsData, footerData] =
+  const [heroData, testimonials, struggleData, solutionsData] =
     await Promise.all([
       getHeroData().catch(() => null),
       getTestimonials().catch(() => []),
       getStruggleSection().catch(() => null),
       getSolutionsSection().catch(() => null),
-      getFooterData().catch(() => null),
     ]);
 
   return (
@@ -32,7 +30,7 @@ export default async function Home() {
         <TestimonialsSection data={testimonials} />
         <StruggleSection data={struggleData} />
         <SolutionsSection data={solutionsData} />
-        <Footer data={footerData} />
+        <Footer />
       </main>
     </>
   );

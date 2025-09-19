@@ -10,6 +10,14 @@ interface SolutionsSectionProps {
   data: SolutionsSectionType;
 }
 
+interface ExtendedFeature {
+  title: string;
+  description: string;
+  buttonText?: string;
+  imageSrc: string;
+  bulletPoints?: string[];
+}
+
 export default function SolutionsSection({ data }: SolutionsSectionProps) {
   const features =
     data?.features?.length > 0
@@ -69,9 +77,9 @@ export default function SolutionsSection({ data }: SolutionsSectionProps) {
                 </h3>
 
                 {/* Show bullet points if available, otherwise description */}
-                {(feature as any).bulletPoints ? (
+                {(feature as ExtendedFeature).bulletPoints ? (
                   <div className="space-y-3 sm:space-y-4">
-                    {(feature as any).bulletPoints.map(
+                    {(feature as ExtendedFeature).bulletPoints!.map(
                       (point: string, idx: number) => (
                         <div
                           key={idx}
@@ -98,13 +106,13 @@ export default function SolutionsSection({ data }: SolutionsSectionProps) {
                   </p>
                 )}
 
-                {(feature as any).buttonText && (
+                {(feature as ExtendedFeature).buttonText && (
                   <Button
                     variant="secondary"
                     size="md"
                     className="space-x-2 mt-12"
                   >
-                    <span>{(feature as any).buttonText}</span>
+                    <span>{(feature as ExtendedFeature).buttonText}</span>
                     <svg
                       className="w-4 h-4"
                       fill="none"
@@ -128,7 +136,7 @@ export default function SolutionsSection({ data }: SolutionsSectionProps) {
               >
                 <div className="relative w-full max-w-[592px] h-[300px] sm:h-[400px] md:h-[500px] lg:h-[601px] rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl mx-auto">
                   <Image
-                    src={(feature as any).imageSrc}
+                    src={(feature as ExtendedFeature).imageSrc}
                     alt={feature.title}
                     fill
                     className="object-cover"
