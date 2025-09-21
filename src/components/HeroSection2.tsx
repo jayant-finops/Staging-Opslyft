@@ -11,26 +11,26 @@ interface HeroSectionProps {
 
 export default function HeroSection2({ data }: HeroSectionProps) {
   return (
-    <section className="relative min-h-[100vh] sm:min-h-[90vh] md:min-h-[100vh] rounded-b-[32px] sm:rounded-b-[56px] md:rounded-b-[80px] overflow-hidden">
+    <section className="relative max-h-[100vh] min-h-[90vh] sm:min-h-[90vh] md:min-h-[100vh] rounded-b-[32px] sm:rounded-b-[56px] md:rounded-b-[80px] overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 z-0">
-        <Image
-          src="/assets/images/HeroSection2.png"
-          alt="Background gradient"
-          fill
-          className="object-cover"
-          priority
+        <div
+          className="w-full h-full"
+          style={{
+            background:
+              "radial-gradient(72% 85% at 88% 50%, rgba(0,105,0,0.75) 0%, rgba(0,105,0,0.45) 30%, rgba(0,105,0,0.2) 58%, rgba(0,0,0,0) 82%), linear-gradient(185deg, #000000 0%, #0E1821 100%)",
+          }}
         />
       </div>
 
       {/* Main content container */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-8 items-start lg:items-center w-full min-h-[100vh] sm:min-h-[90vh] md:min-h-[100vh] py-8 lg:py-0">
         {/* Left side - Text content */}
-        <div className="text-white space-y-6 sm:space-y-8 lg:pr-8 order-1 lg:order-1">
+        <div className="text-white space-y-4 sm:space-y-6 lg:pr-8 order-1 lg:order-1">
           {/* Green label */}
           <div className="inline-block">
             <div
-              className="text-xs sm:text-[13px] uppercase tracking-wider text-[#68CA68] font-light px-3 sm:px-4 py-1.5 sm:py-2 border border-[#F0F7ED0A] rounded-full bg-[#F0F7ED0A] font-ibm-plex-sans"
+              className="text-[11px] sm:text-[13px] uppercase tracking-wider text-[#68CA68] font-light px-3 sm:px-4 py-1.5 sm:py-2 border border-[#F0F7ED0A] rounded-full bg-[#F0F7ED0A] font-ibm-plex-sans"
               style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
             >
               {data?.subtitle || "BUILT FOR ENGINEERING AND FINANCE TEAMS"}
@@ -39,21 +39,21 @@ export default function HeroSection2({ data }: HeroSectionProps) {
 
           {/* Main heading */}
           <h1
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold leading-tight font-funnel-display"
+            className="text-[34px] sm:text-[42px] md:text-5xl lg:text-[52px] xl:text-[56px] font-semibold leading-tight font-funnel-display"
             style={{ fontFamily: '"Funnel Display", sans-serif' }}
           >
             {data?.title || (
               <>
                 Context-Led Cloud
                 <br />
-                <span className="text-white">Optimisation & Visibility</span>
+                <span>Optimisation & Visibility</span>
               </>
             )}
           </h1>
 
           {/* Description */}
           <p
-            className="text-sm sm:text-base text-[#b7b7b7] max-w-full sm:max-w-2xl leading-relaxed font-ibm-plex-sans font-light"
+            className="text-base text-[#b7b7b7] max-w-full sm:max-w-2xl leading-relaxed font-light"
             style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
           >
             {data?.description ||
@@ -73,13 +73,13 @@ export default function HeroSection2({ data }: HeroSectionProps) {
           {/* Circles behind (one-time entrance) */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
             <motion.div
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1.05, opacity: 0.18 }}
-              transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-              className="absolute w-[120%] sm:w-[130%] lg:w-[140%] h-[120%] sm:h-[130%] lg:h-[140%] -translate-y-4 sm:-translate-y-8 lg:-translate-y-12 translate-x-4 sm:translate-x-8 lg:translate-x-16 xl:translate-x-64"
+              initial={{ scale: 0.95, opacity: 0, rotate: 0 }}
+              animate={{ scale: 1.05, opacity: 1, rotate: -45 }}
+              transition={{ duration: 1.5, delay: 0.2, ease: "easeOut" }}
+              className="absolute w-[120%] sm:w-[130%] lg:w-[160%] h-[120%] sm:h-[130%] lg:h-[140%] -translate-y-4 sm:-translate-y-8 lg:-translate-y-12 translate-x-4 sm:translate-x-8 lg:translate-x-16 xl:translate-x-64"
             >
               <Image
-                src="/assets/images/hero-circles.png"
+                src="/assets/images/hero/circles.png"
                 alt="Decorative circles"
                 fill
                 className="object-contain"
@@ -96,7 +96,7 @@ export default function HeroSection2({ data }: HeroSectionProps) {
             className="relative transform-gpu w-[90%] sm:w-[95%] md:w-[100%] lg:w-[100%] xl:w-[120%] translate-x-2 sm:translate-x-4 md:translate-x-6 lg:translate-x-48 translate-y-2 sm:translate-y-4 md:translate-y-6 lg:translate-y-16 mx-auto lg:mx-0"
           >
             <Image
-              src="/assets/images/laptop-static.png"
+              src="/assets/images/hero/laptop-static.png"
               alt="Laptop showing Opslyft dashboard"
               width={3600}
               height={2400}

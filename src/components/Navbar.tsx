@@ -16,20 +16,26 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
+      const thresholdPx = Math.max(window.innerHeight * 0.98, 560);
 
-      // Clear existing timeout
+      // Always clear existing hide timers on scroll
       if (hideTimeout) {
         clearTimeout(hideTimeout);
         setHideTimeout(null);
       }
 
-      // Show navbar when scrolling
+      // Always show while scrolling
       setIsVisible(true);
 
-      // Set timeout to hide navbar after scroll stops
+      // Do not schedule hide if: within hero threshold or mobile menu open
+      if (isMobileMenuOpen || currentScrollY < thresholdPx) {
+        return;
+      }
+
+      // Schedule hide after inactivity past the threshold
       const timeout = setTimeout(() => {
         setIsVisible(false);
-      }, 2000); // Hide after 2 seconds of no scrolling
+      }, 3000);
 
       setHideTimeout(timeout);
       setLastScrollY(currentScrollY);
@@ -52,7 +58,18 @@ export default function Navbar() {
         clearTimeout(hideTimeout);
       }
     };
-  }, [lastScrollY, hideTimeout]);
+  }, [lastScrollY, hideTimeout, isMobileMenuOpen]);
+
+  // Keep navbar visible whenever the mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      setIsVisible(true);
+      if (hideTimeout) {
+        clearTimeout(hideTimeout);
+        setHideTimeout(null);
+      }
+    }
+  }, [isMobileMenuOpen]);
 
   return (
     <>
@@ -63,10 +80,12 @@ export default function Navbar() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -100, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed top-4 sm:top-6 lg:top-10 left-1/2 transform -translate-x-1/2 z-50 rounded-[16px] sm:rounded-[20px] shadow-2xl backdrop-blur-md border border-white/10"
+            className="fixed top-4 sm:top-6 lg:top-10 left-1/2 transform -translate-x-1/2 z-50 rounded-[16px] sm:rounded-[20px] backdrop-blur-md backdrop-saturate-125 border border-white/8"
             style={{
               background:
-                "linear-gradient(176deg, #070808 -23.3%, #001910 89.49%)",
+                "linear-gradient(176deg, rgba(7,8,8,0.72) -23.3%, rgba(0,25,16,0.52) 89.49%)",
+              boxShadow:
+                "inset 0 1px 0 rgba(255,255,255,0.05), 0 8px 20px rgba(0,0,0,0.25)",
               width: "calc(100vw - 2rem)",
               maxWidth: "1228px",
             }}
@@ -91,7 +110,7 @@ export default function Navbar() {
                     <Link
                       key={item.title}
                       href={item.url}
-                      className="text-gray-300 hover:text-white text-sm font-medium transition-colors"
+                      className="text-[#e9dddd] hover:text-white text-sm font-medium transition-colors"
                     >
                       {item.title}
                     </Link>

@@ -34,7 +34,7 @@ export default function Button({
   const sizeClasses = {
     sm: "px-4 py-2 text-sm rounded-lg",
     md: "px-8 py-3 text-base rounded-lg",
-    lg: "px-6 py-4 sm:px-8 sm:py-5 text-sm sm:text-base rounded-xl",
+    lg: "px-6 py-4 sm:px-8 sm:py-[22px] text-sm sm:text-base rounded-xl w-[200px] sm:w-[180px]",
   };
 
   const lgShadow =
