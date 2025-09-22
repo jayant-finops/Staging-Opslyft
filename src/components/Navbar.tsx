@@ -69,7 +69,7 @@ export default function Navbar() {
         setHideTimeout(null);
       }
     }
-  }, [isMobileMenuOpen]);
+  }, [isMobileMenuOpen, hideTimeout]);
 
   return (
     <>

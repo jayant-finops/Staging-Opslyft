@@ -6,6 +6,7 @@ import Lottie from "lottie-react";
 import { SolutionsSection as SolutionsSectionType } from "@/types/sanity";
 import { solutionsFallback } from "@/data/solutions";
 import Button from "./Button";
+import animationData from "../../public/assets/images/Prop=f2.1.json";
 
 interface SolutionsSectionProps {
   data: SolutionsSectionType;
@@ -156,7 +157,7 @@ export default function SolutionsSection({ data }: SolutionsSectionProps) {
               >
                 <div className="relative  w-[343px] md:w-[592px] h-[348px] md:h-[601px] rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl mx-auto bg-white">
                   <Lottie
-                    animationData={require("../../public/assets/images/Prop=f2.1.json")}
+                    animationData={animationData}
                     loop={true}
                     className="absolute inset-0 w-full h-full"
                   />
