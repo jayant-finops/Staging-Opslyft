@@ -50,22 +50,31 @@ export default function TestimonialsSection({
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 items-center justify-center flex flex-col">
         {/* Section header */}
-        <div className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-14">
+        <div className="text-center mb-[46px] space-y-4">
           <div
-            className="inline-block uppercase tracking-wider font-ibm-plex-sans text-green-600 font-medium px-4 sm:px-6 py-2 sm:py-3 rounded-full w-auto sm:w-[150px] text-xs sm:text-[13px]"
+            className="inline-block uppercase tracking-wider text-[#24823D] font-medium px-4 sm:px-6 py-2 sm:py-3 rounded-full w-auto sm:w-[150px] text-[13px] backdrop-blur-md border"
             style={{
               fontFamily: '"IBM Plex Sans", sans-serif',
-              background: "rgba(36, 130, 61, 0.10)",
+              background: "rgba(36, 130, 61, 0.10)", // #24823D @ 10%
+              borderColor: "rgba(211, 211, 211, 0.25)", // #D3D3D3 @ 25%
+              boxShadow:
+                "inset 0 1px 0 rgba(255,255,255,0.5), 0 8px 18px rgba(0,0,0,0.10)",
             }}
           >
             TESTIMONIALS
           </div>
-          <h2 className="mt-4 sm:mt-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-900 px-4 sm:px-0">
+          <h2
+            className="text-[28px] sm:text-[32px] md:text-[38px] lg:text-5xl font-semibold text-gray-900 px-4 sm:px-0"
+            style={{ fontFamily: '"Funnel Display", sans-serif' }}
+          >
             Trusted by Leaders & Innovators
           </h2>
-          <p className="text-green-900 mt-3 sm:mt-4 max-w-full sm:max-w-2xl mx-auto font-normal text-sm sm:text-base opacity-60 px-4 sm:px-0">
+          <p
+            className="text-green-900  max-w-full sm:max-w-2xl mx-auto font-normal text-sm sm:text-base opacity-60 px-4 sm:px-0 w-[340px] lg:w-[420px]"
+            style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
+          >
             Join hundreds of engineering teams who trust Opslyft to optimize
             their cloud infrastructure costs.
           </p>
@@ -73,7 +82,7 @@ export default function TestimonialsSection({
 
         {/* Navigation arrows - hidden on mobile */}
         <button
-          className="testimonials-prev hidden sm:block absolute left-2 lg:left-4 top-1/2 -translate-y-1/2 z-20 text-gray-400 hover:text-gray-600 bg-white rounded-full p-2 shadow-lg"
+          className="testimonials-prev sm:block absolute left-2 md:left-4  top-1/2 -translate-y-1/2 z-20 text-gray-400 hover:text-gray-600 p-2"
           aria-label="Previous"
         >
           <svg
@@ -93,7 +102,7 @@ export default function TestimonialsSection({
           </svg>
         </button>
         <button
-          className="testimonials-next hidden sm:block absolute right-2 lg:right-4 top-1/2 -translate-y-1/2 z-20 text-gray-400 hover:text-gray-600 bg-white rounded-full p-2 shadow-lg"
+          className="testimonials-next sm:block absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 text-gray-400 hover:text-gray-600  p-2 "
           aria-label="Next"
         >
           <svg
@@ -124,7 +133,7 @@ export default function TestimonialsSection({
           slidesPerView={1}
           spaceBetween={16}
           centeredSlides={true}
-          autoplay={{ delay: 1500 }}
+          autoplay={{ delay: 3000 }}
           breakpoints={{
             480: {
               slidesPerView: 1.5,
@@ -134,123 +143,134 @@ export default function TestimonialsSection({
             640: {
               slidesPerView: 2,
               spaceBetween: 24,
-              centeredSlides: false,
+              centeredSlides: true,
             },
             768: {
               slidesPerView: 2.5,
               spaceBetween: 24,
-              centeredSlides: false,
+              centeredSlides: true,
             },
             1024: {
               slidesPerView: 3,
               spaceBetween: 30,
-              centeredSlides: false,
+              centeredSlides: true,
             },
           }}
-          className="!px-4 sm:!px-6 lg:!px-2 relative mx-auto w-full max-w-7xl"
+          className="!px-4 sm:!px-6 lg:!px-2 relative mx-auto w-full md:max-w-[1440px]"
         >
-          {items.map((t, index) => (
-            <SwiperSlide key={t.key} className="!w-auto">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05, duration: 0.5 }}
-                className="p-4 sm:p-6 lg:p-8 rounded-[16px] sm:rounded-[20px] lg:rounded-[30px] mx-auto w-full max-w-[320px] sm:max-w-[380px] lg:max-w-[450px] h-auto min-h-[280px] sm:min-h-[350px] lg:h-[450px] flex flex-col cursor-pointer transition-all duration-300 ease-in-out"
-                style={{
-                  background:
-                    "linear-gradient(195deg, rgba(69, 131, 48, 0.08) -23.3%, rgba(15, 29, 11, 0.08) 89.49%)",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "#0E1821";
-                  // Change text colors on hover
-                  const quote = e.currentTarget.querySelector(
-                    ".testimonial-quote"
-                  ) as HTMLElement;
-                  const author = e.currentTarget.querySelector(
-                    ".testimonial-author"
-                  ) as HTMLElement;
-                  const position = e.currentTarget.querySelector(
-                    ".testimonial-position"
-                  ) as HTMLElement;
-                  if (quote) quote.style.color = "#F1F1F1";
-                  if (author) author.style.color = "#F1F1F1";
-                  if (position) position.style.color = "#F1F1F1";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background =
-                    "linear-gradient(195deg, rgba(69, 131, 48, 0.08) -23.3%, rgba(15, 29, 11, 0.08) 89.49%)";
-                  // Reset text colors
-                  const quote = e.currentTarget.querySelector(
-                    ".testimonial-quote"
-                  ) as HTMLElement;
-                  const author = e.currentTarget.querySelector(
-                    ".testimonial-author"
-                  ) as HTMLElement;
-                  const position = e.currentTarget.querySelector(
-                    ".testimonial-position"
-                  ) as HTMLElement;
-                  if (quote) quote.style.color = "";
-                  if (author) author.style.color = "";
-                  if (position) position.style.color = "";
-                }}
-              >
-                <div className="mb-3 sm:mb-4 lg:mb-6">
-                  <Image
-                    src="/assets/images/testimonials/apos.png"
-                    alt="quote"
-                    width={36}
-                    height={36}
-                    className="w-6 h-6 sm:w-7 sm:h-7 lg:w-9 lg:h-9"
-                  />
-                </div>
-                <p
-                  className="testimonial-quote text-gray-800 text-sm sm:text-base lg:text-xl xl:text-2xl leading-relaxed mb-4 sm:mb-6 lg:mb-8 transition-colors duration-300 flex-grow"
-                  style={{ fontFamily: '"Funnel Display", sans-serif' }}
+          <div className="flex justify-center items-center">
+            {items.map((t, index) => (
+              <SwiperSlide key={t.key} className="">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05, duration: 0.5 }}
+                  className="p-4 pt-8  rounded-[30px] mx-auto w-full max-w-[342px] sm:max-w-[360px] lg:max-w-[374px] h-[358px] lg:h-[390px] flex flex-col cursor-pointer transition-all duration-300 ease-in-out"
+                  style={{
+                    background:
+                      "linear-gradient(195deg, rgba(69, 131, 48, 0.08) -23.3%, rgba(15, 29, 11, 0.08) 89.49%)",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "#0E1821";
+                    // Change text colors on hover
+                    const quote = e.currentTarget.querySelector(
+                      ".testimonial-quote"
+                    ) as HTMLElement;
+                    const author = e.currentTarget.querySelector(
+                      ".testimonial-author"
+                    ) as HTMLElement;
+                    const position = e.currentTarget.querySelector(
+                      ".testimonial-position"
+                    ) as HTMLElement;
+                    if (quote) quote.style.color = "#F1F1F1";
+                    if (author) author.style.color = "#F1F1F1";
+                    if (position) position.style.color = "#F1F1F1";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background =
+                      "linear-gradient(195deg, rgba(69, 131, 48, 0.08) -23.3%, rgba(15, 29, 11, 0.08) 89.49%)";
+                    // Reset text colors
+                    const quote = e.currentTarget.querySelector(
+                      ".testimonial-quote"
+                    ) as HTMLElement;
+                    const author = e.currentTarget.querySelector(
+                      ".testimonial-author"
+                    ) as HTMLElement;
+                    const position = e.currentTarget.querySelector(
+                      ".testimonial-position"
+                    ) as HTMLElement;
+                    if (quote) quote.style.color = "";
+                    if (author) author.style.color = "";
+                    if (position) position.style.color = "";
+                  }}
                 >
-                  {t.quote}
-                </p>
-                <div className="flex items-center gap-2 sm:gap-3 mt-auto">
-                  <div className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 rounded-full bg-gray-200 overflow-hidden relative">
+                  <div className="mb-3 sm:mb-4 lg:mb-6">
                     <Image
-                      src={t.avatarSrc}
-                      alt={t.author}
-                      fill
-                      className="object-cover"
+                      src="/assets/images/testimonials/apos.png"
+                      alt="quote"
+                      width={36}
+                      height={36}
+                      className="w-[46px] h-[40px] md:w-[52px] md:[44px]"
                     />
                   </div>
-                  <div className="flex-1">
-                    <div className="testimonial-author text-gray-900 font-medium text-xs sm:text-sm transition-colors duration-300">
-                      {t.author}
+                  <p
+                    className="testimonial-quote text-gray-800 text-[21px] md:text-[24px] leading-[1.3] font-normal mb-4 sm:mb-6 lg:mb-8 transition-colors duration-300 flex-grow"
+                    style={{ fontFamily: '"Funnel Display", sans-serif' }}
+                  >
+                    {t.quote}
+                  </p>
+                  <div className="flex items-center gap-2 sm:gap-3 mt-auto">
+                    <div className="w-10 h-10 rounded-full bg-gray-200 overflow-hidden relative">
+                      <Image
+                        src={t.avatarSrc}
+                        alt={t.author}
+                        fill
+                        className="object-cover"
+                      />
                     </div>
-                    <div className="testimonial-position text-gray-500 text-xs transition-colors duration-300">
-                      {t.position}
+                    <div className="flex-1">
+                      <div
+                        className="testimonial-author text-gray-800 font-medium text-[16px] md:text-[18px] transition-colors duration-300"
+                        style={{ fontFamily: '"Funnel Display", sans-serif' }}
+                      >
+                        {t.author}
+                      </div>
+                      <div
+                        className="testimonial-position text-gray-600 text-[12px] md:text-[13px] transition-colors duration-300 font-light"
+                        style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
+                      >
+                        {t.position}
+                      </div>
+                    </div>
+                    <div className="w-[60px] h-[27px] md:w-[64px] md:h-[28px] relative">
+                      <Image
+                        src={t.companyLogoSrc}
+                        alt="company"
+                        fill
+                        className="object-contain"
+                      />
                     </div>
                   </div>
-                  <div className="w-8 h-4 sm:w-10 sm:h-5 lg:w-12 lg:h-6 relative">
-                    <Image
-                      src={t.companyLogoSrc}
-                      alt="company"
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-                </div>
-              </motion.div>
-            </SwiperSlide>
-          ))}
+                </motion.div>
+              </SwiperSlide>
+            ))}
+          </div>
         </Swiper>
 
         {/* Company logos row */}
-        <div className="flex flex-col sm:flex-row items-center mt-12 sm:mt-16 lg:mt-20 text-center justify-center gap-y-6 sm:gap-x-8">
-          <p className="text-xs sm:text-sm text-gray-500 max-w-full sm:max-w-[200px] text-center sm:text-start px-4 sm:px-0">
+        <div className="flex flex-col sm:flex-row items-center mt-12 sm:mt-16 lg:mt-20 text-center justify-center gap-y-6 sm:gap-x-8 w-[340px] md:w-full">
+          <p
+            className="text-[18px] text-gray-500 max-w-full sm:max-w-[252px] text-center sm:text-start px-4 sm:px-0 md:w-[252px] font-normal"
+            style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
+          >
             Trusted by fast-growing companies around the world
           </p>
-          <div className="flex flex-wrap justify-center items-center opacity-90 gap-x-4 sm:gap-x-6 gap-y-4">
+          <div className="flex flex-wrap justify-center items-center opacity-90 gap-x-2 sm:gap-x-6 gap-y-2">
             {logoRowFallback.map((l) => (
               <div
                 key={l.alt}
-                className="relative h-8 w-24 sm:h-10 sm:w-32 lg:w-36"
+                className="relative w-[104px] h-[44px] md:w-[132px] md:h-[56px]"
               >
                 <Image
                   src={l.src}

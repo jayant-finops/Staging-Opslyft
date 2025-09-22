@@ -32,21 +32,30 @@ export default function SolutionsSection({ data }: SolutionsSectionProps) {
       : solutionsFallback.features;
 
   return (
-    <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-28 sm:py-24 bg-white">
+      <div className="container mx-auto px-4 ">
         {/* Section header */}
-        <div className="text-center mb-8 sm:mb-12 md:mb-14 lg:mb-16">
-          <div className="inline-block text-xs sm:text-[12px] uppercase tracking-wider text-[#68CA68] font-medium px-3 sm:px-4 py-1.5 sm:py-2 border border-[#E7F2EA] rounded-full bg-[#F0F7ED]">
+        <div className="text-center mb-[93px] md:mb-[68px] space-y-4">
+          <div
+            className="inline-block uppercase tracking-wider text-[#24823D] font-[400] px-4 sm:px-6 py-2 sm:py-3 rounded-full w-auto sm:w-[190px] text-[13px] backdrop-blur-md border"
+            style={{
+              fontFamily: '"IBM Plex Sans", sans-serif',
+              background: "rgba(36, 130, 61, 0.10)", // #24823D @ 10%
+              borderColor: "rgba(211, 211, 211, 0.25)", // #D3D3D3 @ 25%
+              boxShadow:
+                "inset 0 1px 0 rgba(255,255,255,0.5), 0 8px 18px rgba(0,0,0,0.10)",
+            }}
+          >
             {data?.sectionLabel || solutionsFallback.sectionLabel}
           </div>
           <h2
-            className="mt-4 sm:mt-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-900 max-w-full sm:max-w-2xl lg:max-w-4xl mx-auto px-4 sm:px-0"
+            className="text-[28px] md:text-[48px] font-semibold text-gray-900 max-w-full md:w-[770px] mx-auto px-4 sm:px-0 leading-[28px] md:leading-[55px]"
             style={{ fontFamily: '"Funnel Display", sans-serif' }}
           >
             {data?.title || solutionsFallback.title}
           </h2>
           <p
-            className="text-[#154B23] mt-3 sm:mt-4 max-w-full sm:max-w-2xl mx-auto text-sm font-light px-4 sm:px-0"
+            className="text-[#154B23] max-w-full sm:max-w-xl mx-auto text-sm font-light px-4 sm:px-0 leading-[1.5]"
             style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
           >
             {data?.subtitle || solutionsFallback.subtitle}
@@ -62,16 +71,16 @@ export default function SolutionsSection({ data }: SolutionsSectionProps) {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2, duration: 0.8 }}
               viewport={{ once: true }}
-              className={`grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center ${
+              className={`flex flex-col lg:grid lg:grid-cols-2  gap-4 sm:gap-12 lg:gap-16 items-center ${
                 index % 2 === 1 ? "lg:grid-flow-col-dense" : ""
               }`}
             >
               {/* Content side */}
               <div
-                className={`space-y-4 sm:space-y-6 text-left ${index % 2 === 1 ? "lg:col-start-2 lg:ml-16" : ""} h-auto lg:h-[535px] order-2 lg:order-none`}
+                className={`space-y-4 sm:space-y-[83px] text-left ${index % 2 === 1 ? "lg:col-start-2 lg:ml-16" : ""} h-auto lg:h-[535px] order-2 lg:order-none`}
               >
                 <h3
-                  className="text-xl sm:text-2xl md:text-3xl lg:text-4xl ml-0 sm:ml-2 font-medium leading-tight text-[#1d1d1d] max-w-full sm:max-w-md lg:max-w-lg"
+                  className="text-[34px] md:text-[40px] ml-0 sm:ml-2 font-semibold md:font-medium text-gray-900 md:text-[#1d1d1d] max-w-full sm:max-w-md lg:max-w-lg leading-[40px] md:leading-[37px]"
                   style={{ fontFamily: '"Funnel Display", sans-serif' }}
                 >
                   {feature.title}
@@ -79,14 +88,14 @@ export default function SolutionsSection({ data }: SolutionsSectionProps) {
 
                 {/* Show bullet points if available, otherwise description */}
                 {(feature as ExtendedFeature).bulletPoints ? (
-                  <div className="space-y-3 sm:space-y-4">
+                  <div className="space-y-6 sm:space-y-4 max-w-[315px] md:max-w-[455px]">
                     {(feature as ExtendedFeature).bulletPoints!.map(
                       (point: string, idx: number) => (
                         <div
                           key={idx}
                           className="flex items-start space-x-2 sm:space-x-3"
                         >
-                          <div className="w-5 h-5 sm:w-6 sm:h-6 mt-0.5 sm:mt-1 flex-shrink-0 relative">
+                          <div className="w-[24px] h-[24px] mt-0.5 sm:mt-1 flex-shrink-0 relative">
                             <Image
                               src="/assets/images/solution/Cube.png"
                               alt=""
@@ -94,7 +103,12 @@ export default function SolutionsSection({ data }: SolutionsSectionProps) {
                               className="object-contain"
                             />
                           </div>
-                          <p className="text-sm sm:text-base lg:text-lg text-gray-600 leading-relaxed">
+                          <p
+                            className="text-[16px]  text-[#0E1821] leading-[24px] font-normal"
+                            style={{
+                              fontFamily: '"IBM Plex Sans", sans-serif',
+                            }}
+                          >
                             {point}
                           </p>
                         </div>
@@ -109,11 +123,16 @@ export default function SolutionsSection({ data }: SolutionsSectionProps) {
 
                 {(feature as ExtendedFeature).buttonText && (
                   <Button
-                    variant="secondary"
+                    variant="primary"
                     size="md"
-                    className="space-x-2 mt-12"
+                    className="space-x-2 w-[156px] h-[48px] py-[16px] px-[0px] mt-[40px] sm:mt-0 my-[120px] sm:my-0"
                   >
-                    <span>{(feature as ExtendedFeature).buttonText}</span>
+                    <span
+                      className="text-[18px] font-semibold leading-[16px] pl-[12px]"
+                      style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
+                    >
+                      {feature.buttonText}
+                    </span>
                     <svg
                       className="w-4 h-4"
                       fill="none"
@@ -133,9 +152,9 @@ export default function SolutionsSection({ data }: SolutionsSectionProps) {
 
               {/* Image side */}
               <div
-                className={`relative ${index % 2 === 1 ? "lg:col-start-1" : ""} order-1 lg:order-none`}
+                className={`relative ${index % 2 === 1 ? "lg:col-start-1" : ""} order-1 lg:order-none `}
               >
-                <div className="relative w-full max-w-[592px] h-[300px] sm:h-[400px] md:h-[500px] lg:h-[601px] rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl mx-auto bg-white">
+                <div className="relative  w-[343px] md:w-[592px] h-[348px] md:h-[601px] rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl mx-auto bg-white">
                   <Lottie
                     animationData={require("../../public/assets/images/Prop=f2.1.json")}
                     loop={true}
@@ -153,10 +172,10 @@ export default function SolutionsSection({ data }: SolutionsSectionProps) {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
           viewport={{ once: true }}
-          className="mt-16 sm:mt-20 md:mt-24 lg:mt-32 items-center justify-center flex px-4 sm:px-0"
+          className="md:mt-24 lg:mt-32 items-center justify-center flex "
         >
           <div
-            className="relative rounded-[20px] sm:rounded-[30px] py-8 sm:py-12 lg:py-16 text-center overflow-hidden h-auto min-h-[200px] sm:min-h-[250px] lg:h-[320px] w-full max-w-[1200px] flex items-center justify-center"
+            className="relative rounded-[20px] sm:rounded-[30px] py-8 sm:py-12 lg:py-16 text-center overflow-hidden h-[362px] sm:h-[385px] max-w-[345px] md:max-w-[1440px] flex items-center justify-center"
             style={{
               backgroundImage: "url(/assets/images/solution/lastCard.png)",
               backgroundSize: "cover",
@@ -164,9 +183,9 @@ export default function SolutionsSection({ data }: SolutionsSectionProps) {
               backgroundRepeat: "no-repeat",
             }}
           >
-            <div className="relative z-10 px-4 sm:px-6 lg:px-8">
+            <div className="relative z-10 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center gap-[40px] sm:gap-[53px] ">
               <h3
-                className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold text-white mb-6 sm:mb-8 lg:mb-12 leading-tight max-w-full sm:max-w-2xl lg:max-w-4xl mx-auto"
+                className="text-[28px] md:text-[48px] font-semibold text-white leading-[34px] md:leading-[57px] w-[314px] sm:w-[973px]  mx-auto"
                 style={{ fontFamily: '"Funnel Display", sans-serif' }}
               >
                 {(data?.ctaCard?.title || solutionsFallback.ctaCard.title)
@@ -184,7 +203,11 @@ export default function SolutionsSection({ data }: SolutionsSectionProps) {
                   ))}
               </h3>
 
-              <Button variant="secondary" size="md">
+              <Button variant="primary" size="md">
+                <span
+                  className="text-[18px] font-semibold leading-[16px]"
+                  style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
+                ></span>
                 {data?.ctaCard?.buttonText ||
                   solutionsFallback.ctaCard.buttonText}
               </Button>
