@@ -2,7 +2,7 @@ import React from "react";
 
 interface ButtonProps {
   children: React.ReactNode;
-  variant?: "primary" | "secondary" | "navbar";
+  variant?: "primary" | "secondary";
   size?: "sm" | "md" | "lg";
   className?: string;
   onClick?: () => void;
@@ -26,19 +26,21 @@ export default function Button({
     primary:
       "bg-[#24823D] hover:bg-white active:bg-[#1a5c2e] text-white hover:text-[#0E1821] active:text-white hover:border-[#85c970]",
     secondary:
-      "bg-[#41B36B] hover:bg-white active:bg-[#369856] text-white hover:text-[#0E1821] active:text-white hover:border-[#85c970]",
-    navbar:
-      "bg-white hover:bg-[#24823D] active:bg-[#1a5c2e] text-[#0E1821] hover:text-white active:text-white hover:border-[#41B36B]",
+      "bg-white text-[#0E1821] hover:bg-[#248238] hover:text-white rounded-[12px]",
   };
 
   const sizeClasses = {
-    sm: "px-4 py-2 text-sm rounded-lg",
-    md: "px-8 py-3 text-base rounded-lg",
-    lg: "px-6 py-4 sm:px-8 sm:py-[22px] text-sm sm:text-base rounded-xl w-[200px] sm:w-[180px]",
+    sm: "px-4 py-2 text-sm rounded-xl",
+    md: "px-8 py-3 text-base rounded-xl",
+    lg: "px-6 py-4 sm:px-8 sm:py-[22px] text-sm sm:text-[18px] rounded-xl w-[200px] sm:w-[180px]",
   };
 
   const lgShadow =
     size === "lg" ? { boxShadow: "1px 2px 0px 0px #E8F6E2" } : {};
+  const secondaryShadow =
+    variant === "secondary"
+      ? { boxShadow: "0 4px 4px rgba(0, 0, 0, 0.33)" }
+      : {};
 
   return (
     <button
@@ -47,7 +49,9 @@ export default function Button({
       disabled={disabled}
       className={`${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`}
       style={{
+        gap: "10.396px",
         ...lgShadow,
+        ...secondaryShadow,
       }}
     >
       {children}

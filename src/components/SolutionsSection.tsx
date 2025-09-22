@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Lottie from "lottie-react";
 import { SolutionsSection as SolutionsSectionType } from "@/types/sanity";
 import { solutionsFallback } from "@/data/solutions";
 import Button from "./Button";
@@ -134,12 +135,11 @@ export default function SolutionsSection({ data }: SolutionsSectionProps) {
               <div
                 className={`relative ${index % 2 === 1 ? "lg:col-start-1" : ""} order-1 lg:order-none`}
               >
-                <div className="relative w-full max-w-[592px] h-[300px] sm:h-[400px] md:h-[500px] lg:h-[601px] rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl mx-auto">
-                  <Image
-                    src={(feature as ExtendedFeature).imageSrc}
-                    alt={feature.title}
-                    fill
-                    className="object-cover"
+                <div className="relative w-full max-w-[592px] h-[300px] sm:h-[400px] md:h-[500px] lg:h-[601px] rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl mx-auto bg-white">
+                  <Lottie
+                    animationData={require("../../public/assets/images/Prop=f2.1.json")}
+                    loop={true}
+                    className="absolute inset-0 w-full h-full"
                   />
                 </div>
               </div>

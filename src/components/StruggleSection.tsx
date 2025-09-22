@@ -37,17 +37,25 @@ export default function StruggleSection({ data }: StruggleSectionProps) {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mt-15 md:mt-6">
         {/* Section header */}
         <div className="text-center mb-8 sm:mb-12 md:mb-14 lg:mb-16">
           <div
-            className="inline-block text-xs sm:text-[12px] uppercase tracking-wider text-[#68CA68] font-[400] px-3 sm:px-4 py-1.5 sm:py-2 border border-[#2C4B38] rounded-full bg-[#13301F]"
-            style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
+            className="inline-block text-[13px] uppercase tracking-wider text-[#68CA68] font-[400] px-3 sm:px-4 py-1.5 sm:py-2 rounded-[20px] backdrop-blur-md border"
+            style={{
+              fontFamily: '"IBM Plex Sans", sans-serif',
+              background:
+                "linear-gradient(180deg, rgba(31,65,50,0.78) 0%, rgba(19,48,31,0.28) 100%)",
+              borderColor: "rgba(135, 135, 135, 0.36)",
+              borderWidth: 0.5,
+              boxShadow:
+                "0 14px 22px rgba(0,0,0,0.32), inset 0 1px 0 rgba(238,250,247,0.10), inset 0 -2px 6px rgba(0,0,0,0.35)",
+            }}
           >
             {data?.sectionLabel || struggleFallback.sectionLabel}
           </div>
           <h2
-            className="mt-4 sm:mt-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-[#d3d3d3] px-4 sm:px-0"
+            className="mt-4 sm:mt-6 text-[28px] sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-[#d3d3d3] px-4 sm:px-0  "
             style={{ fontFamily: '"Funnel Display", sans-serif' }}
           >
             {data?.title || struggleFallback.title}

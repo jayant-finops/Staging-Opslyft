@@ -92,7 +92,7 @@ export default function HeroSection2({ data }: HeroSectionProps) {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 1.3, delay: 0.2 }}
             className="relative transform-gpu w-[90%] sm:w-[95%] md:w-[100%] lg:w-[100%] xl:w-[120%] translate-x-2 sm:translate-x-4 md:translate-x-6 lg:translate-x-48 translate-y-2 sm:translate-y-4 md:translate-y-6 lg:translate-y-16 mx-auto lg:mx-0"
           >
             <Image
