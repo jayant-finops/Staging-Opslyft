@@ -77,7 +77,7 @@ export default function PricingPage() {
             </div>
 
             {/* decorative circles */}
-            <div className="pointer-events-none absolute -right-[10px] -top-[10px] lg:-right-[60px] 2xl:-right-[180px] lg:-top-[50px] 2xl:-top-[60px] w-[280px] h-[280px] md:w-[560px] md:h-[360px]">
+            <div className="pointer-events-none absolute -right-[120px] -top-[70px] lg:-right-[180px] lg:-top-[50px] 2xl:-top-[60px] w-[280px] h-[280px] md:w-[560px] md:h-[360px]">
               <Image
                 src="/assets/images/hero/circles.png"
                 alt=""
