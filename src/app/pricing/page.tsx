@@ -159,7 +159,7 @@ export default function PricingPage() {
               </div>
             ) : (
               // Form
-              <div className="w-full max-w-[520px] mx-auto">
+              <div className="w-full max-w-[520px] mx-auto lg:mt-22 xl:mt-8">
                 <h2
                   className="text-center text-[#202020] text-[24px] font-medium leading-[1.2] mb-[38px] lg:mb-[60px] 2xl:mb-[78px]"
                   style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
