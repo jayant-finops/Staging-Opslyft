@@ -138,7 +138,7 @@ export default function PricingPage() {
                   className="text-[#202020] text-[24px] lg:text-[40px] font-medium leading-[1.2]"
                   style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
                 >
-                  Thank you! We'll get in touch with you soon.
+                  Thank you! We&apos;ll get in touch with you soon.
                 </h2>
               </div>
             ) : (
