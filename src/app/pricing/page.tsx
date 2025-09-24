@@ -29,21 +29,37 @@ export default function PricingPage() {
             {/* Animated gradient overlays */}
             <div className="absolute inset-0">
               <div
-                className="absolute inset-0 animated-gradient-bg1"
+                className="absolute animated-gradient-bg1"
                 style={{
                   backgroundImage: "url('/assets/images/pricing/bg-1.png')",
-                  backgroundSize: "cover",
+                  backgroundSize: "110% 110%",
                   backgroundPosition: "center",
                   backgroundRepeat: "no-repeat",
+                  opacity: 0.6,
+                  top: "-5%",
+                  left: "-5%",
+                  right: "-5%",
+                  bottom: "-5%",
+                  mask: "radial-gradient(ellipse at center, black 60%, transparent 90%)",
+                  WebkitMask:
+                    "radial-gradient(ellipse at center, black 60%, transparent 90%)",
                 }}
               />
               <div
-                className="absolute inset-0 animated-gradient-bg2"
+                className="absolute animated-gradient-bg2"
                 style={{
                   backgroundImage: "url('/assets/images/pricing/bg-2.png')",
-                  backgroundSize: "cover",
+                  backgroundSize: "110% 110%",
                   backgroundPosition: "center",
                   backgroundRepeat: "no-repeat",
+                  opacity: 0.6,
+                  top: "-5%",
+                  left: "-5%",
+                  right: "-5%",
+                  bottom: "-5%",
+                  mask: "radial-gradient(ellipse at center, black 60%, transparent 90%)",
+                  WebkitMask:
+                    "radial-gradient(ellipse at center, black 60%, transparent 90%)",
                 }}
               />
             </div>
