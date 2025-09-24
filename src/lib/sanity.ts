@@ -37,3 +37,8 @@ export async function getStruggleSection() {
 export async function getSolutionsSection() {
   return await client.fetch(`*[_type == "solutionsSection"][0]`);
 }
+
+// Pricing page document
+export async function getPricingPage() {
+  return await client.fetch(`*[_type == "pricingPage"][0]`);
+}

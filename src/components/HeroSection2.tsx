@@ -31,7 +31,15 @@ export default function HeroSection2({ data }: HeroSectionProps) {
           <div className="inline-block">
             <div
               className="text-[11px] sm:text-[13px] uppercase tracking-wider text-[#68CA68] font-light px-3 sm:px-4 py-1.5 sm:py-2 border border-[#F0F7ED0A] rounded-full bg-[#F0F7ED0A] font-ibm-plex-sans"
-              style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
+              style={{
+                fontFamily: '"IBM Plex Sans", sans-serif',
+                background:
+                  "linear-gradient(180deg, rgba(31,65,50,0.78) 0%, rgba(19,48,31,0.28) 100%)",
+                borderColor: "rgba(135, 135, 135, 0.36)",
+                borderWidth: 0.5,
+                boxShadow:
+                  "0 14px 22px rgba(0,0,0,0.32), inset 0 1px 0 rgba(238,250,247,0.10), inset 0 -2px 6px rgba(0,0,0,0.35)",
+              }}
             >
               {data?.subtitle || "BUILT FOR ENGINEERING AND FINANCE TEAMS"}
             </div>
