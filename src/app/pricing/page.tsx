@@ -17,7 +17,7 @@ export default function PricingPage() {
       <section className="relative  overflow-hidden ">
         <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[100vh]">
           {/* Left: Gradient + copy */}
-          <div className="relative text-white flex flex-col min-w-[375px] lg:w-[720px] 2xl:min-w-[960px] px-[10px] lg:pl-[60px] py-[50px] 2xl:pl-[180px] 2xl:py-[60px] ">
+          <div className="relative text-white flex flex-col min-w-[375px] lg:w-[720px] 2xl:min-w-[960px] px-[10px] lg:pl-[60px] py-[50px] 2xl:pl-[180px] 2xl:py-[60px] overflow-hidden">
             {/* Solid background */}
             <div
               className="absolute inset-0"
@@ -77,7 +77,7 @@ export default function PricingPage() {
             </div>
 
             {/* decorative circles */}
-            <div className="pointer-events-none absolute right-2 top-2 md:right-6 md:top-4 w-[280px] h-[280px] md:w-[360px] md:h-[360px] opacity-60 ">
+            <div className="pointer-events-none absolute -right-[10px] -top-[10px] lg:-right-[60px] 2xl:-right-[180px] lg:-top-[50px] 2xl:-top-[60px] w-[280px] h-[280px] md:w-[560px] md:h-[360px]">
               <Image
                 src="/assets/images/hero/circles.png"
                 alt=""
