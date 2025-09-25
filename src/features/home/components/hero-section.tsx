@@ -2,8 +2,8 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Hero } from "@/types/sanity";
-import Button from "./Button";
+import { Hero } from "@/types";
+import { LegacyButton } from "@/components/ui";
 
 interface HeroSectionProps {
   data: Hero;
@@ -70,9 +70,9 @@ export default function HeroSection2({ data }: HeroSectionProps) {
 
           {/* CTA Button */}
           <div className="pt-2 sm:pt-4">
-            <Button variant="primary" size="lg">
+            <LegacyButton variant="primary" size="lg">
               {data?.ctaText || "Book a demo"}
-            </Button>
+            </LegacyButton>
           </div>
         </div>
 

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { pricingFallback } from "@/data/pricing";
+import { pricingFallback } from "@/features/pricing";
 
 export default function PricingPage() {
   const [submitted, setSubmitted] = useState(false);

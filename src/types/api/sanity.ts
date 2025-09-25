@@ -1,15 +1,23 @@
-// Sanity document types
+// Sanity CMS API types
 export interface SanityImage {
   _type: "image";
   asset: {
     _ref: string;
     _type: "reference";
+    url?: string;
   };
   alt?: string;
 }
 
-export interface Hero {
+export interface SanityDocument {
   _id: string;
+  _type: string;
+  _createdAt?: string;
+  _updatedAt?: string;
+}
+
+// Home page types
+export interface Hero extends SanityDocument {
   _type: "hero";
   title: string;
   subtitle: string;
@@ -20,8 +28,7 @@ export interface Hero {
   laptopImage?: SanityImage;
 }
 
-export interface Testimonial {
-  _id: string;
+export interface Testimonial extends SanityDocument {
   _type: "testimonial";
   quote: string;
   author: string;
@@ -31,8 +38,7 @@ export interface Testimonial {
   companyLogo?: SanityImage;
 }
 
-export interface Feature {
-  _id: string;
+export interface Feature extends SanityDocument {
   _type: "feature";
   title: string;
   description: string;
@@ -40,8 +46,7 @@ export interface Feature {
   order: number;
 }
 
-export interface StruggleSection {
-  _id: string;
+export interface StruggleSection extends SanityDocument {
   _type: "struggleSection";
   sectionLabel: string;
   title: string;
@@ -53,8 +58,7 @@ export interface StruggleSection {
   }[];
 }
 
-export interface SolutionsSection {
-  _id: string;
+export interface SolutionsSection extends SanityDocument {
   _type: "solutionsSection";
   sectionLabel: string;
   title: string;
@@ -71,8 +75,8 @@ export interface SolutionsSection {
   };
 }
 
-export interface Footer {
-  _id: string;
+// Layout types
+export interface Footer extends SanityDocument {
   _type: "footer";
   logoSrc?: string;
   tagline?: string;
@@ -109,8 +113,8 @@ export interface Footer {
   };
 }
 
-export interface PricingPageDoc {
-  _id: string;
+// Pricing page types
+export interface PricingPageDoc extends SanityDocument {
   _type: "pricingPage";
   badgeLabel: string;
   titleLines: string[];
@@ -123,8 +127,8 @@ export interface PricingPageDoc {
   };
 }
 
-export interface AboutHeroSection {
-  _id: string;
+// About page types
+export interface AboutHeroSection extends SanityDocument {
   _type: "aboutHero";
   badgeText: string;
   titleLines: string[];
@@ -137,16 +141,15 @@ export interface AboutHeroSection {
   decorativeCircles?: SanityImage;
 }
 
-export interface AboutMissionSection {
-  _id: string;
+export interface AboutMissionSection extends SanityDocument {
   _type: "aboutMission";
   title: string;
   description: string;
   stats: { label: string; value: string }[];
 }
 
-export interface CompanyTimelineDoc {
-  _id: string;
+// Company page types
+export interface CompanyTimelineDoc extends SanityDocument {
   _type: "companyTimeline";
   items: {
     id: number;
@@ -158,8 +161,7 @@ export interface CompanyTimelineDoc {
   }[];
 }
 
-export interface TeamDoc {
-  _id: string;
+export interface TeamDoc extends SanityDocument {
   _type: "team";
   heading: string;
   subheading: string;
@@ -180,8 +182,7 @@ export interface TeamDoc {
   }[];
 }
 
-export interface JoinDoc {
-  _id: string;
+export interface JoinDoc extends SanityDocument {
   _type: "join";
   heading: string;
   subheading: string;

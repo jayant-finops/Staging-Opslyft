@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { navbarFallback } from "@/data/navbar";
-import Button from "./Button";
+import { navbarFallback } from "./navbar.data";
+import { LegacyButton } from "@/components/ui";
 
 export default function Navbar() {
   const [isVisible, setIsVisible] = useState(true);
@@ -126,9 +126,9 @@ export default function Navbar() {
                     {navbarFallback.cta.loginText}
                   </Link>
                   <Link href={navbarFallback.cta.buttonUrl}>
-                    <Button variant="secondary" size="sm">
+                    <LegacyButton variant="secondary" size="sm">
                       {navbarFallback.cta.buttonText}
-                    </Button>
+                    </LegacyButton>
                   </Link>
                 </div>
 

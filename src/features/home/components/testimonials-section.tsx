@@ -2,12 +2,15 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Testimonial } from "@/types/sanity";
+import { Testimonial } from "@/types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import { testimonialsFallback, logoRowFallback } from "@/data/testimonials";
+import {
+  testimonialsFallback,
+  logoRowFallback,
+} from "@/features/home/data/testimonials";
 // import { useRef } from "react";
 
 interface TestimonialsSectionProps {

@@ -3,10 +3,10 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Lottie from "lottie-react";
-import { SolutionsSection as SolutionsSectionType } from "@/types/sanity";
-import { solutionsFallback } from "@/data/solutions";
-import Button from "./Button";
-import animationData from "../../public/assets/images/Prop=f2.1.json";
+import { SolutionsSection as SolutionsSectionType } from "@/types";
+import { solutionsFallback } from "@/features/home/data/solutions";
+import { LegacyButton } from "@/components/ui";
+import animationData from "../../../../public/assets/images/Prop=f2.1.json";
 
 interface SolutionsSectionProps {
   data: SolutionsSectionType;
@@ -123,7 +123,7 @@ export default function SolutionsSection({ data }: SolutionsSectionProps) {
                 )}
 
                 {(feature as ExtendedFeature).buttonText && (
-                  <Button
+git                   <LegacyButton
                     variant="primary"
                     size="md"
                     className="space-x-2 w-[156px] h-[48px] py-[16px] px-[0px] mt-[40px] sm:mt-0 my-[120px] sm:my-0"
@@ -147,7 +147,7 @@ export default function SolutionsSection({ data }: SolutionsSectionProps) {
                         d="M9 5l7 7-7 7"
                       />
                     </svg>
-                  </Button>
+                  </LegacyButton>
                 )}
               </div>
 
@@ -204,14 +204,14 @@ export default function SolutionsSection({ data }: SolutionsSectionProps) {
                   ))}
               </h3>
 
-              <Button variant="primary" size="md">
+              <LegacyButton variant="primary" size="md">
                 <span
                   className="text-[18px] font-semibold leading-[16px]"
                   style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
                 ></span>
                 {data?.ctaCard?.buttonText ||
                   solutionsFallback.ctaCard.buttonText}
-              </Button>
+              </LegacyButton>
             </div>
           </div>
         </motion.div>

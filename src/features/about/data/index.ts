@@ -1,0 +1,173 @@
+export interface LocalAboutHero {
+  backgroundSrc: string;
+  badgeText: string;
+  titleLines: string[];
+  subtitle: string;
+  ctaButton: {
+    text: string;
+    url: string;
+  };
+  decorativeCircles: {
+    src: string;
+    alt: string;
+  };
+}
+
+export const aboutHeroFallback: LocalAboutHero = {
+  backgroundSrc: "/assets/images/about/hero-bg.png",
+  badgeText: "WHY OPSLYFT",
+  titleLines: ["Shaping the Future of", "Cloud Efficiency"],
+  subtitle:
+    "Join our growing team at OpsLyft and empower people to optimize their current cloud use.",
+  ctaButton: {
+    text: "Book a demo",
+    url: "/pricing",
+  },
+  decorativeCircles: {
+    src: "/assets/images/hero/circles.png",
+    alt: "Decorative circles",
+  },
+};
+
+export interface LocalAboutMission {
+  title: string;
+  description: string;
+  stats: Array<{ label: string; value: string }>;
+}
+
+export const aboutMissionFallback: LocalAboutMission = {
+  title: "Our Mission",
+  description:
+    "We believe the cloud should accelerate innovation, not drain resources. Opslyft’s mission is to redefine how the world runs the cloud — turning cost into clarity, complexity into simplicity, and engineering into a true business advantage.",
+  stats: [
+    { label: "Team members", value: "20+" },
+    { label: "Features", value: "100+" },
+    { label: "Companies", value: "3K+" },
+  ],
+};
+
+export interface LocalCompanyTimelineItem {
+  id: number;
+  phase: string;
+  period: string;
+  title: string;
+  description: string;
+  bullets?: string[];
+}
+
+export const companyTimelineFallback: LocalCompanyTimelineItem[] = [
+  {
+    id: 1,
+    phase: "Origins",
+    period: "2018–2019",
+    title: "Aayush Kumar turns crisis into innovation",
+    description:
+      "A young DevOps engineer, cut AWS costs by more than $1M at his first job.",
+  },
+  {
+    id: 2,
+    phase: "Finding the Gap",
+    period: "2020",
+    title: "Realized cost optimization is an industry‑wide challenge",
+    description: "Declined a US job offer to start Opslyft.",
+  },
+  {
+    id: 3,
+    phase: "Research & Development",
+    period: "2020–2024",
+    title: "Five years of experimentation and refinement",
+    description:
+      "Conversations with leaders and early customers validated the approach.",
+    bullets: [
+      "400+ conversations with industry leaders shaped the vision.",
+      "Early customers from media, gaming, and health‑tech validated the approach.",
+      "The team stood united through COVID, strengthening culture.",
+      "Iterations sharpened the ICP and paved the way for PMF.",
+    ],
+  },
+  {
+    id: 4,
+    phase: "Product‑Market Fit",
+    period: "2024",
+    title: "Scaling rapidly across APAC and the US",
+    description: "After years of research and iteration, Opslyft achieved PMF.",
+  },
+];
+
+export interface LocalTeamMember {
+  name: string;
+  title: string;
+  bio: string;
+  imageSrc: string;
+  linkedin?: string;
+}
+
+export interface LocalInvestor {
+  name: string;
+  org: string;
+  imageSrc: string;
+  linkedin?: string;
+}
+
+export interface LocalTeamData {
+  heading: string;
+  subheading: string;
+  members: LocalTeamMember[];
+  investorsHeading: string;
+  investorsSubheading: string;
+  investors: LocalInvestor[];
+}
+
+export const teamFallback: LocalTeamData = {
+  heading: "Our Team",
+  subheading: "The Creative Minds Behind the Work We Do",
+  members: [
+    {
+      name: "Aayush Kumar",
+      title: "Founder | Chief Executive Officer",
+      bio: "Managed $11M in cloud spending & delivered $3M in cost savings",
+      imageSrc: "/assets/images/team/aayush.png",
+      linkedin: "#",
+    },
+    {
+      name: "Aayush Srivastava",
+      title: "Head of Growth",
+      bio: "Closed 30+ customers & added $7M in new ARR in 2 years",
+      imageSrc: "/assets/images/team/aayush-srivastava.png",
+      linkedin: "#",
+    },
+    {
+      name: "Raj Vaibhav Dubey",
+      title: "Head of Product",
+      bio: "Delivered 10+ products to clients with full customisation and tech support",
+      imageSrc: "/assets/images/team/raj.png",
+      linkedin: "#",
+    },
+  ],
+  investorsHeading: "Backed by Top Industry Investors",
+  investorsSubheading:
+    "Discover the visionary investors behind OpsLyft, who empower engineering teams to streamline their cloud infrastructure and reduce costs.",
+  investors: Array.from({ length: 9 }, () => ({
+    name: "Ankit Senapati",
+    org: "Innovaccer",
+    imageSrc: "/assets/images/team/investor.png",
+    linkedin: "#",
+  })),
+};
+
+export interface LocalJoinSection {
+  heading: string;
+  subheading: string;
+  ctaText: string;
+  ctaHref: string;
+  backgroundSrc: string;
+}
+
+export const joinFallback: LocalJoinSection = {
+  heading: "Join Our Team of Creators,\nBuilders, and Thinkers",
+  subheading:
+    "We’re always looking for curious minds and passionate hearts to grow with us. If you’re ready to make an impact and be part of something meaningful, we’d love to hear from you.",
+  ctaText: "Join Us",
+  ctaHref: "#",
+  backgroundSrc: "/assets/images/join/team.png",
+};

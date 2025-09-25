@@ -1,6 +1,6 @@
 import React from "react";
 
-interface ButtonProps {
+interface LegacyButtonProps {
   children: React.ReactNode;
   variant?: "primary" | "secondary";
   size?: "sm" | "md" | "lg";
@@ -10,7 +10,7 @@ interface ButtonProps {
   disabled?: boolean;
 }
 
-export default function Button({
+export default function LegacyButton({
   children,
   variant = "primary",
   size = "md",
@@ -18,7 +18,7 @@ export default function Button({
   onClick,
   type = "button",
   disabled = false,
-}: ButtonProps) {
+}: LegacyButtonProps) {
   const baseClasses =
     "font-medium transition-all duration-200 inline-flex items-center justify-center border border-transparent disabled:opacity-50 disabled:cursor-not-allowed";
 

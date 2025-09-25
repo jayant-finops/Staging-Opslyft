@@ -1,10 +1,10 @@
-// import HeroSection from "@/components/HeroSection";
-import HeroSection2 from "@/components/HeroSection2";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import StruggleSection from "@/components/StruggleSection";
-import SolutionsSection from "@/components/SolutionsSection";
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
+import {
+  HeroSection,
+  TestimonialsSection,
+  StruggleSection,
+  SolutionsSection,
+} from "@/features/home";
+import { Footer, Navbar } from "@/components/layout";
 import {
   getHeroData,
   getTestimonials,
@@ -26,7 +26,7 @@ export default async function Home() {
     <>
       <Navbar />
       <main className="min-h-screen">
-        <HeroSection2 data={heroData} />
+        <HeroSection data={heroData} />
         <TestimonialsSection data={testimonials} />
         <StruggleSection data={struggleData} />
         <SolutionsSection data={solutionsData} />

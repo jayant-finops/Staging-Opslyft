@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 // import { Footer as FooterType } from "@/types/sanity";
-import { footerFallback } from "@/data/footer";
+import { footerFallback } from "./footer.data";
 
 // interface FooterProps {
 //   data: FooterType | null;

@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import Image from "next/image";
 // import { useMultiRippleAnimation } from "@/hooks/useRippleAnimation";
-import { StruggleSection as StruggleSectionType } from "@/types/sanity";
-import { struggleFallback } from "@/data/struggle";
+import { StruggleSection as StruggleSectionType } from "@/types";
+import { struggleFallback } from "@/features/home/data/struggle";
 
 interface StruggleSectionProps {
   data: StruggleSectionType;
