@@ -123,7 +123,7 @@ export default function SolutionsSection({ data }: SolutionsSectionProps) {
                 )}
 
                 {(feature as ExtendedFeature).buttonText && (
-git                   <LegacyButton
+                  <LegacyButton
                     variant="primary"
                     size="md"
                     className="space-x-2 w-[156px] h-[48px] py-[16px] px-[0px] mt-[40px] sm:mt-0 my-[120px] sm:my-0"

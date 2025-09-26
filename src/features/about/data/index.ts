@@ -1,6 +1,5 @@
 export interface LocalAboutHero {
   backgroundSrc: string;
-  badgeText: string;
   titleLines: string[];
   subtitle: string;
   ctaButton: {
@@ -15,7 +14,6 @@ export interface LocalAboutHero {
 
 export const aboutHeroFallback: LocalAboutHero = {
   backgroundSrc: "/assets/images/about/hero-bg.png",
-  badgeText: "WHY OPSLYFT",
   titleLines: ["Shaping the Future of", "Cloud Efficiency"],
   subtitle:
     "Join our growing team at OpsLyft and empower people to optimize their current cloud use.",
@@ -133,21 +131,21 @@ export const teamFallback: LocalTeamData = {
       name: "Aayush Srivastava",
       title: "Head of Growth",
       bio: "Closed 30+ customers & added $7M in new ARR in 2 years",
-      imageSrc: "/assets/images/team/aayush-srivastava.png",
+      imageSrc: "/assets/images/team/AS.png",
       linkedin: "#",
     },
     {
       name: "Raj Vaibhav Dubey",
       title: "Head of Product",
       bio: "Delivered 10+ products to clients with full customisation and tech support",
-      imageSrc: "/assets/images/team/raj.png",
+      imageSrc: "/assets/images/team/Raj.png",
       linkedin: "#",
     },
   ],
   investorsHeading: "Backed by Top Industry Investors",
   investorsSubheading:
     "Discover the visionary investors behind OpsLyft, who empower engineering teams to streamline their cloud infrastructure and reduce costs.",
-  investors: Array.from({ length: 9 }, () => ({
+  investors: Array.from({ length: 8 }, () => ({
     name: "Ankit Senapati",
     org: "Innovaccer",
     imageSrc: "/assets/images/team/investor.png",

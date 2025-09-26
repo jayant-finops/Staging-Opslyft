@@ -96,21 +96,40 @@ export default function HeroSection2({ data }: HeroSectionProps) {
             </motion.div>
           </div>
 
-          {/* Static laptop image */}
+          {/* Static laptop image (styled as background with mask and rotation) */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.3, delay: 0.2 }}
-            className="relative transform-gpu w-[90%] sm:w-[95%] md:w-[100%] lg:w-[100%] xl:w-[120%] translate-x-2 sm:translate-x-4 md:translate-x-6 lg:translate-x-48 translate-y-2 sm:translate-y-4 md:translate-y-6 lg:translate-y-16 mx-auto lg:mx-0"
+            className="relative transform-gpu translate-x-2 sm:translate-x-4 md:translate-x-6 lg:translate-x-[124px] 2xl:translate-x-64 translate-y-2 sm:translate-y-4 md:translate-y-6 lg:translate-y-36 2xl:translate-y-36 mx-auto lg:mx-0 "
           >
-            <Image
-              src="/assets/images/hero/laptop-static.png"
-              alt="Laptop showing Opslyft dashboard"
-              width={3600}
-              height={2400}
-              className="h-full w-full drop-shadow-2xl"
-              priority
-            />
+            <motion.div
+              animate={{ x: [0, 12, -8, 0] }}
+              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <div
+                className="block w-[441px] h-[309px] lg:w-[604px] lg:h-[423px] 2xl:w-[890px] 2xl:h-[623px] "
+                style={{
+                  boxSizing: "border-box",
+                  display: "block",
+                  boxShadow:
+                    "0px 120px 164px -25px rgba(107, 110, 148, 0.12), 0px 2px 4px 0px rgba(0,0,0,0.25)",
+                  transform: "rotate(10deg) rotateX(-15deg) rotateY(30deg)",
+                  WebkitMaskImage:
+                    "linear-gradient(31deg, rgba(0,0,0,0) 9%, rgba(0,0,0,1) 39%)",
+                  maskImage:
+                    "linear-gradient(31deg, rgba(0,0,0,0) 9%, rgba(0,0,0,1) 39%)",
+                  zIndex: 1,
+                  aspectRatio: "1.4285714285714286 / 1",
+                  backgroundImage: "url(/assets/images/hero/laptop-static.png)",
+                  backgroundSize: "cover",
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center",
+                  borderRadius: "20px",
+                  border: "1px solid #636363",
+                }}
+              />
+            </motion.div>
           </motion.div>
         </div>
       </div>

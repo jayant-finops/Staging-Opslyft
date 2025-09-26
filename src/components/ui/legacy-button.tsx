@@ -36,7 +36,9 @@ export default function LegacyButton({
   };
 
   const lgShadow =
-    size === "lg" ? { boxShadow: "1px 2px 0px 0px #E8F6E2" } : {};
+    size === "lg"
+      ? { boxShadow: "1px 2px 0px 0px #E8F6E2" }
+      : { boxShadow: "1px 2px 0px 0px #24823d" };
   const secondaryShadow =
     variant === "secondary"
       ? { boxShadow: "0 4px 4px rgba(0, 0, 0, 0.33)" }

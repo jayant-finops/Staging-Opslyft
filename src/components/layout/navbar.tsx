@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { navbarFallback } from "./navbar.data";
-import { LegacyButton } from "@/components/ui";
+import { LegacyButton, Button } from "@/components/ui";
 
 export default function Navbar() {
   const [isVisible, setIsVisible] = useState(true);

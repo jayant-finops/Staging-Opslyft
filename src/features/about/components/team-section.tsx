@@ -23,18 +23,29 @@ export default function TeamSection({ data }: Props) {
     );
   };
   return (
-    <section className="bg-white py-16 lg:py-24">
-      <div className="max-w-7xl mx-auto px-4 lg:px-8">
+    <section className="relative bg-white pt-[66px] pb-[21px] lg:pb-[229px] lg:pt-[102px] overflow-hidden">
+      {/* Decorative circles background */}
+      <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-[280px] lg:top-[150px] w-[600px] h-[600px]">
+        <Image
+          src="/assets/images/about--missio/circles.png"
+          alt="Decorative circles"
+          fill
+          className="object-contain"
+          priority={false}
+        />
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-4 lg:px-8">
         {/* Heading */}
-        <div className="text-center mb-10 lg:mb-14">
+        <div className="text-center mb-[52px] lg:mb-[75px] ">
           <h2
-            className="text-[#0E1821] text-[26px] lg:text-[32px] font-semibold"
+            className="text-[#202020] text-[28px] lg:text-[48px] font-semibold leading-[28px] lg:leading-[55px]"
             style={{ fontFamily: '"Funnel Display", sans-serif' }}
           >
             {content.heading}
           </h2>
           <p
-            className="text-gray-500 text-xs mt-2"
+            className="text-[#154b23] text-[14px] lg:text-[16px] leading-[21px] lg:leading-[24px] font-light lg:font-normal mt-[12px] lg:mt-[16px] opacity-[0.76] lg:opacity-[1]"
             style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
           >
             {content.subheading}
@@ -42,11 +53,11 @@ export default function TeamSection({ data }: Props) {
         </div>
 
         {/* Team cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-[40px] lg:gap-[60px] ">
           {content.members.map((m) => (
             <div
               key={m.name}
-              className="rounded-2xl border border-[#DCE6DF] bg-white shadow-[0_4px_20px_rgba(0,0,0,0.06)] overflow-hidden"
+              className="mx-auto p-[10px] rounded-2xl border border-[#DCE6DF] bg-[#e0e1df] shadow-[0_4px_20px_rgba(0,0,0,0.06)] overflow-hidden w-[322px] h-[418px]"
             >
               <div className="relative h-[240px]">
                 <Image
@@ -55,33 +66,35 @@ export default function TeamSection({ data }: Props) {
                   fill
                   className="object-cover"
                 />
-                {/* green gradient overlay */}
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    background:
-                      "radial-gradient(60% 70% at 50% 20%, rgba(36,130,61,0.35) 0%, rgba(36,130,61,0) 70%)",
-                  }}
-                />
               </div>
-              <div className="p-4">
+              <div className="py-4 lg:pt-6  px-6 space-y-[10px]">
                 <div
-                  className="text-[#24823D] text-sm font-semibold"
-                  style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
+                  className="text-[#24823D] text-[24px] font-bold leading-[18px]"
+                  style={{ fontFamily: '"Funnel Display", sans-serif' }}
                 >
                   {m.name}
                 </div>
                 <div
-                  className="text-[11px] text-[#0E1821] opacity-80 mb-2"
+                  className=" bg-[rgba(60,195,94,0.48)] rounded-[17px]  justify-center items-center flex h-[24px] w-fit px-[10px]"
                   style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
                 >
-                  {m.title}
+                  <span className="text-[15px] text-[#202020] font-medium leading-[18px] ">
+                    {m.title}
+                  </span>
                 </div>
                 <div
-                  className="text-[11px] text-gray-500"
+                  className="text-[14px] font-light leading-[1.2] text-[#0e1821]"
                   style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
                 >
                   {m.bio}
+                </div>
+                <div className="w-[24px] h-[24px]">
+                  <Image
+                    src="/assets/images/team/LinkedIn.svg"
+                    alt="LinkedIn"
+                    width={24}
+                    height={24}
+                  />
                 </div>
               </div>
             </div>
@@ -89,24 +102,27 @@ export default function TeamSection({ data }: Props) {
         </div>
 
         {/* Investors */}
-        <div className="text-center mt-20">
+        <div className="text-center mt-[152px]">
           <h3
-            className="text-[#0E1821] text-[22px] lg:text-[28px] font-semibold mb-2"
+            className="text-[#202020] text-[28px] lg:text-[48px] font-semibold mb-2 leading-[28px] lg:leading-[55px]"
             style={{ fontFamily: '"Funnel Display", sans-serif' }}
           >
             {content.investorsHeading}
           </h3>
           <p
-            className="text-gray-500 text-xs max-w-2xl mx-auto"
+            className="text-[#154b23] text-[14px] lg:text-[16px] leading-[21px] lg:leading-[24px] font-light lg:font-normal mt-[12px] lg:mt-[16px] max-w-[698px] mx-auto opacity-[0.75] lg:opacity-[1]"
             style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
           >
             {content.investorsSubheading}
           </p>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 mt-10">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4  mt-[52px] lg:mt-[123px] mx-auto w-[300px] lg:w-[1170px] space-y-[32px] lg:space-y-[11px]">
             {content.investors.map((inv, i: number) => (
-              <div key={i} className="flex items-center gap-3">
-                <div className="relative w-14 h-14 rounded-full overflow-hidden ring-2 ring-[#A6D9B5] ring-offset-2 ring-offset-white">
+              <div
+                key={i}
+                className="flex flex-col lg:flex-row items-center gap-3 lg:w-[262px] h-[116px] justify-center"
+              >
+                <div className="relative w-14 h-14 lg:w-[100px] lg:h-[100px] rounded-full overflow-hidden ring-2 ring-[#A6D9B5] ring-offset-2 ring-offset-white">
                   <Image
                     src={getImageSrc(inv)}
                     alt={inv.name}
@@ -114,18 +130,26 @@ export default function TeamSection({ data }: Props) {
                     className="object-cover"
                   />
                 </div>
-                <div className="text-left">
+                <div className="flex flex-col items-center lg:items-start">
                   <div
-                    className="text-[#0E1821] text-sm font-medium"
-                    style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
+                    className="text-[#05160d] text-[14px] lg:text-[18px] font-medium leading-[1.2] lg:leading-[30px]"
+                    style={{ fontFamily: '"Funnel Display", sans-serif' }}
                   >
                     {inv.name}
                   </div>
                   <div
-                    className="text-gray-500 text-[11px]"
+                    className="text-[#24823D] text-[14px] font-medium leading-[1.2] lg:leading-[22px]"
                     style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
                   >
                     {inv.org}
+                  </div>
+                  <div className="h-[16px] w-[16px] lg:h-[24px] lg:w-[24px]">
+                    <Image
+                      src="/assets/images/team/LinkedIn.svg"
+                      alt="LinkedIn"
+                      width={24}
+                      height={24}
+                    />
                   </div>
                 </div>
               </div>
