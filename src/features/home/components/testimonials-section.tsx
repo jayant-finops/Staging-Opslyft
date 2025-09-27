@@ -23,7 +23,7 @@ export default function TestimonialsSection({
 }: TestimonialsSectionProps) {
   const fallback = testimonialsFallback;
   const items =
-    data?.testimonials?.length > 0
+    data?.testimonials && data.testimonials.length > 0
       ? data.testimonials.map((t, i) => ({
           key: String(i),
           quote: t.quote,
@@ -270,19 +270,34 @@ export default function TestimonialsSection({
             Trusted by fast-growing companies around the world
           </p>
           <div className="flex flex-wrap justify-center items-center opacity-90 gap-x-2 sm:gap-x-6 gap-y-2">
-            {(data?.companyLogos?.length > 0 ? data.companyLogos : logoRowFallback).map((l, index) => (
-              <div
-                key={data?.companyLogos?.length > 0 ? l.name : l.alt}
-                className="relative w-[104px] h-[44px] md:w-[132px] md:h-[56px]"
-              >
-                <Image
-                  src={data?.companyLogos?.length > 0 && l.logo ? urlFor(l.logo).url() : l.src}
-                  alt={data?.companyLogos?.length > 0 ? l.alt : l.alt}
-                  fill
-                  className="object-contain"
-                />
-              </div>
-            ))}
+            {(data?.companyLogos && data.companyLogos.length > 0 
+              ? data.companyLogos.map((l) => (
+                  <div
+                    key={l.name}
+                    className="relative w-[104px] h-[44px] md:w-[132px] md:h-[56px]"
+                  >
+                    <Image
+                      src={l.logo ? urlFor(l.logo).url() : ''}
+                      alt={l.alt}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                ))
+              : logoRowFallback.map((l) => (
+                  <div
+                    key={l.alt}
+                    className="relative w-[104px] h-[44px] md:w-[132px] md:h-[56px]"
+                  >
+                    <Image
+                      src={l.src}
+                      alt={l.alt}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                ))
+            )}
           </div>
         </div>
       </div>
