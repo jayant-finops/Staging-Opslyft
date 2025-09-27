@@ -1,6 +1,5 @@
-import { createClient } from "@sanity/client";
-import imageUrlBuilder from "@sanity/image-url";
-import { env } from "./env";
+import { client as nextSanityClient } from "../../sanity/lib/client";
+import { urlFor as sanityUrlFor } from "../../sanity/lib/image";
 import {
   AboutHeroSection,
   AboutMissionSection,
@@ -9,24 +8,40 @@ import {
   JoinDoc,
 } from "@/types";
 
-export const client = createClient(env.sanity);
+// Use the new Sanity client setup
+export const client = nextSanityClient;
 
-const builder = imageUrlBuilder(client);
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function urlFor(source: any) {
-  return builder.image(source);
-}
+// Use the centralized image URL builder
+export const urlFor = sanityUrlFor;
 
 // Fetch functions for different content types
 export async function getHeroData() {
   return await client.fetch(`*[_type == "hero"][0]`);
 }
 
-export async function getTestimonials() {
-  return await client.fetch(
-    `*[_type == "testimonial"] | order(_createdAt asc)`
-  );
+export async function getTestimonialsSection() {
+  return await client.fetch(`
+    *[_type == "testimonialsSection"][0]{
+      _id,
+      _type,
+      badgeText,
+      title,
+      subtitle,
+      testimonials[]{
+        quote,
+        author,
+        position,
+        company,
+        avatar{ asset->{ _ref, url }, alt },
+        companyLogo{ asset->{ _ref, url }, alt }
+      },
+      companyLogos[]{
+        name,
+        logo{ asset->{ _ref, url }, alt },
+        alt
+      }
+    }
+  `);
 }
 
 export async function getFeatures() {
@@ -42,11 +57,43 @@ export async function getNavbarData() {
 }
 
 export async function getStruggleSection() {
-  return await client.fetch(`*[_type == "struggleSection"][0]`);
+  return await client.fetch(`
+    *[_type == "struggleSection"][0]{
+      _id,
+      _type,
+      sectionLabel,
+      title,
+      subtitle,
+      backgroundImage{ asset->{ _ref, url }, alt },
+      features[]{
+        title,
+        description,
+        icon{ asset->{ _ref, url }, alt }
+      }
+    }
+  `);
 }
 
 export async function getSolutionsSection() {
-  return await client.fetch(`*[_type == "solutionsSection"][0]`);
+  return await client.fetch(`
+    *[_type == "solutionsSection"][0]{
+      _id,
+      _type,
+      sectionLabel,
+      title,
+      subtitle,
+      features[]{
+        title,
+        description,
+        buttonText,
+        image{ asset->{ _ref, url }, alt }
+      },
+      ctaCard{
+        title,
+        buttonText
+      }
+    }
+  `);
 }
 
 // Pricing page document

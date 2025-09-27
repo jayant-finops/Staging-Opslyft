@@ -28,14 +28,24 @@ export interface Hero extends SanityDocument {
   laptopImage?: SanityImage;
 }
 
-export interface Testimonial extends SanityDocument {
-  _type: "testimonial";
-  quote: string;
-  author: string;
-  position: string;
-  company: string;
-  avatar?: SanityImage;
-  companyLogo?: SanityImage;
+export interface TestimonialsSection extends SanityDocument {
+  _type: "testimonialsSection";
+  badgeText: string;
+  title: string;
+  subtitle: string;
+  testimonials: {
+    quote: string;
+    author: string;
+    position: string;
+    company: string;
+    avatar?: SanityImage;
+    companyLogo?: SanityImage;
+  }[];
+  companyLogos: {
+    name: string;
+    logo?: SanityImage;
+    alt: string;
+  }[];
 }
 
 export interface Feature extends SanityDocument {
@@ -51,6 +61,7 @@ export interface StruggleSection extends SanityDocument {
   sectionLabel: string;
   title: string;
   subtitle: string;
+  backgroundImage?: SanityImage;
   features: {
     title: string;
     description: string;

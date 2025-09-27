@@ -6,6 +6,7 @@ import Lottie from "lottie-react";
 import { SolutionsSection as SolutionsSectionType } from "@/types";
 import { solutionsFallback } from "@/features/home/data/solutions";
 import { LegacyButton } from "@/components/ui";
+import { urlFor } from "@/lib/sanity";
 import animationData from "../../../../public/assets/images/Prop=f2.1.json";
 
 interface SolutionsSectionProps {
@@ -27,8 +28,8 @@ export default function SolutionsSection({ data }: SolutionsSectionProps) {
           title: f.title,
           description: f.description,
           buttonText: f.buttonText,
-          // fallback to local images when sanity image is missing
-          imageSrc: solutionsFallback.features[i]?.imageSrc,
+          // Use Sanity image if available, otherwise fallback to local images
+          imageSrc: f.image ? urlFor(f.image).url() : solutionsFallback.features[i]?.imageSrc,
         }))
       : solutionsFallback.features;
 

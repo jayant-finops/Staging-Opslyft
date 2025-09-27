@@ -2,11 +2,13 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { Hero } from "@/types";
 import { LegacyButton } from "@/components/ui";
+import { urlFor } from "@/lib/sanity";
 
 interface HeroSectionProps {
-  data: Hero;
+  data: Hero | null;
 }
 
 export default function HeroSection2({ data }: HeroSectionProps) {
@@ -41,7 +43,7 @@ export default function HeroSection2({ data }: HeroSectionProps) {
                   "0 14px 22px rgba(0,0,0,0.32), inset 0 1px 0 rgba(238,250,247,0.10), inset 0 -2px 6px rgba(0,0,0,0.35)",
               }}
             >
-              {data?.subtitle || "BUILT FOR ENGINEERING AND FINANCE TEAMS"}
+              {data?.title ?? "BUILT FOR ENGINEERING AND FINANCE TEAMS"}
             </div>
           </div>
 
@@ -50,7 +52,7 @@ export default function HeroSection2({ data }: HeroSectionProps) {
             className="text-[34px] sm:text-[42px] md:text-5xl lg:text-[52px] xl:text-[56px] font-semibold leading-tight font-funnel-display"
             style={{ fontFamily: '"Funnel Display", sans-serif' }}
           >
-            {data?.title || (
+            {data?.subtitle ? data.subtitle : (
               <>
                 Context-Led Cloud
                 <br />
@@ -64,15 +66,23 @@ export default function HeroSection2({ data }: HeroSectionProps) {
             className="text-base text-[#b7b7b7] max-w-full sm:max-w-2xl leading-relaxed font-light"
             style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
           >
-            {data?.description ||
+            {data?.description ??
               "Opslyft automates FinOps with context-led, AI-powered insights and, actionable fixes for engineering teams so you can start cutting cloud waste in days, not months."}
           </p>
 
           {/* CTA Button */}
           <div className="pt-2 sm:pt-4">
-            <LegacyButton variant="primary" size="lg">
-              {data?.ctaText || "Book a demo"}
-            </LegacyButton>
+            {data?.ctaUrl ? (
+              <Link href={data.ctaUrl} target="_blank" rel="noopener noreferrer">
+                <LegacyButton variant="primary" size="lg">
+                  {data?.ctaText ?? "Book a demo"}
+                </LegacyButton>
+              </Link>
+            ) : (
+              <LegacyButton variant="primary" size="lg">
+                {data?.ctaText ?? "Book a demo"}
+              </LegacyButton>
+            )}
           </div>
         </div>
 
@@ -121,7 +131,9 @@ export default function HeroSection2({ data }: HeroSectionProps) {
                     "linear-gradient(31deg, rgba(0,0,0,0) 9%, rgba(0,0,0,1) 39%)",
                   zIndex: 1,
                   aspectRatio: "1.4285714285714286 / 1",
-                  backgroundImage: "url(/assets/images/hero/laptop-static.png)",
+                  backgroundImage: data?.laptopImage 
+                    ? `url(${urlFor(data.laptopImage).url()})` 
+                    : "url(/assets/images/hero/laptop-static.png)",
                   backgroundSize: "cover",
                   backgroundRepeat: "no-repeat",
                   backgroundPosition: "center",

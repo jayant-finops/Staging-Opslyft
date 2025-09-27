@@ -7,17 +7,17 @@ import {
 import { Footer, Navbar } from "@/components/layout";
 import {
   getHeroData,
-  getTestimonials,
+  getTestimonialsSection,
   getStruggleSection,
   getSolutionsSection,
 } from "@/lib/sanity";
 
 export default async function Home() {
   // Fetch data from Sanity CMS (with fallbacks)
-  const [heroData, testimonials, struggleData, solutionsData] =
+  const [heroData, testimonialsSection, struggleData, solutionsData] =
     await Promise.all([
       getHeroData().catch(() => null),
-      getTestimonials().catch(() => []),
+      getTestimonialsSection().catch(() => null),
       getStruggleSection().catch(() => null),
       getSolutionsSection().catch(() => null),
     ]);
@@ -27,7 +27,7 @@ export default async function Home() {
       <Navbar />
       <main className="min-h-screen">
         <HeroSection data={heroData} />
-        <TestimonialsSection data={testimonials} />
+        <TestimonialsSection data={testimonialsSection} />
         <StruggleSection data={struggleData} />
         <SolutionsSection data={solutionsData} />
         <Footer />

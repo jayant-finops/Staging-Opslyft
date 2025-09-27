@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Testimonial } from "@/types";
+import { TestimonialsSection as TestimonialsSectionType } from "@/types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -11,10 +11,11 @@ import {
   testimonialsFallback,
   logoRowFallback,
 } from "@/features/home/data/testimonials";
+import { urlFor } from "@/lib/sanity";
 // import { useRef } from "react";
 
 interface TestimonialsSectionProps {
-  data: Testimonial[];
+  data: TestimonialsSectionType | null;
 }
 
 export default function TestimonialsSection({
@@ -22,14 +23,14 @@ export default function TestimonialsSection({
 }: TestimonialsSectionProps) {
   const fallback = testimonialsFallback;
   const items =
-    data.length > 0
-      ? data.map((t, i) => ({
-          key: t._id || String(i),
+    data?.testimonials?.length > 0
+      ? data.testimonials.map((t, i) => ({
+          key: String(i),
           quote: t.quote,
           author: t.author,
           position: t.position,
-          avatarSrc: fallback[i % fallback.length].avatarSrc,
-          companyLogoSrc: fallback[i % fallback.length].companyLogoSrc,
+          avatarSrc: t.avatar ? urlFor(t.avatar).url() : fallback[i % fallback.length].avatarSrc,
+          companyLogoSrc: t.companyLogo ? urlFor(t.companyLogo).url() : fallback[i % fallback.length].companyLogoSrc,
         }))
       : fallback.map((f) => ({
           key: f.id,
@@ -66,20 +67,19 @@ export default function TestimonialsSection({
                 "inset 0 1px 0 rgba(255,255,255,0.5), 0 8px 18px rgba(0,0,0,0.10)",
             }}
           >
-            TESTIMONIALS
+            {data?.badgeText ?? "TESTIMONIALS"}
           </div>
           <h2
             className="text-[28px] sm:text-[32px] md:text-[38px] lg:text-5xl font-semibold text-gray-900 px-4 sm:px-0"
             style={{ fontFamily: '"Funnel Display", sans-serif' }}
           >
-            Trusted by Leaders & Innovators
+            {data?.title ?? "Trusted by Leaders & Innovators"}
           </h2>
           <p
             className="text-green-900  max-w-full sm:max-w-2xl mx-auto font-normal text-sm sm:text-base opacity-60 px-4 sm:px-0 w-[340px] lg:w-[420px]"
             style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
           >
-            Join hundreds of engineering teams who trust Opslyft to optimize
-            their cloud infrastructure costs.
+            {data?.subtitle ?? "Join hundreds of engineering teams who trust Opslyft to optimize their cloud infrastructure costs."}
           </p>
         </div>
 
@@ -270,14 +270,14 @@ export default function TestimonialsSection({
             Trusted by fast-growing companies around the world
           </p>
           <div className="flex flex-wrap justify-center items-center opacity-90 gap-x-2 sm:gap-x-6 gap-y-2">
-            {logoRowFallback.map((l) => (
+            {(data?.companyLogos?.length > 0 ? data.companyLogos : logoRowFallback).map((l, index) => (
               <div
-                key={l.alt}
+                key={data?.companyLogos?.length > 0 ? l.name : l.alt}
                 className="relative w-[104px] h-[44px] md:w-[132px] md:h-[56px]"
               >
                 <Image
-                  src={l.src}
-                  alt={l.alt}
+                  src={data?.companyLogos?.length > 0 && l.logo ? urlFor(l.logo).url() : l.src}
+                  alt={data?.companyLogos?.length > 0 ? l.alt : l.alt}
                   fill
                   className="object-contain"
                 />
