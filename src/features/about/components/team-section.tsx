@@ -126,7 +126,7 @@ export default function TeamSection({ data }: Props) {
                   className="relative w-14 h-14 lg:w-[100px] lg:h-[100px] rounded-full p-[2px]"
                   style={{
                     background:
-                      "var(linear-gradient(180deg, #E6FFE0 4.47%, #73AF5E 96.19%))",
+                      "var(--green_light-gradient, linear-gradient(180deg, #E6FFE0 4.47%, #73AF5E 96.19%))",
                   }}
                 >
                   <div className="relative w-full h-full rounded-full overflow-hidden">

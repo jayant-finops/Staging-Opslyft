@@ -126,8 +126,13 @@ export default function HeroSection2({ data }: HeroSectionProps) {
             className="relative transform-gpu translate-x-2 sm:translate-x-4 md:translate-x-6 lg:translate-x-[0px] 2xl:translate-x-48 translate-y-2 sm:translate-y-4 md:translate-y-6 lg:translate-y-18 2xl:translate-y-32 mx-auto lg:mx-0 "
           >
             <motion.div
-              animate={{ rotateY: [-15, 30, 10, -15] }}
-              transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+              animate={{ rotateY: [-20, 0, 20, 0, -20] }}
+              transition={{
+                duration: 12,
+                repeat: Infinity,
+                ease: "easeInOut",
+                times: [0, 0.25, 0.5, 0.75, 1],
+              }}
             >
               <div
                 className="block w-[500px] h-[350px] lg:w-[890px] lg:h-[620px] 2xl:w-[980px] 2xl:h-[680px] "
