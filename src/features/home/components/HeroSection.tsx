@@ -217,13 +217,19 @@ export default function HeroSection({ data }: HeroSectionProps) {
           <div className="text-white space-y-8 lg:pr-8">
             {/* Green label */}
             <div className="inline-block">
-              <div className="text-[13px] uppercase tracking-wider text-[#68CA68] font-light px-4 py-2 border border-[#F0F7ED0A] rounded-full bg-[#F0F7ED0A] font-ibm-plex-sans">
+              <div
+                className="text-[13px] uppercase tracking-wider text-[#68CA68] font-light px-4 py-2 border border-[#F0F7ED0A] rounded-full bg-[#F0F7ED0A]"
+                style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
+              >
                 {data?.subtitle || "BUILT FOR ENGINEERING AND FINANCE TEAMS"}
               </div>
             </div>
 
             {/* Main heading */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight font-funnel-display">
+            <h1
+              className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight"
+              style={{ fontFamily: '"Funnel Display", sans-serif' }}
+            >
               {data?.title || (
                 <>
                   Context-Led Cloud
@@ -234,7 +240,10 @@ export default function HeroSection({ data }: HeroSectionProps) {
             </h1>
 
             {/* Description */}
-            <p className="text-sm md:text-base text-gray-300 max-w-2xl leading-relaxed font-ibm-plex-sans font-light">
+            <p
+              className="text-sm md:text-base text-gray-300 max-w-2xl leading-relaxed font-light"
+              style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
+            >
               {data?.description ||
                 "Opslyft automates FinOps with context-led, AI-powered insights and, actionable fixes for engineering teams so you can start cutting cloud waste in days, not months."}
             </p>

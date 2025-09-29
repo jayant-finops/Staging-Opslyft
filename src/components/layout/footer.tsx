@@ -34,7 +34,10 @@ export default function Footer() {
                   className="object-contain"
                 />
               </div>
-              <p className="text-lg text-gray-200 font-ibm-plex-sans font-normal max-w-xs">
+              <p
+                className="text-lg text-gray-200 font-normal max-w-xs"
+                style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
+              >
                 {footerFallback.tagline}
               </p>
             </div>

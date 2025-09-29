@@ -25,7 +25,7 @@ export default async function Home() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen">
+      <main className="min-h-screen bg-[#f2f2f2]">
         <HeroSection data={heroData} />
         <TestimonialsSection data={testimonialsSection} />
         <StruggleSection data={struggleData} />
