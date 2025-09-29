@@ -14,7 +14,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Opslyft - Context-Led Cloud Optimization & Visibility",
-  description: "Automate FinOps with context-led, AI-powered insights and actionable fixes for engineering teams. Start cutting cloud waste in days, not months.",
+  description:
+    "Automate FinOps with context-led, AI-powered insights and actionable fixes for engineering teams. Start cutting cloud waste in days, not months.",
 };
 
 export default function RootLayout({
@@ -25,6 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
+        suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}

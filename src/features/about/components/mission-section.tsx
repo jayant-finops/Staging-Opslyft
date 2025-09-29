@@ -44,9 +44,9 @@ export default function AboutMissionSection({ data, fallbackData }: Props) {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-3 gap-[32px] lg:gap-[231px] max-w-4xl mx-auto">
+        <div className="flex gap-[32px] ">
           {content.stats.map((s) => (
-            <div key={s.label} className="text-center ">
+            <div key={s.label} className="text-center mx-auto">
               <div
                 className="text-[#b3d0a9] text-[37px] lg:text-[72px] leading-[1.2] font-semibold"
                 style={{ fontFamily: '"Funnel Display", sans-serif' }}
@@ -54,7 +54,7 @@ export default function AboutMissionSection({ data, fallbackData }: Props) {
                 {s.value}
               </div>
               <div
-                className="text-[#afafaf] text-[13px] lg:text-[14px]"
+                className="text-[#afafaf] text-[13px] lg:text-[24px] font-semibold leading-[1.2] lg:w-[182px] cursor-pointer"
                 style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
               >
                 {s.label}

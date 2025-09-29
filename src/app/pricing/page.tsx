@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { pricingFallback } from "@/features/pricing";
 
 export default function PricingPage() {
@@ -15,9 +16,9 @@ export default function PricingPage() {
   return (
     <>
       <section className="relative  overflow-hidden ">
-        <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[100vh]">
+        <div className="grid grid-cols-1 md:grid-cols-2 min-h-[100vh]">
           {/* Left: Gradient + copy */}
-          <div className="relative text-white flex flex-col min-w-[375px] lg:w-[720px] 2xl:min-w-[960px] px-[10px] lg:pl-[60px] py-[50px] 2xl:pl-[180px] 2xl:py-[60px] overflow-hidden">
+          <div className="relative text-white flex flex-col w-full pl-[20px] md:pl-[40px] pr-[20px] md:pr-[10px] lg:pl-[60px] py-[40px] md:py-[50px] 2xl:pl-[180px] 2xl:py-[60px] overflow-hidden">
             {/* Solid background */}
             <div
               className="absolute inset-0"
@@ -66,14 +67,17 @@ export default function PricingPage() {
 
             {/* Opslyft logo top-left */}
             <div className="z-10 mb-[70px] lg:mb-[141px]">
-              <div className="relative w-[90px] h-[28px] md:w-[110px] md:h-[34px]">
-                <Image
-                  src="/assets/images/footer/opslyft-logo.svg"
-                  alt="Opslyft"
-                  fill
-                  className="object-contain"
-                />
-              </div>
+              <Link href="/" aria-label="Go to homepage" className="block">
+                <div className="relative w-[90px] h-[28px] md:w-[110px] md:h-[34px]">
+                  <Image
+                    src="/assets/images/footer/opslyft-logo.svg"
+                    alt="Opslyft"
+                    fill
+                    className="object-contain"
+                    priority
+                  />
+                </div>
+              </Link>
             </div>
 
             {/* decorative circles */}
@@ -86,9 +90,9 @@ export default function PricingPage() {
               />
             </div>
 
-            <div className="relative z-10 lg:ml-[80px] 2xl:ml-[60px] w-[343px] h-[182px] lg:w-[573px] lg:h-[272px] 2xl:w-[708px] 2xl:h-[340px] space-y-[32px] lg:space-y-[60px] 2xl:space-y-[65px] mb-[32px] lg:mb-[121px] 2xl:mb-[86px]">
+            <div className="relative z-10 lg:ml-[60px] xl:ml-[80px] 2xl:ml-[60px] max-w-[343px] md:max-w-[460px] lg:max-w-[520px] xl:max-w-[573px] 2xl:max-w-[708px] space-y-[20px] md:space-y-[28px] lg:space-y-[48px] xl:space-y-[60px] 2xl:space-y-[65px] mb-[24px] md:mb-[28px] lg:mb-[80px] xl:mb-[121px] 2xl:mb-[86px]">
               <div
-                className="text-[9px] lg:text-[13px] 2xl:text-[15px] uppercase tracking-[1px] text-[#68CA68] font-light rounded-[20px] border border-white/10 w-[276px] h-[30px] lg:w-[349px] lg:h-[32px] 2xl:w-[420px] 2xl:h-[35px] flex items-center justify-center"
+                className="text-[9px] lg:text-[13px] 2xl:text-[15px] uppercase tracking-[1px] text-[#68CA68] font-light rounded-[20px] border border-white/10 max-w-[276px] h-[30px] lg:max-w-[349px] lg:h-[32px] 2xl:max-w-[420px] 2xl:h-[35px] flex items-center justify-center"
                 style={{
                   fontFamily: '"IBM Plex Sans", sans-serif',
                   background:
@@ -115,8 +119,8 @@ export default function PricingPage() {
             </div>
 
             {/* Logos - 3 on top, 2 on bottom (centered) */}
-            <div className="z-10 mt-8 space-y-8 w-fit lg:ml-[80px] 2xl:ml-[60px]">
-              <div className="grid grid-cols-3 gap-x-[16px] lg:gap-x-10 2xl:[50px] w-[345px] lg:w-[477px] 2xl:[517px] ">
+            <div className="z-10 mt-8 space-y-8 w-fit lg:ml-[60px] xl:ml-[80px] 2xl:ml-[60px]">
+              <div className="grid grid-cols-3 gap-x-[16px] lg:gap-x-8 xl:gap-x-10 max-w-[345px] md:max-w-[420px] lg:max-w-[460px] xl:max-w-[477px] 2xl:max-w-[517px]">
                 {content.logosTop?.map((logo: { src: string; alt: string }) => (
                   <Image
                     key={logo.alt}
@@ -146,7 +150,7 @@ export default function PricingPage() {
           </div>
 
           {/* Right: Form or Thank You */}
-          <div className="bg-[#EDEDED] py-[52px] px-[15px] lg:py-[225px] lg:px-[120px] 2xl:px-[180px] flex items-center justify-center h-[100vh]">
+          <div className="bg-[#EDEDED] py-[32px] px-[15px] md:py-[60px] lg:py-[120px] lg:px-[60px] xl:py-[225px] xl:px-[120px] 2xl:px-[180px] flex items-start justify-start h-auto lg:items-center lg:justify-center lg:h-[100vh]">
             {submitted ? (
               // Thank you message
               <div className="text-center w-[341px] lg:w-[474px] 2xl:w-[600px]">
@@ -159,16 +163,16 @@ export default function PricingPage() {
               </div>
             ) : (
               // Form
-              <div className="w-full max-w-[520px] mx-auto lg:mt-22 xl:mt-8">
+              <div className="w-full max-w-[520px] mx-auto">
                 <h2
-                  className="text-center text-[#202020] text-[24px] font-medium leading-[1.2] mb-[38px] lg:mb-[60px] 2xl:mb-[78px]"
+                  className="text-center text-[#202020] text-[24px] font-medium leading-[1.2] mb-[24px] md:mb-[38px] lg:mb-[60px] 2xl:mb-[78px]"
                   style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
                 >
                   {content.form?.heading}
                 </h2>
 
                 <form
-                  className="space-y-8 w-[311px] lg:w-[436px] 2xl:w-[547px] rounded-[10px] mx-auto"
+                  className="space-y-6 md:space-y-8 w-[311px] lg:w-[436px] 2xl:w-[547px] rounded-[10px] mx-auto"
                   onSubmit={handleSubmit}
                 >
                   {content.form?.fields?.map(
@@ -189,11 +193,12 @@ export default function PricingPage() {
 
                   <button
                     type="submit"
-                    className="w-full mt-2 rounded-[12px] text-white text-sm lg:text-[18px] font-medium py-3 shimmer-button relative overflow-hidden"
+                    className="w-full mt-2 rounded-[12px] text-white text-sm lg:text-[18px] font-medium py-3 shimmer-button relative overflow-hidden border border-white/20 shadow-lg"
                     style={{
                       background:
                         "linear-gradient(180deg, #2D9B4B 0%, #1E7A37 100%)",
-                      boxShadow: "0 8px 18px rgba(0,0,0,0.10)",
+                      boxShadow:
+                        "0 12px 28px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.08)",
                     }}
                   >
                     {content.form?.submitText}

@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { JoinDoc } from "@/types";
 import { joinFallback } from "@/features/about/data";
+import LegacyButton from "@/components/ui/legacy-button";
 
 interface Props {
   data?: JoinDoc | null;
@@ -17,49 +18,79 @@ export default function JoinSection({ data }: Props) {
   const heading = (content.heading || "").split("\n");
   return (
     <section
-      className="relative overflow-hidden h-[788px] lg:h-[689px]"
+      className="relative overflow-hidden py-16 lg:py-24  h-[788px] lg:h-[689px]"
       style={{ backgroundColor: "#11301F" }}
     >
-
-      {/* absolute pointer-events-none bottom-[-120px] left-1/2 -translate-x-1/2 w-[140%] opacity-80 lg:opacity-30 lg:inset-y-0 lg:bottom-auto lg:left-auto lg:translate-x-0 lg:-right-[150px] lg:-top-[150px] lg:w-[50%] }
-      {/* Right anchored art, not zoomed */}
-      <div className="absolute inset-y-0 -right-[150px] -top-[150px] w-[58%] md:w-[52%]  opacity-80 lg:opacity-30 bottom-[-120px] left-1/2 -translate-x-1/2 lg:inset-y-0 lg:bottom-[120px] lg:left-auto lg:translate-x-0 lg:-right-[150px] lg:-top-[150px] lg:w-[50%]">
+      {/* Decorative circles behind team images */}
+      <div className="absolute bottom-[65px] left-[58%] -translate-x-1/2 w-[400px] h-[400px] lg:right-[-210px] lg:top-[170px] lg:left-auto lg:translate-x-0 lg:-translate-y-1/2 lg:w-1/2 lg:h-full 2xl:right-[-340px] 2xl:top-[170px] pointer-events-none">
         <Image
-          src={bg}
-          alt="Join Team"
+          src="/assets/images/about--missio/circles.png"
+          alt="Decorative circles"
           fill
-          className="object-contain object-bottom lg:object-right"
+          className="object-contain"
+          priority={false}
+        />
+      </div>
+
+      {/* Mobile team images - bottom center */}
+      <div className="absolute bottom-[50px] left-1/2 -translate-x-1/2 w-[350px] h-[350px] opacity-40 lg:hidden pointer-events-none">
+        <Image
+          src="/assets/images/join/team-mobile.png"
+          alt="Join Team Mobile"
+          fill
+          className="object-contain object-center"
           priority
         />
       </div>
 
-      {/* Taller section to match reference */}
-      <div className="relative max-w-7xl mx-auto px-4 lg:px-8 min-h-[380px] md:min-h-[440px] lg:min-h-[520px] flex items-center">
-        <div className="max-w-xl text-center lg:text-left mx-auto lg:mx-0">
-          <h2
-            className="text-white text-[28px] lg:text-[36px] font-semibold leading-tight"
-            style={{ fontFamily: '"Funnel Display", sans-serif' }}
-          >
-            {heading.map((h: string, i: number) => (
-              <span key={i}>
-                {h}
-                {i < heading.length - 1 && <br />}
-              </span>
-            ))}
-          </h2>
-          <p
-            className="text-gray-300 text-sm mt-4"
-            style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
-          >
-            {content.subheading}
-          </p>
-          <Link
-            href={content.ctaHref}
-            className="inline-block mt-6 bg-[#24823D] hover:bg-[#1f6e33] text-white text-sm font-medium px-6 py-2 rounded-md shadow mx-auto lg:mx-0"
-            style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
-          >
-            {content.ctaText}
-          </Link>
+      {/* Desktop team images - positioned on the right */}
+      <div className="hidden lg:block absolute lg:right-[-210px] lg:top-[250px] 2xl:right-[-340px] 2xl:top-[250px] -translate-y-1/2 w-1/2 h-full opacity-40 pointer-events-none">
+        <Image
+          src={bg}
+          alt="Join Team Desktop"
+          fill
+          className="object-contain object-center"
+          priority
+        />
+      </div>
+
+      {/* Main content container */}
+      <div className="relative  mx-auto px-6 lg:px-[141px] 2xl:px-[380px] ">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[500px]">
+          {/* Left column - Content */}
+          <div className="space-y-6 lg:space-y-8 text-center lg:text-left  lg:w-[725px] ">
+            <h2
+              className="text-[#f1f1f1] lg:text-[e8f6e3] text-[28px] lg:text-[48px] font-semibold lg:font-bold leading-[28px] lg:leading-[56px]"
+              style={{ fontFamily: '"Funnel Display", sans-serif' }}
+            >
+              {heading.map((h: string, i: number) => (
+                <span key={i}>
+                  {h}
+                  {i < heading.length - 1 && <br />}
+                </span>
+              ))}
+            </h2>
+            <p
+              className="text-[#d3d3d3] text-[14px] lg:text-[16px] leading-[1.5] mx-auto lg:mx-0 font-light lg:font-normal lg:leading-[24px]  "
+              style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
+            >
+              {content.subheading}
+            </p>
+            <div className="pt-4 ">
+              <Link href={content.ctaHref}>
+                <LegacyButton
+                  variant="primary"
+                  size="md"
+                  className="w-[156px] h-[48px] py-[16px] px-[0px] mt-[40px] sm:mt-0 my-[120px] sm:my-0 mx-auto "
+                >
+                  {content.ctaText}
+                </LegacyButton>
+              </Link>
+            </div>
+          </div>
+
+          {/* Right column - Reserved for team images (handled by background) */}
+          <div className="hidden lg:block"></div>
         </div>
       </div>
     </section>

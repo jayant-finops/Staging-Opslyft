@@ -17,6 +17,7 @@ export default function Footer() {
       className="relative text-white pt-12 sm:pt-16 lg:pt-20 pb-6 sm:pb-8"
       style={{
         backgroundColor: "#0E1821",
+        fontFamily: '"IBM Plex Sans", sans-serif',
       }}
     >
       <div className="mx-auto px-6 sm:px-4 lg:px-12 relative z-10">
@@ -72,8 +73,8 @@ export default function Footer() {
         {/* Newsletter signup section */}
         <div className="mb-6 sm:mb-8 border-t border-[#767676] pt-6 sm:pt-8 ">
           <div className="flex">
-            <div className="flex flex-col lg:flex-row gap-6 lg:gap-24 items-center md:w-[1440px] sm:ml-[92px]">
-              <div className="flex-shrink-0">
+            <div className="flex flex-col lg:flex-row gap-1 lg:gap-24 items-center md:w-[1440px] sm:ml-[92px] w-[300px] mx-auto">
+              <div className="flex-shrink-0 ">
                 <h3
                   className="text-[#68CA68] text-base sm:text-lg font-medium mb-2"
                   style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
@@ -89,7 +90,11 @@ export default function Footer() {
               </div>
 
               <form className="w-full max-w-md lg:max-w-xl mt-[34px] lg:mt-0 ">
-                <label htmlFor="newsletter-email" className="sr-only">
+                <label
+                  htmlFor="newsletter-email"
+                  className="sr-only"
+                  style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
+                >
                   {footerFallback.newsletter.placeholder}
                 </label>
                 <div className="relative flex items-center rounded-[4px] lg:rounded-xl border border-[#606060] bg-[#202020] opacity-92 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06)] w-[312px] lg::w-[372px] 2xl:w-[455px]">
@@ -97,12 +102,13 @@ export default function Footer() {
                     id="newsletter-email"
                     type="email"
                     placeholder={footerFallback.newsletter.placeholder}
-                    className="flex-1 h-10 sm:h-12 rounded-full bg-transparent text-[#5f5f5f] placeholder-gray-500 pl-4 sm:pl-5 pr-24 sm:pr-36 focus:outline-none text-sm sm:text-[14px]"
+                    className="flex-1 h-10  rounded-[12px] bg-transparent text-[#5f5f5f] placeholder-[#5f5f5f] pl-4 sm:pl-5 pr-24 sm:pr-36 focus:outline-none text-sm sm:text-[14px]"
                     style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
                   />
                   <button
                     type="submit"
-                    className="absolute right-0  px-[27.5px] lg:px-[24px] py-[8px]lg:py-[12px] lg:rounded-xl rounded-[4px] bg-[#24823D] hover:bg-[#1f6e33] text-white font-normal transition-colors text-sm sm:text-sm w-[119px] h-[42px] lg:w-[114px] lg:h-[48px]"
+                    className="absolute right-0  px-[27.5px] lg:px-[24px] py-[8px] lg:py-[12px] lg:rounded-xl rounded-[4px] bg-[#24823D] hover:bg-[#1f6e33] text-white font-normal transition-colors text-sm  w-[119px] h-[42px] lg:w-[114px] lg:h-[44px] leading-[92%] tracking-[-0.28px]"
+                    style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
                   >
                     {footerFallback.newsletter.buttonText}
                   </button>
@@ -135,7 +141,7 @@ export default function Footer() {
           <div className="flex flex-col gap-[24px] lg:gap-[8px] text-center lg:text-left order-2 lg:order-1">
             <div
               className="flex flex-wrap justify-center lg:justify-start gap-4 sm:gap-6 text-[#bababa] text-xs"
-              style={{ fontFamily: '"Instrument Sans", sans-serif' }}
+              style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
             >
               {footerFallback.legal.legalLinks.map((link) => (
                 <a
@@ -151,13 +157,13 @@ export default function Footer() {
             <div className="flex flex-col lg:flex-row">
               <p
                 className="text-gray-600 text-[13px] font-normal sm:text-sm"
-                style={{ fontFamily: '"Inter", sans-serif' }}
+                style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
               >
                 {footerFallback.legal.copyright}
               </p>
               <p
                 className="text-gray-600 text-[13px] font-normal sm:text-sm"
-                style={{ fontFamily: '"Inter", sans-serif' }}
+                style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
               >
                 {footerFallback.legal.address}
               </p>

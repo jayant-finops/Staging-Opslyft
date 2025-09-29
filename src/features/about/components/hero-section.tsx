@@ -78,7 +78,7 @@ export default function AboutHeroSection({
       </div>
 
       {/* Decorative circles - top right */}
-      <div className="hidden lg:block pointer-events-none absolute -right-[80px] -top-[40px] lg:-right-[180px] lg:-top-[50px] xl:-right-[200px] xl:-top-[60px] w-[280px] h-[280px] lg:w-[400px] lg:h-[400px] xl:w-[560px] xl:h-[500px]">
+      <div className="hidden lg:block pointer-events-none absolute -right-[80px] -top-[40px] lg:-right-[180px] lg:-top-[50px] 2xl:right-[100px] 2xl:top-[30px] w-[280px] h-[280px] lg:w-[400px] lg:h-[400px] 2xl:w-[660px] 2xl:h-[600px]">
         <Image
           src={circlesImage}
           alt={circlesAlt}
@@ -89,7 +89,7 @@ export default function AboutHeroSection({
       </div>
 
       {/* Decorative circles - bottom left */}
-      <div className="pointer-events-none absolute -bottom-[40px] -left-[200px] lg:-bottom-[140px] xl:-left-[160px] xl:-bottom-[60px] w-[634px] h-[382px] lg:w-[400px] lg:h-[400px] xl:w-[560px] xl:h-[500px]">
+      <div className="pointer-events-none absolute -bottom-[40px] -left-[200px] lg:-bottom-[140px] xl:-left-[160px] xl:-bottom-[60px] w-[634px] h-[382px] lg:w-[400px] lg:h-[400px] xl:w-[660px] xl:h-[600px]">
         <Image
           src={circlesImage}
           alt={circlesAlt}
@@ -158,10 +158,10 @@ export default function AboutHeroSection({
         >
           <Link
             href={content.ctaButton.url}
-            className=" px-[36px] lg:px-[72px] py-[16px]  bg-white text-[#0e1821] rounded-xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-2xl text-[18px]  relative overflow-hidden font-semibold leading-[16px] "
+            className=" px-[36px] lg:px-[72px] py-[16px]  bg-white text-[#0e1821] rounded-xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-2xl text-[18px]  relative overflow-hidden font-semibold leading-[16px] border border-[#000] "
             style={{
               fontFamily: '"IBM Plex Sans", sans-serif',
-              boxShadow: "4px 4px 0px 0px #24823d",
+              boxShadow: "1px 2px 0px 0px #24823d",
             }}
           >
             {content.ctaButton.text}

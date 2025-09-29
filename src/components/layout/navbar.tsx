@@ -80,14 +80,12 @@ export default function Navbar() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -100, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed top-4 sm:top-6 lg:top-10 left-1/2 transform -translate-x-1/2 z-50 rounded-[16px] sm:rounded-[20px] backdrop-blur-md backdrop-saturate-125 border border-white/8"
+            className="fixed top-4 sm:top-6 lg:top-10 inset-x-4 lg:left-1/2 lg:-translate-x-1/2 lg:inset-x-auto lg:transform z-50 rounded-[16px] sm:rounded-[20px] backdrop-blur-md backdrop-saturate-125 border border-white/8 w-[calc(100vw-2rem)] lg:w-[calc(100vw-200px)] 2xl:w-[calc(100vw-300px)]"
             style={{
               background:
                 "linear-gradient(176deg, rgba(7,8,8,0.72) -23.3%, rgba(0,25,16,0.52) 89.49%)",
               boxShadow:
                 "inset 0 1px 0 rgba(255,255,255,0.05), 0 8px 20px rgba(0,0,0,0.25)",
-              width: "calc(100vw - 2rem)",
-              maxWidth: "1228px",
             }}
           >
             <div className="px-4 sm:px-6">
@@ -110,7 +108,8 @@ export default function Navbar() {
                     <Link
                       key={item.title}
                       href={item.url}
-                      className="text-[#e9dddd] hover:text-white text-sm font-medium transition-colors"
+                      className="text-[#CACACA] hover:text-white text-[15px] font-normal transition-colors"
+                      style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
                     >
                       {item.title}
                     </Link>
@@ -121,7 +120,8 @@ export default function Navbar() {
                 <div className="hidden lg:flex items-center space-x-4">
                   <Link
                     href={navbarFallback.cta.loginUrl}
-                    className="text-gray-300 hover:text-white text-sm font-medium transition-colors"
+                    className="text-[#CACACA] hover:text-white text-[14px] font-normal transition-colors"
+                    style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
                   >
                     {navbarFallback.cta.loginText}
                   </Link>
@@ -139,16 +139,18 @@ export default function Navbar() {
                     className="p-2 text-gray-300 hover:text-white transition-colors"
                   >
                     <svg
-                      className="w-6 h-6"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="25"
+                      height="25"
+                      viewBox="0 0 25 25"
                       fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
                     >
                       <path
+                        d="M3.18774 12.043H15.1877M3.18774 6.04297H21.1877M3.18774 18.043H21.1877"
+                        stroke="#AFAFAF"
+                        strokeWidth="1.84615"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M4 6h16M4 12h16M4 18h16"
                       />
                     </svg>
                   </button>
@@ -168,12 +170,14 @@ export default function Navbar() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="fixed top-0 left-0 right-0 bottom-0 w-screen h-screen z-[60] lg:hidden"
-            style={{ backgroundColor: "#0E1821" }}
+            style={{
+              background: "linear-gradient(180deg, #070808 0%, #001910 100%)",
+            }}
           >
-            <div className="flex flex-col h-full">
+            <div className="flex flex-col h-full ">
               {/* Mobile Menu Header */}
               <div className="flex items-center justify-between p-6 border-b border-gray-700">
-                <div className="relative w-20 h-6">
+                <div className="relative w-20 h-8">
                   <Image
                     src={navbarFallback.logoSrc}
                     alt="Opslyft"
@@ -202,9 +206,9 @@ export default function Navbar() {
               </div>
 
               {/* Mobile Menu Content */}
-              <div className="flex-1 flex flex-col justify-center px-6 space-y-8">
+              <div className="flex-1 flex flex-col justify-center px-6">
                 {/* Navigation Links */}
-                <nav className="space-y-6">
+                <nav className="space-y-[8px] ">
                   {navbarFallback.navigation.map((item, index) => (
                     <motion.div
                       key={item.title}
@@ -215,7 +219,8 @@ export default function Navbar() {
                       <Link
                         href={item.url}
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className="block text-gray-300 hover:text-white text-lg font-medium transition-colors py-3 border-b border-gray-700/50"
+                        className="block text-[#CACACA] hover:text-white text-[15px] font-normal transition-colors pt-3 pb-1 border-b border-[#343434]"
+                        style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
                       >
                         {item.title}
                       </Link>
@@ -242,7 +247,8 @@ export default function Navbar() {
                   <Link
                     href={navbarFallback.cta.loginUrl}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="block text-center text-gray-300 hover:text-white text-sm font-medium transition-colors py-3"
+                    className="block text-center text-[#CACACA] hover:text-white text-[15px] font-normal transition-colors py-3"
+                    style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
                   >
                     {navbarFallback.cta.loginText}
                   </Link>

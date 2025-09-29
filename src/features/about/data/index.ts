@@ -48,7 +48,6 @@ export interface LocalCompanyTimelineItem {
   id: number;
   phase: string;
   period: string;
-  title: string;
   description: string;
   bullets?: string[];
 }
@@ -58,37 +57,35 @@ export const companyTimelineFallback: LocalCompanyTimelineItem[] = [
     id: 1,
     phase: "Origins",
     period: "2018–2019",
-    title: "Aayush Kumar turns crisis into innovation",
     description:
-      "A young DevOps engineer, cut AWS costs by more than $1M at his first job.",
+      "Aayush Kumar, a young DevOps engineer, cut AWS costs by more than $1M at his first job, turning a crisis into innovation.",
   },
   {
     id: 2,
     phase: "Finding the Gap",
     period: "2020",
-    title: "Realized cost optimization is an industry‑wide challenge",
-    description: "Declined a US job offer to start Opslyft.",
+    description:
+      "Speaking at IIT Madras, Aayush Kumar realized cloud cost optimization was an industry-wide challenge. He declined a US job offer to start Opslyft.",
   },
   {
     id: 3,
     phase: "Research & Development",
     period: "2020–2024",
-    title: "Five years of experimentation and refinement",
     description:
-      "Conversations with leaders and early customers validated the approach.",
+      "OpsLyft spent 5 years experimenting and refining the solution",
     bullets: [
-      "400+ conversations with industry leaders shaped the vision.",
-      "Early customers from media, gaming, and health‑tech validated the approach.",
-      "The team stood united through COVID, strengthening culture.",
-      "Iterations sharpened the ICP and paved the way for PMF.",
+      "400+ conversations with industry leaders shaped the product vision.",
+      "Early customers from media, gaming, and health-tech validated the approach.",
+      "The team stood united through COVID, strengthening company culture.",
+      "Iterations sharpened the ICP and paved the way for product–market fit.",
     ],
   },
   {
     id: 4,
     phase: "Product‑Market Fit",
     period: "2024",
-    title: "Scaling rapidly across APAC and the US",
-    description: "After years of research and iteration, Opslyft achieved PMF.",
+    description:
+      "After years of research, iteration, and customer learnings, Opslyft achieved PMF and began scaling rapidly across APAC and the US.",
   },
 ];
 

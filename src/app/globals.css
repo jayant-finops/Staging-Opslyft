@@ -26,6 +26,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Prevent accidental horizontal scrolling on mobile due to overflowing elements */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 /* Performance optimization for animations */
 .animate-gpu {
   transform: translateZ(0);

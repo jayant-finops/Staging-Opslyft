@@ -13,7 +13,7 @@ interface HeroSectionProps {
 
 export default function HeroSection2({ data }: HeroSectionProps) {
   return (
-    <section className="relative max-h-[100vh] min-h-[90vh] sm:min-h-[90vh] md:min-h-[100vh] rounded-b-[32px] sm:rounded-b-[56px] md:rounded-b-[80px] overflow-hidden">
+    <section className="relative min-h-[90vh] sm:min-h-[90vh] md:min-h-[100vh] rounded-b-[32px] sm:rounded-b-[56px] md:rounded-b-[80px] overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 z-0">
         <div
@@ -26,7 +26,7 @@ export default function HeroSection2({ data }: HeroSectionProps) {
       </div>
 
       {/* Main content container */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-8 items-start lg:items-center w-full min-h-[100vh] sm:min-h-[90vh] md:min-h-[100vh] py-8 lg:py-0">
+      <div className="relative z-10 container mx-auto px-4 pt-[154px] sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-8 items-start lg:items-center w-full min-h-[100vh] sm:min-h-[90vh] md:min-h-[100vh] py-8 lg:py-0">
         {/* Left side - Text content */}
         <div className="text-white space-y-4 sm:space-y-6 lg:pr-8 order-1 lg:order-1">
           {/* Green label */}
@@ -49,10 +49,12 @@ export default function HeroSection2({ data }: HeroSectionProps) {
 
           {/* Main heading */}
           <h1
-            className="text-[34px] sm:text-[42px] md:text-5xl lg:text-[52px] xl:text-[56px] font-semibold leading-tight font-funnel-display"
+            className="text-[34px] sm:text-[42px] lg:text-[56px] font-semibold leading-[1.2] tracking-[-1px] font-funnel-display"
             style={{ fontFamily: '"Funnel Display", sans-serif' }}
           >
-            {data?.subtitle ? data.subtitle : (
+            {data?.subtitle ? (
+              data.subtitle
+            ) : (
               <>
                 Context-Led Cloud
                 <br />
@@ -73,7 +75,11 @@ export default function HeroSection2({ data }: HeroSectionProps) {
           {/* CTA Button */}
           <div className="pt-2 sm:pt-4">
             {data?.ctaUrl ? (
-              <Link href={data.ctaUrl} target="_blank" rel="noopener noreferrer">
+              <Link
+                href={data.ctaUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <LegacyButton variant="primary" size="lg">
                   {data?.ctaText ?? "Book a demo"}
                 </LegacyButton>
@@ -108,17 +114,23 @@ export default function HeroSection2({ data }: HeroSectionProps) {
 
           {/* Static laptop image (styled as background with mask and rotation) */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.3, delay: 0.2 }}
-            className="relative transform-gpu translate-x-2 sm:translate-x-4 md:translate-x-6 lg:translate-x-[124px] 2xl:translate-x-64 translate-y-2 sm:translate-y-4 md:translate-y-6 lg:translate-y-36 2xl:translate-y-36 mx-auto lg:mx-0 "
+            initial={{ opacity: 0, x: 120, rotateX: 15 }}
+            animate={{ opacity: 1, x: 0, rotateX: 0 }}
+            transition={{
+              duration: 0.4,
+              delay: 0.1,
+              ease: "easeOut",
+              opacity: { duration: 0.3, delay: 0.15 },
+              rotateX: { duration: 0.6, delay: 0.2 },
+            }}
+            className="relative transform-gpu translate-x-2 sm:translate-x-4 md:translate-x-6 lg:translate-x-[0px] 2xl:translate-x-48 translate-y-2 sm:translate-y-4 md:translate-y-6 lg:translate-y-18 2xl:translate-y-32 mx-auto lg:mx-0 "
           >
             <motion.div
-              animate={{ x: [0, 12, -8, 0] }}
-              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+              animate={{ rotateY: [-15, 30, 10, -15] }}
+              transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
             >
               <div
-                className="block w-[441px] h-[309px] lg:w-[604px] lg:h-[423px] 2xl:w-[890px] 2xl:h-[623px] "
+                className="block w-[500px] h-[350px] lg:w-[890px] lg:h-[620px] 2xl:w-[980px] 2xl:h-[680px] "
                 style={{
                   boxSizing: "border-box",
                   display: "block",
@@ -131,8 +143,8 @@ export default function HeroSection2({ data }: HeroSectionProps) {
                     "linear-gradient(31deg, rgba(0,0,0,0) 9%, rgba(0,0,0,1) 39%)",
                   zIndex: 1,
                   aspectRatio: "1.4285714285714286 / 1",
-                  backgroundImage: data?.laptopImage 
-                    ? `url(${urlFor(data.laptopImage).url()})` 
+                  backgroundImage: data?.laptopImage
+                    ? `url(${urlFor(data.laptopImage).url()})`
                     : "url(/assets/images/hero/laptop-static.png)",
                   backgroundSize: "cover",
                   backgroundRepeat: "no-repeat",

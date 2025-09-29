@@ -26,7 +26,9 @@ export default function StruggleSection({ data }: StruggleSectionProps) {
           title: f.title,
           description: f.description,
           // Use Sanity icon if available, otherwise fallback to local icons
-          iconSrc: f.icon ? urlFor(f.icon).url() : struggleFallback.features[i]?.iconSrc,
+          iconSrc: f.icon
+            ? urlFor(f.icon).url()
+            : struggleFallback.features[i]?.iconSrc,
         }))
       : struggleFallback.features;
 
@@ -34,8 +36,8 @@ export default function StruggleSection({ data }: StruggleSectionProps) {
     <section
       className="relative py-12 sm:py-16 md:py-20 lg:py-24 pb-8 sm:pb-16 md:pb-32 lg:pb-48 text-white overflow-hidden"
       style={{
-        backgroundImage: data?.backgroundImage 
-          ? `url(${urlFor(data.backgroundImage).url()})` 
+        backgroundImage: data?.backgroundImage
+          ? `url(${urlFor(data.backgroundImage).url()})`
           : `url(${struggleFallback.backgroundSrc})`,
         backgroundSize: "cover",
         backgroundPosition: "center",

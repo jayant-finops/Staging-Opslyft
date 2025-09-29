@@ -122,13 +122,21 @@ export default function TeamSection({ data }: Props) {
                 key={i}
                 className="flex flex-col lg:flex-row items-center gap-3 lg:w-[262px] h-[116px] justify-center"
               >
-                <div className="relative w-14 h-14 lg:w-[100px] lg:h-[100px] rounded-full overflow-hidden ring-2 ring-[#A6D9B5] ring-offset-2 ring-offset-white">
-                  <Image
-                    src={getImageSrc(inv)}
-                    alt={inv.name}
-                    fill
-                    className="object-cover"
-                  />
+                <div
+                  className="relative w-14 h-14 lg:w-[100px] lg:h-[100px] rounded-full p-[2px]"
+                  style={{
+                    background:
+                      "var(linear-gradient(180deg, #E6FFE0 4.47%, #73AF5E 96.19%))",
+                  }}
+                >
+                  <div className="relative w-full h-full rounded-full overflow-hidden">
+                    <Image
+                      src={getImageSrc(inv)}
+                      alt={inv.name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
                 </div>
                 <div className="flex flex-col items-center lg:items-start">
                   <div
