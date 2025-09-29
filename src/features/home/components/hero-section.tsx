@@ -49,7 +49,7 @@ export default function HeroSection2({ data }: HeroSectionProps) {
 
           {/* Main heading */}
           <h1
-            className="text-[34px] sm:text-[42px] lg:text-[56px] font-semibold leading-[1.2] tracking-[-1px] font-funnel-display"
+            className="text-[34px] sm:text-[42px] lg:text-[56px] font-semibold leading-[1.2] tracking-[-1px]"
             style={{ fontFamily: '"Funnel Display", sans-serif' }}
           >
             {data?.subtitle ? (
