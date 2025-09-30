@@ -28,13 +28,14 @@ function LottieFromSrc({
   src: string;
   className?: string;
 }) {
-  const [data, setData] = useState<any | null>(null);
+  type LottieJSON = Record<string, unknown>;
+  const [data, setData] = useState<LottieJSON | null>(null);
 
   useEffect(() => {
     let isMounted = true;
     fetch(src)
       .then((r) => r.json())
-      .then((json) => {
+      .then((json: LottieJSON) => {
         if (isMounted) setData(json);
       })
       .catch(() => {

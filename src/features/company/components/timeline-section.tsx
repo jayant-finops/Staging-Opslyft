@@ -1,13 +1,71 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import Image from "next/image";
 import { CompanyTimelineDoc } from "@/types";
 import { companyTimelineFallback } from "@/features/about/data";
 
 interface Props {
   data?: CompanyTimelineDoc | null;
+}
+
+function DesktopWaypointDot({
+  index,
+  total,
+  progress,
+}: {
+  index: number;
+  total: number;
+  progress: MotionValue<number>;
+}) {
+  const ratio = total > 1 ? index / (total - 1) : 1;
+  const lead = 0.03;
+  const threshold = Math.max(0, ratio - lead);
+  const color = useTransform(progress, (v) =>
+    v >= threshold ? "#24823D" : "#AFAFAF"
+  );
+  return (
+    <motion.div
+      className="hidden md:flex absolute left-1/2 -translate-x-1/2 top-4 -translate-y-1/2 z-10 w-[50px] h-[50px] rounded-full border-2 items-center justify-center text-white text-xs lg:text-[22px] font-semibold "
+      style={{
+        fontFamily: '"IBM Plex Sans", sans-serif',
+        backgroundColor: color,
+        borderColor: color,
+      }}
+    >
+      {index + 1}
+    </motion.div>
+  );
+}
+
+function MobileWaypointDot({
+  index,
+  total,
+  progress,
+}: {
+  index: number;
+  total: number;
+  progress: MotionValue<number>;
+}) {
+  const ratio = total > 1 ? index / (total - 1) : 1;
+  const lead = 0.03;
+  const threshold = Math.max(0, ratio - lead);
+  const color = useTransform(progress, (v) =>
+    v >= threshold ? "#24823D" : "#AFAFAF"
+  );
+  return (
+    <motion.div
+      className="md:hidden absolute left-2.5 -translate-x-[22px] top-8 z-10 w-[27px] h-[27px] rounded-full border-2 flex items-center justify-center text-white text-xs font-semibold "
+      style={{
+        fontFamily: '"IBM Plex Sans", sans-serif',
+        backgroundColor: color,
+        borderColor: color,
+      }}
+    >
+      {index + 1}
+    </motion.div>
+  );
 }
 
 export default function TimelineSection({ data }: Props) {
@@ -83,51 +141,17 @@ export default function TimelineSection({ data }: Props) {
               className="relative grid grid-cols-1 md:grid-cols-2 gap-8 items-start"
             >
               {/* center waypoint dot for this step */}
-              {(() => {
-                const ratio =
-                  content.length > 1 ? idx / (content.length - 1) : 1;
-                const lead = 0.03; // trigger slightly early (~3% before)
-                const threshold = Math.max(0, ratio - lead);
-                const desktopDotColor = useTransform(
-                  desktopScrollYProgress,
-                  (v) => (v >= threshold ? "#24823D" : "#AFAFAF")
-                );
-                return (
-                  <motion.div
-                    className="hidden md:flex absolute left-1/2 -translate-x-1/2 top-4 -translate-y-1/2 z-10 w-[50px] h-[50px] rounded-full border-2 items-center justify-center text-white text-xs lg:text-[22px] font-semibold "
-                    style={{
-                      fontFamily: '"IBM Plex Sans", sans-serif',
-                      backgroundColor: desktopDotColor,
-                      borderColor: desktopDotColor,
-                    }}
-                  >
-                    {idx + 1}
-                  </motion.div>
-                );
-              })()}
+              <DesktopWaypointDot
+                index={idx}
+                total={content.length}
+                progress={desktopScrollYProgress}
+              />
               {/* mobile waypoint dot */}
-              {(() => {
-                const ratio =
-                  content.length > 1 ? idx / (content.length - 1) : 1;
-                const lead = 0.03;
-                const threshold = Math.max(0, ratio - lead);
-                const mobileDotColor = useTransform(
-                  mobileScrollYProgress,
-                  (v) => (v >= threshold ? "#24823D" : "#AFAFAF")
-                );
-                return (
-                  <motion.div
-                    className="md:hidden absolute left-2.5 -translate-x-[22px] top-8 z-10 w-[27px] h-[27px] rounded-full border-2 flex items-center justify-center text-white text-xs font-semibold "
-                    style={{
-                      fontFamily: '"IBM Plex Sans", sans-serif',
-                      backgroundColor: mobileDotColor,
-                      borderColor: mobileDotColor,
-                    }}
-                  >
-                    {idx + 1}
-                  </motion.div>
-                );
-              })()}
+              <MobileWaypointDot
+                index={idx}
+                total={content.length}
+                progress={mobileScrollYProgress}
+              />
               {/* left column: card for odd, text for even */}
               {idx % 2 === 0 ? (
                 <div className="order-1 lg:ml-auto ">
