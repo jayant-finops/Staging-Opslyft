@@ -32,7 +32,7 @@ export const solutionsFallback: LocalSolutions = {
         "and then recommends optimisations you can trust.",
       ],
       buttonText: "Know more",
-      imageSrc: "/assets/images/solution/feat1.png",
+      imageSrc: "/assets/images/solution/feat1.json",
     },
     {
       title: "AI Powered Cost Allocation",
@@ -43,7 +43,7 @@ export const solutionsFallback: LocalSolutions = {
         "No spreadsheets, no guesswork.",
       ],
       buttonText: "Know more",
-      imageSrc: "/assets/images/solution/feat2.png",
+      imageSrc: "/assets/images/solution/feat2.json",
     },
     {
       title: "ChatGPT for Cloud",
@@ -54,7 +54,7 @@ export const solutionsFallback: LocalSolutions = {
         "And get instant answers with root causes and next steps..",
       ],
       buttonText: "Know more",
-      imageSrc: "/assets/images/solution/feat3.png",
+      imageSrc: "/assets/images/solution/feat3.json",
     },
   ],
   ctaCard: {

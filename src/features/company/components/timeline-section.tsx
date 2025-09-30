@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { CompanyTimelineDoc } from "@/types";
 import { companyTimelineFallback } from "@/features/about/data";
@@ -63,7 +63,7 @@ export default function TimelineSection({ data }: Props) {
       {/* timeline */}
       <div ref={ref} className="relative max-w-5xl mx-auto px-4 lg:px-8 pb-24">
         {/* center line with scroll progress (desktop) */}
-        <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-52 w-px bg-white/12" />
+        <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-52 w-px bg-[#AFAFAF]" />
         <motion.div
           style={{ scaleY: desktopScrollYProgress }}
           className="hidden md:block origin-top absolute left-1/2 -translate-x-1/2 top-4 h-[1100px] w-[3px] bg-[#24823D] shadow-[0_0_12px_rgba(36,130,61,0.45)] rounded"
@@ -83,47 +83,51 @@ export default function TimelineSection({ data }: Props) {
               className="relative grid grid-cols-1 md:grid-cols-2 gap-8 items-start"
             >
               {/* center waypoint dot for this step */}
-              <motion.div
-                initial={{
-                  backgroundColor: "#24823D", // gray-400 until passed
-                  borderColor: "#24823D",
-                  scale: 0.9,
-                  opacity: 0.8,
-                }}
-                whileInView={{
-                  backgroundColor: "#24823D", // green-600 when passed
-                  borderColor: "#24823D",
-                  scale: 1,
-                  opacity: 1,
-                }}
-                viewport={{ once: false, amount: 0.5 }}
-                transition={{ duration: 0.5 }}
-                className="hidden md:flex absolute left-1/2 -translate-x-1/2 top-4 -translate-y-1/2 z-10 w-[50px] h-[50px] rounded-full border-2 items-center justify-center text-white text-xs font-semibold "
-                style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
-              >
-                {idx + 1}
-              </motion.div>
+              {(() => {
+                const ratio =
+                  content.length > 1 ? idx / (content.length - 1) : 1;
+                const lead = 0.03; // trigger slightly early (~3% before)
+                const threshold = Math.max(0, ratio - lead);
+                const desktopDotColor = useTransform(
+                  desktopScrollYProgress,
+                  (v) => (v >= threshold ? "#24823D" : "#AFAFAF")
+                );
+                return (
+                  <motion.div
+                    className="hidden md:flex absolute left-1/2 -translate-x-1/2 top-4 -translate-y-1/2 z-10 w-[50px] h-[50px] rounded-full border-2 items-center justify-center text-white text-xs lg:text-[22px] font-semibold "
+                    style={{
+                      fontFamily: '"IBM Plex Sans", sans-serif',
+                      backgroundColor: desktopDotColor,
+                      borderColor: desktopDotColor,
+                    }}
+                  >
+                    {idx + 1}
+                  </motion.div>
+                );
+              })()}
               {/* mobile waypoint dot */}
-              <motion.div
-                initial={{
-                  backgroundColor: "#24823D",
-                  borderColor: "#24823D",
-                  scale: 0.9,
-                  opacity: 0.8,
-                }}
-                whileInView={{
-                  backgroundColor: "#24823D",
-                  borderColor: "#24823D",
-                  scale: 1,
-                  opacity: 1,
-                }}
-                viewport={{ once: false, amount: 0.5 }}
-                transition={{ duration: 0.5 }}
-                className="md:hidden absolute left-2.5 -translate-x-[22px] top-8 z-10 w-[27px] h-[27px] rounded-full border-2 flex items-center justify-center text-white text-xs font-semibold "
-                style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
-              >
-                {idx + 1}
-              </motion.div>
+              {(() => {
+                const ratio =
+                  content.length > 1 ? idx / (content.length - 1) : 1;
+                const lead = 0.03;
+                const threshold = Math.max(0, ratio - lead);
+                const mobileDotColor = useTransform(
+                  mobileScrollYProgress,
+                  (v) => (v >= threshold ? "#24823D" : "#AFAFAF")
+                );
+                return (
+                  <motion.div
+                    className="md:hidden absolute left-2.5 -translate-x-[22px] top-8 z-10 w-[27px] h-[27px] rounded-full border-2 flex items-center justify-center text-white text-xs font-semibold "
+                    style={{
+                      fontFamily: '"IBM Plex Sans", sans-serif',
+                      backgroundColor: mobileDotColor,
+                      borderColor: mobileDotColor,
+                    }}
+                  >
+                    {idx + 1}
+                  </motion.div>
+                );
+              })()}
               {/* left column: card for odd, text for even */}
               {idx % 2 === 0 ? (
                 <div className="order-1 lg:ml-auto ">
@@ -152,7 +156,7 @@ export default function TimelineSection({ data }: Props) {
               ) : (
                 <div className=" md:pt-12 order-2 md:order-1 w-[290px] h-[105px] lg:w-[409px] lg:h-[133px] ml-[11px]">
                   <div
-                    className="text-[#f1f1f1] text-[16px] lg:text-[20x] font-normal leading-[1.2] opacity-76 lg:text-right"
+                    className="text-[#f1f1f1] text-[16px] lg:text-[20x] font-normal leading-[1.5] opacity-76 lg:text-right"
                     style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
                   >
                     {item.description}
@@ -200,15 +204,15 @@ export default function TimelineSection({ data }: Props) {
                   className={`${idx === 0 ? "md:pt-12" : ""} order-2  w-[290px]  lg:w-[409px]  ml-[11px]`}
                 >
                   <div
-                    className="text-[#f1f1f1] text-[16px] lg:text-[20x] leading-[1.2] opacity-76 mb-[38px]"
+                    className="text-[#f1f1f1] text-[16px] lg:text-[20x] leading-[1.5] opacity-76 mb-[38px] "
                     style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
                   >
                     {item.description}
                   </div>
                   {item.bullets && (
-                    <ul className="text-gray-400 text-xs  list-none  w-[272px] lg:w-[323px] space-y-4">
+                    <ul className="text-gray-400 text-xs  list-none  w-[272px] lg:w-[323px] space-y-5">
                       {item.bullets.map((b, i) => (
-                        <li key={i} className="flex items-start gap-2   ">
+                        <li key={i} className="flex items-start gap-3   ">
                           <div className="mt-1 inline-block w-[24px] h-[24px] rounded-full ">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"

@@ -76,7 +76,7 @@ export default function Footer() {
         {/* Newsletter signup section */}
         <div className="mb-6 sm:mb-8 border-t border-[#767676] pt-6 sm:pt-8 ">
           <div className="flex">
-            <div className="flex flex-col lg:flex-row gap-1 lg:gap-24 items-center md:w-[1440px] sm:ml-[92px] w-[300px] mx-auto">
+            <div className="flex flex-col lg:flex-row gap-1 lg:gap-24 items-center lg:w-[1200px] 2xl:w-[1540px] sm:ml-[92px] w-[300px] mx-auto">
               <div className="flex-shrink-0 ">
                 <h3
                   className="text-[#68CA68] text-base sm:text-lg font-medium mb-2"
@@ -92,7 +92,7 @@ export default function Footer() {
                 </p>
               </div>
 
-              <form className="w-full max-w-md lg:max-w-xl mt-[34px] lg:mt-0 ">
+              <form className="w-full max-w-md lg:max-w-xl 2xl:max-w-[1440px] mt-[34px] lg:mt-0 lg:justify-end lg:flex">
                 <label
                   htmlFor="newsletter-email"
                   className="sr-only"
@@ -105,12 +105,12 @@ export default function Footer() {
                     id="newsletter-email"
                     type="email"
                     placeholder={footerFallback.newsletter.placeholder}
-                    className="flex-1 h-10  rounded-[12px] bg-transparent text-[#5f5f5f] placeholder-[#5f5f5f] pl-4 sm:pl-5 pr-24 sm:pr-36 focus:outline-none text-sm sm:text-[14px]"
+                    className="flex-1 h-[40px] lg:h-[42px]  rounded-[12px] bg-transparent text-[#5f5f5f] placeholder-[#5f5f5f] pl-4 sm:pl-5 pr-24 sm:pr-36 focus:outline-none text-sm sm:text-[14px]"
                     style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
                   />
                   <button
                     type="submit"
-                    className="absolute right-0  px-[27.5px] lg:px-[24px] py-[8px] lg:py-[12px] lg:rounded-xl rounded-[4px] bg-[#24823D] hover:bg-[#1f6e33] text-white font-normal transition-colors text-sm  w-[119px] h-[42px] lg:w-[114px] lg:h-[44px] leading-[92%] tracking-[-0.28px]"
+                    className="absolute right-0  px-[27.5px] lg:px-[24px] py-[8px] lg:py-[12px] lg:rounded-xl rounded-[4px] bg-[#24823D] hover:bg-[#1f6e33] text-white font-normal transition-colors text-sm  w-[119px] h-[42px] lg:w-[114px] lg:h-[48px] leading-[92%] tracking-[-0.28px]"
                     style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
                   >
                     {footerFallback.newsletter.buttonText}

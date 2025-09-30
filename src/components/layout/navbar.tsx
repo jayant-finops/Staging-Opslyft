@@ -168,93 +168,102 @@ export default function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed top-0 left-0 right-0 bottom-0 w-screen h-screen z-[60] lg:hidden"
-            style={{
-              background: "linear-gradient(180deg, #070808 0%, #001910 100%)",
-            }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-[60] lg:hidden flex items-start justify-center p-4 bg-black/70 backdrop-blur-[2px]"
           >
-            <div className="flex flex-col h-full ">
-              {/* Mobile Menu Header */}
-              <div className="flex items-center justify-between p-6 border-b border-gray-700">
-                <div className="relative w-20 h-8">
-                  <Image
-                    src={navbarFallback.logoSrc}
-                    alt="Opslyft"
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-                <button
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="p-2 text-gray-300 hover:text-white transition-colors"
-                >
-                  <svg
-                    className="w-6 h-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
+            <motion.div
+              initial={{ y: -20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -20, opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="w-[343px] h-[551px] rounded-[20px] border border-white/8 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_8px_20px_rgba(0,0,0,0.25)] overflow-hidden"
+              style={{
+                background:
+                  "linear-gradient(176.19deg, rgba(7, 8, 8, 0.5) 12.83%, rgba(0, 25, 16, 0.5) 96.88%)",
+              }}
+            >
+              <div className="flex flex-col h-full">
+                {/* Mobile Menu Header */}
+                <div className="flex items-center justify-between p-6 border-b border-[#343434]">
+                  <div className="relative w-20 h-8">
+                    <Image
+                      src={navbarFallback.logoSrc}
+                      alt="Opslyft"
+                      fill
+                      className="object-contain"
                     />
-                  </svg>
-                </button>
-              </div>
-
-              {/* Mobile Menu Content */}
-              <div className="flex-1 flex flex-col justify-center px-6">
-                {/* Navigation Links */}
-                <nav className="space-y-[8px] ">
-                  {navbarFallback.navigation.map((item, index) => (
-                    <motion.div
-                      key={item.title}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1, duration: 0.3 }}
+                  </div>
+                  <button
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="p-2 text-gray-300 hover:text-white transition-colors"
+                  >
+                    <svg
+                      className="w-6 h-6"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
                     >
-                      <Link
-                        href={item.url}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className="block text-[#CACACA] hover:text-white text-[15px] font-normal transition-colors pt-3 pb-1 border-b border-[#343434]"
-                        style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
-                      >
-                        {item.title}
-                      </Link>
-                    </motion.div>
-                  ))}
-                </nav>
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </button>
+                </div>
 
-                {/* Mobile CTA Buttons */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4, duration: 0.3 }}
-                  className="space-y-4 pt-8"
-                >
-                  <Link
-                    href={navbarFallback.cta.buttonUrl}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="block"
+                {/* Mobile Menu Content */}
+                <div className="flex-1 flex flex-col justify-center px-6">
+                  {/* Navigation Links */}
+                  <nav className="space-y-[8px]">
+                    {navbarFallback.navigation.map((item, index) => (
+                      <motion.div
+                        key={item.title}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.08, duration: 0.25 }}
+                      >
+                        <Link
+                          href={item.url}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className="block text-[#CACACA] hover:text-white text-[15px] font-normal transition-colors pt-3 pb-1 border-b border-[#343434]"
+                          style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
+                        >
+                          {item.title}
+                        </Link>
+                      </motion.div>
+                    ))}
+                  </nav>
+
+                  {/* Mobile CTA Buttons */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4, duration: 0.25 }}
+                    className="space-y-4 pt-8"
                   >
-                    <Button variant="secondary" size="md" className="w-full">
-                      {navbarFallback.cta.buttonText}
-                    </Button>
-                  </Link>
-                  <Link
-                    href={navbarFallback.cta.loginUrl}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="block text-center text-[#CACACA] hover:text-white text-[15px] font-normal transition-colors py-3"
-                    style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
-                  >
-                    {navbarFallback.cta.loginText}
-                  </Link>
-                </motion.div>
+                    <Link
+                      href={navbarFallback.cta.buttonUrl}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="block"
+                    >
+                      <Button variant="secondary" size="md" className="w-full">
+                        {navbarFallback.cta.buttonText}
+                      </Button>
+                    </Link>
+                    <Link
+                      href={navbarFallback.cta.loginUrl}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="block text-center text-[#CACACA] hover:text-white text-[14px] font-normal transition-colors py-3"
+                      style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
+                    >
+                      {navbarFallback.cta.loginText}
+                    </Link>
+                  </motion.div>
+                </div>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

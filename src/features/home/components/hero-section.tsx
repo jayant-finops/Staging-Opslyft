@@ -28,7 +28,7 @@ export default function HeroSection2({ data }: HeroSectionProps) {
       {/* Main content container */}
       <div className="relative z-10 container mx-auto px-4 pt-[154px] sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-8 items-start lg:items-center w-full min-h-[100vh] sm:min-h-[90vh] md:min-h-[100vh] py-8 lg:py-0">
         {/* Left side - Text content */}
-        <div className="text-white space-y-4 sm:space-y-6 lg:pr-8 order-1 lg:order-1">
+        <div className="text-white space-y-4 sm:space-y-6  order-1 lg:order-1">
           {/* Green label */}
           <div className="inline-block">
             <div
@@ -50,7 +50,7 @@ export default function HeroSection2({ data }: HeroSectionProps) {
 
           {/* Main heading */}
           <h1
-            className="text-[34px] sm:text-[42px] lg:text-[56px] font-semibold leading-[1.2] tracking-[-1px]"
+            className="text-[34px] sm:text-[42px] lg:text-[56px] 2xl:text-[56px] font-semibold leading-[1.2] tracking-[-1px] lg:w-[700px]"
             style={{
               fontFamily:
                 'var(--font-funnel-display), "Funnel Display", sans-serif',
@@ -148,7 +148,7 @@ export default function HeroSection2({ data }: HeroSectionProps) {
                   aspectRatio: "1.4285714285714286 / 1",
                   backgroundImage: data?.laptopImage
                     ? `url(${urlFor(data.laptopImage).url()})`
-                    : "url(/assets/images/hero/laptop-static.png)",
+                    : "url(/assets/images/hero/laptop-static.svg)",
                   backgroundSize: "cover",
                   backgroundRepeat: "no-repeat",
                   backgroundPosition: "center",

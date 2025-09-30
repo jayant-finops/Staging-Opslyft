@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Lottie from "lottie-react";
@@ -7,7 +8,6 @@ import { SolutionsSection as SolutionsSectionType } from "@/types";
 import { solutionsFallback } from "@/features/home/data/solutions";
 import { LegacyButton } from "@/components/ui";
 import { urlFor } from "@/lib/sanity";
-import animationData from "../../../../public/assets/images/Prop=f2.1.json";
 
 interface SolutionsSectionProps {
   data: SolutionsSectionType;
@@ -19,6 +19,34 @@ interface ExtendedFeature {
   buttonText?: string;
   imageSrc: string;
   bulletPoints?: string[];
+}
+
+function LottieFromSrc({
+  src,
+  className,
+}: {
+  src: string;
+  className?: string;
+}) {
+  const [data, setData] = useState<any | null>(null);
+
+  useEffect(() => {
+    let isMounted = true;
+    fetch(src)
+      .then((r) => r.json())
+      .then((json) => {
+        if (isMounted) setData(json);
+      })
+      .catch(() => {
+        // swallow errors; leave empty state if JSON fails to load
+      });
+    return () => {
+      isMounted = false;
+    };
+  }, [src]);
+
+  if (!data) return null;
+  return <Lottie animationData={data} loop={true} className={className} />;
 }
 
 export default function SolutionsSection({ data }: SolutionsSectionProps) {
@@ -75,13 +103,13 @@ export default function SolutionsSection({ data }: SolutionsSectionProps) {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2, duration: 0.8 }}
               viewport={{ once: true }}
-              className={`relative flex flex-col lg:grid lg:grid-cols-2  gap-4 sm:gap-12 lg:gap-16 items-center ${
+              className={`relative flex flex-col lg:grid lg:grid-cols-2  gap-4 sm:gap-0 items-center ${
                 index % 2 === 1 ? "lg:grid-flow-col-dense" : ""
               }`}
             >
               {/* Background circles for first feature */}
               {index === 0 && (
-                <div className="absolute inset-0 flex items-center justify-start pointer-events-none ">
+                <div className="absolute inset-0 z-0 flex items-center justify-start pointer-events-none ">
                   <div className="absolute -left-72 top-[40%] -translate-y-1/2 w-[500px] h-[500px] opacity-100">
                     <Image
                       src="/assets/images/about--missio/image.png"
@@ -94,7 +122,7 @@ export default function SolutionsSection({ data }: SolutionsSectionProps) {
               )}
               {/* Content side */}
               <div
-                className={`space-y-4 sm:space-y-[83px] text-left w-[343px] lg:w-[455px] ${index % 2 === 1 ? "lg:col-start-2 lg:ml-16" : ""} h-auto lg:h-[535px] order-2 lg:order-none `}
+                className={`relative z-10 space-y-4 sm:space-y-[83px] text-left w-[343px] lg:w-[455px] ${index % 2 === 1 ? "lg:col-start-2 lg:ml-16" : ""} h-auto lg:h-[535px] order-2 lg:order-none `}
               >
                 <h3
                   className="text-[34px] md:text-[40px] ml-0 sm:ml-2 font-semibold md:font-medium text-gray-900 md:text-[#1d1d1d] max-w-full sm:max-w-md lg:max-w-lg leading-[40px] md:leading-[37px] text-center lg:text-left"
@@ -150,25 +178,28 @@ export default function SolutionsSection({ data }: SolutionsSectionProps) {
                 )}
 
                 {(feature as ExtendedFeature).buttonText && (
-                  <LegacyButton
-                    variant="primary"
-                    size="md"
-                    className="w-[156px] h-[48px] py-[16px] px-[0px] mt-[40px] sm:mt-0 my-[120px] sm:my-0 mx-auto"
-                  >
-                    <span
-                      className="text-[18px] font-semibold leading-[16px] pl-[12px]"
-                      style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
+                  <div className="relative inline-block mt-[40px] sm:mt-0 my-[120px] sm:my-0 mx-auto">
+                    <div className="absolute inset-0 rounded-[12px] bg-white" />
+                    <LegacyButton
+                      variant="primary"
+                      size="md"
+                      className="relative z-10 w-[156px] h-[48px] py-[16px] px-[0px]"
                     >
-                      {feature.buttonText}
-                    </span>
-                    <svg
-                      className="w-3 h-3"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                    >
-                      <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z" />
-                    </svg>
-                  </LegacyButton>
+                      <span
+                        className="text-[18px] font-semibold leading-[16px] pl-[12px]"
+                        style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
+                      >
+                        {feature.buttonText}
+                      </span>
+                      <svg
+                        className="w-3 h-3"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                      >
+                        <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z" />
+                      </svg>
+                    </LegacyButton>
+                  </div>
                 )}
               </div>
 
@@ -176,10 +207,9 @@ export default function SolutionsSection({ data }: SolutionsSectionProps) {
               <div
                 className={`relative ${index % 2 === 1 ? "lg:col-start-1" : ""} order-1 lg:order-none `}
               >
-                <div className="relative  w-[343px] md:w-[592px] h-[348px] md:h-[601px] rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl mx-auto bg-white">
-                  <Lottie
-                    animationData={animationData}
-                    loop={true}
+                <div className="relative  w-[343px] md:w-[572px] h-[348px] md:h-[582px] rounded-xl sm:rounded-[30px] overflow-hidden shadow-2xl mx-auto bg-white">
+                  <LottieFromSrc
+                    src={(feature as ExtendedFeature).imageSrc}
                     className="absolute inset-0 w-full h-full"
                   />
                 </div>
@@ -238,7 +268,7 @@ export default function SolutionsSection({ data }: SolutionsSectionProps) {
 
               <LegacyButton variant="secondaryInverted" size="md">
                 <span
-                  className="text-[18px] font-semibold leading-[16px]"
+                  className="text-[18px] font-semibold leading-[16px] text-[#ffffff"
                   style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
                 >
                   {data?.ctaCard?.buttonText ||

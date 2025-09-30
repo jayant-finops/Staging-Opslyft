@@ -39,6 +39,7 @@ export default function JoinSection({ data }: Props) {
           alt="Join Team Mobile"
           fill
           className="object-contain object-center"
+          style={{ filter: "grayscale(100%)" }}
           priority
         />
       </div>
@@ -50,6 +51,7 @@ export default function JoinSection({ data }: Props) {
           alt="Join Team Desktop"
           fill
           className="object-contain object-center"
+          style={{ filter: "grayscale(50%)" }}
           priority
         />
       </div>

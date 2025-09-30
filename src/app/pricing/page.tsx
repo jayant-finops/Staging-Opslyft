@@ -119,7 +119,7 @@ export default function PricingPage() {
             </div>
 
             {/* Logos - 3 on top, 2 on bottom (centered) */}
-            <div className="z-10 mt-8 space-y-8 w-fit lg:ml-[60px] xl:ml-[80px] 2xl:ml-[60px]">
+            <div className="z-10 mt-8 space-y-8 w-fit mx-auto lg:mx-0 lg:ml-[60px] xl:ml-[80px] 2xl:ml-[60px]">
               <div className="grid grid-cols-3 gap-x-[16px] lg:gap-x-8 xl:gap-x-10 max-w-[345px] md:max-w-[420px] lg:max-w-[460px] xl:max-w-[477px] 2xl:max-w-[517px]">
                 {content.logosTop?.map((logo: { src: string; alt: string }) => (
                   <Image
@@ -150,7 +150,7 @@ export default function PricingPage() {
           </div>
 
           {/* Right: Form or Thank You */}
-          <div className="bg-[#EDEDED] py-[32px] px-[15px] md:py-[60px] lg:py-[120px] lg:px-[60px] xl:py-[225px] xl:px-[120px] 2xl:px-[180px] flex items-start justify-start h-auto lg:items-center lg:justify-center lg:h-[100vh]">
+          <div className="bg-[#EDEDED] py-[32px] px-[15px] md:py-[60px] lg:py-[120px] lg:px-[60px] xl:py-[225px] xl:px-[120px] 2xl:px-[180px] flex items-start justify-start self-stretch h-full min-h-full lg:items-center lg:justify-center">
             {submitted ? (
               // Thank you message
               <div className="text-center w-[341px] lg:w-[474px] 2xl:w-[600px]">

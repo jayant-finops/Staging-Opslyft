@@ -123,13 +123,13 @@ export default function TeamSection({ data }: Props) {
                 className="flex flex-col lg:flex-row items-center gap-3 lg:w-[262px] h-[116px] justify-center"
               >
                 <div
-                  className="relative w-14 h-14 lg:w-[100px] lg:h-[100px] rounded-full p-[2px]"
+                  className="relative w-14 h-14 lg:w-[100px] lg:h-[100px] rounded-[400px] p-[2px]"
                   style={{
                     background:
                       "var(--green_light-gradient, linear-gradient(180deg, #E6FFE0 4.47%, #73AF5E 96.19%))",
                   }}
                 >
-                  <div className="relative w-full h-full rounded-full overflow-hidden">
+                  <div className="relative w-full h-full rounded-[400px] overflow-hidden ">
                     <Image
                       src={getImageSrc(inv)}
                       alt={inv.name}
