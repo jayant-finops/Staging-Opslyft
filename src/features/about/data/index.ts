@@ -164,5 +164,5 @@ export const joinFallback: LocalJoinSection = {
     "We’re always looking for curious minds and passionate hearts to grow with us. If you’re ready to make an impact and be part of something meaningful, we’d love to hear from you.",
   ctaText: "Join Us",
   ctaHref: "#",
-  backgroundSrc: "/assets/images/join/team.png",
+  backgroundSrc: "/assets/images/join/team.svg",
 };

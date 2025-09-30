@@ -26,9 +26,9 @@ export default function HeroSection2({ data }: HeroSectionProps) {
       </div>
 
       {/* Main content container */}
-      <div className="relative z-10 container mx-auto px-4 pt-[154px] sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-8 items-start lg:items-center w-full min-h-[100vh] sm:min-h-[90vh] md:min-h-[100vh] py-8 lg:py-0">
+      <div className="relative z-10 container mx-auto px-4 pt-[154px] sm:px-6 lg:px-8 2xl:px-0 grid lg:flex grid-cols-1  gap-8 sm:gap-12 lg:gap-8 2xl:gap-0 items-start lg:items-center w-full min-h-[100vh] sm:min-h-[90vh] md:min-h-[100vh] py-8 lg:py-0 ">
         {/* Left side - Text content */}
-        <div className="text-white space-y-4 sm:space-y-6  order-1 lg:order-1">
+        <div className="text-white space-y-4 sm:space-y-6  order-1 lg:order-1 2xl:transform-gpu 2xl:translate-x-38">
           {/* Green label */}
           <div className="inline-block">
             <div
@@ -84,7 +84,7 @@ export default function HeroSection2({ data }: HeroSectionProps) {
                 rel="noopener noreferrer"
               >
                 <LegacyButton variant="primary" size="lg">
-                  {data?.ctaText ?? "Book a demo"}
+                  <span style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}>{data?.ctaText ?? "Book a demo"}</span>
                 </LegacyButton>
               </Link>
             ) : (
@@ -133,7 +133,7 @@ export default function HeroSection2({ data }: HeroSectionProps) {
               }}
             >
               <div
-                className="block w-[500px] h-[350px] lg:w-[890px] lg:h-[620px] 2xl:w-[1100px] 2xl:h-[780px] "
+                className="block w-[500px] h-[350px] lg:w-[890px] lg:h-[620px] 2xl:w-[1140px] 2xl:h-[800px] "
                 style={{
                   boxSizing: "border-box",
                   display: "block",
@@ -153,7 +153,6 @@ export default function HeroSection2({ data }: HeroSectionProps) {
                   backgroundRepeat: "no-repeat",
                   backgroundPosition: "center",
                   borderRadius: "20px",
-                  border: "1px solid #636363",
                 }}
               />
             </motion.div>

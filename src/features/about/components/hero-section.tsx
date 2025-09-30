@@ -78,7 +78,7 @@ export default function AboutHeroSection({
       </div>
 
       {/* Decorative circles - top right */}
-      <div className="hidden lg:block pointer-events-none absolute -right-[80px] -top-[40px] lg:-right-[180px] lg:-top-[50px] 2xl:right-[100px] 2xl:top-[30px] w-[280px] h-[280px] lg:w-[400px] lg:h-[400px] 2xl:w-[660px] 2xl:h-[600px]">
+      {/* <div className="hidden lg:block pointer-events-none absolute -right-[80px] -top-[40px] lg:-right-[180px] lg:-top-[50px] 2xl:right-[100px] 2xl:top-[30px] w-[280px] h-[280px] lg:w-[400px] lg:h-[400px] 2xl:w-[660px] 2xl:h-[600px]">
         <Image
           src={circlesImage}
           alt={circlesAlt}
@@ -86,7 +86,7 @@ export default function AboutHeroSection({
           className="object-contain"
           priority
         />
-      </div>
+      </div> */}
 
       {/* Decorative circles - bottom left */}
       <div className="pointer-events-none absolute -bottom-[40px] -left-[200px] lg:-bottom-[140px] xl:-left-[160px] xl:-bottom-[60px] w-[634px] h-[382px] lg:w-[400px] lg:h-[400px] xl:w-[660px] xl:h-[600px]">

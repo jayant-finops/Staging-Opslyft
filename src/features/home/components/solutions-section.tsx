@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Lottie from "lottie-react";
+import Lottie, { type LottieRefCurrentProps } from "lottie-react";
 import { SolutionsSection as SolutionsSectionType } from "@/types";
 import { solutionsFallback } from "@/features/home/data/solutions";
 import { LegacyButton } from "@/components/ui";
@@ -24,12 +24,16 @@ interface ExtendedFeature {
 function LottieFromSrc({
   src,
   className,
+  showControls = false,
 }: {
   src: string;
   className?: string;
+  showControls?: boolean;
 }) {
   type LottieJSON = Record<string, unknown>;
   const [data, setData] = useState<LottieJSON | null>(null);
+  const [paused, setPaused] = useState(false);
+  const lottieRef = useRef<LottieRefCurrentProps>(null);
 
   useEffect(() => {
     let isMounted = true;
@@ -47,7 +51,41 @@ function LottieFromSrc({
   }, [src]);
 
   if (!data) return null;
-  return <Lottie animationData={data} loop={true} className={className} />;
+  return (
+    <div className={`relative ${className ?? ""}`}>
+      <Lottie
+        lottieRef={lottieRef}
+        animationData={data}
+        loop={true}
+        className="w-full h-full"
+      />
+      {showControls && (
+        <button
+          type="button"
+          aria-label={paused ? "Play animation" : "Pause animation"}
+          onClick={() => {
+            const api = lottieRef.current;
+            if (api) {
+              if (paused) api.play();
+              else api.pause();
+            }
+            setPaused((p) => !p);
+          }}
+          className="absolute bottom-3 right-3 z-10 p-2 rounded-full bg-black/40 hover:bg-black/55 text-white border border-white/20 backdrop-blur-sm"
+        >
+          {paused ? (
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          ) : (
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M6 5h4v14H6zM14 5h4v14h-4z" />
+            </svg>
+          )}
+        </button>
+      )}
+    </div>
+  );
 }
 
 export default function SolutionsSection({ data }: SolutionsSectionProps) {
@@ -126,7 +164,7 @@ export default function SolutionsSection({ data }: SolutionsSectionProps) {
                 className={`relative z-10 space-y-4 sm:space-y-[83px] text-left w-[343px] lg:w-[455px] ${index % 2 === 1 ? "lg:col-start-2 lg:ml-16" : ""} h-auto lg:h-[535px] order-2 lg:order-none `}
               >
                 <h3
-                  className="text-[34px] md:text-[40px] ml-0 sm:ml-2 font-semibold md:font-medium text-gray-900 md:text-[#1d1d1d] max-w-full sm:max-w-md lg:max-w-lg leading-[40px] md:leading-[37px] text-center lg:text-left"
+                  className="text-[34px] md:text-[40px] ml-0 sm:ml-2 font-semibold md:font-medium text-gray-900 md:text-[#1d1d1d] max-w-full sm:max-w-md lg:max-w-lg leading-[40px] md:leading-[37px] text-left"
                   style={{ fontFamily: '"Funnel Display", sans-serif' }}
                 >
                   {feature.title}
@@ -212,6 +250,7 @@ export default function SolutionsSection({ data }: SolutionsSectionProps) {
                   <LottieFromSrc
                     src={(feature as ExtendedFeature).imageSrc}
                     className="absolute inset-0 w-full h-full"
+                    showControls
                   />
                 </div>
               </div>

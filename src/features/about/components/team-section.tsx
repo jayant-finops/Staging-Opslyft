@@ -53,18 +53,27 @@ export default function TeamSection({ data }: Props) {
         </div>
 
         {/* Team cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-[40px] lg:gap-[60px] ">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-[40px] lg:gap-[60px] lg:w-[1170px] mx-auto">
           {content.members.map((m) => (
             <div
               key={m.name}
               className="mx-auto p-[10px] rounded-2xl border border-[#DCE6DF] bg-[#e0e1df] shadow-[0_4px_20px_rgba(0,0,0,0.06)] overflow-hidden w-[322px] h-[418px]"
             >
-              <div className="relative h-[240px]">
+              <div className="relative h-[240px] ">
+                {/* Card background SVG */}
+                <Image
+                  src="/assets/images/team/card-bg.svg"
+                  alt="Card background"
+                  fill
+                  className="object-cover rounded-[10px]"
+                  priority={false}
+                />
+                {/* Team member image */}
                 <Image
                   src={getImageSrc(m)}
                   alt={m.name}
                   fill
-                  className="object-cover"
+                  className="object-cover rounded-[10px]"
                 />
               </div>
               <div className="py-4 lg:pt-6  px-6 space-y-[10px]">

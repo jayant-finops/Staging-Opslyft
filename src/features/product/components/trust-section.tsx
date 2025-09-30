@@ -1,0 +1,38 @@
+"use client";
+
+import Image from "next/image";
+import { logoRowFallback } from "@/features/home/data/testimonials";
+
+export default function ProductTrustSection() {
+  return (
+    <section className="relative">
+      <div
+        className="mx-auto w-full max-w-[1920px] rounded-t-[40px]"
+        style={{ background: "#F1F1F1" }}
+      >
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center py-[60px] gap-[34px] min-h-[259px]">
+            <p
+              className="text-[14px] sm:text-[16px] text-gray-600 text-center"
+              style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
+            >
+              Trusted by fast-growing companies around the world
+            </p>
+            <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-4">
+              {logoRowFallback.map((l) => (
+                <div
+                  key={l.alt}
+                  className="relative w-[104px] h-[44px] md:w-[132px] md:h-[56px]"
+                >
+                  <Image src={l.src} alt={l.alt} fill className="object-contain" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+

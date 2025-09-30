@@ -193,7 +193,7 @@ export default function PricingPage() {
 
                   <button
                     type="submit"
-                    className="w-full mt-2 rounded-[12px] text-white text-sm lg:text-[18px] font-medium py-3 shimmer-button relative overflow-hidden border border-white/20 shadow-lg"
+                    className="w-full mt-2 rounded-[12px] text-white text-sm lg:text-[18px] font-medium py-3 shimmer-button relative overflow-hidden border border-white/20 shadow-lg mb-[100px] lg:mb-0"
                     style={{
                       background:
                         "linear-gradient(180deg, #2D9B4B 0%, #1E7A37 100%)",

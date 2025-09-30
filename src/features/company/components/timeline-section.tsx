@@ -20,7 +20,7 @@ function DesktopWaypointDot({
   progress: MotionValue<number>;
 }) {
   const ratio = total > 1 ? index / (total - 1) : 1;
-  const lead = 0.03;
+  const lead = 0.08;
   const threshold = Math.max(0, ratio - lead);
   const color = useTransform(progress, (v) =>
     v >= threshold ? "#24823D" : "#AFAFAF"
@@ -49,7 +49,7 @@ function MobileWaypointDot({
   progress: MotionValue<number>;
 }) {
   const ratio = total > 1 ? index / (total - 1) : 1;
-  const lead = 0.03;
+  const lead = 0.12;
   const threshold = Math.max(0, ratio - lead);
   const color = useTransform(progress, (v) =>
     v >= threshold ? "#24823D" : "#AFAFAF"
@@ -81,6 +81,17 @@ export default function TimelineSection({ data }: Props) {
     offset: ["start 20%", "end 60%"], // Adjusted for mobile to match circle positions
   });
 
+  // Make the green progress line appear slightly filled from the start
+  const greenLead = 0.13; // ~6% prefilling
+  const desktopScaleWithLead = useTransform(
+    desktopScrollYProgress,
+    (v) => v * (1 - greenLead) + greenLead
+  );
+  const mobileScaleWithLead = useTransform(
+    mobileScrollYProgress,
+    (v) => v * (1 - greenLead) + greenLead
+  );
+
   return (
     <section
       className="relative overflow-hidden"
@@ -89,7 +100,7 @@ export default function TimelineSection({ data }: Props) {
       }}
     >
       {/* heading */}
-      <div className="max-w-5xl mx-auto px-4 lg:px-8 pt-[129px]">
+      <div className="max-w-5xl mx-auto px-4 lg:px-8 pt-[129px] mb-[50px] lg:mb-[140px]">
         <h2
           className="text-[#d3d3d3] lg:text-[#f0f7ed] text-[28px] lg:text-[56px] font-semibold text-center leading-[34px] lg:leading-[1.2]"
           style={{ fontFamily: '"Funnel Display", sans-serif' }}
@@ -97,7 +108,7 @@ export default function TimelineSection({ data }: Props) {
           Our Story
         </h2>
         <p
-          className="text-[#e8f6e3] text-center text-[14px] lg:text-[16px] font-light lg:font-normal leading-[21px] lg:leading-[24px] mt-2 w-[350px] lg:w-[700px] mx-auto"
+          className="text-[#e8f6e3] text-center text-[14px] lg:text-[16px] font-light lg:font-normal leading-[21px] lg:leading-[24px] mt-2 w-[350px] lg:w-[700px] mx-auto "
           style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
         >
           Our story of becoming one of the most loved FinOps platform
@@ -106,11 +117,11 @@ export default function TimelineSection({ data }: Props) {
 
       {/* decorative circles on top */}
       <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] pointer-events-none"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[280px] pointer-events-none"
         aria-hidden
       >
         <Image
-          src="/assets/images/story/circles.png"
+          src="/assets/images/story/circles.svg"
           alt="Decorative circles"
           fill
           className="object-contain"
@@ -119,26 +130,26 @@ export default function TimelineSection({ data }: Props) {
       </div>
 
       {/* timeline */}
-      <div ref={ref} className="relative max-w-5xl mx-auto px-4 lg:px-8 pb-24">
+      <div ref={ref} className="relative max-w-6xl mx-auto px-4 lg:px-8 pb-24  ">
         {/* center line with scroll progress (desktop) */}
-        <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-52 w-px bg-[#AFAFAF]" />
+        <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0  bottom-52 lg:bottom-58 w-px bg-[#AFAFAF]" />
         <motion.div
-          style={{ scaleY: desktopScrollYProgress }}
-          className="hidden md:block origin-top absolute left-1/2 -translate-x-1/2 top-4 h-[1100px] w-[3px] bg-[#24823D] shadow-[0_0_12px_rgba(36,130,61,0.45)] rounded"
+          style={{ scaleY: desktopScaleWithLead }}
+          className="hidden md:block origin-top absolute left-1/2 -translate-x-1/2 top-6 h-[1100px] w-[3px] bg-[#24823D] shadow-[0_0_12px_rgba(36,130,61,0.45)] rounded"
         />
 
         {/* left-side line with progress (mobile) */}
-        <div className="md:hidden absolute left-4 top-8 bottom-65 w-px bg-[#afafaf]" />
+        <div className="md:hidden absolute left-4 top-8 bottom-62 w-px bg-[#afafaf]" />
         <motion.div
-          style={{ scaleY: mobileScrollYProgress }}
-          className="md:hidden origin-top absolute left-4 top-8 h-[1000px] w-[3px] bg-[#24823D] shadow-[0_0_12px_rgba(36,130,61,0.45)] rounded"
+          style={{ scaleY: mobileScaleWithLead }}
+          className="md:hidden origin-top absolute left-3.6 top-[-16] h-[1000px] w-[2px] bg-[#24823D] shadow-[0_0_12px_rgba(36,130,61,0.45)] rounded"
         />
 
-        <div className="mt-16 space-y-10 lg:space-y-42">
+        <div className="mt-16 space-y-10 lg:space-y-4">
           {content.map((item, idx) => (
             <div
               key={item.id}
-              className="relative grid grid-cols-1 md:grid-cols-2 gap-8 items-start"
+              className="relative grid grid-cols-1 md:grid-cols-2 items-start"
             >
               {/* center waypoint dot for this step */}
               <DesktopWaypointDot
@@ -156,7 +167,7 @@ export default function TimelineSection({ data }: Props) {
               {idx % 2 === 0 ? (
                 <div className="order-1 lg:ml-auto ">
                   <div
-                    className="shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_8px_24px_rgba(0,0,0,0.32)] backdrop-blur-md p-4 border border-white/10 flex flex-col justify-center w-fit min-w-[108px] min-h-[54.7px] lg:min-w-[210px] lg:min-h-[110px] rounded-[15px] lg:rounded-[30px]"
+                    className="shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_8px_24px_rgba(0,0,0,0.32)] backdrop-blur-md p-4 border border-white/10 flex flex-col justify-center w-fit min-w-[108px] min-h-[54.7px] lg:min-w-[210px] lg:min-h-[110px]  px-[24px] lg:px-[50px] py-[11px] lg:py-[24px]  rounded-[15px] lg:rounded-[30px]"
                     style={{
                       background:
                         "linear-gradient(195deg, rgba(69, 131, 48, 0.08) -23.3%, rgba(15, 29, 11, 0.08) 89.49%)",
@@ -164,21 +175,21 @@ export default function TimelineSection({ data }: Props) {
                     }}
                   >
                     <div
-                      className="text-[#3cc35e] text-[18px] lg:text-[34px] font-semibold leading-[22px] lg:leading-[43px] mb-1 lg:text-right"
+                      className="text-[#3cc35e] text-[18px] lg:text-[34px] font-semibold leading-[22px] lg:leading-[43px] mb-1 lg:text-right lg:whitespace-nowrap"
                       style={{ fontFamily: '"Funnel Display", sans-serif' }}
                     >
                       {item.phase}
                     </div>
                     <div
-                      className="text-[#afafaf] text-[18px] lg:text-[20x] font-normal leading-[1.2] opacity-76 lg:text-right"
-                      style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
+                      className="text-[#afafaf] text-[16px] lg:text-[34px] font-normal leading-[1.2] opacity-76 lg:text-right"
+                      style={{ fontFamily: '"Prompt", sans-serif' }}
                     >
                       {item.period}
                     </div>
                   </div>
                 </div>
               ) : (
-                <div className=" md:pt-12 order-2 md:order-1 w-[290px] h-[105px] lg:w-[409px] lg:h-[133px] ml-[11px]">
+                <div className=" order-2 md:order-1 w-[290px] h-[105px] lg:w-fit lg:h-[133px] mr-[46px] mt-[11px] lg:mt-[36px] ml-[11px] lg:pl-42">
                   <div
                     className="text-[#f1f1f1] text-[16px] lg:text-[20x] font-normal leading-[1.5] opacity-76 lg:text-right"
                     style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
@@ -225,7 +236,7 @@ export default function TimelineSection({ data }: Props) {
                 </div>
               ) : (
                 <div
-                  className={`${idx === 0 ? "md:pt-12" : ""} order-2  w-[290px]  lg:w-[409px]  ml-[11px]`}
+                  className={`${idx === 0 ? "md:pt-12" : ""} order-2  w-[290px]  lg:w-[409px]  ml-[11px] mt-[11px] lg:ml-[46px] lg:mt-[0] `}
                 >
                   <div
                     className="text-[#f1f1f1] text-[16px] lg:text-[20x] leading-[1.5] opacity-76 mb-[38px] "
