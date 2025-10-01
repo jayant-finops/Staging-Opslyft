@@ -167,10 +167,13 @@ export default function TimelineSection({ data }: Props) {
               {idx % 2 === 0 ? (
                 <div className="order-1 lg:ml-auto ">
                   <div
-                    className="shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_8px_24px_rgba(0,0,0,0.32)] backdrop-blur-md p-4 border border-white/10 flex flex-col justify-center w-fit min-w-[108px] min-h-[54.7px] lg:min-w-[210px] lg:min-h-[110px]  px-[24px] lg:px-[50px] py-[11px] lg:py-[24px]  rounded-[15px] lg:rounded-[30px]"
+                    className="backdrop-blur-md p-4 border border-white/10  flex flex-col justify-center w-fit min-w-[108px] min-h-[54.7px] lg:min-w-[210px] lg:min-h-[110px]  px-[24px] lg:px-[50px] py-[11px] lg:py-[24px]  rounded-[15px] lg:rounded-[30px]"
                     style={{
-                      background:
-                        "linear-gradient(195deg, rgba(69, 131, 48, 0.08) -23.3%, rgba(15, 29, 11, 0.08) 89.49%)",
+                      backgroundImage:
+                        "url('/assets/images/story/card-bg.svg')",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
                       borderRadius: 30,
                     }}
                   >
@@ -213,10 +216,13 @@ export default function TimelineSection({ data }: Props) {
               {idx % 2 === 1 ? (
                 <div className=" relative order-1 md:order-2">
                   <div
-                    className="shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_8px_24px_rgba(0,0,0,0.32)] backdrop-blur-md p-4 border border-white/10 flex flex-col justify-center w-fit min-w-[108px] min-h-[54.7px]  px-[24px] lg:px-[50px] py-[11px] lg:py-[24px]  rounded-[15px] lg:rounded-[30px]"
+                    className="backdrop-blur-md p-4 border border-white/10  flex flex-col justify-center w-fit min-w-[108px] min-h-[54.7px]  px-[24px] lg:px-[50px] py-[11px] lg:py-[24px]  rounded-[15px] lg:rounded-[30px]"
                     style={{
-                      background:
-                        "linear-gradient(195deg, rgba(69, 131, 48, 0.08) -23.3%, rgba(15, 29, 11, 0.08) 89.49%)",
+                      backgroundImage:
+                        "url('/assets/images/story/card-bg.svg')",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
                       borderRadius: 30,
                     }}
                   >

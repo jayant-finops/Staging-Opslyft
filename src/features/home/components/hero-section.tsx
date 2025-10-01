@@ -24,9 +24,21 @@ export default function HeroSection2({ data }: HeroSectionProps) {
         />
       </div>
 
+      {/* Mobile-only decorative circles at section level (top-right) */}
+      <div className="absolute top-0 left-[40%] sm:hidden pointer-events-none z-[1] w-[120%] h-[50%]">
+        <Image
+          src="/assets/images/hero/circles.png"
+          alt="Decorative circles"
+          fill
+          className="object-contain"
+          priority
+        />
+      </div>
+
       {/* Main content container */}
       <div className="relative z-10 container mx-auto px-4 pt-[154px] sm:px-6 lg:px-8 2xl:px-0 grid lg:flex grid-cols-1  gap-8 sm:gap-12 lg:gap-8 2xl:gap-0 items-start lg:items-center w-full min-h-[100vh] sm:min-h-[90vh] md:min-h-[100vh] py-8 lg:py-0 ">
         {/* Left side - Text content */}
+
         <div className="text-white space-y-4 sm:space-y-6  order-1 lg:order-1 2xl:transform-gpu 2xl:translate-x-38">
           {/* Green label */}
           <div className="inline-block">
@@ -99,8 +111,8 @@ export default function HeroSection2({ data }: HeroSectionProps) {
         {/* Right side - Static laptop with subtle entrance only */}
         <div className="relative overflow-visible order-2 lg:order-2 mb-8 lg:mb-0 mt-8 sm:mt-12 lg:mt-0">
           {/* Circles behind (one-time entrance) */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div className="absolute w-[120%] sm:w-[130%] lg:w-[160%] h-[120%] sm:h-[130%] lg:h-[110%] -translate-y-4 sm:-translate-y-8 lg:-translate-y-12 translate-x-4 sm:translate-x-8 lg:-translate-x-32 2xl:-translate-x-12">
+          <div className="hidden sm:flex absolute inset-0  items-center justify-center pointer-events-none">
+            <div className="absolute w-[120%] sm:w-[130%] lg:w-[160%] h-[120%] sm:h-[130%] lg:h-[110%] top-[0px] sm:-translate-y-8 lg:-translate-y-12 translate-x-4 sm:translate-x-8 lg:-translate-x-32 2xl:-translate-x-12">
               <Image
                 src="/assets/images/hero/circles.png"
                 alt="Decorative circles"
@@ -110,6 +122,8 @@ export default function HeroSection2({ data }: HeroSectionProps) {
               />
             </div>
           </div>
+
+          {/* decorative circles */}
 
           {/* Static laptop image (styled as background with mask and rotation) */}
           <div
@@ -150,14 +164,6 @@ export default function HeroSection2({ data }: HeroSectionProps) {
         </div>
       </div>
       <style jsx>{`
-        // .laptop-default {
-        //   -moz-transform: skew(-10deg, 0deg);
-        //   -webkit-transform: skew(-10deg, 0deg);
-        //   -o-transform: skew(-10deg, 0deg);
-        //   -ms-transform: skew(-10deg, 0deg);
-        //   transform: skew(-10deg, 0deg);
-        // }
-
         .laptop-appear {
           opacity: 0;
           -moz-transform: translate(50px, 0px) skew(-10deg, 0deg);

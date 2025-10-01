@@ -121,13 +121,18 @@ export default function Navbar() {
                   <Link
                     href={navbarFallback.cta.loginUrl}
                     className="text-[#CACACA] hover:text-white text-[14px] font-normal transition-colors"
-                   
                   >
-                    <span style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}>{navbarFallback.cta.loginText}</span>
+                    <span style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}>
+                      {navbarFallback.cta.loginText}
+                    </span>
                   </Link>
                   <Link href={navbarFallback.cta.buttonUrl}>
                     <LegacyButton variant="secondary" size="sm">
-                      <span style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}>{navbarFallback.cta.buttonText}</span>
+                      <span
+                        style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
+                      >
+                        {navbarFallback.cta.buttonText}
+                      </span>
                     </LegacyButton>
                   </Link>
                 </div>
@@ -249,7 +254,11 @@ export default function Navbar() {
                       className="block"
                     >
                       <Button variant="secondary" size="md" className="w-full">
-                        <span  style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}>{navbarFallback.cta.buttonText}</span>
+                        <span
+                          style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
+                        >
+                          {navbarFallback.cta.buttonText}
+                        </span>
                       </Button>
                     </Link>
                     <Link

@@ -76,7 +76,7 @@ export default function TeamSection({ data }: Props) {
                   className="object-cover rounded-[10px]"
                 />
               </div>
-              <div className="py-4 lg:pt-6  px-6 space-y-[10px]">
+              <div className="py-4 lg:pt-6  space-y-[10px]">
                 <div
                   className="text-[#24823D] text-[24px] font-bold leading-[18px]"
                   style={{ fontFamily: '"Funnel Display", sans-serif' }}
@@ -97,14 +97,21 @@ export default function TeamSection({ data }: Props) {
                 >
                   {m.bio}
                 </div>
-                <div className="w-[24px] h-[24px]">
-                  <Image
-                    src="/assets/images/team/LinkedIn.svg"
-                    alt="LinkedIn"
-                    width={24}
-                    height={24}
-                  />
-                </div>
+                {m.linkedin && (
+                  <a
+                    href={m.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-[24px] h-[24px] hover:opacity-70 transition-opacity"
+                  >
+                    <Image
+                      src="/assets/images/team/LinkedIn.svg"
+                      alt="LinkedIn"
+                      width={24}
+                      height={24}
+                    />
+                  </a>
+                )}
               </div>
             </div>
           ))}
@@ -160,14 +167,21 @@ export default function TeamSection({ data }: Props) {
                   >
                     {inv.org}
                   </div>
-                  <div className="h-[16px] w-[16px] lg:h-[24px] lg:w-[24px]">
-                    <Image
-                      src="/assets/images/team/LinkedIn.svg"
-                      alt="LinkedIn"
-                      width={24}
-                      height={24}
-                    />
-                  </div>
+                  {inv.linkedin && (
+                    <a
+                      href={inv.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="h-[16px] w-[16px] lg:h-[24px] lg:w-[24px] hover:opacity-70 transition-opacity"
+                    >
+                      <Image
+                        src="/assets/images/team/LinkedIn.svg"
+                        alt="LinkedIn"
+                        width={24}
+                        height={24}
+                      />
+                    </a>
+                  )}
                 </div>
               </div>
             ))}
