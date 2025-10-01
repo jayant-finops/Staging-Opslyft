@@ -34,6 +34,8 @@ function LottieFromSrc({
   const [data, setData] = useState<LottieJSON | null>(null);
   const [paused, setPaused] = useState(false);
   const lottieRef = useRef<LottieRefCurrentProps>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
@@ -50,13 +52,50 @@ function LottieFromSrc({
     };
   }, [src]);
 
+  // Observe when the Lottie container enters the viewport
+  useEffect(() => {
+    let frameId: number | null = null;
+    let observer: IntersectionObserver | null = null;
+
+    const tryObserve = () => {
+      const element = containerRef.current;
+      if (!element) {
+        frameId = requestAnimationFrame(tryObserve);
+        return;
+      }
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          setInView(entry.isIntersecting);
+        },
+        { root: null, threshold: 0.1, rootMargin: "0px 0px -10% 0px" }
+      );
+      observer.observe(element);
+    };
+
+    tryObserve();
+
+    return () => {
+      if (frameId) cancelAnimationFrame(frameId);
+      if (observer) observer.disconnect();
+    };
+  }, []);
+
+  // Control playback based on visibility and manual pause
+  useEffect(() => {
+    const api = lottieRef.current;
+    if (!api) return;
+    if (inView && !paused) api.play();
+    else api.pause();
+  }, [inView, paused, data]);
+
   if (!data) return null;
   return (
-    <div className={`relative ${className ?? ""}`}>
+    <div ref={containerRef} className={`relative ${className ?? ""}`}>
       <Lottie
         lottieRef={lottieRef}
         animationData={data}
         loop={true}
+        autoplay={false}
         className="w-full h-full"
       />
       {showControls && (

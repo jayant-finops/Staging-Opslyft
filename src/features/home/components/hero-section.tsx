@@ -83,7 +83,9 @@ export default function HeroSection2({ data }: HeroSectionProps) {
                 rel="noopener noreferrer"
               >
                 <LegacyButton variant="primary" size="lg">
-                  <span style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}>{data?.ctaText ?? "Book a demo"}</span>
+                  <span style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}>
+                    {data?.ctaText ?? "Book a demo"}
+                  </span>
                 </LegacyButton>
               </Link>
             ) : (
@@ -98,7 +100,7 @@ export default function HeroSection2({ data }: HeroSectionProps) {
         <div className="relative overflow-visible order-2 lg:order-2 mb-8 lg:mb-0 mt-8 sm:mt-12 lg:mt-0">
           {/* Circles behind (one-time entrance) */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div className="absolute w-[120%] sm:w-[130%] lg:w-[160%] h-[120%] sm:h-[130%] lg:h-[140%] -translate-y-4 sm:-translate-y-8 lg:-translate-y-12 translate-x-4 sm:translate-x-8 lg:translate-x-16 2xl:translate-x-64">
+            <div className="absolute w-[120%] sm:w-[130%] lg:w-[160%] h-[120%] sm:h-[130%] lg:h-[110%] -translate-y-4 sm:-translate-y-8 lg:-translate-y-12 translate-x-4 sm:translate-x-8 lg:-translate-x-32 2xl:-translate-x-12">
               <Image
                 src="/assets/images/hero/circles.png"
                 alt="Decorative circles"
@@ -111,17 +113,23 @@ export default function HeroSection2({ data }: HeroSectionProps) {
 
           {/* Static laptop image (styled as background with mask and rotation) */}
           <div
-            className="laptop-appear relative transform-gpu translate-x-2 sm:translate-x-4 md:translate-x-6 lg:translate-x-[0px] 2xl:translate-x-28 translate-y-2 sm:translate-y-4 md:translate-y-6 lg:translate-y-18 2xl:translate-y-24 mx-auto lg:mx-0 "
+            className="laptop-appear relative transform-gpu translate-x-2 sm:translate-x-4 md:translate-x-6 lg:-translate-x-[60px] 2xl:translate-x-[130px] translate-y-2 sm:translate-y-4 md:translate-y-6 lg:translate-y-18 2xl:translate-y-24 mx-auto lg:mx-0 "
+            style={{
+              opacity: 0,
+              transform: "translate(50px, 0px) skew(-10deg, 0deg)",
+              transformStyle: "preserve-3d",
+              willChange: "transform, opacity",
+            }}
           >
             <div className="laptop-loop">
               <div
-                className="block w-[500px] h-[350px] lg:w-[890px] lg:h-[620px] 2xl:w-[1140px] 2xl:h-[800px] "
+                className="block w-[500px] h-[350px] lg:w-[890px] lg:h-[625px] 2xl:w-[1085px] 2xl:h-[760px] "
                 style={{
                   boxSizing: "border-box",
                   display: "block",
                   boxShadow:
                     "0px 120px 164px -25px rgba(107, 110, 148, 0.12), 0px 2px 4px 0px rgba(0,0,0,0.25)",
-                  transform: "rotate(10deg) rotateX(-15deg) rotateY(30deg)",
+                  // transform: "rotate(10deg) skewX(-15deg) rotateY(30deg)",
                   WebkitMaskImage:
                     "linear-gradient(31deg, rgba(0,0,0,0) 9%, rgba(0,0,0,1) 39%)",
                   maskImage:
@@ -142,13 +150,26 @@ export default function HeroSection2({ data }: HeroSectionProps) {
         </div>
       </div>
       <style jsx>{`
+        // .laptop-default {
+        //   -moz-transform: skew(-10deg, 0deg);
+        //   -webkit-transform: skew(-10deg, 0deg);
+        //   -o-transform: skew(-10deg, 0deg);
+        //   -ms-transform: skew(-10deg, 0deg);
+        //   transform: skew(-10deg, 0deg);
+        // }
+
         .laptop-appear {
           opacity: 0;
-          transform: translate3d(150px, 0, 0) rotateZ(20deg) rotateX(-25deg) rotateY(40deg);
+          -moz-transform: translate(50px, 0px) skew(-10deg, 0deg);
+          -webkit-transform: translate(50px, 0px) skew(-10deg, 0deg);
+          -o-transform: translate(50px, 0px) skew(-10deg, 0deg);
+          -ms-transform: translate(50px, 0px) skew(-10deg, 0deg);
+          transform: translate(50px, 0px) skew(-10deg, 0deg);
           transform-style: preserve-3d;
           perspective: 1200px;
           will-change: transform, opacity;
-          animation: laptopAppear 0.6s cubic-bezier(0.44, 0, 0.56, 1) 0s forwards;
+          animation: laptopAppear 0.6s cubic-bezier(0.44, 0, 0.56, 1) 0s
+            forwards;
         }
 
         @keyframes laptopAppear {
@@ -161,15 +182,24 @@ export default function HeroSection2({ data }: HeroSectionProps) {
         .laptop-loop {
           transform-style: preserve-3d;
           will-change: transform;
-          animation: laptopLoop 10s cubic-bezier(0, 0, 1, 1) 0s infinite alternate;
+          animation: laptopLoop 7s cubic-bezier(0, 0, 1, 1) 0s infinite
+            alternate;
         }
 
         @keyframes laptopLoop {
-          from {
-            transform: rotateY(-10deg) rotateZ(-5deg);
-          }
           to {
-            transform: rotateY(10deg) rotateZ(5deg);
+            -moz-transform: skew(-5deg, 0deg);
+            -webkit-transform: skew(-5deg, 0deg);
+            -o-transform: skew(-3deg, 0deg);
+            -ms-transform: skew(-5deg, 0deg);
+            transform: skew(-5deg, 0deg);
+          }
+          from {
+            -moz-transform: skew(-10deg, 0deg);
+            -webkit-transform: skew(-10deg, 0deg);
+            -o-transform: skew(-10deg, 0deg);
+            -ms-transform: skew(-10deg, 0deg);
+            transform: skew(-10deg, 0deg);
           }
         }
       `}</style>

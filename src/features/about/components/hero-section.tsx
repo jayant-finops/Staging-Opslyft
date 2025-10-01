@@ -48,7 +48,7 @@ export default function AboutHeroSection({
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
       {/* Base gradient background */}
       <div
         className="absolute inset-0"
@@ -89,7 +89,7 @@ export default function AboutHeroSection({
       </div> */}
 
       {/* Decorative circles - bottom left */}
-      <div className="pointer-events-none absolute -bottom-[40px] -left-[200px] lg:-bottom-[140px] xl:-left-[160px] xl:-bottom-[60px] w-[634px] h-[382px] lg:w-[400px] lg:h-[400px] xl:w-[660px] xl:h-[600px]">
+      <div className="pointer-events-none absolute -bottom-[40px] -left-[200px] lg:-bottom-[140px] xl:-left-[160px] xl:-bottom-[150px] w-[634px] h-[382px] lg:w-[400px] lg:h-[400px] xl:w-[660px] xl:h-[600px]">
         <Image
           src={circlesImage}
           alt={circlesAlt}
