@@ -20,7 +20,7 @@ function DesktopWaypointDot({
   progress: MotionValue<number>;
 }) {
   const ratio = total > 1 ? index / (total - 1) : 1;
-  const lead = 0.08;
+  const lead = 0.1;
   const threshold = Math.max(0, ratio - lead);
   const color = useTransform(progress, (v) =>
     v >= threshold ? "#24823D" : "#AFAFAF"
@@ -49,7 +49,7 @@ function MobileWaypointDot({
   progress: MotionValue<number>;
 }) {
   const ratio = total > 1 ? index / (total - 1) : 1;
-  const lead = 0.12;
+  const lead = 0.1;
   const threshold = Math.max(0, ratio - lead);
   const color = useTransform(progress, (v) =>
     v >= threshold ? "#24823D" : "#AFAFAF"
@@ -82,7 +82,7 @@ export default function TimelineSection({ data }: Props) {
   });
 
   // Make the green progress line appear slightly filled from the start
-  const greenLead = 0.13; // ~6% prefilling
+  const greenLead = 0.08; // ~6% prefilling
   const desktopScaleWithLead = useTransform(
     desktopScrollYProgress,
     (v) => v * (1 - greenLead) + greenLead
@@ -100,7 +100,7 @@ export default function TimelineSection({ data }: Props) {
       }}
     >
       {/* heading */}
-      <div className="max-w-5xl mx-auto px-4 lg:px-8 pt-[129px] mb-[50px] lg:mb-[140px]">
+      <div className="max-w-5xl mx-auto px-4 lg:px-8 pt-[129px] mb-[50px] lg:mb-[140px] ">
         <h2
           className="text-[#d3d3d3] lg:text-[#f0f7ed] text-[28px] lg:text-[56px] font-semibold text-center leading-[34px] lg:leading-[1.2]"
           style={{ fontFamily: '"Funnel Display", sans-serif' }}
@@ -130,22 +130,22 @@ export default function TimelineSection({ data }: Props) {
       </div>
 
       {/* timeline */}
-      <div ref={ref} className="relative max-w-6xl mx-auto px-4 lg:px-8 pb-24  ">
+      <div ref={ref} className="relative max-w-6xl mx-auto px-4 lg:px-8 pb-24 ">
         {/* center line with scroll progress (desktop) */}
         <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0  bottom-52 lg:bottom-58 w-px bg-[#AFAFAF]" />
         <motion.div
           style={{ scaleY: desktopScaleWithLead }}
-          className="hidden md:block origin-top absolute left-1/2 -translate-x-1/2 top-6 h-[1100px] w-[3px] bg-[#24823D] shadow-[0_0_12px_rgba(36,130,61,0.45)] rounded"
+          className="hidden md:block origin-top absolute left-1/2 -translate-x-1/2 top-6  h-[1050px] w-[3px] bg-[#24823D] shadow-[0_0_12px_rgba(36,130,61,0.45)] rounded"
         />
 
         {/* left-side line with progress (mobile) */}
         <div className="md:hidden absolute left-4 top-8 bottom-62 w-px bg-[#afafaf]" />
         <motion.div
           style={{ scaleY: mobileScaleWithLead }}
-          className="md:hidden origin-top absolute left-3.6 top-[-16] h-[1000px] w-[2px] bg-[#24823D] shadow-[0_0_12px_rgba(36,130,61,0.45)] rounded"
+          className="md:hidden origin-top absolute left-3.6 top-[-16] h-[1000px] w-[1px] bg-[#24823D] shadow-[0_0_12px_rgba(36,130,61,0.45)] rounded"
         />
 
-        <div className="mt-16 space-y-10 lg:space-y-4">
+        <div className="mt-16 space-y-10 lg:space-y-[140px]">
           {content.map((item, idx) => (
             <div
               key={item.id}

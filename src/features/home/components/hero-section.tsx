@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { Hero } from "@/types";
@@ -111,27 +110,10 @@ export default function HeroSection2({ data }: HeroSectionProps) {
           </div>
 
           {/* Static laptop image (styled as background with mask and rotation) */}
-          <motion.div
-            initial={{ opacity: 0, x: 120, rotateX: 15 }}
-            animate={{ opacity: 1, x: 0, rotateX: 0 }}
-            transition={{
-              duration: 0.4,
-              delay: 0.1,
-              ease: "easeOut",
-              opacity: { duration: 0.3, delay: 0.15 },
-              rotateX: { duration: 0.6, delay: 0.2 },
-            }}
-            className="relative transform-gpu translate-x-2 sm:translate-x-4 md:translate-x-6 lg:translate-x-[0px] 2xl:translate-x-28 translate-y-2 sm:translate-y-4 md:translate-y-6 lg:translate-y-18 2xl:translate-y-24 mx-auto lg:mx-0 "
+          <div
+            className="laptop-appear relative transform-gpu translate-x-2 sm:translate-x-4 md:translate-x-6 lg:translate-x-[0px] 2xl:translate-x-28 translate-y-2 sm:translate-y-4 md:translate-y-6 lg:translate-y-18 2xl:translate-y-24 mx-auto lg:mx-0 "
           >
-            <motion.div
-              animate={{ rotateY: [-20, 0, 20, 0, -20] }}
-              transition={{
-                duration: 12,
-                repeat: Infinity,
-                ease: "easeInOut",
-                times: [0, 0.25, 0.5, 0.75, 1],
-              }}
-            >
+            <div className="laptop-loop">
               <div
                 className="block w-[500px] h-[350px] lg:w-[890px] lg:h-[620px] 2xl:w-[1140px] 2xl:h-[800px] "
                 style={{
@@ -155,10 +137,42 @@ export default function HeroSection2({ data }: HeroSectionProps) {
                   borderRadius: "20px",
                 }}
               />
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </div>
+      <style jsx>{`
+        .laptop-appear {
+          opacity: 0;
+          transform: translate3d(150px, 0, 0) rotateZ(20deg) rotateX(-25deg) rotateY(40deg);
+          transform-style: preserve-3d;
+          perspective: 1200px;
+          will-change: transform, opacity;
+          animation: laptopAppear 0.6s cubic-bezier(0.44, 0, 0.56, 1) 0s forwards;
+        }
+
+        @keyframes laptopAppear {
+          to {
+            opacity: 1;
+            transform: translate3d(0, 0, 0) rotateX(0deg);
+          }
+        }
+
+        .laptop-loop {
+          transform-style: preserve-3d;
+          will-change: transform;
+          animation: laptopLoop 10s cubic-bezier(0, 0, 1, 1) 0s infinite alternate;
+        }
+
+        @keyframes laptopLoop {
+          from {
+            transform: rotateY(-10deg) rotateZ(-5deg);
+          }
+          to {
+            transform: rotateY(10deg) rotateZ(5deg);
+          }
+        }
+      `}</style>
     </section>
   );
 }
