@@ -130,7 +130,10 @@ export default function TimelineSection({ data }: Props) {
       </div>
 
       {/* timeline */}
-      <div ref={ref} className="relative max-w-6xl mx-auto px-4 lg:px-8 pb-24 ">
+      <div
+        ref={ref}
+        className="relative max-w-6xl  px-4 lg:px-8 pb-24 ml-4 lg:mx-auto"
+      >
         {/* center line with scroll progress (desktop) */}
         <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0  bottom-52 lg:bottom-58 w-px bg-[#AFAFAF]" />
         <motion.div
@@ -142,10 +145,10 @@ export default function TimelineSection({ data }: Props) {
         <div className="md:hidden absolute left-4 top-8 bottom-62 w-px bg-[#afafaf]" />
         <motion.div
           style={{ scaleY: mobileScaleWithLead }}
-          className="md:hidden origin-top absolute left-3.6 top-[-16] h-[1000px] w-[1px] bg-[#24823D] shadow-[0_0_12px_rgba(36,130,61,0.45)] rounded"
+          className="md:hidden origin-top absolute left-3.6 top-[-16] h-[1000px] w-[2px] bg-[#24823D] shadow-[0_0_12px_rgba(36,130,61,0.45)] rounded"
         />
 
-        <div className="mt-16 space-y-10 lg:space-y-[140px]">
+        <div className="mt-16 space-y-10 lg:space-y-[140px] ">
           {content.map((item, idx) => (
             <div
               key={item.id}
@@ -165,18 +168,17 @@ export default function TimelineSection({ data }: Props) {
               />
               {/* left column: card for odd, text for even */}
               {idx % 2 === 0 ? (
-                <div className="order-1 lg:ml-auto ">
-                  <div
-                    className="backdrop-blur-md p-4 border border-white/10  flex flex-col justify-center w-fit min-w-[108px] min-h-[54.7px] lg:min-w-[210px] lg:min-h-[110px]  px-[24px] lg:px-[50px] py-[11px] lg:py-[24px]  rounded-[15px] lg:rounded-[30px]"
-                    style={{
-                      backgroundImage:
-                        "url('/assets/images/story/card-bg.svg')",
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                      backgroundRepeat: "no-repeat",
-                      borderRadius: 30,
-                    }}
-                  >
+                <div
+                  className="order-1 lg:ml-auto w-fit"
+                  style={{
+                    backgroundImage: "url('/assets/images/story/card-bg.svg')",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                    borderRadius: 30,
+                  }}
+                >
+                  <div className="backdrop-blur-md p-4 border border-white/10  flex flex-col justify-center w-fit min-w-[108px] min-h-[54.7px] lg:min-w-[210px] lg:min-h-[110px]  px-[24px] lg:px-[50px] py-[11px] lg:py-[24px]  rounded-[15px] lg:rounded-[30px]">
                     <div
                       className="text-[#3cc35e] text-[18px] lg:text-[34px] font-semibold leading-[22px] lg:leading-[43px] mb-1 lg:text-right lg:whitespace-nowrap"
                       style={{ fontFamily: '"Funnel Display", sans-serif' }}
@@ -214,17 +216,26 @@ export default function TimelineSection({ data }: Props) {
 
               {/* right column: text for odd, card for even */}
               {idx % 2 === 1 ? (
-                <div className=" relative order-1 md:order-2">
+                <div
+                  className=" relative order-1 md:order-2 w-fit"
+                  style={{
+                    backgroundImage: "url('/assets/images/story/card-bg.svg')",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                    borderRadius: 30,
+                  }}
+                >
                   <div
                     className="backdrop-blur-md p-4 border border-white/10  flex flex-col justify-center w-fit min-w-[108px] min-h-[54.7px]  px-[24px] lg:px-[50px] py-[11px] lg:py-[24px]  rounded-[15px] lg:rounded-[30px]"
-                    style={{
-                      backgroundImage:
-                        "url('/assets/images/story/card-bg.svg')",
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                      backgroundRepeat: "no-repeat",
-                      borderRadius: 30,
-                    }}
+                    // style={{
+                    //   backgroundImage:
+                    //     "url('/assets/images/story/card-bg.svg')",
+                    //   backgroundSize: "cover",
+                    //   backgroundPosition: "center",
+                    //   backgroundRepeat: "no-repeat",
+                    //   borderRadius: 30,
+                    // }}
                   >
                     <div
                       className="text-[#3cc35e] mb-1 text-[18px] lg:text-[34px] font-semibold leading-[22px] lg:leading-[43px] "

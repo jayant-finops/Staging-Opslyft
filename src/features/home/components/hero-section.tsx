@@ -114,7 +114,7 @@ export default function HeroSection2({ data }: HeroSectionProps) {
           <div className="hidden sm:flex absolute inset-0  items-center justify-center pointer-events-none">
             <div className="absolute w-[120%] sm:w-[130%] lg:w-[160%] h-[120%] sm:h-[130%] lg:h-[110%] top-[0px] sm:-translate-y-8 lg:-translate-y-12 translate-x-4 sm:translate-x-8 lg:-translate-x-32 2xl:-translate-x-12">
               <Image
-                src="/assets/images/hero/circles.png"
+                src="/assets/images/hero/circles.svg"
                 alt="Decorative circles"
                 fill
                 className="object-contain"
@@ -152,7 +152,7 @@ export default function HeroSection2({ data }: HeroSectionProps) {
                   aspectRatio: "1.4285714285714286 / 1",
                   backgroundImage: data?.laptopImage
                     ? `url(${urlFor(data.laptopImage).url()})`
-                    : "url(/assets/images/hero/laptop-static.png)",
+                    : "url(/assets/images/hero/laptop-static.svg)",
                   backgroundSize: "cover",
                   backgroundRepeat: "no-repeat",
                   backgroundPosition: "center",

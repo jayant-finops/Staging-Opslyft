@@ -65,7 +65,18 @@ function LottieFromSrc({
       }
       observer = new IntersectionObserver(
         ([entry]) => {
-          setInView(entry.isIntersecting);
+          const wasInView = inView;
+          const isNowInView = entry.isIntersecting;
+
+          setInView(isNowInView);
+
+          // If going out of view, reset animation to beginning
+          if (wasInView && !isNowInView) {
+            const api = lottieRef.current;
+            if (api) {
+              api.goToAndStop(0, true);
+            }
+          }
         },
         { root: null, threshold: 0.1, rootMargin: "0px 0px -10% 0px" }
       );
@@ -78,14 +89,18 @@ function LottieFromSrc({
       if (frameId) cancelAnimationFrame(frameId);
       if (observer) observer.disconnect();
     };
-  }, []);
+  }, [inView]);
 
   // Control playback based on visibility and manual pause
   useEffect(() => {
     const api = lottieRef.current;
     if (!api) return;
-    if (inView && !paused) api.play();
-    else api.pause();
+    if (inView && !paused) {
+      // Start from beginning when coming into view
+      api.goToAndPlay(0, true);
+    } else {
+      api.pause();
+    }
   }, [inView, paused, data]);
 
   if (!data) return null;

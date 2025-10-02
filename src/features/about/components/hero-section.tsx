@@ -158,7 +158,7 @@ export default function AboutHeroSection({
         >
           <Link
             href={content.ctaButton.url}
-            className=" px-[36px] lg:px-[72px] py-[16px]  bg-white text-[#0e1821] rounded-xl transition-all duration-300 transform hover:scale-105 text-[18px]  relative overflow-hidden font-semibold leading-[16px] border border-[#24823D] shadow-[1px_2px_0px_0px_#24823d] hover:bg-[#24823D] hover:text-white hover:shadow-[1px_2px_0px_0px_#E8F6E2]"
+            className=" px-[36px] lg:px-[72px] py-[16px]  bg-[#24823D] text-white rounded-xl transition-all duration-300 transform hover:scale-105 text-[18px]  relative overflow-hidden font-semibold leading-[16px] border-b border-white shadow-[1px_2px_0px_0px_#ffffff] hover:bg-white hover:text-[#051821] hover:shadow-[3px_3px_0px_0px_#24823d]"
             style={{
               fontFamily: '"IBM Plex Sans", sans-serif',
             }}
