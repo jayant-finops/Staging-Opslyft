@@ -2,16 +2,19 @@
 
 export default function ProductProblemSection() {
   return (
-    <section
-      className="relative overflow-x-auto"
-      style={{ background: "#F1F1F1" }}
-    >
+    <section className="relative " style={{ background: "#F1F1F1" }}>
       {/* Decorative circles (hidden by default, hooks for future) */}
       <div className="pointer-events-none absolute inset-0" aria-hidden>
         {/* right stack */}
-        <div className="hidden md:block absolute opacity-50" style={{ left: 1149.33, top: -132.16, width: 381.37, height: 396.33 }} />
+        <div
+          className="hidden md:block absolute opacity-50"
+          style={{ left: 1149.33, top: -132.16, width: 381.37, height: 396.33 }}
+        />
         {/* left stack */}
-        <div className="hidden md:block absolute opacity-50" style={{ left: -94.68, top: 453.84, width: 381.37, height: 396.33 }} />
+        <div
+          className="hidden md:block absolute opacity-50"
+          style={{ left: -94.68, top: 453.84, width: 381.37, height: 396.33 }}
+        />
       </div>
 
       {/* Heading area */}
@@ -53,13 +56,16 @@ export default function ProductProblemSection() {
             maxWidth: 480.61,
           }}
         >
-          From inaccurate allocations to misaligned decisions, here are the core issues
-          slowing down cost efficiency and value realization.
+          From inaccurate allocations to misaligned decisions, here are the core
+          issues slowing down cost efficiency and value realization.
         </p>
       </div>
 
       {/* Cards row */}
-      <div className="relative max-w-[1170px] mx-auto px-4 sm:px-6 lg:px-0 pb-10" style={{ marginTop: 20 }}>
+      <div
+        className="relative max-w-[1170px] mx-auto px-4 sm:px-6 lg:px-0 pb-10"
+        style={{ marginTop: 20 }}
+      >
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             {
@@ -89,13 +95,22 @@ export default function ProductProblemSection() {
               <div className="flex flex-col gap-4">
                 <h3
                   className="text-[#24823D]"
-                  style={{ fontFamily: '"Funnel Display", sans-serif', fontSize: 24, lineHeight: "27px" }}
+                  style={{
+                    fontFamily: '"Funnel Display", sans-serif',
+                    fontSize: 24,
+                    lineHeight: "27px",
+                  }}
                 >
                   {card.title}
                 </h3>
                 <p
                   className="text-[#343434]"
-                  style={{ fontFamily: '"IBM Plex Sans", sans-serif', fontSize: 16, lineHeight: "22px", fontWeight: 300 }}
+                  style={{
+                    fontFamily: '"IBM Plex Sans", sans-serif',
+                    fontSize: 16,
+                    lineHeight: "22px",
+                    fontWeight: 300,
+                  }}
                 >
                   {card.description}
                 </p>
@@ -108,14 +123,22 @@ export default function ProductProblemSection() {
         <div className="mt-10 md:mt-14 rounded-[27.4681px] px-8 py-6">
           <p
             className="text-[#7C7C7C]"
-            style={{ fontFamily: '"IBM Plex Sans", sans-serif', fontSize: 16, lineHeight: "21px" }}
+            style={{
+              fontFamily: '"IBM Plex Sans", sans-serif',
+              fontSize: 16,
+              lineHeight: "21px",
+            }}
           >
-            Most FinOps platforms stop at surfacing anomalies and recommendations. But without engineering context, ownership clarity, or workflow automation, insights remain static in dashboards. This creates cost leakages, delays in action, and difficulty proving ROI. Opslyft changes that by combining deep engineering context, accurate anomaly detection, and closed-loop workflow automation so every insight directly translates into measurable savings.
+            Most FinOps platforms stop at surfacing anomalies and
+            recommendations. But without engineering context, ownership clarity,
+            or workflow automation, insights remain static in dashboards. This
+            creates cost leakages, delays in action, and difficulty proving ROI.
+            Opslyft changes that by combining deep engineering context, accurate
+            anomaly detection, and closed-loop workflow automation so every
+            insight directly translates into measurable savings.
           </p>
         </div>
       </div>
     </section>
   );
 }
-
-

@@ -8,8 +8,7 @@ export default function ProductHeroSection() {
     <section
       className="relative w-full overflow-hidden"
       style={{
-        background:
-          "linear-gradient(104.85deg, #000000 8.41%, #0E1821 40.22%)",
+        background: "linear-gradient(104.85deg, #000000 8.41%, #0E1821 40.22%)",
       }}
     >
       {/* Size targets for 1080p/1440p; mobile full-bleed height */}
@@ -53,12 +52,14 @@ export default function ProductHeroSection() {
                     'var(--font-ibm-plex-sans), "IBM Plex Sans", sans-serif',
                 }}
               >
-                Opslyft gives you real-time control of cloud spend with smarter insights, accurate anomaly detection with root causes, and workflows that keep Finance and Engineering on the same page.
+                Opslyft gives you real-time control of cloud spend with smarter
+                insights, accurate anomaly detection with root causes, and
+                workflows that keep Finance and Engineering on the same page.
               </p>
 
               <div className="pt-2 sm:pt-4">
                 <Link href="/book-demo">
-                  <LegacyButton variant="primary" size="lg">
+                  <LegacyButton variant="primary" size="md">
                     See Opslyft in Action
                   </LegacyButton>
                 </Link>
@@ -76,5 +77,3 @@ export default function ProductHeroSection() {
     </section>
   );
 }
-
-

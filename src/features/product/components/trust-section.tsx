@@ -10,10 +10,10 @@ export default function ProductTrustSection() {
         className="mx-auto w-full max-w-[1920px] rounded-t-[40px]"
         style={{ background: "#F1F1F1" }}
       >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center py-[60px] gap-[34px] min-h-[259px]">
+        <div className="mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row py-[60px] gap-[34px] min-h-[259px] items-center justify-center">
             <p
-              className="text-[14px] sm:text-[16px] text-gray-600 text-center"
+              className="text-[14px] sm:text-[16px] text-gray-600 lg:w-[251px] text-start"
               style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
             >
               Trusted by fast-growing companies around the world
@@ -24,7 +24,12 @@ export default function ProductTrustSection() {
                   key={l.alt}
                   className="relative w-[104px] h-[44px] md:w-[132px] md:h-[56px]"
                 >
-                  <Image src={l.src} alt={l.alt} fill className="object-contain" />
+                  <Image
+                    src={l.src}
+                    alt={l.alt}
+                    fill
+                    className="object-contain"
+                  />
                 </div>
               ))}
             </div>
@@ -34,5 +39,3 @@ export default function ProductTrustSection() {
     </section>
   );
 }
-
-

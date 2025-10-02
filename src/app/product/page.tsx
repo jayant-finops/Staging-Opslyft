@@ -1,5 +1,12 @@
 import { Navbar, Footer } from "@/components/layout";
-import { ProductHeroSection, ProductTrustSection, ProductProblemSection, ProductWinsSection } from "@/features/product";
+import {
+  ProductHeroSection,
+  ProductTrustSection,
+  ProductProblemSection,
+  ProductWinsSection,
+  ProductFeaturesSection,
+  ProductBannerSection,
+} from "@/features/product";
 
 export default function ProductPage() {
   return (
@@ -9,11 +16,11 @@ export default function ProductPage() {
         <ProductHeroSection />
         <ProductTrustSection />
         <ProductProblemSection />
+        <ProductFeaturesSection />
         <ProductWinsSection />
+        <ProductBannerSection />
         <Footer />
       </main>
     </>
   );
 }
-
-

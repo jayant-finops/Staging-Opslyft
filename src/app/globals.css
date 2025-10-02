@@ -27,10 +27,11 @@ body {
 }
 
 /* Prevent accidental horizontal scrolling on mobile due to overflowing elements */
+/* Note: overflow-x: hidden on html/body breaks position: sticky */
+/* Instead, ensure proper width constraints on content containers */
 html,
 body {
   max-width: 100%;
-  overflow-x: hidden;
 }
 
 /* Performance optimization for animations */
@@ -185,4 +186,17 @@ body {
   transform: translateX(-100%) skewX(-35deg);
   animation: shimmer 3s ease-in-out infinite;
   animation-delay: 1.5s;
+}
+
+/* Subtle grid lines on dark cards */
+.grid-bg-dark {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size:
+    20px 20px,
+    20px 20px;
+  background-position:
+    0 0,
+    0 0;
 }
