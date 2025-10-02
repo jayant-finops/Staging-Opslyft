@@ -137,22 +137,22 @@ export default function HeroSection2({ data }: HeroSectionProps) {
           >
             <div className="laptop-loop">
               <div
-                className="block w-[500px] h-[350px] lg:w-[890px] lg:h-[625px] 2xl:w-[1085px] 2xl:h-[760px] "
+                className="block w-[500px] h-[350px] lg:w-[890px] lg:h-[625px] 2xl:w-[1085px] 2xl:h-[760px] border border-[#636363]"
                 style={{
                   boxSizing: "border-box",
                   display: "block",
                   boxShadow:
                     "0px 120px 164px -25px rgba(107, 110, 148, 0.12), 0px 2px 4px 0px rgba(0,0,0,0.25)",
                   // transform: "rotate(10deg) skewX(-15deg) rotateY(30deg)",
-                  WebkitMaskImage:
-                    "linear-gradient(31deg, rgba(0,0,0,0) 9%, rgba(0,0,0,1) 39%)",
+                  // WebkitMaskImage:
+                  //   "linear-gradient(31deg, rgba(0,0,0,0) 9%, rgba(0,0,0,1) 39%)",
                   maskImage:
                     "linear-gradient(31deg, rgba(0,0,0,0) 9%, rgba(0,0,0,1) 39%)",
                   zIndex: 1,
                   aspectRatio: "1.4285714285714286 / 1",
                   backgroundImage: data?.laptopImage
                     ? `url(${urlFor(data.laptopImage).url()})`
-                    : "url(/assets/images/hero/laptop-static.svg)",
+                    : "url(/assets/images/hero/laptop-static.png)",
                   backgroundSize: "cover",
                   backgroundRepeat: "no-repeat",
                   backgroundPosition: "center",
