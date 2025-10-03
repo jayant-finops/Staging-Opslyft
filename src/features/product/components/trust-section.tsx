@@ -5,7 +5,7 @@ import { logoRowFallback } from "@/features/home/data/testimonials";
 
 export default function ProductTrustSection() {
   return (
-    <section className="relative">
+    <section className="relative bg-[#000] block -mt-[1px]">
       <div
         className="mx-auto w-full max-w-[1920px] rounded-t-[40px]"
         style={{ background: "#F1F1F1" }}

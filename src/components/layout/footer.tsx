@@ -139,7 +139,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom section */}
-        <div className="flex flex-col lg:flex-row justify-between items-center gap-[26px] sm:gap-6 mt-6 sm:mt-8 py-8 lg:py-0 lg:px-22 lg:mx-auto">
+        <div className="flex flex-col lg:flex-row justify-between items-center gap-[26px] sm:gap-6 mt-6 sm:mt-8 py-8 lg:py-0 lg:px-22 lg:mx-auto ">
           {/* Legal links */}
           <div className="flex flex-col gap-[24px] lg:gap-[8px] text-center lg:text-left order-2 lg:order-1">
             <div
@@ -174,7 +174,20 @@ export default function Footer() {
           </div>
 
           {/* Social links */}
-          <div className="flex gap-[16px] sm:gap-4 order-1 lg:order-2  lg:self-auto">
+          <div className="flex gap-[16px] sm:gap-4 order-1 lg:order-2  lg:self-auto ">
+            {/* Easter egg - only visible when selected */}
+            <span
+              className="hidden xl:block select-text xl:text-[9px] 2xl:text-[14px] pointer-events-none 2xl:mr-20 "
+              style={{
+                color: "transparent",
+                userSelect: "text",
+                WebkitUserSelect: "text",
+                MozUserSelect: "text",
+                msUserSelect: "text",
+              }}
+            >
+              👨‍💻 Crafted at 3AM with too much coffee — Animesh @ Opslyft
+            </span>
             {footerFallback.socialLinks.map((social) => (
               <a
                 key={social.platform}

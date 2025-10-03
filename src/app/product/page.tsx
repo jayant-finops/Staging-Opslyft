@@ -12,7 +12,7 @@ export default function ProductPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-[#0A0F14]">
+      <main className="min-h-screen ">
         <ProductHeroSection />
         <ProductTrustSection />
         <ProductProblemSection />

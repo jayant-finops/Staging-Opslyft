@@ -197,7 +197,7 @@ export default function HeroSection({ data }: HeroSectionProps) {
   ];
 
   return (
-    <section className="relative min-h-[100vh]">
+    <section className="relative min-h-[100vh] ">
       {/* Sticky background content */}
       <div className="relative h-screen flex items-center justify-center overflow-hidden">
         {/* Background gradient */}
@@ -286,7 +286,7 @@ export default function HeroSection({ data }: HeroSectionProps) {
             <motion.div
               ref={ref as React.RefObject<HTMLDivElement>}
               style={{ scale, x, y }}
-              className="relative w-full max-w-7xl transform-gpu"
+              className="relative w-full max-w-7xl transform-gpu "
             >
               <div className="relative z-10">
                 <div className="relative">

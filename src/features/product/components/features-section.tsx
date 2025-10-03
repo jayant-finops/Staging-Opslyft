@@ -56,9 +56,96 @@ export default function ProductFeaturesSection() {
         subtitle: "Track",
       },
     },
+    {
+      tabLabel: "Pravin powered anomaly detection",
+      badge: "Workflow Automation",
+      title: "Workflow Management That Drives Action",
+      kicker: "Stop chasing engineers on Slack. Start closing tickets.",
+      points: [
+        "Closed-Loop FinOps: Insight → Action → Savings with measurable outcomes.",
+        "Ownership & SLAs: Auto-assignment, due dates, and reminders to drive accountability.",
+        "Integrations: Jira, ServiceNow, Asana, Slack — embedded where engineers already work.",
+      ],
+      outcome: "Outcome: Less chaos, more accountability, measurable ROI.",
+      visual: {
+        title: "ROI Visibility",
+        subtitle: "Track",
+      },
+    },
   ];
 
   const [activeTab, setActiveTab] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  // Scroll tracker with scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+
+      let newActiveTab = 0;
+
+      // Iterate through cards in reverse to prioritize later cards when overlapping
+      for (let idx = features.length - 1; idx >= 0; idx--) {
+        const element = document.getElementById(`feature-${idx}`);
+        if (element) {
+          // Get position relative to the viewport
+          const rect = element.getBoundingClientRect();
+
+          // Calculate the actual document position
+          const elementTop = rect.top + scrollPosition;
+          const elementBottom = elementTop + rect.height;
+
+          // Calculate card offset dynamically (same formula as sticky top)
+          const cardOffset = isMobile ? 100 : 225 + idx * 20;
+          const viewPosition = scrollPosition + cardOffset;
+
+          // Check if view position is within this card's range
+          // Add a buffer zone of 100px to make transitions smoother
+          if (
+            viewPosition >= elementTop - 100 &&
+            viewPosition < elementBottom
+          ) {
+            newActiveTab = idx;
+            break; // Found the active card, stop searching
+          }
+        }
+      }
+
+      setActiveTab(newActiveTab);
+    };
+
+    // Throttle scroll events for performance
+    let ticking = false;
+    const throttledScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    // Initial check
+    handleScroll();
+
+    window.addEventListener("scroll", throttledScroll);
+
+    return () => {
+      window.removeEventListener("scroll", throttledScroll);
+    };
+  }, [isMobile, features]);
 
   const scrollToFeature = (index: number) => {
     const element = document.getElementById(`feature-${index}`);
@@ -87,8 +174,9 @@ export default function ProductFeaturesSection() {
     const containerTop =
       container.getBoundingClientRect().top + window.pageYOffset;
 
-    // The sticky top offset for positioning
-    const stickyTop = index === 0 ? 225 : index === 1 ? 275 : 200;
+    // The sticky top offset for positioning (responsive)
+    const checkIsMobile = window.innerWidth < 1024;
+    const stickyTop = checkIsMobile ? 60 : 225 + index * 20;
 
     // Calculate final scroll position
     const scrollTarget = containerTop + accumulatedHeight - stickyTop;
@@ -154,8 +242,8 @@ export default function ProductFeaturesSection() {
       {/* Feature toggle row + stacked cards */}
       <div className="relative mx-auto max-w-[1170px] px-4 sm:px-6 lg:px-0 pb-[24px] lg:pb-[90px] 2xl:pb-[110px] ">
         {/* Toggle row */}
-        <div className="w-full mb-6 pt-20 sticky top-14 z-[1] ">
-          <div className="flex flex-row justify-between items-center gap-2 md:gap-3 overflow-x-auto">
+        <div className="w-full mb-6 pt-20 lg:sticky top-5 lg:top-14 z-[1]">
+          <div className="flex flex-col md:flex-row md:justify-center md:items-center gap-1 md:gap-3">
             {features.map((item, i) => {
               const isActive = i === activeTab;
               return (
@@ -165,25 +253,23 @@ export default function ProductFeaturesSection() {
                     setActiveTab(i);
                     scrollToFeature(i);
                   }}
-                  className="flex items-center gap-3 rounded-[20px] h-[64px] px-6 border transition-colors"
+                  className="flex items-center justify-start gap-2 md:gap-3 rounded-[10px] md:rounded-[20px]  md:h-[64px]  md:w-auto p-2 md:px-6 border transition-colors bg-white shadow-[0_5px_14px_rgba(8,15,52,0.04)]"
                   style={{
-                    background: "#FFFFFF",
                     borderColor: isActive ? "#24823D" : "#EFF0F7",
-                    boxShadow: "0px 5px 14px rgba(8, 15, 52, 0.04)",
-                    color: isActive ? "#24823D" : "#7C7C7C",
+                    color: isActive ? "#24823D" : "#6F6C90",
                   }}
                 >
-                  <div className="relative w-12 h-12">
+                  <div className="relative w-7 h-7 md:w-12 md:h-12 flex-shrink-0">
                     <Image
                       src={`/assets/images/features/feature${i + 1}${isActive ? "-active" : ""}.svg`}
                       alt={`feature ${i + 1}`}
                       width={48}
                       height={48}
-                      className="w-12 h-12"
+                      className="w-full h-full"
                     />
                   </div>
                   <span
-                    className="text-[16px] font-medium whitespace-normal md:whitespace-nowrap"
+                    className={`text-[12px] md:text-[16px] font-medium text-center md:text-left leading-5 ${isActive ? "font-bold" : ""}`}
                     style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
                   >
                     {item.tabLabel}
@@ -200,16 +286,16 @@ export default function ProductFeaturesSection() {
             <div
               key={f.badge + idx}
               id={`feature-${idx}`}
-              className="rounded-[30px] bg-white shadow-[0_5px_15px_rgba(8,15,52,0.04)] p-6 md:p-8 lg:p-6 sticky"
+              className="rounded-[10px] lg:rounded-[30px] lg:bg-white lg:shadow-[0_5px_15px_rgba(8,15,52,0.04)] py-6 px-4 lg:p-6 lg:sticky"
               style={{
-                top: idx === 0 ? 225 : idx === 1 ? 275 : 225,
-                scrollMarginTop: idx === 0 ? 225 : idx === 1 ? 275 : 225,
+                top: isMobile ? 100 : 225 + idx * 20,
+                scrollMarginTop: isMobile ? 100 : 225 + idx * 20,
                 zIndex: 10 + idx,
               }}
             >
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-[50px] items-start">
+              <div className="flex flex-col lg:flex-row justify-between items-start gap-6 ">
                 {/* Left copy */}
-                <div className="flex flex-col gap-4 max-w-[480px]">
+                <div className="flex flex-col gap-4 lg:gap-6 w-full lg:max-w-[480px] lg:flex-shrink-0 order-2 lg:order-1">
                   {/* Icon */}
                   <div className="w-[60px] h-[60px] rounded-[14px] flex items-center justify-center">
                     <Image
@@ -222,24 +308,18 @@ export default function ProductFeaturesSection() {
                   </div>
 
                   <div
-                    className="text-[#170F49]"
+                    className="text-[#170F49] text-[28px] lg:text-[36px] leading-[35px] font-bold"
                     style={{
                       fontFamily: '"Funnel Display", sans-serif',
-                      fontSize: 36,
-                      lineHeight: "35px",
-                      fontWeight: 700,
                     }}
                   >
                     {f.badge}
                   </div>
 
                   <div
-                    className="text-[#0E1821]"
+                    className="text-[#0E1821] text-[14px] lg:text-[18px] leading-[18px] lg:leading-[30px] font-semibold"
                     style={{
                       fontFamily: '"IBM Plex Sans", sans-serif',
-                      fontWeight: 600,
-                      fontSize: 18,
-                      lineHeight: "30px",
                     }}
                   >
                     {f.kicker}
@@ -247,8 +327,8 @@ export default function ProductFeaturesSection() {
 
                   <div className="space-y-3">
                     {f.points.map((p, i) => (
-                      <div className="flex gap-2" key={i}>
-                        <div className="w-[24px] h-[24px] mt-0.5 sm:mt-1 flex-shrink-0 relative">
+                      <div className="flex gap-1 lg:gap-2" key={i}>
+                        <div className="w-[24px] h-[24px] mt-0.5 lg:mt-1 flex-shrink-0 relative">
                           <svg
                             width="24"
                             height="25"
@@ -269,12 +349,9 @@ export default function ProductFeaturesSection() {
                         </div>
                         <p
                           key={i}
-                          className="text-[#0E1821]"
+                          className="text-[#0E1821] text-[12px] lg:text-[16px] leading-[16px] lg:leading-[24px] font-semibold"
                           style={{
                             fontFamily: '"IBM Plex Sans", sans-serif',
-                            fontSize: 16,
-                            lineHeight: "24px",
-                            fontWeight: 600,
                           }}
                         >
                           {p}
@@ -309,8 +386,8 @@ export default function ProductFeaturesSection() {
                 </div>
 
                 {/* Right visual */}
-                <div className="w-full">
-                  <div className="relative h-[320px] sm:h-[420px] lg:h-[601px] rounded-[30px] overflow-hidden">
+                <div className="w-full lg:flex-shrink-0 lg:max-w-[592px] order-1 lg:order-2">
+                  <div className="relative w-full h-[348px] lg:h-[601px] rounded-[30px] overflow-hidden">
                     <Image
                       src={`/assets/images/features/feature${idx + 1}-card.svg`}
                       alt={`${f.visual.title} visualization`}

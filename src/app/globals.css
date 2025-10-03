@@ -29,14 +29,11 @@ body {
 /* Prevent accidental horizontal scrolling on mobile due to overflowing elements */
 /* Note: overflow-x: hidden on html/body breaks position: sticky */
 /* Instead, ensure proper width constraints on content containers */
+/* Using overflow-x: clip allows sticky positioning to work while clipping overflow */
 html,
 body {
   max-width: 100%;
-  overflow-x: hidden;
-}
-
-main {
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* Performance optimization for animations */
@@ -204,4 +201,15 @@ main {
   background-position:
     0 0,
     0 0;
+}
+
+/* Easter egg - only visible when selected */
+.select-text::selection {
+  background-color: rgba(255, 255, 255, 0.99);
+  color: #000000;
+}
+
+.select-text::-moz-selection {
+  background-color: rgba(255, 255, 255, 0.99);
+  color: #000000;
 }

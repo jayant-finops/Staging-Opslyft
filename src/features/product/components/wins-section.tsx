@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 export default function ProductWinsSection() {
   const items = [
     {
@@ -40,13 +42,22 @@ export default function ProductWinsSection() {
                 <div className="flex flex-col gap-2">
                   <div
                     className="text-[#F1F1F1]"
-                    style={{ fontFamily: '"Funnel Display", sans-serif', fontSize: 24, lineHeight: "27px" }}
+                    style={{
+                      fontFamily: '"Funnel Display", sans-serif',
+                      fontSize: 24,
+                      lineHeight: "27px",
+                    }}
                   >
                     {it.title}
                   </div>
                   <div
                     className="text-[#AFAFAF]"
-                    style={{ fontFamily: '"IBM Plex Sans", sans-serif', fontSize: 16, lineHeight: "22px", fontWeight: 300 }}
+                    style={{
+                      fontFamily: '"IBM Plex Sans", sans-serif',
+                      fontSize: 16,
+                      lineHeight: "22px",
+                      fontWeight: 300,
+                    }}
                   >
                     {it.sub}
                   </div>
@@ -56,16 +67,21 @@ export default function ProductWinsSection() {
           </div>
         </div>
 
-        {/* Decorative radial rings */}
-        <div className="pointer-events-none absolute left-[322px] -top-[100px] opacity-60 hidden md:block" aria-hidden>
-          <div className="absolute" style={{ width: 573.78, height: 578.58, opacity: 0.2, background: "radial-gradient(24.09% 24.09% at 25.73% 76.28%, #D9D9D9 0%, rgba(217,217,217,0) 100%)" }} />
-          <div className="absolute" style={{ width: 301.55, height: 304.07, left: 136.12, top: 137.26, opacity: 0.2, background: "radial-gradient(24.09% 24.09% at 25.73% 76.28%, #D9D9D9 0%, rgba(217,217,217,0) 100%)" }} />
-          <div className="absolute" style={{ width: 171.72, height: 173.15, left: 201.03, top: 202.71, opacity: 0.2, background: "radial-gradient(24.09% 24.09% at 25.73% 76.28%, #D9D9D9 0%, rgba(217,217,217,0) 100%)" }} />
-          <div className="absolute" style={{ width: 435.57, height: 439.22, left: 69.11, top: 69.68, opacity: 0.2, background: "radial-gradient(24.09% 24.09% at 25.73% 76.28%, #D9D9D9 0%, rgba(217,217,217,0) 100%)" }} />
+        {/* Decorative circles */}
+        <div
+          className="pointer-events-none absolute -top-[180px] lg:left-[0px] lg:-top-[100px] block"
+          aria-hidden="true"
+        >
+          <div className="relative lg:w-[580px] lg:h-[580px] w-[350px] h-[350px]">
+            <Image
+              src="/assets/images/win/circle.svg"
+              alt=""
+              fill
+              className="object-contain"
+            />
+          </div>
         </div>
       </div>
     </section>
   );
 }
-
-

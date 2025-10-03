@@ -12,10 +12,10 @@ export default function ProductHeroSection() {
       }}
     >
       {/* Size targets for 1080p/1440p; mobile full-bleed height */}
-      <div className="mx-auto max-w-[1920px]">
+      <div className="mx-auto max-w-[1920px] overflow-hidden">
         <div className="mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="min-h-[656px] md:min-h-[669px] flex items-center">
-            <div className="w-full text-center text-white space-y-4 sm:space-y-6 py-20">
+          <div className="min-h-[656px] md:min-h-[669px] flex items-center ">
+            <div className="w-full text-center text-white space-y-4 sm:space-y-6 py-20 lg:mt-15">
               {/* Borrowed badge from home hero */}
               <div className="inline-block">
                 <div

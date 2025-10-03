@@ -157,7 +157,7 @@ export default function SolutionsSection({ data }: SolutionsSectionProps) {
       : solutionsFallback.features;
 
   return (
-    <section className="py-28 sm:py-24 bg-white">
+    <section className="py-28 sm:py-24 bg-white overflow-x-hidden">
       <div className="mx-auto px-4">
         {/* Section header */}
         <div className="text-center mb-[93px] md:mb-[68px] space-y-4">
