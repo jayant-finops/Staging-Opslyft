@@ -257,10 +257,10 @@ export default function ProductFeaturesSection() {
               fontFamily: '"IBM Plex Sans", sans-serif',
             }}
           >
-            Managing cloud costs isn't just about spotting inefficiencies — it's
-            about continuously improving performance, reliability, and spend
-            efficiency across complex environments. That's where Opslyft's
-            optimization engine comes in.
+            Managing cloud costs isn&apos;t just about spotting inefficiencies —
+            it&apos;s about continuously improving performance, reliability, and
+            spend efficiency across complex environments. That&apos;s where
+            Opslyft&apos;s optimization engine comes in.
           </p>
         </div>
       </div>

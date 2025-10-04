@@ -18,7 +18,7 @@ const ProductDropdown = ({
       <div className="grid grid-cols-[198px_1fr] gap-4">
         {/* Left Column - Category Cards */}
         <div className="flex flex-col gap-4">
-          {categories.map((category, index) => (
+          {categories.map((category) => (
             <div
               key={category.title}
               className="flex flex-col justify-center items-start px-4 py-4 gap-2 bg-[#0B2A1A] border border-[#7C7C7C] rounded-[20px] shadow-[0px_4px_15px_rgba(0,0,0,0.04)]"
