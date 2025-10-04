@@ -13,9 +13,6 @@ export default function CustomerStoriesHeroSection() {
       }}
     >
       {/* Desktop/mobile specific rounded bottom radius per spec */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-0">
-        {/* purely to reserve rounded corners on the container */}
-      </div>
 
       <div className="mx-auto max-w-[1920px] overflow-hidden rounded-b-[17.1156px] lg:rounded-b-[40px]">
         {/* subtle bottom shadow on mobile like spec */}
@@ -58,9 +55,12 @@ export default function CustomerStoriesHeroSection() {
                   style={{
                     fontFamily:
                       'var(--font-ibm-plex-sans), "IBM Plex Sans", sans-serif',
-                    background: "rgba(240, 247, 237, 0.04)",
+                    background:
+                      "linear-gradient(180deg, rgba(31,65,50,0.78) 0%, rgba(19,48,31,0.28) 100%)",
+                    borderColor: "rgba(135, 135, 135, 0.36)",
+                    borderWidth: 0.5,
                     boxShadow:
-                      "0px 38.8959px 10.8044px rgba(0,0,0,0.01), 0px 24.8501px 10.0841px rgba(0,0,0,0.05), 0px 14.0457px 8.28338px rgba(0,0,0,0.17), 0px 6.1225px 6.1225px rgba(0,0,0,0.29), 0px 1.44059px 3.60147px rgba(0,0,0,0.34)",
+                      "0 14px 22px rgba(0,0,0,0.32), inset 0 1px 0 rgba(238,250,247,0.10), inset 0 -2px 6px rgba(0,0,0,0.35)",
                   }}
                 >
                   CUSTOMER STORIES

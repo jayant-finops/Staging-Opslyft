@@ -45,20 +45,25 @@ const BLOGS: BlogCard[] = [
 
 export default function CustomerStoriesListSection() {
   return (
-    <section className="bg-[#F1F1F1] py-[100px] px-8">
-      <div className="mx-auto w-full max-w-[1280px]">
-        <div className="mx-auto max-w-[1170px] flex flex-col gap-12 lg:gap-16">
-          {/* Single column on mobile, 3 columns on desktop */}
-          <div className="flex flex-col lg:grid lg:grid-cols-3 gap-12 lg:gap-8">
-            {BLOGS.slice(0, 3).map((post) => (
-              <ArticleCard key={post.slug} post={post} />
-            ))}
-          </div>
+    <section className="relative bg-[#000] block -mt-[1px]">
+      <div
+        className="mx-auto w-full max-w-[1920px] rounded-t-[40px] py-[100px] px-8"
+        style={{ background: "#F1F1F1" }}
+      >
+        <div className="mx-auto w-full max-w-[1280px]">
+          <div className="mx-auto max-w-[1170px] flex flex-col gap-12 lg:gap-16">
+            {/* Single column on mobile, 3 columns on desktop */}
+            <div className="flex flex-col lg:grid lg:grid-cols-3 gap-12 lg:gap-8">
+              {BLOGS.slice(0, 3).map((post) => (
+                <ArticleCard key={post.slug} post={post} />
+              ))}
+            </div>
 
-          <div className="flex flex-col lg:grid lg:grid-cols-3 gap-12 lg:gap-8">
-            {BLOGS.slice(3, 6).map((post) => (
-              <ArticleCard key={post.slug} post={post} />
-            ))}
+            <div className="flex flex-col lg:grid lg:grid-cols-3 gap-12 lg:gap-8">
+              {BLOGS.slice(3, 6).map((post) => (
+                <ArticleCard key={post.slug} post={post} />
+              ))}
+            </div>
           </div>
         </div>
       </div>
