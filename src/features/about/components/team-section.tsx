@@ -132,11 +132,11 @@ export default function TeamSection({ data }: Props) {
             {content.investorsSubheading}
           </p>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4  mt-[52px] lg:mt-[123px] mx-auto w-[300px] lg:w-[1170px] space-y-[32px] lg:space-y-[11px]">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4  mt-[52px] lg:mt-[123px] mx-auto w-[350px] lg:w-[1170px] space-y-[32px] lg:space-y-[11px]">
             {content.investors.map((inv, i: number) => (
               <div
                 key={i}
-                className="flex flex-col lg:flex-row items-center gap-3 lg:w-[262px] h-[116px] justify-center"
+                className="flex flex-col lg:flex-row items-center gap-3 lg:w-[262px] lg:h-[116px]  justify-start"
               >
                 <div
                   className="relative w-14 h-14 lg:w-[100px] lg:h-[100px] rounded-[400px] p-[2px]"
@@ -156,13 +156,13 @@ export default function TeamSection({ data }: Props) {
                 </div>
                 <div className="flex flex-col items-center lg:items-start">
                   <div
-                    className="text-[#05160d] text-[14px] lg:text-[18px] font-medium leading-[1.2] lg:leading-[30px]"
+                    className="text-[#05160d] text-[14px] lg:text-[16px] font-medium lg:font-semibold leading-[1.2] lg:leading-[1.2] tracking-[0px] lg:text-left "
                     style={{ fontFamily: '"Funnel Display", sans-serif' }}
                   >
                     {inv.name}
                   </div>
                   <div
-                    className="text-[#24823D] text-[14px] font-medium leading-[1.2] lg:leading-[22px]"
+                    className="text-[#24823D] text-[14px] font-normal lg:font-semibold leading-[1.2] lg:leading-[22px]  lg:text-left"
                     style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
                   >
                     {inv.org}

@@ -1,113 +1,23 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
+import { Feature } from "../data";
 
-export default function ProductFeaturesSection() {
-  const features = [
-    {
-      tabLabel: "Contextual optimization",
-      badge: "Contextual Optimization",
-      title: "Features Built for Real-World Cost Control",
-      kicker: "Stop chasing engineers on Slack. Start closing tickets.",
-      points: [
-        {
-          heading: "Closed-Loop FinOps",
-          description:
-            "Every anomaly, recommendation, and allocation dispute becomes a tracked ticket — full visibility from detection → action → realized savings.",
-        },
-        {
-          heading: "Clear Ownership & SLAs",
-          description:
-            "Tickets auto-assign to the right service owners with deadlines, eliminating ambiguity and driving accountability.",
-        },
-        {
-          heading: "Embedded in Workflows",
-          description:
-            "Deep integrations with Jira, ServiceNow, Asana, and Slack ensure engineers see optimization tickets in the same backlog as product work.",
-        },
-      ],
+type ProductFeaturesSectionProps = {
+  features: Feature[];
+  sectionTitle?: string;
+  sectionDescription?: string;
+};
 
-      visualUrl: "/assets/images/features/feature1-card.svg",
-    },
-    {
-      tabLabel: "AI-Powered Anomaly Detection",
-      badge: "AI-Powered Anomaly Detection",
-      title: "AI-Powered Anomaly Detection",
-      kicker: "Stop chasing engineers on Slack. Start closing tickets.",
-      points: [
-        {
-          heading: "100% accuracy",
-          description:
-            "No anomalies missed, thanks to Meta Prophet modeling trained on customer data.",
-        },
-        {
-          heading: "Context-aware detection",
-          description:
-            "Seasonality & spend patterns ensure only relevant spikes are flagged.",
-        },
-        {
-          heading: "Root cause and diagnosis built-in",
-          description:
-            "Move beyond alerts. Know why the spike happened and how to fix it.",
-        },
-      ],
-      outcome:
-        "Finance and Engineering stop firefighting; anomalies are explained and resolved faster.",
-      visualUrl: "/assets/images/features/feature2-card.svg",
-    },
-    {
-      tabLabel: "Workflow Management That Drives Action",
-      badge: "Workflow Automation",
-      title: "Workflow Management That Drives Action",
-      kicker: "Stop chasing engineers on Slack. Start closing tickets.",
-      points: [
-        {
-          heading: "Closed-Loop FinOps",
-          description: "Insight → Action → Savings with measurable outcomes.",
-        },
-        {
-          heading: "Ownership & SLAs",
-          description:
-            "Auto-assignment, due dates, and reminders to drive accountability.",
-        },
-        {
-          heading: "Integrations",
-          description:
-            "Jira, ServiceNow, Asana, Slack — embedded where engineers already work.",
-        },
-      ],
-      outcome: "Less chaos, more accountability, measurable ROI.",
-      visualUrl: "/assets/images/features/feature3-card.svg",
-    },
-    {
-      tabLabel: "Pravin powered anomaly detection",
-      badge: "Workflow Automation",
-      title: "Workflow Management That Drives Action",
-      kicker: "Stop chasing engineers on Slack. Start closing tickets.",
-      points: [
-        {
-          heading: "Closed-Loop FinOps",
-          description: "Insight → Action → Savings with measurable outcomes.",
-        },
-        {
-          heading: "Ownership & SLAs",
-          description:
-            "Auto-assignment, due dates, and reminders to drive accountability.",
-        },
-        {
-          heading: "Integrations",
-          description:
-            "Jira, ServiceNow, Asana, Slack — embedded where engineers already work.",
-        },
-      ],
-      outcome: "Less chaos, more accountability, measurable ROI.",
-      visualUrl: "/assets/images/features/feature4-card.svg",
-    },
-  ];
-
+export default function ProductFeaturesSection({
+  features,
+  sectionTitle = "Features Built for Real-World Cost Control",
+  sectionDescription = "Managing cloud costs isn't just about spotting inefficiencies — it's about continuously improving performance, reliability, and spend efficiency across complex environments. That's where Opslyft's optimization engine comes in.",
+}: ProductFeaturesSectionProps) {
   const [activeTab, setActiveTab] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [currentHash, setCurrentHash] = useState("");
 
   useEffect(() => {
     const checkMobile = () => {
@@ -129,7 +39,7 @@ export default function ProductFeaturesSection() {
 
       // Iterate through cards in reverse to prioritize later cards when overlapping
       for (let idx = features.length - 1; idx >= 0; idx--) {
-        const element = document.getElementById(`feature-${idx}`);
+        const element = document.getElementById(features[idx].id);
         if (element) {
           // Get position relative to the viewport
           const rect = element.getBoundingClientRect();
@@ -179,46 +89,86 @@ export default function ProductFeaturesSection() {
     };
   }, [isMobile, features]);
 
-  const scrollToFeature = (index: number) => {
-    const element = document.getElementById(`feature-${index}`);
-    if (!element) return;
+  const scrollToFeature = useCallback(
+    (index: number) => {
+      const element = document.getElementById(features[index].id);
+      if (!element) return;
 
-    // For stacked cards, we need to scroll to the parent container position
-    // plus the accumulated height of all previous cards
-    const container = element.parentElement;
-    if (!container) return;
+      // For stacked cards, we need to scroll to the parent container position
+      // plus the accumulated height of all previous cards
+      const container = element.parentElement;
+      if (!container) return;
 
-    const cards = Array.from(container.children);
-    const targetCardIndex = cards.indexOf(element);
+      const cards = Array.from(container.children);
+      const targetCardIndex = cards.indexOf(element);
 
-    // Calculate the total height of all cards before the target
-    let accumulatedHeight = 0;
-    for (let i = 0; i < targetCardIndex; i++) {
-      const card = cards[i] as HTMLElement;
-      accumulatedHeight += card.offsetHeight;
-      // Add gap between cards (24px = gap-6)
-      if (i < targetCardIndex - 1) {
-        accumulatedHeight += 24;
+      // Calculate the total height of all cards before the target
+      let accumulatedHeight = 0;
+      for (let i = 0; i < targetCardIndex; i++) {
+        const card = cards[i] as HTMLElement;
+        accumulatedHeight += card.offsetHeight;
+        // Add gap between cards (24px = gap-6)
+        if (i < targetCardIndex - 1) {
+          accumulatedHeight += 24;
+        }
       }
+
+      // Get container's position
+      const containerTop =
+        container.getBoundingClientRect().top + window.pageYOffset;
+
+      // The sticky top offset for positioning (responsive)
+      const checkIsMobile = window.innerWidth < 1024;
+      const stickyTop = checkIsMobile ? 60 : 120 + index * 10;
+
+      // Calculate final scroll position
+      const scrollTarget = containerTop + accumulatedHeight - stickyTop;
+
+      // Always scroll to ensure proper positioning
+      window.scrollTo({
+        top: scrollTarget,
+        behavior: "smooth",
+      });
+    },
+    [features]
+  );
+
+  // Track hash changes
+  useEffect(() => {
+    const updateHash = () => {
+      setCurrentHash(window.location.hash.slice(1));
+    };
+
+    // Set initial hash on mount
+    updateHash();
+
+    // Listen for hash changes (triggered manually from navbar clicks)
+    window.addEventListener("hashchange", updateHash);
+
+    return () => {
+      window.removeEventListener("hashchange", updateHash);
+    };
+  }, []);
+
+  // Handle navigation when hash changes
+  useEffect(() => {
+    if (currentHash) {
+      // Small delay to ensure the page has rendered
+      const timeoutId = setTimeout(() => {
+        const element = document.getElementById(currentHash);
+        if (element) {
+          // Find the index of the feature with this ID
+          const featureIndex = features.findIndex((f) => f.id === currentHash);
+          if (featureIndex !== -1) {
+            setActiveTab(featureIndex);
+            scrollToFeature(featureIndex);
+          }
+        }
+      }, 100);
+
+      return () => clearTimeout(timeoutId);
     }
-
-    // Get container's position
-    const containerTop =
-      container.getBoundingClientRect().top + window.pageYOffset;
-
-    // The sticky top offset for positioning (responsive)
-    const checkIsMobile = window.innerWidth < 1024;
-    const stickyTop = checkIsMobile ? 60 : 120 + index * 20;
-
-    // Calculate final scroll position
-    const scrollTarget = containerTop + accumulatedHeight - stickyTop;
-
-    // Always scroll to ensure proper positioning
-    window.scrollTo({
-      top: scrollTarget,
-      behavior: "smooth",
-    });
-  };
+  }, [currentHash, features, scrollToFeature]);
 
   return (
     <section className="relative" style={{ background: "#F1F1F1" }}>
@@ -226,7 +176,7 @@ export default function ProductFeaturesSection() {
       <div className="relative mx-auto max-w-[375px] lg:max-w-[1440px] px-6 sm:px-6 lg:px-8 pt-[60px] lg:pt-8 pb-6 lg:pb-2">
         <div className="flex flex-col items-center justify-center gap-4 lg:gap-4">
           <div
-            className="inline-flex items-center justify-center px-[14px] py-[4px] rounded-full border text-[#24823D] shadow-sm w-[167px] lg:w-auto h-[25px] lg:h-auto"
+            className="inline-flex items-center justify-center px-[14px] py-[4px] rounded-full border text-[#24823D] shadow-sm w-auto h-[25px] lg:h-auto"
             style={{
               background: "rgba(36, 130, 61, 0.10)",
               borderColor: "rgba(211, 211, 211, 0.25)",
@@ -239,7 +189,7 @@ export default function ProductFeaturesSection() {
               textTransform: "uppercase",
             }}
           >
-            FEATURES
+            PRODUCT FEATURES
           </div>
 
           <h2
@@ -248,7 +198,7 @@ export default function ProductFeaturesSection() {
               fontFamily: '"Funnel Display", sans-serif',
             }}
           >
-            Features Built for Real-World Cost Control
+            {sectionTitle}
           </h2>
 
           <p
@@ -257,10 +207,7 @@ export default function ProductFeaturesSection() {
               fontFamily: '"IBM Plex Sans", sans-serif',
             }}
           >
-            Managing cloud costs isn&apos;t just about spotting inefficiencies —
-            it&apos;s about continuously improving performance, reliability, and
-            spend efficiency across complex environments. That&apos;s where
-            Opslyft&apos;s optimization engine comes in.
+            {sectionDescription}
           </p>
         </div>
       </div>
@@ -311,25 +258,36 @@ export default function ProductFeaturesSection() {
           {features.map((f, idx) => (
             <div
               key={f.badge + idx}
-              id={`feature-${idx}`}
-              className="rounded-[10px] lg:rounded-[30px] lg:bg-white lg:shadow-[0_5px_15px_rgba(8,15,52,0.04)] py-6 px-4 lg:p-6 lg:sticky"
+              id={f.id}
+              data-index={idx}
+              data-feature-card="true"
+              className="rounded-[10px] lg:rounded-[30px] lg:bg-white lg:shadow-[0_5px_15px_rgba(8,15,52,0.04)] py-6 px-4 lg:p-6 lg:sticky border-[1px]"
               style={{
                 top: isMobile ? 100 : 120 + idx * 20,
                 scrollMarginTop: isMobile ? 100 : 120 + idx * 20,
                 zIndex: 10 + idx,
+                borderColor: `${idx === activeTab ? "#24823D" : "#EFF0F7"}`,
+                gap: isMobile ? undefined : "50px",
               }}
             >
-              <div className="flex flex-col lg:flex-row justify-between items-start gap-6 ">
+              <div className="flex flex-col lg:flex-row justify-between items-start gap-6 lg:gap-[50px]">
                 {/* Left copy */}
-                <div className="flex flex-col gap-4 lg:gap-6 w-full lg:max-w-[480px] lg:flex-shrink-0 order-2 lg:order-1">
+                <div className="flex flex-col gap-4 lg:gap-4 w-full lg:w-[480px] lg:h-[556px] lg:flex-shrink-0 order-2 lg:order-1">
                   {/* Icon */}
-                  <div className="w-[60px] h-[60px] rounded-[14px] flex items-center justify-center">
+                  <div className="w-[60px] h-[60px] lg:w-[48px] lg:h-[48px] rounded-[14px] flex items-center justify-center relative">
+                    <div
+                      className="absolute inset-0 rounded-[21px]"
+                      style={{
+                        background: "#24823D",
+                        opacity: 0.1,
+                      }}
+                    />
                     <Image
                       src={`/assets/images/features/feature${idx + 1}${idx === activeTab ? "-active" : ""}.svg`}
                       alt={`feature ${idx + 1}`}
-                      width={32}
-                      height={32}
-                      className="w-15 h-15"
+                      width={26}
+                      height={26}
+                      className="w-[26px] h-[26px] relative z-10"
                     />
                   </div>
 
@@ -337,6 +295,7 @@ export default function ProductFeaturesSection() {
                     className="text-[#170F49] text-[28px] lg:text-[36px] leading-[35px] font-bold"
                     style={{
                       fontFamily: '"Funnel Display", sans-serif',
+                      letterSpacing: "-1px",
                     }}
                   >
                     {f.badge}
@@ -353,7 +312,7 @@ export default function ProductFeaturesSection() {
 
                   <div className="space-y-3">
                     {f.points.map((p, i) => (
-                      <div className="flex gap-1 lg:gap-2" key={i}>
+                      <div className="flex gap-1" key={i}>
                         <div className="w-[24px] h-[24px] mt-0.5 lg:mt-1 flex-shrink-0 relative">
                           <svg
                             width="24"
@@ -435,8 +394,8 @@ export default function ProductFeaturesSection() {
                 </div>
 
                 {/* Right visual */}
-                <div className="w-full lg:flex-shrink-0 lg:max-w-[592px] order-1 lg:order-2">
-                  <div className="relative w-full h-[348px] lg:h-[601px] rounded-[30px] overflow-hidden">
+                <div className="w-full lg:w-[592px] lg:h-[556px] lg:flex-shrink-0 order-1 lg:order-2">
+                  <div className="relative w-full h-[348px] lg:h-[556px] rounded-[30px] overflow-hidden">
                     <Image
                       src={f.visualUrl}
                       alt={`${f.badge} visualization`}

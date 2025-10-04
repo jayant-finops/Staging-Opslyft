@@ -1,188 +1,231 @@
-import { client as nextSanityClient } from "../../sanity/lib/client";
-import { urlFor as sanityUrlFor } from "../../sanity/lib/image";
-import {
-  AboutHeroSection,
-  AboutMissionSection,
-  CompanyTimelineDoc,
-  TeamDoc,
-  JoinDoc,
-} from "@/types";
+import { createClient } from "next-sanity";
+import imageUrlBuilder from "@sanity/image-url";
 
-// Use the new Sanity client setup
-export const client = nextSanityClient;
+export const client = createClient({
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "",
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
+  apiVersion: "2023-05-03",
+  useCdn: false,
+});
 
-// Use the centralized image URL builder
-export const urlFor = sanityUrlFor;
+// Image URL builder
+const builder = imageUrlBuilder(client);
 
-// Fetch functions for different content types
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const urlFor = (source: any) => {
+  return builder.image(source);
+};
+
+// Privacy Policy query
+export async function getPrivacyPolicy() {
+  const query = `*[_type == "privacyPolicy"][0]{
+    title,
+    lastUpdated,
+    sections[]{
+      title,
+      content,
+      listItems,
+      contentAfterList,
+      subsections[]{
+        title,
+        content,
+        listItems,
+        contentAfterList
+      }
+    }
+  }`;
+
+  try {
+    const data = await client.fetch(query);
+    return data;
+  } catch (error) {
+    console.error("Error fetching privacy policy from Sanity:", error);
+    return null;
+  }
+}
+
+// About Hero query
+export async function getAboutHero() {
+  const query = `*[_type == "aboutHero"][0]{
+    titleLines,
+    subtitle,
+    ctaButton{
+      text,
+      url
+    }
+  }`;
+
+  try {
+    const data = await client.fetch(query);
+    return data;
+  } catch (error) {
+    console.error("Error fetching about hero from Sanity:", error);
+    return null;
+  }
+}
+
+// About Mission query
+export async function getAboutMission() {
+  const query = `*[_type == "aboutMission"][0]{
+    title,
+    description,
+    stats[]{
+      label,
+      value
+    }
+  }`;
+
+  try {
+    const data = await client.fetch(query);
+    return data;
+  } catch (error) {
+    console.error("Error fetching about mission from Sanity:", error);
+    return null;
+  }
+}
+
+// Company Timeline query
+export async function getCompanyTimeline() {
+  const query = `*[_type == "companyTimeline"][0]{
+    timelineItems[]{
+      phase,
+      period,
+      description,
+      bullets
+    }
+  }`;
+
+  try {
+    const data = await client.fetch(query);
+    return data;
+  } catch (error) {
+    console.error("Error fetching company timeline from Sanity:", error);
+    return null;
+  }
+}
+
+// Team query
+export async function getTeam() {
+  const query = `*[_type == "team"][0]{
+    heading,
+    subheading,
+    members[]{
+      name,
+      title,
+      bio,
+      image,
+      linkedin
+    },
+    investorsHeading,
+    investorsSubheading,
+    investors[]{
+      name,
+      org,
+      image,
+      linkedin
+    }
+  }`;
+
+  try {
+    const data = await client.fetch(query);
+    return data;
+  } catch (error) {
+    console.error("Error fetching team from Sanity:", error);
+    return null;
+  }
+}
+
+// Hero Data query (for home page)
 export async function getHeroData() {
-  return await client.fetch(`*[_type == "hero"][0]`);
+  const query = `*[_type == "homeHero"][0]{
+    title,
+    subtitle,
+    description,
+    ctaText,
+    ctaUrl
+  }`;
+
+  try {
+    const data = await client.fetch(query);
+    return data;
+  } catch (error) {
+    console.error("Error fetching home hero from Sanity:", error);
+    return null;
+  }
 }
 
+// Testimonials Section query
 export async function getTestimonialsSection() {
-  return await client.fetch(`
-    *[_type == "testimonialsSection"][0]{
-      _id,
-      _type,
-      badgeText,
-      title,
-      subtitle,
-      testimonials[]{
-        quote,
-        author,
-        position,
-        company,
-        avatar{ asset->{ _ref, url }, alt },
-        companyLogo{ asset->{ _ref, url }, alt }
-      },
-      companyLogos[]{
-        name,
-        logo{ asset->{ _ref, url }, alt },
-        alt
-      }
+  const query = `*[_type == "testimonialsSection"][0]{
+    testimonials[]{
+      quote,
+      author,
+      role,
+      company,
+      avatar,
+      companyLogo
+    },
+    logoRow[]{
+      alt,
+      logo
     }
-  `);
+  }`;
+
+  try {
+    const data = await client.fetch(query);
+    return data;
+  } catch (error) {
+    console.error("Error fetching testimonials from Sanity:", error);
+    return null;
+  }
 }
 
-export async function getFeatures() {
-  return await client.fetch(`*[_type == "feature"] | order(order asc)`);
-}
-
-export async function getFooterData() {
-  return await client.fetch(`*[_type == "footer"][0]`);
-}
-
-export async function getNavbarData() {
-  return await client.fetch(`*[_type == "navbar"][0]`);
-}
-
+// Struggle Section query
 export async function getStruggleSection() {
-  return await client.fetch(`
-    *[_type == "struggleSection"][0]{
-      _id,
-      _type,
-      sectionLabel,
+  const query = `*[_type == "struggleSection"][0]{
+    sectionLabel,
+    title,
+    subtitle,
+    features[]{
       title,
-      subtitle,
-      backgroundImage{ asset->{ _ref, url }, alt },
-      features[]{
-        title,
-        description,
-        icon{ asset->{ _ref, url }, alt }
-      }
+      description
     }
-  `);
+  }`;
+
+  try {
+    const data = await client.fetch(query);
+    return data;
+  } catch (error) {
+    console.error("Error fetching struggle section from Sanity:", error);
+    return null;
+  }
 }
 
+// Solutions Section query
 export async function getSolutionsSection() {
-  return await client.fetch(`
-    *[_type == "solutionsSection"][0]{
-      _id,
-      _type,
-      sectionLabel,
-      title,
-      subtitle,
-      features[]{
-        title,
-        description,
-        buttonText,
-        image{ asset->{ _ref, url }, alt }
-      },
-      ctaCard{
-        title,
-        buttonText
-      }
-    }
-  `);
-}
-
-// Pricing page document
-export async function getPricingPage() {
-  return await client.fetch(`*[_type == "pricingPage"][0]`);
-}
-
-// About page hero section
-export async function getAboutHero(): Promise<AboutHeroSection | null> {
-  return await client.fetch(`
-    *[_type == "aboutHero"][0]{
-      _id,
-      _type,
-      badgeText,
-      titleLines,
-      subtitle,
-      ctaButton{
-        text,
-        url
-      },
-      backgroundImage{
-        asset->{
-          _ref,
-          url
-        },
-        alt
-      },
-      decorativeCircles{
-        asset->{
-          _ref,
-          url
-        },
-        alt
-      }
-    }
-  `);
-}
-
-// About mission section
-export async function getAboutMission(): Promise<AboutMissionSection | null> {
-  return await client.fetch(`
-    *[_type == "aboutMission"][0]{
-      _id,
-      _type,
+  const query = `*[_type == "solutionsSection"][0]{
+    sectionLabel,
+    title,
+    subtitle,
+    features[]{
       title,
       description,
-      stats[]{ label, value }
+      bulletPoints,
+      buttonText,
+      image
+    },
+    ctaCard{
+      title,
+      buttonText,
+      buttonUrl
     }
-  `);
-}
+  }`;
 
-// Company timeline
-export async function getCompanyTimeline(): Promise<CompanyTimelineDoc | null> {
-  return await client.fetch(`
-    *[_type == "companyTimeline"][0]{
-      _id,
-      _type,
-      items[]{ id, phase, period, title, description, bullets }
-    }
-  `);
-}
-
-// Team
-export async function getTeam(): Promise<TeamDoc | null> {
-  return await client.fetch(`
-    *[_type == "team"][0]{
-      _id,
-      _type,
-      heading,
-      subheading,
-      members[]{ name, title, bio, linkedin, image{ asset->{ _ref, url }, alt } },
-      investorsHeading,
-      investorsSubheading,
-      investors[]{ name, org, linkedin, image{ asset->{ _ref, url }, alt } }
-    }
-  `);
-}
-
-// Join section
-export async function getJoin(): Promise<JoinDoc | null> {
-  return await client.fetch(`
-    *[_type == "join"][0]{
-      _id,
-      _type,
-      heading,
-      subheading,
-      ctaText,
-      ctaHref,
-      background{ asset->{ _ref, url }, alt }
-    }
-  `);
+  try {
+    const data = await client.fetch(query);
+    return data;
+  } catch (error) {
+    console.error("Error fetching solutions section from Sanity:", error);
+    return null;
+  }
 }

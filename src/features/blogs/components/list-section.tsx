@@ -68,62 +68,60 @@ export default function CustomerStoriesListSection() {
 
 function ArticleCard({ post }: { post: BlogCard }) {
   return (
-    <article className="flex flex-col gap-6 lg:gap-8 bg-white rounded-[30px] shadow-[0px_12px_16px_-4px_rgba(16,24,40,0.08),0px_4px_6px_-2px_rgba(16,24,40,0.03)] p-6 pb-8 w-full max-w-[338px] lg:max-w-none mx-auto lg:h-[580px]">
-      {/* Media */}
-      <div className="relative w-full h-[240px] rounded-[30px] bg-[#0E1821] overflow-hidden flex-shrink-0">
-        {/* subtle grid effect */}
-        <div
-          className="absolute inset-0 opacity-[0.06]"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px)",
-            backgroundSize: "24px 24px",
-          }}
-        />
-      </div>
-
-      {/* Copy */}
-      <div className="flex flex-col justify-between gap-8 lg:gap-8 flex-1">
-        <div className="flex flex-col gap-3">
-          <span
-            className="text-[#24823D] text-[14px] leading-[20px] font-semibold"
-            style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
-          >
-            {post.category}
-          </span>
-
-          <div className="flex items-start gap-4">
-            <h3
-              className="text-[#101828] text-[24px] leading-[32px] font-semibold flex-1"
-              style={{ fontFamily: '"Funnel Display", sans-serif' }}
-            >
-              {post.title}
-            </h3>
-            <Link
-              href={`/customer-stories/${post.slug}`}
-              className="mt-1 flex-shrink-0"
-              aria-label={`Read ${post.title}`}
-            >
-              <Image
-                src="/assets/images/blog/arrow-up-right.svg"
-                alt=""
-                width={24}
-                height={24}
-                className="w-6 h-15"
-              />
-            </Link>
-          </div>
-
-          <p
-            className="text-[#667085] text-[16px] leading-[24px]"
-            style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
-          >
-            {post.excerpt}
-          </p>
+    <Link href={`/customer-stories/${post.slug}`} className="block">
+      <article className="flex flex-col gap-6 lg:gap-8 bg-white rounded-[30px] shadow-[0px_12px_16px_-4px_rgba(16,24,40,0.08),0px_4px_6px_-2px_rgba(16,24,40,0.03)] p-6 pb-8 w-full max-w-[338px] lg:max-w-none mx-auto lg:h-[580px] transition-all duration-300 hover:shadow-[0px_20px_24px_-4px_rgba(16,24,40,0.12),0px_8px_10px_-2px_rgba(16,24,40,0.05)] hover:-translate-y-2 group cursor-pointer">
+        {/* Media */}
+        <div className="relative w-full h-[240px] rounded-[30px] bg-[#0E1821] overflow-hidden flex-shrink-0 transition-transform duration-300 group-hover:scale-[1.02]">
+          {/* subtle grid effect */}
+          <div
+            className="absolute inset-0 opacity-[0.06] transition-opacity duration-300 group-hover:opacity-[0.08]"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px)",
+              backgroundSize: "24px 24px",
+            }}
+          />
         </div>
 
-        {/* Read more link removed on mobile per spec, keeping for consistency */}
-      </div>
-    </article>
+        {/* Copy */}
+        <div className="flex flex-col justify-between gap-8 lg:gap-8 flex-1">
+          <div className="flex flex-col gap-3">
+            <span
+              className="text-[#24823D] text-[14px] leading-[20px] font-semibold"
+              style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
+            >
+              {post.category}
+            </span>
+
+            <div className="flex items-start">
+              <h3
+                className="text-[#101828] text-[24px] leading-[32px] font-semibold flex-1 transition-colors duration-300 group-hover:text-[#24823D]"
+                style={{ fontFamily: '"Funnel Display", sans-serif' }}
+              >
+                {post.title}
+              </h3>
+              <div className="flex-shrink-0 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
+                <Image
+                  src="/assets/images/blog/arrow-up-right.svg"
+                  alt=""
+                  width={24}
+                  height={24}
+                  className="w-10 h-10"
+                />
+              </div>
+            </div>
+
+            <p
+              className="text-[#667085] text-[16px] leading-[24px]"
+              style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
+            >
+              {post.excerpt}
+            </p>
+          </div>
+
+          {/* Read more link removed on mobile per spec, keeping for consistency */}
+        </div>
+      </article>
+    </Link>
   );
 }

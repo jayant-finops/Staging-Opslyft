@@ -45,7 +45,7 @@ export default function AboutHeroSection({
       setCurrentBgIndex((prev) => (prev + 1) % backgroundImages.length);
     }, 4000);
     return () => clearInterval(intervalId);
-  }, []);
+  }, [backgroundImages.length]);
 
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">

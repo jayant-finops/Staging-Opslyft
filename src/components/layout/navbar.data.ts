@@ -1,7 +1,13 @@
+export type DropdownItem = {
+  label: string;
+  featureId: string;
+};
+
 export type DropdownCategory = {
   title: string;
   icon: string;
-  items: string[];
+  url: string;
+  items: DropdownItem[];
 };
 
 export type NavigationItem = {
@@ -26,6 +32,10 @@ export const navbarFallback: LocalNavbar = {
   logoSrc: "/assets/images/footer/opslyft-logo.svg",
   navigation: [
     {
+      title: "ABOUT US",
+      url: "/company",
+    },
+    {
       title: "PRODUCT",
       url: "/product",
       hasDropdown: true,
@@ -33,26 +43,36 @@ export const navbarFallback: LocalNavbar = {
         {
           title: "Cost Visibility",
           icon: "/assets/images/navbar/dropdown-feat1.svg",
+          url: "/product/cost-visibility",
           items: [
-            "AI Cost Allocation",
-            "Showback/Chargeback",
-            "K8s Cost Visibility",
-            "Custom Dashboards",
+            { label: "AI Cost Allocation", featureId: "ai-cost-allocation" },
+            { label: "Showback/Chargeback", featureId: "showback-chargeback" },
+            { label: "K8s Cost Visibility", featureId: "k8s-cost-visibility" },
+            { label: "Custom Dashboards", featureId: "custom-dashboards" },
           ],
         },
         {
           title: "Cost Control",
           icon: "/assets/images/navbar/dropdown-feat2.svg",
+          url: "/product/cost-control",
           items: [
-            "Anomaly Detection",
-            "Contextual Optimisation",
-            "Workflow Management",
+            { label: "Anomaly Detection", featureId: "anomaly-detection" },
+            {
+              label: "Contextual Optimisation",
+              featureId: "contextual-optimisation",
+            },
+            { label: "Workflow Management", featureId: "workflow-management" },
           ],
         },
         {
           title: "Cost Governance",
           icon: "/assets/images/navbar/dropdown-feat3.svg",
-          items: ["Asset Management", "Budgeting", "Unit Economics"],
+          url: "/product/cost-governance",
+          items: [
+            { label: "Asset Management", featureId: "asset-management" },
+            { label: "Budgeting", featureId: "budgeting" },
+            { label: "Unit Economics", featureId: "unit-economics" },
+          ],
         },
       ],
     },
@@ -60,10 +80,7 @@ export const navbarFallback: LocalNavbar = {
       title: "PRICING",
       url: "/pricing",
     },
-    {
-      title: "ABOUT US",
-      url: "/about",
-    },
+
     {
       title: "CUSTOMER STORIES",
       url: "/customer-stories",

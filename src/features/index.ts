@@ -6,3 +6,4 @@ export * from "./customer-stories";
 export * from "./blogs";
 export * from "./pricing";
 export * from "./company";
+export * from "./privacy";

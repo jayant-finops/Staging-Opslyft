@@ -3,9 +3,9 @@ import Image from "next/image";
 
 export default function ProductProblemSection() {
   return (
-    <section className="relative h-auto lg:h-[871px] bg-[#F1F1F1] -mt-[1px]">
+    <section className="relative h-auto lg:h-[805px] bg-[#F1F1F1] -mt-[1px]">
       {/* Decorative circles */}
-      <div className="pointer-events-none absolute inset-0 lg:h-[574px] lg:w-[574px] mx-auto mt-55">
+      <div className="pointer-events-none absolute inset-0 lg:h-[574px] lg:w-[574px] mx-auto mt-30">
         <Image
           src="/assets/images/problems/circles.svg"
           alt=""
@@ -25,7 +25,7 @@ export default function ProductProblemSection() {
             boxShadow: "0 2px 6px rgba(0,0,0,0.09)",
             fontFamily: '"IBM Plex Sans", sans-serif',
             letterSpacing: "1px",
-            fontWeight: 500,
+            fontWeight: 400,
             fontSize: 13,
             lineHeight: "22px",
           }}
@@ -77,7 +77,7 @@ export default function ProductProblemSection() {
           ].map((card, idx) => (
             <div
               key={idx}
-              className="flex flex-row justify-center items-center p-8 gap-[10px] w-full h-[173px] rounded-[27.4681px] shadow-[0px_5px_15px_rgba(0,0,0,0.25)] bg-gradient-to-br from-[rgba(69,131,48,0.08)] to-[rgba(15,29,11,0.08)]"
+              className="flex flex-row justify-center items-center p-8 gap-[10px] w-full h-[173px] rounded-[27.4681px] shadow-[0px_5px_15px_rgba(0,0,0,0.25)] bg-gradient-to-br from-[rgba(69,131,48,0.08)] to-[rgba(15,29,11,0.08)] backdrop-blur-[2px]"
             >
               {/* Content */}
               <div className="flex flex-col justify-center items-start gap-4 w-full max-w-[284px]">

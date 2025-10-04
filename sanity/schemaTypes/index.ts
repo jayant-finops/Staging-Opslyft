@@ -1,4 +1,13 @@
 import { type SchemaTypeDefinition } from "sanity";
+import privacyPolicy from "./privacyPolicy";
+import homeHero from "./homeHero";
+import testimonialsSection from "./testimonials";
+import struggleSection from "./struggleSection";
+import solutionsSection from "./solutionsSection";
+import aboutHero from "./aboutHero";
+import aboutMission from "./aboutMission";
+import companyTimeline from "./companyTimeline";
+import team from "./team";
 
 // Home page schemas
 const heroSchema: SchemaTypeDefinition = {
@@ -569,10 +578,14 @@ export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     // Home page schemas
     heroSchema,
+    homeHero, // New separate home hero schema
     testimonialsSectionSchema,
+    testimonialsSection, // New testimonials schema
     featureSchema,
     struggleSectionSchema,
+    struggleSection, // New struggle section schema
     solutionsSectionSchema,
+    solutionsSection, // New solutions section schema
 
     // Layout schemas
     footerSchema,
@@ -583,11 +596,18 @@ export const schema: { types: SchemaTypeDefinition[] } = {
 
     // About page schemas
     aboutHeroSchema,
+    aboutHero, // New about hero schema
     aboutMissionSchema,
+    aboutMission, // New about mission schema
 
     // Company page schemas
     companyTimelineSchema,
+    companyTimeline, // New company timeline schema
     teamSchema,
+    team, // New team schema
     joinSchema,
+
+    // Legal pages
+    privacyPolicy,
   ],
 };

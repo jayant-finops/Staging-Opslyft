@@ -9,7 +9,7 @@ import {
 } from "@/features/product";
 import { costControlFeatures } from "@/features/product/data";
 
-export default function ProductPage() {
+export default function CostControlPage() {
   return (
     <>
       <Navbar />
@@ -19,8 +19,8 @@ export default function ProductPage() {
         <ProductProblemSection />
         <ProductFeaturesSection
           features={costControlFeatures}
-          sectionTitle="Features Built for Real-World Cost Control"
-          sectionDescription="Managing cloud costs isn't just about spotting inefficiencies — it's about continuously improving performance, reliability, and spend efficiency across complex environments. That's where Opslyft's optimization engine comes in."
+          sectionTitle="Proactive Cost Control That Works"
+          sectionDescription="Stop reacting to cost spikes. With AI-powered anomaly detection, contextual optimization, and automated workflows, Opslyft helps you control costs before they spiral out of control."
         />
         <ProductWinsSection />
         <ProductBannerSection />

@@ -19,11 +19,12 @@ const ProductDropdown = ({
         {/* Left Column - Category Cards */}
         <div className="flex flex-col gap-4">
           {categories.map((category) => (
-            <div
+            <Link
               key={category.title}
-              className="flex flex-col justify-center items-start px-4 py-4 gap-2 bg-[#0B2A1A] border border-[#7C7C7C] rounded-[20px] shadow-[0px_4px_15px_rgba(0,0,0,0.04)]"
+              href={category.url}
+              className="flex flex-col justify-center items-start px-4 py-4 gap-2 bg-[#0B2A1A] border border-[#7C7C7C] rounded-[20px] shadow-[0px_4px_15px_rgba(0,0,0,0.04)] hover:border-[#24823D] transition-colors"
             >
-              <div className="relative w-[41px] h-[39px]">
+              <div className="relative w-[41px] h-[39px] ">
                 <Image
                   src={category.icon}
                   alt={category.title}
@@ -37,7 +38,7 @@ const ProductDropdown = ({
               >
                 {category.title}
               </h3>
-            </div>
+            </Link>
           ))}
         </div>
 
@@ -48,12 +49,25 @@ const ProductDropdown = ({
               <div className="px-4 py-4 flex flex-col gap-2">
                 {category.items.map((item) => (
                   <Link
-                    key={item}
-                    href={`/product/${item.toLowerCase().replace(/\s+/g, "-")}`}
+                    key={item.featureId}
+                    href={`${category.url}#${item.featureId}`}
+                    scroll={false}
+                    onClick={(e) => {
+                      const currentPath = window.location.pathname;
+                      const targetPath = category.url;
+
+                      // If on the same page, manually update hash and trigger event
+                      if (currentPath === targetPath) {
+                        e.preventDefault();
+                        window.location.hash = item.featureId;
+                        // Manually dispatch hashchange event
+                        window.dispatchEvent(new HashChangeEvent("hashchange"));
+                      }
+                    }}
                     className="text-[#F1F1F1] text-[15px] leading-[20px] hover:text-white transition-colors"
                     style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
                   >
-                    {item}
+                    {item.label}
                   </Link>
                 ))}
               </div>
@@ -66,7 +80,7 @@ const ProductDropdown = ({
       </div>
 
       {/* Vertical divider */}
-      <div className="absolute left-[214px] top-6 bottom-6 w-[1px] bg-[#343434]" />
+      <div className="absolute left-[220px] top-6 bottom-6 w-[1px] bg-[#343434]" />
     </div>
   );
 };
@@ -103,8 +117,10 @@ export default function Navbar() {
       }
 
       // Beyond 100vh: Check if we're in the features section with stacking animation
-      // Look for any element with id starting with "feature-"
-      const featureElements = document.querySelectorAll('[id^="feature-"]');
+      // Look for any element with data-feature-card attribute
+      const featureElements = document.querySelectorAll(
+        '[data-feature-card="true"]'
+      );
       let inFeaturesSection = false;
 
       if (featureElements.length > 0) {
@@ -225,9 +241,9 @@ export default function Navbar() {
                     >
                       {item.hasDropdown ? (
                         <div
-                          className={`flex items-center gap-1 px-6 py-2 rounded-[10px] border transition-all cursor-pointer ${
+                          className={`flex items-center py-2 rounded-[10px] border transition-all cursor-pointer ${
                             activeDropdown === item.title
-                              ? "bg-[#0B2A1A] border-[#7C7C7C]"
+                              ? "bg-[#0B2A1A] border-[#7C7C7C] px-3"
                               : "bg-transparent border-transparent"
                           }`}
                         >
@@ -275,10 +291,14 @@ export default function Navbar() {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: 10 }}
                             transition={{ duration: 0.2 }}
-                            className="absolute left-0 top-full mt-6 w-[529px] rounded-[30px] border border-white/8 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_8px_20px_rgba(0,0,0,0.25)] z-50"
+                            className="absolute left-0 top-full mt-6 w-[529px] rounded-[30px] z-50"
                             style={{
                               background:
                                 "linear-gradient(176.26deg, rgba(0, 25, 16, 0.7) 7.42%, rgba(7, 8, 8, 0.49) 102.27%)",
+                              boxShadow:
+                                "inset 0px 3px 5px rgba(255, 255, 255, 0.5)",
+                              backdropFilter: "blur(3.4px)",
+                              WebkitBackdropFilter: "blur(3.4px)",
                             }}
                           >
                             <ProductDropdown
@@ -465,7 +485,14 @@ export default function Navbar() {
                                     (category, idx) => (
                                       <div key={category.title}>
                                         {/* Category Card */}
-                                        <div className="flex items-center gap-2 px-4 py-2 bg-[#0B2A1A] border border-[#7C7C7C] rounded-[10px] shadow-[0px_4px_15px_rgba(0,0,0,0.04)]">
+                                        <Link
+                                          href={category.url}
+                                          onClick={() => {
+                                            setIsMobileMenuOpen(false);
+                                            setMobileDropdownOpen(false);
+                                          }}
+                                          className="flex items-center gap-2 px-4 py-2 bg-[#0B2A1A] border border-[#7C7C7C] rounded-[10px] shadow-[0px_4px_15px_rgba(0,0,0,0.04)] hover:border-[#24823D] transition-colors"
+                                        >
                                           <div className="relative w-8 h-8 flex-shrink-0">
                                             <Image
                                               src={category.icon}
@@ -483,15 +510,35 @@ export default function Navbar() {
                                           >
                                             {category.title}
                                           </h3>
-                                        </div>
+                                        </Link>
 
                                         {/* Category Items */}
                                         <div className="px-4 py-4 flex flex-col gap-4">
                                           {category.items.map((item) => (
                                             <Link
-                                              key={item}
-                                              href={`/product/${item.toLowerCase().replace(/\s+/g, "-")}`}
-                                              onClick={() => {
+                                              key={item.featureId}
+                                              href={`${category.url}#${item.featureId}`}
+                                              scroll={false}
+                                              onClick={(e) => {
+                                                const currentPath =
+                                                  window.location.pathname;
+                                                const targetPath = category.url;
+
+                                                // If on the same page, manually update hash and trigger event
+                                                if (
+                                                  currentPath === targetPath
+                                                ) {
+                                                  e.preventDefault();
+                                                  window.location.hash =
+                                                    item.featureId;
+                                                  // Manually dispatch hashchange event
+                                                  window.dispatchEvent(
+                                                    new HashChangeEvent(
+                                                      "hashchange"
+                                                    )
+                                                  );
+                                                }
+
                                                 setIsMobileMenuOpen(false);
                                                 setMobileDropdownOpen(false);
                                               }}
@@ -501,7 +548,7 @@ export default function Navbar() {
                                                   '"IBM Plex Sans", sans-serif',
                                               }}
                                             >
-                                              {item}
+                                              {item.label}
                                             </Link>
                                           ))}
                                         </div>

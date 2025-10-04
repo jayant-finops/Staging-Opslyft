@@ -218,7 +218,7 @@ export default function SolutionsSection({ data }: SolutionsSectionProps) {
                 className={`relative z-10 space-y-4 sm:space-y-[83px] text-left w-[343px] lg:w-[455px] ${index % 2 === 1 ? "lg:col-start-2 lg:ml-16" : ""} h-auto lg:h-[535px] order-2 lg:order-none `}
               >
                 <h3
-                  className="text-[34px] md:text-[40px] ml-0 sm:ml-2 font-semibold md:font-medium text-gray-900 md:text-[#1d1d1d] max-w-full sm:max-w-md lg:max-w-lg leading-[40px] md:leading-[37px] text-left"
+                  className="text-[24px] md:text-[40px] ml-0 sm:ml-2 font-semibold md:font-medium text-gray-900 md:text-[#1d1d1d] max-w-full sm:max-w-md lg:max-w-lg leading-[1.2] md:leading-[37px] text-left "
                   style={{ fontFamily: '"Funnel Display", sans-serif' }}
                 >
                   {feature.title}

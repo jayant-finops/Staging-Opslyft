@@ -5,3 +5,6 @@ export { default as ProductProblemSection } from "./components/problem-section";
 export { default as ProductWinsSection } from "./components/wins-section";
 export { default as ProductFeaturesSection } from "./components/features-section";
 export { default as ProductBannerSection } from "./components/banner-section";
+
+// Export data and types
+export * from "./data";

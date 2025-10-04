@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { LegacyButton } from "@/components/ui";
 
 export default function CustomerStoriesHeroSection() {
@@ -23,25 +24,29 @@ export default function CustomerStoriesHeroSection() {
           style={{ boxShadow: "0px 5px 12px rgba(36, 130, 56, 0.23)" }}
         />
 
-        {/* Green glow rectangle (rotated gradient) */}
-        <div
-          className="pointer-events-none absolute left-[16px] -top-20 h-[1924.27px] w-[477.05px] -rotate-[89.99deg] opacity-60 blur-[50px] lg:block hidden"
-          style={{
-            background:
-              "linear-gradient(261.34deg, rgba(53, 102, 68, 0.5) -21.5%, rgba(17, 150, 57, 0) 72.38%)",
-            mixBlendMode: "plus-lighter" as React.CSSProperties["mixBlendMode"],
-          }}
-        />
+        {/* Hero Background SVG - Desktop */}
+        <div className="pointer-events-none absolute inset-x-0 top-[-100] w-full h-[678px] hidden lg:flex justify-center">
+          <Image
+            src="/assets/images/customer-hero/hero-bg.svg"
+            alt=""
+            width={1591}
+            height={678}
+            className="w-full h-full object-cover object-top"
+            priority
+          />
+        </div>
 
-        {/* Mobile blur variant */}
-        <div
-          className="pointer-events-none absolute lg:hidden left-1/2 -translate-x-1/2 -top-20 h-[459.53px] w-[477.05px] -rotate-[89.99deg] opacity-60 blur-[50px]"
-          style={{
-            background:
-              "linear-gradient(261.34deg, rgba(53, 102, 68, 0.5) -21.5%, rgba(17, 150, 57, 0) 72.38%)",
-            mixBlendMode: "plus-lighter" as React.CSSProperties["mixBlendMode"],
-          }}
-        />
+        {/* Hero Background SVG - Mobile */}
+        <div className="pointer-events-none absolute inset-x-0 top-0 w-full h-[400px] lg:hidden flex justify-center">
+          <Image
+            src="/assets/images/customer-hero/hero-bg.svg"
+            alt=""
+            width={1591}
+            height={678}
+            className="w-full h-full object-cover object-top"
+            priority
+          />
+        </div>
 
         <div className="relative mx-auto px-4 sm:px-6 lg:px-8">
           <div className="min-h-[603px] md:min-h-[669px] flex items-center">

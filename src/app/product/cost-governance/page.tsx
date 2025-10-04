@@ -7,9 +7,9 @@ import {
   ProductFeaturesSection,
   ProductBannerSection,
 } from "@/features/product";
-import { costControlFeatures } from "@/features/product/data";
+import { costGovernanceFeatures } from "@/features/product/data";
 
-export default function ProductPage() {
+export default function CostGovernancePage() {
   return (
     <>
       <Navbar />
@@ -18,9 +18,9 @@ export default function ProductPage() {
         <ProductTrustSection />
         <ProductProblemSection />
         <ProductFeaturesSection
-          features={costControlFeatures}
-          sectionTitle="Features Built for Real-World Cost Control"
-          sectionDescription="Managing cloud costs isn't just about spotting inefficiencies — it's about continuously improving performance, reliability, and spend efficiency across complex environments. That's where Opslyft's optimization engine comes in."
+          features={costGovernanceFeatures}
+          sectionTitle="Governance and Planning for Cloud Maturity"
+          sectionDescription="Build a foundation for long-term cost management with asset tracking, budget management, and unit economics that connect cloud spend to business value."
         />
         <ProductWinsSection />
         <ProductBannerSection />

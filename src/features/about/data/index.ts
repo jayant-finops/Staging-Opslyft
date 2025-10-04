@@ -142,12 +142,56 @@ export const teamFallback: LocalTeamData = {
   investorsHeading: "Backed by Top Industry Investors",
   investorsSubheading:
     "Discover the visionary investors behind OpsLyft, who empower engineering teams to streamline their cloud infrastructure and reduce costs.",
-  investors: Array.from({ length: 8 }, () => ({
-    name: "Ankit Senapati",
-    org: "Innovaccer",
-    imageSrc: "/assets/images/team/investor.png",
-    linkedin: "#",
-  })),
+  investors: [
+    {
+      name: "Vijay Shekar Sharma",
+      org: "CEO, Paytm",
+      imageSrc: "/assets/images/team/Vijay.png",
+      linkedin: "#",
+    },
+    {
+      name: "Gaurav Munjal",
+      org: "CEO, Unacademy",
+      imageSrc: "/assets/images/team/Gaurav.png",
+      linkedin: "#",
+    },
+    {
+      name: "Abhinav Sinha",
+      org: "Global COO, OYO",
+      imageSrc: "/assets/images/team/Abhinav.png",
+      linkedin: "#",
+    },
+    {
+      name: "Rajesh Yabaji",
+      org: "Co-Founder, Blackbuck",
+      imageSrc: "/assets/images/team/Rajesh.png",
+      linkedin: "#",
+    },
+    {
+      name: "Ankit Mathuria",
+      org: "CTO, OYO",
+      imageSrc: "/assets/images/team/Ankit.png",
+      linkedin: "#",
+    },
+    {
+      name: "Ritesh Malik",
+      org: "CEO, Innov8 Coworking",
+      imageSrc: "/assets/images/team/Ritesh.png",
+      linkedin: "#",
+    },
+    {
+      name: "Ankit Senapati",
+      org: "Innovaccer",
+      imageSrc: "/assets/images/team/investor.png",
+      linkedin: "#",
+    },
+    {
+      name: "Anshoo Sharma",
+      org: "CEO, Magicpin",
+      imageSrc: "/assets/images/team/Anshoo.png",
+      linkedin: "#",
+    },
+  ],
 };
 
 export interface LocalJoinSection {
