@@ -578,14 +578,11 @@ export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     // Home page schemas
     heroSchema,
-    homeHero, // New separate home hero schema
-    testimonialsSectionSchema,
-    testimonialsSection, // New testimonials schema
+    homeHero, // Separate home hero schema with all fields
     featureSchema,
-    struggleSectionSchema,
-    struggleSection, // New struggle section schema
-    solutionsSectionSchema,
-    solutionsSection, // New solutions section schema
+    testimonialsSection, // Complete testimonials schema
+    struggleSection, // Complete struggle section schema
+    solutionsSection, // Complete solutions section schema
 
     // Layout schemas
     footerSchema,
@@ -595,16 +592,12 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     pricingPageSchema,
 
     // About page schemas
-    aboutHeroSchema,
-    aboutHero, // New about hero schema
-    aboutMissionSchema,
-    aboutMission, // New about mission schema
+    aboutHero, // Complete about hero schema
+    aboutMission, // Complete about mission schema
 
     // Company page schemas
-    companyTimelineSchema,
-    companyTimeline, // New company timeline schema
-    teamSchema,
-    team, // New team schema
+    companyTimeline, // Complete company timeline schema
+    team, // Complete team schema
     joinSchema,
 
     // Legal pages
