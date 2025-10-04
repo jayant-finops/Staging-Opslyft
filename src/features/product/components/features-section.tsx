@@ -11,17 +11,24 @@ export default function ProductFeaturesSection() {
       title: "Features Built for Real-World Cost Control",
       kicker: "Stop chasing engineers on Slack. Start closing tickets.",
       points: [
-        "Closed-Loop FinOps: Every anomaly, recommendation, and allocation dispute becomes a tracked ticket — full visibility from detection → action → realized savings.",
-        "Clear Ownership & SLAs: Tickets auto-assign to the right service owners with deadlines, eliminating ambiguity and driving accountability.",
-        "Embedded in Workflows: Deep integrations with Jira, ServiceNow, Asana, and Slack ensure engineers see optimization tickets in the same backlog as product work.",
+        {
+          heading: "Closed-Loop FinOps",
+          description:
+            "Every anomaly, recommendation, and allocation dispute becomes a tracked ticket — full visibility from detection → action → realized savings.",
+        },
+        {
+          heading: "Clear Ownership & SLAs",
+          description:
+            "Tickets auto-assign to the right service owners with deadlines, eliminating ambiguity and driving accountability.",
+        },
+        {
+          heading: "Embedded in Workflows",
+          description:
+            "Deep integrations with Jira, ServiceNow, Asana, and Slack ensure engineers see optimization tickets in the same backlog as product work.",
+        },
       ],
-      outcome:
-        "Outcome: Finance and Engineering stop firefighting; anomalies are explained and resolved faster.",
-      visual: {
-        title: "Showback/Chargeback",
-        subtitle:
-          "Monitor savings realized, dismissed opportunities, and pending actions.",
-      },
+
+      visualUrl: "/assets/images/features/feature1-card.svg",
     },
     {
       tabLabel: "AI-Powered Anomaly Detection",
@@ -29,16 +36,25 @@ export default function ProductFeaturesSection() {
       title: "AI-Powered Anomaly Detection",
       kicker: "Stop chasing engineers on Slack. Start closing tickets.",
       points: [
-        "100% accuracy: No anomalies missed, thanks to Meta Prophet modeling trained on customer data.",
-        "Context-aware detection: Seasonality & spend patterns ensure only relevant spikes are flagged.",
-        "Root cause and diagnosis built-in: Move beyond alerts. Know why the spike happened and how to fix it.",
+        {
+          heading: "100% accuracy",
+          description:
+            "No anomalies missed, thanks to Meta Prophet modeling trained on customer data.",
+        },
+        {
+          heading: "Context-aware detection",
+          description:
+            "Seasonality & spend patterns ensure only relevant spikes are flagged.",
+        },
+        {
+          heading: "Root cause and diagnosis built-in",
+          description:
+            "Move beyond alerts. Know why the spike happened and how to fix it.",
+        },
       ],
       outcome:
-        "Outcome: Finance and Engineering stop firefighting; anomalies are explained and resolved faster.",
-      visual: {
-        title: "Anomaly Detection",
-        subtitle: "Search AI",
-      },
+        "Finance and Engineering stop firefighting; anomalies are explained and resolved faster.",
+      visualUrl: "/assets/images/features/feature2-card.svg",
     },
     {
       tabLabel: "Workflow Management That Drives Action",
@@ -46,15 +62,23 @@ export default function ProductFeaturesSection() {
       title: "Workflow Management That Drives Action",
       kicker: "Stop chasing engineers on Slack. Start closing tickets.",
       points: [
-        "Closed-Loop FinOps: Insight → Action → Savings with measurable outcomes.",
-        "Ownership & SLAs: Auto-assignment, due dates, and reminders to drive accountability.",
-        "Integrations: Jira, ServiceNow, Asana, Slack — embedded where engineers already work.",
+        {
+          heading: "Closed-Loop FinOps",
+          description: "Insight → Action → Savings with measurable outcomes.",
+        },
+        {
+          heading: "Ownership & SLAs",
+          description:
+            "Auto-assignment, due dates, and reminders to drive accountability.",
+        },
+        {
+          heading: "Integrations",
+          description:
+            "Jira, ServiceNow, Asana, Slack — embedded where engineers already work.",
+        },
       ],
-      outcome: "Outcome: Less chaos, more accountability, measurable ROI.",
-      visual: {
-        title: "ROI Visibility",
-        subtitle: "Track",
-      },
+      outcome: "Less chaos, more accountability, measurable ROI.",
+      visualUrl: "/assets/images/features/feature3-card.svg",
     },
     {
       tabLabel: "Pravin powered anomaly detection",
@@ -62,15 +86,23 @@ export default function ProductFeaturesSection() {
       title: "Workflow Management That Drives Action",
       kicker: "Stop chasing engineers on Slack. Start closing tickets.",
       points: [
-        "Closed-Loop FinOps: Insight → Action → Savings with measurable outcomes.",
-        "Ownership & SLAs: Auto-assignment, due dates, and reminders to drive accountability.",
-        "Integrations: Jira, ServiceNow, Asana, Slack — embedded where engineers already work.",
+        {
+          heading: "Closed-Loop FinOps",
+          description: "Insight → Action → Savings with measurable outcomes.",
+        },
+        {
+          heading: "Ownership & SLAs",
+          description:
+            "Auto-assignment, due dates, and reminders to drive accountability.",
+        },
+        {
+          heading: "Integrations",
+          description:
+            "Jira, ServiceNow, Asana, Slack — embedded where engineers already work.",
+        },
       ],
-      outcome: "Outcome: Less chaos, more accountability, measurable ROI.",
-      visual: {
-        title: "ROI Visibility",
-        subtitle: "Track",
-      },
+      outcome: "Less chaos, more accountability, measurable ROI.",
+      visualUrl: "/assets/images/features/feature4-card.svg",
     },
   ];
 
@@ -107,7 +139,7 @@ export default function ProductFeaturesSection() {
           const elementBottom = elementTop + rect.height;
 
           // Calculate card offset dynamically (same formula as sticky top)
-          const cardOffset = isMobile ? 100 : 225 + idx * 20;
+          const cardOffset = isMobile ? 100 : 120 + idx * 20;
           const viewPosition = scrollPosition + cardOffset;
 
           // Check if view position is within this card's range
@@ -176,7 +208,7 @@ export default function ProductFeaturesSection() {
 
     // The sticky top offset for positioning (responsive)
     const checkIsMobile = window.innerWidth < 1024;
-    const stickyTop = checkIsMobile ? 60 : 225 + index * 20;
+    const stickyTop = checkIsMobile ? 60 : 120 + index * 20;
 
     // Calculate final scroll position
     const scrollTarget = containerTop + accumulatedHeight - stickyTop;
@@ -191,19 +223,19 @@ export default function ProductFeaturesSection() {
   return (
     <section className="relative" style={{ background: "#F1F1F1" }}>
       {/* Heading */}
-      <div className="relative mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8 pt-8 pb-2">
-        <div className="flex flex-col items-center gap-4">
+      <div className="relative mx-auto max-w-[375px] lg:max-w-[1440px] px-6 sm:px-6 lg:px-8 pt-[60px] lg:pt-8 pb-6 lg:pb-2">
+        <div className="flex flex-col items-center justify-center gap-4 lg:gap-4">
           <div
-            className="inline-flex items-center justify-center px-[14px] py-[4px] rounded-full border text-[#24823D] shadow-sm"
+            className="inline-flex items-center justify-center px-[14px] py-[4px] rounded-full border text-[#24823D] shadow-sm w-[167px] lg:w-auto h-[25px] lg:h-auto"
             style={{
               background: "rgba(36, 130, 61, 0.10)",
               borderColor: "rgba(211, 211, 211, 0.25)",
               boxShadow: "0 2px 6px rgba(0,0,0,0.09)",
               fontFamily: '"IBM Plex Sans", sans-serif',
               letterSpacing: "1px",
-              fontWeight: 500,
+              fontWeight: 400,
               fontSize: 13,
-              lineHeight: "22px",
+              lineHeight: "17px",
               textTransform: "uppercase",
             }}
           >
@@ -211,29 +243,23 @@ export default function ProductFeaturesSection() {
           </div>
 
           <h2
-            className="text-center text-[#202020] font-semibold"
+            className="text-center text-[#202020] font-semibold text-[28px] lg:text-[48px] leading-[25px] lg:leading-[55px] w-full max-w-[354.98px] lg:max-w-[770px]"
             style={{
               fontFamily: '"Funnel Display", sans-serif',
-              fontSize: 48,
-              lineHeight: "55px",
-              maxWidth: 770,
             }}
           >
             Features Built for Real-World Cost Control
           </h2>
 
           <p
-            className="text-center text-[#154B23] font-light"
+            className="text-center text-[#154B23] font-light text-[14px] leading-[150%] w-full max-w-[339.56px] lg:max-w-[770px]"
             style={{
               fontFamily: '"IBM Plex Sans", sans-serif',
-              fontSize: 14,
-              lineHeight: "150%",
-              maxWidth: 770,
             }}
           >
-            Managing cloud costs isn’t just about spotting inefficiencies — it’s
+            Managing cloud costs isn't just about spotting inefficiencies — it's
             about continuously improving performance, reliability, and spend
-            efficiency across complex environments. That’s where Opslyft’s
+            efficiency across complex environments. That's where Opslyft's
             optimization engine comes in.
           </p>
         </div>
@@ -242,7 +268,7 @@ export default function ProductFeaturesSection() {
       {/* Feature toggle row + stacked cards */}
       <div className="relative mx-auto max-w-[1170px] px-4 sm:px-6 lg:px-0 pb-[24px] lg:pb-[90px] 2xl:pb-[110px] ">
         {/* Toggle row */}
-        <div className="w-full mb-6 pt-20 lg:sticky top-5 lg:top-14 z-[1]">
+        <div className="w-full mb-6 pt-20 lg:sticky top-5 lg:-top-12 z-[1]">
           <div className="flex flex-col md:flex-row md:justify-center md:items-center gap-1 md:gap-3">
             {features.map((item, i) => {
               const isActive = i === activeTab;
@@ -288,8 +314,8 @@ export default function ProductFeaturesSection() {
               id={`feature-${idx}`}
               className="rounded-[10px] lg:rounded-[30px] lg:bg-white lg:shadow-[0_5px_15px_rgba(8,15,52,0.04)] py-6 px-4 lg:p-6 lg:sticky"
               style={{
-                top: isMobile ? 100 : 225 + idx * 20,
-                scrollMarginTop: isMobile ? 100 : 225 + idx * 20,
+                top: isMobile ? 100 : 120 + idx * 20,
+                scrollMarginTop: isMobile ? 100 : 120 + idx * 20,
                 zIndex: 10 + idx,
               }}
             >
@@ -347,31 +373,54 @@ export default function ProductFeaturesSection() {
                             />
                           </svg>
                         </div>
-                        <p
-                          key={i}
-                          className="text-[#0E1821] text-[12px] lg:text-[16px] leading-[16px] lg:leading-[24px] font-semibold"
-                          style={{
-                            fontFamily: '"IBM Plex Sans", sans-serif',
-                          }}
-                        >
-                          {p}
-                        </p>
+                        <div className="flex-1">
+                          <p
+                            className="text-[#0E1821] text-[12px] lg:text-[16px] leading-[16px] lg:leading-[24px] font-semibold"
+                            style={{
+                              fontFamily: '"IBM Plex Sans", sans-serif',
+                              fontWeight: 600,
+                            }}
+                          >
+                            {p.heading}
+                          </p>
+                          <p
+                            className="text-[#0E1821] text-[12px] lg:text-[16px] leading-[16px] lg:leading-[24px]"
+                            style={{
+                              fontFamily: '"IBM Plex Sans", sans-serif',
+                              fontWeight: 400,
+                            }}
+                          >
+                            {p.description}
+                          </p>
+                        </div>
                       </div>
                     ))}
                   </div>
 
-                  <div
-                    className="text-[#0E1821] pt-2"
-                    style={{
-                      fontFamily: '"IBM Plex Sans", sans-serif',
-                      fontSize: 18,
-                      lineHeight: "30px",
-                      fontWeight: 600,
-                    }}
-                  >
-                    {f.outcome}
+                  <div className="flex-1 hidden lg:block">
+                    <p
+                      className="text-[#0E1821] "
+                      style={{
+                        fontFamily: '"IBM Plex Sans", sans-serif',
+                        fontSize: 18,
+                        lineHeight: "100%",
+                        fontWeight: 600,
+                      }}
+                    >
+                      {f.outcome && "Outcome"}
+                    </p>
+                    <p
+                      className="text-[#0E1821]"
+                      style={{
+                        fontFamily: '"IBM Plex Sans", sans-serif',
+                        fontSize: 16,
+                        lineHeight: "30px",
+                        fontWeight: 400,
+                      }}
+                    >
+                      {f.outcome}
+                    </p>
                   </div>
-
                   <button
                     className="w-fit text-[#24823D]"
                     style={{
@@ -389,8 +438,8 @@ export default function ProductFeaturesSection() {
                 <div className="w-full lg:flex-shrink-0 lg:max-w-[592px] order-1 lg:order-2">
                   <div className="relative w-full h-[348px] lg:h-[601px] rounded-[30px] overflow-hidden">
                     <Image
-                      src={`/assets/images/features/feature${idx + 1}-card.svg`}
-                      alt={`${f.visual.title} visualization`}
+                      src={f.visualUrl}
+                      alt={`${f.badge} visualization`}
                       fill
                       className="object-cover"
                     />

@@ -117,7 +117,7 @@ export default function TimelineSection({ data }: Props) {
 
       {/* decorative circles on top */}
       <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[280px] pointer-events-none"
+        className="lg:hidden absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[280px] pointer-events-none"
         aria-hidden
       >
         <Image
@@ -126,6 +126,21 @@ export default function TimelineSection({ data }: Props) {
           fill
           className="object-contain"
           priority={false}
+        />
+      </div>
+
+      <div
+        className="hidden lg:block absolute top-[0px] left-1/2 -translate-x-1/2 w-[874px] h-[374px] pointer-events-none "
+        aria-hidden
+      >
+        <Image
+          src="/assets/images/story/circles-pc.svg"
+          alt="Decorative circles"
+          fill
+          className="object-contain"
+          priority={false}
+          // width={1274}
+          // height={374}
         />
       </div>
 
@@ -142,10 +157,10 @@ export default function TimelineSection({ data }: Props) {
         />
 
         {/* left-side line with progress (mobile) */}
-        <div className="md:hidden absolute left-4 top-8 bottom-62 w-px bg-[#afafaf]" />
+        <div className="md:hidden absolute left-4 top-6 bottom-68 w-px bg-[#afafaf]" />
         <motion.div
           style={{ scaleY: mobileScaleWithLead }}
-          className="md:hidden origin-top absolute left-3.6 top-[-16] h-[1000px] w-[2px] bg-[#24823D] shadow-[0_0_12px_rgba(36,130,61,0.45)] rounded"
+          className="md:hidden origin-top absolute left-3.6 top-[32] h-[940px] w-[2px] bg-[#24823D] shadow-[0_0_12px_rgba(36,130,61,0.45)] rounded"
         />
 
         <div className="mt-16 space-y-10 lg:space-y-[140px] ">

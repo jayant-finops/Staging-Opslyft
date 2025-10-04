@@ -22,7 +22,7 @@ export default function JoinSection({ data }: Props) {
       style={{ backgroundColor: "#11301F" }}
     >
       {/* Decorative circles behind team images */}
-      <div className="absolute bottom-[65px] left-[58%] -translate-x-1/2 w-[400px] h-[400px] lg:right-[-210px] lg:top-[170px] lg:left-auto lg:translate-x-0 lg:-translate-y-1/2 lg:w-1/2 lg:h-full 2xl:right-[-340px] 2xl:top-[170px] pointer-events-none">
+      {/* <div className="absolute bottom-[65px] left-[58%] -translate-x-1/2 w-[400px] h-[400px] lg:right-[-210px] lg:top-[170px] lg:left-auto lg:translate-x-0 lg:-translate-y-1/2 lg:w-1/2 lg:h-full 2xl:right-[-340px] 2xl:top-[170px] pointer-events-none">
         <Image
           src="/assets/images/about--missio/circles.png"
           alt="Decorative circles"
@@ -30,12 +30,12 @@ export default function JoinSection({ data }: Props) {
           className="object-contain"
           priority={false}
         />
-      </div>
+      </div> */}
 
       {/* Mobile team images - bottom center */}
-      <div className="absolute bottom-[50px] left-1/2 -translate-x-1/2 w-[350px] h-[350px] opacity-40 lg:hidden pointer-events-none">
+      <div className="absolute bottom-[40px] left-1/2 -translate-x-1/2 w-[350px] h-[350px] lg:hidden pointer-events-none">
         <Image
-          src="/assets/images/join/team-mobile.png"
+          src={bg}
           alt="Join Team Mobile"
           fill
           className="object-contain object-center"
@@ -45,7 +45,7 @@ export default function JoinSection({ data }: Props) {
       </div>
 
       {/* Desktop team images - positioned on the right */}
-      <div className="hidden lg:block absolute lg:right-[-210px] lg:top-[250px] 2xl:right-[-340px] 2xl:top-[250px] -translate-y-1/2 w-1/2 h-full opacity-40 pointer-events-none">
+      <div className="hidden lg:block absolute lg:right-[0px] lg:top-[265px] 2xl:right-[240px] 2xl:top-[265px] -translate-y-1/2 w-[604px] h-[542px]  pointer-events-none">
         <Image
           src={bg}
           alt="Join Team Desktop"

@@ -64,7 +64,7 @@ export default function ProductBannerSection() {
                   className="text-[18px] leading-[16px] font-semibold text-center"
                   style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
                 >
-                  Book a demo
+                  Speak to Us
                 </span>
               </button>
             </Link>

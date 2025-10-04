@@ -1,11 +1,14 @@
+export type DropdownCategory = {
+  title: string;
+  icon: string;
+  items: string[];
+};
+
 export type NavigationItem = {
   title: string;
   url: string;
   hasDropdown?: boolean;
-  dropdownItems?: {
-    title: string;
-    url: string;
-  }[];
+  dropdownCategories?: DropdownCategory[];
 };
 
 export type LocalNavbar = {
@@ -23,24 +26,47 @@ export const navbarFallback: LocalNavbar = {
   logoSrc: "/assets/images/footer/opslyft-logo.svg",
   navigation: [
     {
-      title: "WHY OPSLYFT?",
-      url: "/why-opslyft",
-    },
-    {
       title: "PRODUCT",
       url: "/product",
+      hasDropdown: true,
+      dropdownCategories: [
+        {
+          title: "Cost Visibility",
+          icon: "/assets/images/navbar/dropdown-feat1.svg",
+          items: [
+            "AI Cost Allocation",
+            "Showback/Chargeback",
+            "K8s Cost Visibility",
+            "Custom Dashboards",
+          ],
+        },
+        {
+          title: "Cost Control",
+          icon: "/assets/images/navbar/dropdown-feat2.svg",
+          items: [
+            "Anomaly Detection",
+            "Contextual Optimisation",
+            "Workflow Management",
+          ],
+        },
+        {
+          title: "Cost Governance",
+          icon: "/assets/images/navbar/dropdown-feat3.svg",
+          items: ["Asset Management", "Budgeting", "Unit Economics"],
+        },
+      ],
     },
     {
       title: "PRICING",
       url: "/pricing",
     },
     {
-      title: "RESOURCES",
-      url: "/resources",
+      title: "ABOUT US",
+      url: "/about",
     },
     {
-      title: "COMPANY",
-      url: "/company",
+      title: "CUSTOMER STORIES",
+      url: "/customer-stories",
     },
     {
       title: "DOCS",

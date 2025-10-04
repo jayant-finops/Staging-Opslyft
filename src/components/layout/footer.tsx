@@ -146,14 +146,23 @@ export default function Footer() {
               className="flex flex-wrap justify-center lg:justify-start gap-4 sm:gap-6 text-[#bababa] text-xs"
               style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
             >
-              {footerFallback.legal.legalLinks.map((link) => (
-                <a
+              {footerFallback.legal.legalLinks.map((link, index) => (
+                <div
                   key={link.title}
-                  href={link.url}
-                  className="text-gray-400 hover:text-white text-xs sm:text-sm transition-colors"
+                  className="flex items-center gap-4 sm:gap-6"
                 >
-                  {link.title}
-                </a>
+                  <a
+                    href={link.url}
+                    className="text-gray-400 hover:text-white text-xs sm:text-sm transition-colors"
+                  >
+                    {link.title}
+                  </a>
+                  {index < footerFallback.legal.legalLinks.length - 1 && (
+                    <span className="text-gray-400 text-lg sm:text-xl font-light">
+                      |
+                    </span>
+                  )}
+                </div>
               ))}
             </div>
             {/* Legal info */}
