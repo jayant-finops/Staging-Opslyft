@@ -29,7 +29,7 @@ export default function CustomerStoriesHeroSection() {
           style={{
             background:
               "linear-gradient(261.34deg, rgba(53, 102, 68, 0.5) -21.5%, rgba(17, 150, 57, 0) 72.38%)",
-            mixBlendMode: "plus-lighter" as any,
+            mixBlendMode: "plus-lighter" as React.CSSProperties["mixBlendMode"],
           }}
         />
 
@@ -39,7 +39,7 @@ export default function CustomerStoriesHeroSection() {
           style={{
             background:
               "linear-gradient(261.34deg, rgba(53, 102, 68, 0.5) -21.5%, rgba(17, 150, 57, 0) 72.38%)",
-            mixBlendMode: "plus-lighter" as any,
+            mixBlendMode: "plus-lighter" as React.CSSProperties["mixBlendMode"],
           }}
         />
 
