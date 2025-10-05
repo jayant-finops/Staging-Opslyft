@@ -3,7 +3,7 @@ name: Production Environment Deployment - Opslyft V2
 on:
   push:
     branches:
-      - ghtest
+      - production
 
 env:
   AWS_REGION: us-east-1
@@ -17,7 +17,7 @@ env:
 
 jobs:
   build-and-deploy:
-    name: Build and Deploy to Staging
+    name: Build and Deploy to Production
     runs-on: ubuntu-latest
     environment: production
 
@@ -207,4 +207,4 @@ jobs:
           echo "**Created By:** @${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
           echo "**Secret Name:** ${{ env.SECRET_NAME }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Note:** This deployment was automatically triggered by a push to the staging branch." >> $GITHUB_STEP_SUMMARY 
+          echo "**Note:** This deployment was automatically triggered by a push to the production branch." >> $GITHUB_STEP_SUMMARY 
