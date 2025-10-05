@@ -1,9 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import { logoRowFallback } from "@/features/home/data/testimonials";
+import { productTrustFallback } from "@/features/product/data";
 
-export default function ProductTrustSection() {
+type ProductTrustSectionProps = {
+  data?: typeof productTrustFallback | null;
+};
+
+export default function ProductTrustSection({
+  data,
+}: ProductTrustSectionProps) {
+  const trustData = data || productTrustFallback;
   return (
     <section className="relative bg-[#000] block -mt-[1px]">
       <div
@@ -16,10 +23,10 @@ export default function ProductTrustSection() {
               className="text-[14px] sm:text-[16px] text-gray-600 lg:w-[251px] text-start"
               style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
             >
-              Trusted by fast-growing companies around the world
+              {trustData.heading}
             </p>
             <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-4">
-              {logoRowFallback.map((l) => (
+              {trustData.logos.map((l) => (
                 <div
                   key={l.alt}
                   className="relative w-[104px] h-[44px] md:w-[132px] md:h-[56px]"

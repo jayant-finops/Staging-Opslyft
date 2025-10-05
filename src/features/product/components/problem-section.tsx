@@ -1,13 +1,21 @@
 "use client";
 import Image from "next/image";
+import { productProblemFallback } from "@/features/product/data";
 
-export default function ProductProblemSection() {
+type ProductProblemSectionProps = {
+  data?: typeof productProblemFallback | null;
+};
+
+export default function ProductProblemSection({
+  data,
+}: ProductProblemSectionProps) {
+  const problemData = data || productProblemFallback;
   return (
     <section className="relative h-auto lg:h-[805px] bg-[#F1F1F1] -mt-[1px]">
       {/* Decorative circles */}
       <div className="pointer-events-none absolute inset-0 lg:h-[574px] lg:w-[574px] mx-auto mt-30">
         <Image
-          src="/assets/images/problems/circles.svg"
+          src={problemData.decorativeImage}
           alt=""
           fill
           className="object-contain"
@@ -30,7 +38,7 @@ export default function ProductProblemSection() {
             lineHeight: "22px",
           }}
         >
-          PROBLEM STATEMENT
+          {problemData.badge}
         </div>
 
         {/* Heading */}
@@ -40,7 +48,7 @@ export default function ProductProblemSection() {
             fontFamily: '"Funnel Display", sans-serif',
           }}
         >
-          Why Cloud Cost Control Feels Broken
+          {problemData.title}
         </h2>
 
         {/* Description */}
@@ -50,31 +58,14 @@ export default function ProductProblemSection() {
             fontFamily: '"IBM Plex Sans", sans-serif',
           }}
         >
-          From inaccurate allocations to misaligned decisions, here are the core
-          issues slowing down cost efficiency and value realization.
+          {problemData.description}
         </p>
       </div>
 
       {/* Cards row */}
       <div className="relative max-w-[348px] lg:max-w-[1170px] mx-auto px-0 lg:px-0 pt-6 lg:pt-5 pb-10">
         <div className="flex flex-col lg:grid lg:grid-cols-3 gap-6">
-          {[
-            {
-              title: "Nobody owns it →",
-              description:
-                "Finance and Engineering toss costs back and forth, and nothing sticks.",
-            },
-            {
-              title: "Too slow to act →",
-              description:
-                "Dashboards flag issues, but fixes drag on for days and money leaks out.",
-            },
-            {
-              title: "Hard to see the value →",
-              description:
-                "Tools don't connect, and leadership can't measure the ROI of FinOps.",
-            },
-          ].map((card, idx) => (
+          {problemData.problems.map((card, idx) => (
             <div
               key={idx}
               className="flex flex-row justify-center items-center p-8 gap-[10px] w-full h-[173px] rounded-[27.4681px] shadow-[0px_5px_15px_rgba(0,0,0,0.25)] bg-gradient-to-br from-[rgba(69,131,48,0.08)] to-[rgba(15,29,11,0.08)] backdrop-blur-[2px]"

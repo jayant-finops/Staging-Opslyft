@@ -1,26 +1,14 @@
 "use client";
 
 import Image from "next/image";
+import { productWinsFallback } from "@/features/product/data";
 
-export default function ProductWinsSection() {
-  const items = [
-    {
-      title: "Closed-loop FinOps",
-      sub: "Insight → Action → Savings",
-    },
-    {
-      title: "Faster response",
-      sub: "High-severity spikes get flagged and routed instantly.",
-    },
-    {
-      title: "Clear ROI",
-      sub: "Dashboards that show exactly how much you saved last quarter.",
-    },
-    {
-      title: "Scales with you",
-      sub: "Whether you're spending $2M or $200M, manual FinOps breaks. OpsLyft doesn't.",
-    },
-  ];
+type ProductWinsSectionProps = {
+  data?: typeof productWinsFallback | null;
+};
+
+export default function ProductWinsSection({ data }: ProductWinsSectionProps) {
+  const winsData = data || productWinsFallback;
 
   return (
     <section className="relative" style={{ background: "#154B23" }}>
@@ -30,11 +18,11 @@ export default function ProductWinsSection() {
             className="text-[36px] sm:text-[44px] lg:text-[48px] font-semibold text-[#F1F1F1]"
             style={{ fontFamily: '"Funnel Display", sans-serif' }}
           >
-            Why OpsLyft Wins
+            {winsData.title}
           </h2>
 
           <div className="flex flex-col gap-4 w-full max-w-[616px]">
-            {items.map((it, idx) => (
+            {winsData.wins.map((it, idx) => (
               <div
                 key={idx}
                 className="rounded-[30px] px-6 py-6"
@@ -66,7 +54,7 @@ export default function ProductWinsSection() {
                       fontWeight: 300,
                     }}
                   >
-                    {it.sub}
+                    {it.description}
                   </div>
                 </div>
               </div>
@@ -81,7 +69,7 @@ export default function ProductWinsSection() {
         >
           <div className="relative lg:w-[580px] lg:h-[580px] w-[350px] h-[350px]">
             <Image
-              src="/assets/images/win/circle.svg"
+              src={winsData.decorativeImage}
               alt=""
               fill
               className="object-contain"

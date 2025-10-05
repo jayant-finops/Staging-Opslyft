@@ -2,8 +2,14 @@
 
 import Link from "next/link";
 import { LegacyButton } from "@/components/ui";
+import { productHeroFallback } from "@/features/product/data";
 
-export default function ProductHeroSection() {
+type ProductHeroSectionProps = {
+  data?: typeof productHeroFallback | null;
+};
+
+export default function ProductHeroSection({ data }: ProductHeroSectionProps) {
+  const heroData = data || productHeroFallback;
   return (
     <section
       className="relative w-full overflow-hidden"
@@ -31,7 +37,7 @@ export default function ProductHeroSection() {
                       "0 14px 22px rgba(0,0,0,0.32), inset 0 1px 0 rgba(238,250,247,0.10), inset 0 -2px 6px rgba(0,0,0,0.35)",
                   }}
                 >
-                  BUILT FOR ENGINEERING AND FINANCE TEAMS
+                  {heroData.badge}
                 </div>
               </div>
 
@@ -42,7 +48,7 @@ export default function ProductHeroSection() {
                     'var(--font-funnel-display), "Funnel Display", sans-serif',
                 }}
               >
-                Take control of your cloud costs before they control you
+                {heroData.title}
               </h1>
 
               <p
@@ -52,15 +58,13 @@ export default function ProductHeroSection() {
                     'var(--font-ibm-plex-sans), "IBM Plex Sans", sans-serif',
                 }}
               >
-                Opslyft gives you real-time control of cloud spend with smarter
-                insights, accurate anomaly detection with root causes, and
-                workflows that keep Finance and Engineering on the same page.
+                {heroData.description}
               </p>
 
               <div className="pt-2 sm:pt-4">
-                <Link href="/book-demo">
+                <Link href={heroData.ctaUrl}>
                   <LegacyButton variant="primary" size="md">
-                    See Opslyft in Action
+                    {heroData.ctaText}
                   </LegacyButton>
                 </Link>
               </div>

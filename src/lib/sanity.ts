@@ -229,3 +229,166 @@ export async function getSolutionsSection() {
     return null;
   }
 }
+
+// Product Hero query
+export async function getProductHero() {
+  const query = `*[_type == "productHero"][0]{
+    badge,
+    title,
+    description,
+    ctaText,
+    ctaUrl
+  }`;
+
+  try {
+    const data = await client.fetch(query);
+    return data;
+  } catch (error) {
+    console.error("Error fetching product hero from Sanity:", error);
+    return null;
+  }
+}
+
+// Product Trust query
+export async function getProductTrust() {
+  const query = `*[_type == "productTrust"][0]{
+    heading,
+    logos[]{
+      "src": logo.asset->url,
+      alt
+    }
+  }`;
+
+  try {
+    const data = await client.fetch(query);
+    return data;
+  } catch (error) {
+    console.error("Error fetching product trust from Sanity:", error);
+    return null;
+  }
+}
+
+// Product Problem query
+export async function getProductProblem() {
+  const query = `*[_type == "productProblem"][0]{
+    badge,
+    title,
+    description,
+    "decorativeImage": decorativeImage.asset->url,
+    problems[]{
+      title,
+      description
+    }
+  }`;
+
+  try {
+    const data = await client.fetch(query);
+    return data;
+  } catch (error) {
+    console.error("Error fetching product problem from Sanity:", error);
+    return null;
+  }
+}
+
+// Product Wins query
+export async function getProductWins() {
+  const query = `*[_type == "productWins"][0]{
+    title,
+    "decorativeImage": decorativeImage.asset->url,
+    wins[]{
+      title,
+      description
+    }
+  }`;
+
+  try {
+    const data = await client.fetch(query);
+    return data;
+  } catch (error) {
+    console.error("Error fetching product wins from Sanity:", error);
+    return null;
+  }
+}
+
+// Product Banner query
+export async function getProductBanner() {
+  const query = `*[_type == "productBanner"][0]{
+    title,
+    ctaText,
+    ctaUrl,
+    "decorativeImage": decorativeImage.asset->url
+  }`;
+
+  try {
+    const data = await client.fetch(query);
+    return data;
+  } catch (error) {
+    console.error("Error fetching product banner from Sanity:", error);
+    return null;
+  }
+}
+
+// Product Features query (by category)
+export async function getProductFeatures(category: string) {
+  const query = `*[_type == "productFeatures" && category == $category][0]{
+    sectionTitle,
+    sectionDescription,
+    features[]{
+      id,
+      tabLabel,
+      badge,
+      title,
+      kicker,
+      points[]{
+        heading,
+        description
+      },
+      outcome,
+      "visualUrl": visualImage.asset->url
+    }
+  }`;
+
+  try {
+    const data = await client.fetch(query, { category });
+    return data;
+  } catch (error) {
+    console.error(
+      `Error fetching product features for ${category} from Sanity:`,
+      error
+    );
+    return null;
+  }
+}
+
+// Pricing Page query
+export async function getPricing() {
+  const query = `*[_type == "pricing"][0]{
+    badgeLabel,
+    titleLines,
+    "decorativeImage": decorativeImage.asset->url,
+    "backgroundImage1": backgroundImage1.asset->url,
+    "backgroundImage2": backgroundImage2.asset->url,
+    logosTop[]{
+      "src": logo.asset->url,
+      alt
+    },
+    logosBottom[]{
+      "src": logo.asset->url,
+      alt
+    },
+    formHeading,
+    formFields[]{
+      placeholder,
+      type
+    },
+    submitText
+  }`;
+
+  try {
+    const data = await client.fetch(query);
+    return data;
+  } catch (error) {
+    console.error("Error fetching pricing from Sanity:", error);
+    return null;
+  }
+}

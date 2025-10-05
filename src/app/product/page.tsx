@@ -8,22 +8,46 @@ import {
   ProductBannerSection,
 } from "@/features/product";
 import { costControlFeatures } from "@/features/product/data";
+import {
+  getProductHero,
+  getProductTrust,
+  getProductProblem,
+  getProductWins,
+  getProductBanner,
+  getProductFeatures,
+} from "@/lib/sanity";
 
-export default function ProductPage() {
+export default async function ProductPage() {
+  // Fetch data from Sanity with fallbacks
+  const heroData = await getProductHero();
+  const trustData = await getProductTrust();
+  const problemData = await getProductProblem();
+  const winsData = await getProductWins();
+  const bannerData = await getProductBanner();
+  const featuresData = await getProductFeatures("cost-control");
+
+  // Use Sanity data for features if available, otherwise use fallback
+  const features = featuresData?.features || costControlFeatures;
+  const sectionTitle =
+    featuresData?.sectionTitle || "Features Built for Real-World Cost Control";
+  const sectionDescription =
+    featuresData?.sectionDescription ||
+    "Managing cloud costs isn't just about spotting inefficiencies — it's about continuously improving performance, reliability, and spend efficiency across complex environments. That's where Opslyft's optimization engine comes in.";
+
   return (
     <>
       <Navbar />
       <main className="min-h-screen ">
-        <ProductHeroSection />
-        <ProductTrustSection />
-        <ProductProblemSection />
+        <ProductHeroSection data={heroData} />
+        <ProductTrustSection data={trustData} />
+        <ProductProblemSection data={problemData} />
         <ProductFeaturesSection
-          features={costControlFeatures}
-          sectionTitle="Features Built for Real-World Cost Control"
-          sectionDescription="Managing cloud costs isn't just about spotting inefficiencies — it's about continuously improving performance, reliability, and spend efficiency across complex environments. That's where Opslyft's optimization engine comes in."
+          features={features}
+          sectionTitle={sectionTitle}
+          sectionDescription={sectionDescription}
         />
-        <ProductWinsSection />
-        <ProductBannerSection />
+        <ProductWinsSection data={winsData} />
+        <ProductBannerSection data={bannerData} />
         <Footer />
       </main>
     </>

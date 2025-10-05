@@ -8,6 +8,13 @@ import aboutHero from "./aboutHero";
 import aboutMission from "./aboutMission";
 import companyTimeline from "./companyTimeline";
 import team from "./team";
+import { productHero } from "./productHero";
+import { productTrust } from "./productTrust";
+import { productProblem } from "./productProblem";
+import { productWins } from "./productWins";
+import { productBanner } from "./productBanner";
+import { productFeatures } from "./productFeatures";
+import { pricing } from "./pricing";
 
 // Home page schemas
 const heroSchema: SchemaTypeDefinition = {
@@ -323,85 +330,6 @@ const navbarSchema: SchemaTypeDefinition = {
   ],
 };
 
-// Pricing page schema
-const pricingPageSchema: SchemaTypeDefinition = {
-  name: "pricingPage",
-  title: "Pricing Page",
-  type: "document",
-  fields: [
-    { name: "badgeLabel", title: "Badge Label", type: "string" },
-    {
-      name: "titleLines",
-      title: "Title Lines",
-      type: "array",
-      of: [{ type: "string" }],
-    },
-    {
-      name: "logosTop",
-      title: "Logos Top",
-      type: "array",
-      of: [
-        {
-          type: "object",
-          fields: [
-            { name: "src", title: "Source", type: "string" },
-            { name: "alt", title: "Alt Text", type: "string" },
-            {
-              name: "image",
-              title: "Image",
-              type: "image",
-              options: { hotspot: true },
-            },
-          ],
-        },
-      ],
-    },
-    {
-      name: "logosBottom",
-      title: "Logos Bottom",
-      type: "array",
-      of: [
-        {
-          type: "object",
-          fields: [
-            { name: "src", title: "Source", type: "string" },
-            { name: "alt", title: "Alt Text", type: "string" },
-            {
-              name: "image",
-              title: "Image",
-              type: "image",
-              options: { hotspot: true },
-            },
-          ],
-        },
-      ],
-    },
-    {
-      name: "form",
-      title: "Form",
-      type: "object",
-      fields: [
-        { name: "heading", title: "Heading", type: "string" },
-        {
-          name: "fields",
-          title: "Fields",
-          type: "array",
-          of: [
-            {
-              type: "object",
-              fields: [
-                { name: "placeholder", title: "Placeholder", type: "string" },
-                { name: "type", title: "Type", type: "string" },
-              ],
-            },
-          ],
-        },
-        { name: "submitText", title: "Submit Text", type: "string" },
-      ],
-    },
-  ],
-};
-
 // About page schemas
 const aboutHeroSchema: SchemaTypeDefinition = {
   name: "aboutHero",
@@ -589,7 +517,15 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     navbarSchema,
 
     // Pricing page schema
-    pricingPageSchema,
+    pricing,
+
+    // Product page schemas
+    productHero,
+    productTrust,
+    productProblem,
+    productWins,
+    productBanner,
+    productFeatures,
 
     // About page schemas
     aboutHero, // Complete about hero schema

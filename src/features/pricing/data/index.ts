@@ -11,6 +11,9 @@ export type PricingFormField = {
 export type LocalPricing = {
   badgeLabel: string;
   titleLines: string[];
+  decorativeImage?: string;
+  backgroundImage1?: string;
+  backgroundImage2?: string;
   logosTop: PricingLogo[]; // 3 items
   logosBottom: PricingLogo[]; // 2 items
   form: {
@@ -19,6 +22,42 @@ export type LocalPricing = {
     submitText: string;
   };
 };
+
+// Type for Sanity pricing data (slightly different structure)
+export type SanityPricing = {
+  badgeLabel: string;
+  titleLines: string[];
+  decorativeImage?: string;
+  backgroundImage1?: string;
+  backgroundImage2?: string;
+  logosTop: PricingLogo[];
+  logosBottom: PricingLogo[];
+  formHeading: string;
+  formFields: PricingFormField[];
+  submitText: string;
+};
+
+// Helper to convert Sanity pricing to LocalPricing format
+export function convertSanityPricing(
+  sanityData: SanityPricing | null
+): LocalPricing | null {
+  if (!sanityData) return null;
+
+  return {
+    badgeLabel: sanityData.badgeLabel,
+    titleLines: sanityData.titleLines,
+    decorativeImage: sanityData.decorativeImage,
+    backgroundImage1: sanityData.backgroundImage1,
+    backgroundImage2: sanityData.backgroundImage2,
+    logosTop: sanityData.logosTop,
+    logosBottom: sanityData.logosBottom,
+    form: {
+      heading: sanityData.formHeading,
+      fields: sanityData.formFields,
+      submitText: sanityData.submitText,
+    },
+  };
+}
 
 export const pricingFallback: LocalPricing = {
   badgeLabel: "BUILT FOR ENGINEERING AND FINANCE TEAMS",

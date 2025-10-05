@@ -8,22 +8,46 @@ import {
   ProductBannerSection,
 } from "@/features/product";
 import { costVisibilityFeatures } from "@/features/product/data";
+import {
+  getProductHero,
+  getProductTrust,
+  getProductProblem,
+  getProductWins,
+  getProductBanner,
+  getProductFeatures,
+} from "@/lib/sanity";
 
-export default function CostVisibilityPage() {
+export default async function CostVisibilityPage() {
+  // Fetch data from Sanity with fallbacks
+  const heroData = await getProductHero();
+  const trustData = await getProductTrust();
+  const problemData = await getProductProblem();
+  const winsData = await getProductWins();
+  const bannerData = await getProductBanner();
+  const featuresData = await getProductFeatures("cost-visibility");
+
+  // Use Sanity data for features if available, otherwise use fallback
+  const features = featuresData?.features || costVisibilityFeatures;
+  const sectionTitle =
+    featuresData?.sectionTitle || "Complete Visibility Into Your Cloud Costs";
+  const sectionDescription =
+    featuresData?.sectionDescription ||
+    "From AI-powered cost allocation to container-level insights, Opslyft gives you the transparency you need to understand where every dollar goes — across teams, projects, and environments.";
+
   return (
     <>
       <Navbar />
       <main className="min-h-screen ">
-        <ProductHeroSection />
-        <ProductTrustSection />
-        <ProductProblemSection />
+        <ProductHeroSection data={heroData} />
+        <ProductTrustSection data={trustData} />
+        <ProductProblemSection data={problemData} />
         <ProductFeaturesSection
-          features={costVisibilityFeatures}
-          sectionTitle="Complete Visibility Into Your Cloud Costs"
-          sectionDescription="From AI-powered cost allocation to container-level insights, Opslyft gives you the transparency you need to understand where every dollar goes — across teams, projects, and environments."
+          features={features}
+          sectionTitle={sectionTitle}
+          sectionDescription={sectionDescription}
         />
-        <ProductWinsSection />
-        <ProductBannerSection />
+        <ProductWinsSection data={winsData} />
+        <ProductBannerSection data={bannerData} />
         <Footer />
       </main>
     </>
