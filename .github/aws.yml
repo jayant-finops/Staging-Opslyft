@@ -204,7 +204,6 @@ jobs:
           echo "**ECR Repository:** ${{ steps.meta.outputs.repository }}" >> $GITHUB_STEP_SUMMARY
           
 
-
           echo "**Created By:** @${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
           echo "**Secret Name:** ${{ env.SECRET_NAME }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
