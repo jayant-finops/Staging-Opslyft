@@ -19,6 +19,8 @@ import {
 } from "@/lib/sanity";
 
 export default async function CostGovernancePage() {
+  const category = "cost-governance";
+
   // Fetch data from Sanity with fallbacks
   const [
     heroData,
@@ -29,12 +31,12 @@ export default async function CostGovernancePage() {
     featuresData,
     navbarData,
   ] = await Promise.all([
-    getProductHero(),
-    getProductTrust(),
-    getProductProblem(),
-    getProductWins(),
-    getProductBanner(),
-    getProductFeatures("cost-governance"),
+    getProductHero(category),
+    getProductTrust(category),
+    getProductProblem(category),
+    getProductWins(category),
+    getProductBanner(category),
+    getProductFeatures(category),
     getNavbar(),
   ]);
 

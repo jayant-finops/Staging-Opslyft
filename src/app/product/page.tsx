@@ -19,6 +19,8 @@ import {
 } from "@/lib/sanity";
 
 export default async function ProductPage() {
+  const category = "cost-control";
+
   // Fetch data from Sanity with fallbacks
   const [
     heroData,
@@ -29,12 +31,12 @@ export default async function ProductPage() {
     featuresData,
     navbarData,
   ] = await Promise.all([
-    getProductHero(),
-    getProductTrust(),
-    getProductProblem(),
-    getProductWins(),
-    getProductBanner(),
-    getProductFeatures("cost-control"),
+    getProductHero(category),
+    getProductTrust(category),
+    getProductProblem(category),
+    getProductWins(category),
+    getProductBanner(category),
+    getProductFeatures(category),
     getNavbar(),
   ]);
 

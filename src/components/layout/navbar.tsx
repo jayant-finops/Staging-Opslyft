@@ -72,7 +72,7 @@ const ProductDropdown = ({
                         window.dispatchEvent(new HashChangeEvent("hashchange"));
                       }
                     }}
-                    className="text-[#F1F1F1] text-[15px] leading-[20px] hover:text-white transition-colors underline underline-offset-2"
+                    className="text-[#F1F1F1] text-[15px] leading-[20px] hover:text-white hover:underline underline-offset-2 transition-colors"
                     style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
                   >
                     {item.label}
@@ -551,7 +551,7 @@ export default function Navbar({ data }: NavbarProps = {}) {
                                                 setIsMobileMenuOpen(false);
                                                 setMobileDropdownOpen(false);
                                               }}
-                                              className="text-[#F1F1F1] text-[12px] leading-[16px] hover:text-white transition-colors underline underline-offset-2"
+                                              className="text-[#F1F1F1] text-[12px] leading-[16px] hover:text-white hover:underline underline-offset-2 transition-colors"
                                               style={{
                                                 fontFamily:
                                                   '"IBM Plex Sans", sans-serif',

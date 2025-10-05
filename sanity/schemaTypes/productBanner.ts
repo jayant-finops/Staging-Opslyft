@@ -6,6 +6,22 @@ export const productBanner = defineType({
   type: "document",
   fields: [
     defineField({
+      name: "category",
+      title: "Banner Category",
+      type: "string",
+      description:
+        "Category: cost-visibility, cost-control, cost-governance, or customer-stories",
+      options: {
+        list: [
+          { title: "Cost Visibility", value: "cost-visibility" },
+          { title: "Cost Control", value: "cost-control" },
+          { title: "Cost Governance", value: "cost-governance" },
+          { title: "Customer Stories", value: "customer-stories" },
+        ],
+      },
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: "title",
       title: "Banner Title",
       type: "string",

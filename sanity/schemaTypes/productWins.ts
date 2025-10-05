@@ -6,6 +6,21 @@ export const productWins = defineType({
   type: "document",
   fields: [
     defineField({
+      name: "category",
+      title: "Product Category",
+      type: "string",
+      description:
+        "Category: cost-visibility, cost-control, or cost-governance",
+      options: {
+        list: [
+          { title: "Cost Visibility", value: "cost-visibility" },
+          { title: "Cost Control", value: "cost-control" },
+          { title: "Cost Governance", value: "cost-governance" },
+        ],
+      },
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: "title",
       title: "Section Title",
       type: "string",

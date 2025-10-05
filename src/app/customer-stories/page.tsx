@@ -20,7 +20,7 @@ export default async function CustomerStoriesPage() {
   const [heroData, storiesData, bannerData, navbarData] = await Promise.all([
     getCustomerStoriesHero(),
     getCustomerStories(),
-    getProductBanner(),
+    getProductBanner("customer-stories"),
     getNavbar(),
   ]);
 

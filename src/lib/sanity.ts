@@ -237,8 +237,8 @@ export async function getSolutionsSection() {
 }
 
 // Product Hero query
-export async function getProductHero() {
-  const query = `*[_type == "productHero"][0]{
+export async function getProductHero(category: string) {
+  const query = `*[_type == "productHero" && category == $category][0]{
     badge,
     title,
     description,
@@ -247,17 +247,20 @@ export async function getProductHero() {
   }`;
 
   try {
-    const data = await client.fetch(query);
+    const data = await client.fetch(query, { category });
     return data;
   } catch (error) {
-    console.error("Error fetching product hero from Sanity:", error);
+    console.error(
+      `Error fetching product hero for ${category} from Sanity:`,
+      error
+    );
     return null;
   }
 }
 
 // Product Trust query
-export async function getProductTrust() {
-  const query = `*[_type == "productTrust"][0]{
+export async function getProductTrust(category: string) {
+  const query = `*[_type == "productTrust" && category == $category][0]{
     heading,
     logos[]{
       "src": logo.asset->url,
@@ -266,17 +269,20 @@ export async function getProductTrust() {
   }`;
 
   try {
-    const data = await client.fetch(query);
+    const data = await client.fetch(query, { category });
     return data;
   } catch (error) {
-    console.error("Error fetching product trust from Sanity:", error);
+    console.error(
+      `Error fetching product trust for ${category} from Sanity:`,
+      error
+    );
     return null;
   }
 }
 
 // Product Problem query
-export async function getProductProblem() {
-  const query = `*[_type == "productProblem"][0]{
+export async function getProductProblem(category: string) {
+  const query = `*[_type == "productProblem" && category == $category][0]{
     badge,
     title,
     description,
@@ -288,17 +294,20 @@ export async function getProductProblem() {
   }`;
 
   try {
-    const data = await client.fetch(query);
+    const data = await client.fetch(query, { category });
     return data;
   } catch (error) {
-    console.error("Error fetching product problem from Sanity:", error);
+    console.error(
+      `Error fetching product problem for ${category} from Sanity:`,
+      error
+    );
     return null;
   }
 }
 
 // Product Wins query
-export async function getProductWins() {
-  const query = `*[_type == "productWins"][0]{
+export async function getProductWins(category: string) {
+  const query = `*[_type == "productWins" && category == $category][0]{
     title,
     "decorativeImage": decorativeImage.asset->url,
     wins[]{
@@ -308,17 +317,20 @@ export async function getProductWins() {
   }`;
 
   try {
-    const data = await client.fetch(query);
+    const data = await client.fetch(query, { category });
     return data;
   } catch (error) {
-    console.error("Error fetching product wins from Sanity:", error);
+    console.error(
+      `Error fetching product wins for ${category} from Sanity:`,
+      error
+    );
     return null;
   }
 }
 
 // Product Banner query
-export async function getProductBanner() {
-  const query = `*[_type == "productBanner"][0]{
+export async function getProductBanner(category: string) {
+  const query = `*[_type == "productBanner" && category == $category][0]{
     title,
     ctaText,
     ctaUrl,
@@ -326,10 +338,13 @@ export async function getProductBanner() {
   }`;
 
   try {
-    const data = await client.fetch(query);
+    const data = await client.fetch(query, { category });
     return data;
   } catch (error) {
-    console.error("Error fetching product banner from Sanity:", error);
+    console.error(
+      `Error fetching product banner for ${category} from Sanity:`,
+      error
+    );
     return null;
   }
 }
