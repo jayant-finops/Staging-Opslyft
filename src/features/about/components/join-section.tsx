@@ -45,7 +45,7 @@ export default function JoinSection({ data }: Props) {
       </div>
 
       {/* Desktop team images - positioned on the right */}
-      <div className="hidden lg:block absolute lg:right-[0px] lg:top-[265px] 2xl:right-[240px] 2xl:top-[265px] -translate-y-1/2 w-[604px] h-[542px]  pointer-events-none">
+      <div className="hidden lg:block absolute lg:right-[0px] lg:top-[265px] 3xl:right-[240px]  -translate-y-1/2 w-[604px] h-[542px]  pointer-events-none">
         <Image
           src={bg}
           alt="Join Team Desktop"
@@ -57,7 +57,7 @@ export default function JoinSection({ data }: Props) {
       </div>
 
       {/* Main content container */}
-      <div className="relative  mx-auto px-6 lg:px-[141px] 2xl:px-[380px] ">
+      <div className="relative  mx-auto px-6 lg:px-[141px] 3xl:px-[380px] ">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[500px]">
           {/* Left column - Content */}
           <div className="space-y-6 lg:space-y-8 text-center lg:text-left  lg:w-[725px] ">

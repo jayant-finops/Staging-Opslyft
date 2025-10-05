@@ -287,11 +287,11 @@ export default function Navbar() {
                       <AnimatePresence>
                         {item.hasDropdown && activeDropdown === item.title && (
                           <motion.div
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: 10 }}
-                            transition={{ duration: 0.2 }}
-                            className="absolute left-0 top-full mt-6 w-[529px] rounded-[30px] z-50"
+                            initial={{ opacity: 0, y: 10, scaleY: 0 }}
+                            animate={{ opacity: 1, y: 0, scaleY: 1 }}
+                            exit={{ opacity: 0, y: 10, scaleY: 0 }}
+                            transition={{ duration: 0.3, ease: "easeOut" }}
+                            className="absolute left-0 top-full mt-6 w-[529px] rounded-[30px] z-50 origin-top"
                             style={{
                               background:
                                 "linear-gradient(176.26deg, rgba(0, 25, 16, 0.7) 7.42%, rgba(7, 8, 8, 0.49) 102.27%)",
