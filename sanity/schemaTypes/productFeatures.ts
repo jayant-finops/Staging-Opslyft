@@ -21,6 +21,14 @@ export const productFeatures = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: "badgeText",
+      title: "Badge Text",
+      type: "string",
+      description:
+        "Badge text at the top of the section (e.g., 'PRODUCT FEATURES')",
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: "sectionTitle",
       title: "Section Title",
       type: "string",

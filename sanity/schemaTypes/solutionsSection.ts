@@ -55,6 +55,12 @@ export default defineType({
               type: "string",
             },
             {
+              name: "buttonUrl",
+              title: "Button URL",
+              type: "url",
+              description: "URL for the button link",
+            },
+            {
               name: "image",
               title: "Image/Animation",
               type: "image",

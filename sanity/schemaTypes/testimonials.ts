@@ -6,6 +6,13 @@ export default defineType({
   type: "document",
   fields: [
     defineField({
+      name: "logoRowText",
+      title: "Company Logos Row Text",
+      type: "string",
+      description:
+        "Text displayed above the company logos (e.g., 'Trusted by fast-growing companies around the world')",
+    }),
+    defineField({
       name: "testimonials",
       title: "Testimonials",
       type: "array",
@@ -65,7 +72,7 @@ export default defineType({
       ],
     }),
     defineField({
-      name: "logoRow",
+      name: "companyLogos",
       title: "Company Logos Row",
       type: "array",
       of: [

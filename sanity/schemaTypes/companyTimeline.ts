@@ -6,6 +6,18 @@ export default defineType({
   type: "document",
   fields: [
     defineField({
+      name: "heading",
+      title: "Section Heading",
+      type: "string",
+      description: "Main heading for the timeline section",
+    }),
+    defineField({
+      name: "subheading",
+      title: "Section Subheading",
+      type: "text",
+      description: "Subheading/description for the timeline section",
+    }),
+    defineField({
       name: "timelineItems",
       title: "Timeline Items",
       type: "array",

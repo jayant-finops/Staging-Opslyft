@@ -6,12 +6,14 @@ import { Feature } from "../data";
 
 type ProductFeaturesSectionProps = {
   features: Feature[];
+  badgeText?: string;
   sectionTitle?: string;
   sectionDescription?: string;
 };
 
 export default function ProductFeaturesSection({
   features,
+  badgeText = "PRODUCT FEATURES",
   sectionTitle = "Features Built for Real-World Cost Control",
   sectionDescription = "Managing cloud costs isn't just about spotting inefficiencies — it's about continuously improving performance, reliability, and spend efficiency across complex environments. That's where Opslyft's optimization engine comes in.",
 }: ProductFeaturesSectionProps) {
@@ -189,7 +191,7 @@ export default function ProductFeaturesSection({
               textTransform: "uppercase",
             }}
           >
-            PRODUCT FEATURES
+            {badgeText}
           </div>
 
           <h2

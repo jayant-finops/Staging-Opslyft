@@ -28,6 +28,7 @@ export default async function CostVisibilityPage() {
 
   // Use Sanity data for features if available, otherwise use fallback
   const features = featuresData?.features || costVisibilityFeatures;
+  const badgeText = featuresData?.badgeText || "PRODUCT FEATURES";
   const sectionTitle =
     featuresData?.sectionTitle || "Complete Visibility Into Your Cloud Costs";
   const sectionDescription =
@@ -43,6 +44,7 @@ export default async function CostVisibilityPage() {
         <ProductProblemSection data={problemData} />
         <ProductFeaturesSection
           features={features}
+          badgeText={badgeText}
           sectionTitle={sectionTitle}
           sectionDescription={sectionDescription}
         />

@@ -28,6 +28,7 @@ export default async function CostGovernancePage() {
 
   // Use Sanity data for features if available, otherwise use fallback
   const features = featuresData?.features || costGovernanceFeatures;
+  const badgeText = featuresData?.badgeText || "PRODUCT FEATURES";
   const sectionTitle =
     featuresData?.sectionTitle || "Governance and Planning for Cloud Maturity";
   const sectionDescription =
@@ -43,6 +44,7 @@ export default async function CostGovernancePage() {
         <ProductProblemSection data={problemData} />
         <ProductFeaturesSection
           features={features}
+          badgeText={badgeText}
           sectionTitle={sectionTitle}
           sectionDescription={sectionDescription}
         />

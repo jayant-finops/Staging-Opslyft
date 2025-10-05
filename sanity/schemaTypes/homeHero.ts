@@ -35,5 +35,14 @@ export default defineType({
       type: "string",
       validation: (Rule) => Rule.required(),
     }),
+    defineField({
+      name: "laptopImage",
+      title: "Laptop Image",
+      type: "image",
+      description: "Laptop/hero image displayed in the hero section",
+      options: {
+        hotspot: true,
+      },
+    }),
   ],
 });

@@ -87,6 +87,8 @@ export async function getAboutMission() {
 // Company Timeline query
 export async function getCompanyTimeline() {
   const query = `*[_type == "companyTimeline"][0]{
+    heading,
+    subheading,
     timelineItems[]{
       phase,
       period,
@@ -157,6 +159,7 @@ export async function getHeroData() {
 // Testimonials Section query
 export async function getTestimonialsSection() {
   const query = `*[_type == "testimonialsSection"][0]{
+    logoRowText,
     testimonials[]{
       quote,
       author,
@@ -165,7 +168,7 @@ export async function getTestimonialsSection() {
       avatar,
       companyLogo
     },
-    logoRow[]{
+    companyLogos[]{
       alt,
       logo
     }
@@ -186,9 +189,11 @@ export async function getStruggleSection() {
     sectionLabel,
     title,
     subtitle,
+    backgroundImage,
     features[]{
       title,
-      description
+      description,
+      icon
     }
   }`;
 
@@ -212,6 +217,7 @@ export async function getSolutionsSection() {
       description,
       bulletPoints,
       buttonText,
+      buttonUrl,
       image
     },
     ctaCard{
@@ -331,6 +337,7 @@ export async function getProductBanner() {
 // Product Features query (by category)
 export async function getProductFeatures(category: string) {
   const query = `*[_type == "productFeatures" && category == $category][0]{
+    badgeText,
     sectionTitle,
     sectionDescription,
     features[]{
@@ -389,6 +396,144 @@ export async function getPricing() {
     return data;
   } catch (error) {
     console.error("Error fetching pricing from Sanity:", error);
+    return null;
+  }
+}
+
+// Customer Stories Hero query
+export async function getCustomerStoriesHero() {
+  const query = `*[_type == "customerStoriesHero"][0]{
+    badgeText,
+    title,
+    description,
+    ctaText,
+    ctaUrl,
+    "backgroundImage": backgroundImage.asset->url
+  }`;
+
+  try {
+    const data = await client.fetch(query);
+    return data;
+  } catch (error) {
+    console.error("Error fetching customer stories hero from Sanity:", error);
+    return null;
+  }
+}
+
+// Blog posts query
+export async function getCustomerStories() {
+  const query = `*[_type == "blog"] | order(order asc){
+    "slug": slug.current,
+    category,
+    title,
+    excerpt,
+    "featuredImage": featuredImage.asset->url,
+    "cardBackgroundImage": cardBackgroundImage.asset->url,
+    order
+  }`;
+
+  try {
+    const data = await client.fetch(query);
+    return data;
+  } catch (error) {
+    console.error("Error fetching blog posts from Sanity:", error);
+    return null;
+  }
+}
+
+// Navbar query
+export async function getNavbar() {
+  const query = `*[_type == "navbar"][0]{
+    "logoSrc": logo.asset->url,
+    navigation[]{
+      title,
+      url,
+      hasDropdown,
+      dropdownCategories[]{
+        title,
+        "icon": icon.asset->url,
+        url,
+        items[]{
+          label,
+          featureId
+        }
+      }
+    },
+    loginText,
+    loginUrl,
+    ctaText,
+    ctaUrl
+  }`;
+
+  try {
+    const data = await client.fetch(query);
+    return data;
+  } catch (error) {
+    console.error("Error fetching navbar from Sanity:", error);
+    return null;
+  }
+}
+
+// Footer query
+export async function getFooter() {
+  const query = `*[_type == "footer"][0]{
+    "logoSrc": logo.asset->url,
+    tagline,
+    newsletterTitle,
+    newsletterDescription,
+    newsletterPlaceholder,
+    newsletterButtonText,
+    navigationColumns[]{
+      title,
+      links[]{
+        title,
+        url
+      }
+    },
+    socialLinks[]{
+      platform,
+      url,
+      "iconSrc": icon.asset->url
+    },
+    certifications[]{
+      name,
+      "src": logo.asset->url,
+      alt
+    },
+    copyright,
+    address,
+    legalLinks[]{
+      title,
+      url
+    },
+    "backgroundSrc": backgroundImage.asset->url
+  }`;
+
+  try {
+    const data = await client.fetch(query);
+    return data;
+  } catch (error) {
+    console.error("Error fetching footer from Sanity:", error);
+    return null;
+  }
+}
+
+// Terms of Use query
+export async function getTermsOfUse() {
+  const query = `*[_type == "termsOfUse"][0]{
+    title,
+    lastUpdated,
+    sections[]{
+      heading,
+      content
+    }
+  }`;
+
+  try {
+    const data = await client.fetch(query);
+    return data;
+  } catch (error) {
+    console.error("Error fetching terms of use from Sanity:", error);
     return null;
   }
 }

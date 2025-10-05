@@ -4,8 +4,16 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { navbarFallback, DropdownCategory } from "./navbar.data";
+import {
+  navbarFallback,
+  DropdownCategory,
+  type LocalNavbar,
+} from "./navbar.data";
 import { LegacyButton, Button } from "@/components/ui";
+
+type NavbarProps = {
+  data?: LocalNavbar | null;
+};
 
 // Product Dropdown Component
 const ProductDropdown = ({
@@ -85,7 +93,8 @@ const ProductDropdown = ({
   );
 };
 
-export default function Navbar() {
+export default function Navbar({ data }: NavbarProps = {}) {
+  const navData = data || navbarFallback;
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [hideTimeout, setHideTimeout] = useState<NodeJS.Timeout | null>(null);
@@ -218,7 +227,7 @@ export default function Navbar() {
                 <Link href="/" className="flex items-center">
                   <div className="relative w-20 h-6 sm:w-24 sm:h-8">
                     <Image
-                      src={navbarFallback.logoSrc}
+                      src={navData.logoSrc}
                       alt="Opslyft"
                       fill
                       className="object-contain"
@@ -228,7 +237,7 @@ export default function Navbar() {
 
                 {/* Navigation Links - Desktop */}
                 <div className="hidden lg:flex items-center space-x-8">
-                  {navbarFallback.navigation.map((item) => (
+                  {navData.navigation.map((item) => (
                     <div
                       key={item.title}
                       className="relative"
@@ -314,19 +323,19 @@ export default function Navbar() {
                 {/* CTA Buttons - Desktop */}
                 <div className="hidden lg:flex items-center space-x-4">
                   <Link
-                    href={navbarFallback.cta.loginUrl}
+                    href={navData.cta.loginUrl}
                     className="text-[#CACACA] hover:text-white text-[14px] font-normal transition-colors"
                   >
                     <span style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}>
-                      {navbarFallback.cta.loginText}
+                      {navData.cta.loginText}
                     </span>
                   </Link>
-                  <Link href={navbarFallback.cta.buttonUrl}>
+                  <Link href={navData.cta.buttonUrl}>
                     <LegacyButton variant="secondary" size="sm">
                       <span
                         style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
                       >
-                        {navbarFallback.cta.buttonText}
+                        {navData.cta.buttonText}
                       </span>
                     </LegacyButton>
                   </Link>
@@ -419,7 +428,7 @@ export default function Navbar() {
               <div className="flex-1 px-3 overflow-y-auto">
                 {/* Navigation Links */}
                 <nav className="flex flex-col gap-2">
-                  {navbarFallback.navigation.map((item, index) => (
+                  {navData.navigation.map((item, index) => (
                     <motion.div
                       key={item.title}
                       initial={{ opacity: 0, x: -20 }}
@@ -595,7 +604,7 @@ export default function Navbar() {
                   className="space-y-4 pt-8 pb-6"
                 >
                   <Link
-                    href={navbarFallback.cta.buttonUrl}
+                    href={navData.cta.buttonUrl}
                     onClick={() => {
                       setIsMobileMenuOpen(false);
                       setMobileDropdownOpen(false);
@@ -606,12 +615,12 @@ export default function Navbar() {
                       <span
                         style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
                       >
-                        {navbarFallback.cta.buttonText}
+                        {navData.cta.buttonText}
                       </span>
                     </Button>
                   </Link>
                   <Link
-                    href={navbarFallback.cta.loginUrl}
+                    href={navData.cta.loginUrl}
                     onClick={() => {
                       setIsMobileMenuOpen(false);
                       setMobileDropdownOpen(false);
@@ -619,7 +628,7 @@ export default function Navbar() {
                     className="block text-center text-[#AFAFAF] hover:text-white text-[14px] font-medium transition-colors py-2"
                     style={{ fontFamily: '"Instrument Sans", sans-serif' }}
                   >
-                    {navbarFallback.cta.loginText}
+                    {navData.cta.loginText}
                   </Link>
                 </motion.div>
               </div>

@@ -277,7 +277,8 @@ export default function TestimonialsSection({
             className="text-[18px] text-gray-500 max-w-full sm:max-w-[252px] text-center sm:text-start px-4 sm:px-0 md:w-[252px] font-normal"
             style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
           >
-            Trusted by fast-growing companies around the world
+            {data?.logoRowText ||
+              "Trusted by fast-growing companies around the world"}
           </p>
           <div className="flex flex-wrap justify-center items-center opacity-90 gap-x-2 sm:gap-x-6 gap-y-2">
             {data?.companyLogos && data.companyLogos.length > 0

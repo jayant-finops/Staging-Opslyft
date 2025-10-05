@@ -30,6 +30,7 @@ export interface Hero extends SanityDocument {
 
 export interface TestimonialsSection extends SanityDocument {
   _type: "testimonialsSection";
+  logoRowText?: string;
   badgeText: string;
   title: string;
   subtitle: string;

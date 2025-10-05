@@ -3,8 +3,17 @@
 import Link from "next/link";
 import Image from "next/image";
 import { LegacyButton } from "@/components/ui";
+import { customerStoriesHeroFallback } from "../data";
 
-export default function CustomerStoriesHeroSection() {
+type CustomerStoriesHeroSectionProps = {
+  data?: typeof customerStoriesHeroFallback | null;
+};
+
+export default function CustomerStoriesHeroSection({
+  data,
+}: CustomerStoriesHeroSectionProps) {
+  const heroData = data || customerStoriesHeroFallback;
+
   return (
     <section
       className="relative w-full overflow-hidden"
@@ -24,7 +33,7 @@ export default function CustomerStoriesHeroSection() {
         {/* Hero Background SVG - Desktop */}
         <div className="pointer-events-none absolute inset-x-0 top-[-100] w-full h-[678px] hidden lg:flex justify-center">
           <Image
-            src="/assets/images/customer-hero/hero-bg.svg"
+            src={heroData.backgroundImage}
             alt=""
             width={1591}
             height={678}
@@ -36,7 +45,7 @@ export default function CustomerStoriesHeroSection() {
         {/* Hero Background SVG - Mobile */}
         <div className="pointer-events-none absolute inset-x-0 top-0 w-full h-[400px] lg:hidden flex justify-center">
           <Image
-            src="/assets/images/customer-hero/hero-bg.svg"
+            src={heroData.backgroundImage}
             alt=""
             width={1591}
             height={678}
@@ -63,7 +72,7 @@ export default function CustomerStoriesHeroSection() {
                       "0 14px 22px rgba(0,0,0,0.32), inset 0 1px 0 rgba(238,250,247,0.10), inset 0 -2px 6px rgba(0,0,0,0.35)",
                   }}
                 >
-                  CUSTOMER STORIES
+                  {heroData.badgeText}
                 </div>
               </div>
 
@@ -75,7 +84,7 @@ export default function CustomerStoriesHeroSection() {
                     'var(--font-funnel-display), "Funnel Display", sans-serif',
                 }}
               >
-                Real Stories. Real Savings. Real Impact.
+                {heroData.title}
               </h1>
 
               {/* Subcopy */}
@@ -86,17 +95,14 @@ export default function CustomerStoriesHeroSection() {
                     'var(--font-ibm-plex-sans), "IBM Plex Sans", sans-serif',
                 }}
               >
-                Cloud cost optimization isn’t just theory—it’s transformation in
-                action. From fast- growing startups to Fortune 500 enterprises,
-                OpsLyft helps organizations cut waste, scale smarter, and make
-                cloud spend a true business advantage.
+                {heroData.description}
               </p>
 
               {/* CTA */}
               <div className="pt-2">
-                <Link href="/book-demo">
+                <Link href={heroData.ctaUrl}>
                   <LegacyButton variant="primary" size="md">
-                    Book a demo
+                    {heroData.ctaText}
                   </LegacyButton>
                 </Link>
               </div>
