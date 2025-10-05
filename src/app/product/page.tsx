@@ -15,16 +15,28 @@ import {
   getProductWins,
   getProductBanner,
   getProductFeatures,
+  getNavbar,
 } from "@/lib/sanity";
 
 export default async function ProductPage() {
   // Fetch data from Sanity with fallbacks
-  const heroData = await getProductHero();
-  const trustData = await getProductTrust();
-  const problemData = await getProductProblem();
-  const winsData = await getProductWins();
-  const bannerData = await getProductBanner();
-  const featuresData = await getProductFeatures("cost-control");
+  const [
+    heroData,
+    trustData,
+    problemData,
+    winsData,
+    bannerData,
+    featuresData,
+    navbarData,
+  ] = await Promise.all([
+    getProductHero(),
+    getProductTrust(),
+    getProductProblem(),
+    getProductWins(),
+    getProductBanner(),
+    getProductFeatures("cost-control"),
+    getNavbar(),
+  ]);
 
   // Use Sanity data for features if available, otherwise use fallback
   const features = featuresData?.features || costControlFeatures;
@@ -37,7 +49,7 @@ export default async function ProductPage() {
 
   return (
     <>
-      <Navbar />
+      <Navbar data={navbarData} />
       <main className="min-h-screen ">
         <ProductHeroSection data={heroData} />
         <ProductTrustSection data={trustData} />

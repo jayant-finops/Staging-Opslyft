@@ -94,13 +94,13 @@ function ArticleCard({ post }: { post: CustomerStory }) {
               >
                 {post.title}
               </h3>
-              <div className="flex-shrink-0 transition-transform duration-300 translate-x-3  group-hover:translate-x-1 group-hover:-translate-y-1">
+              <div className="flex-shrink-0 transition-transform duration-300   group-hover:translate-x-1 group-hover:-translate-y-1">
                 <Image
                   src="/assets/images/blog/arrow-up-right.svg"
                   alt=""
-                  width={48}
-                  height={48}
-                  className="w-12 h-12"
+                  width={36}
+                  height={36}
+                  className="w-7 h-7"
                 />
               </div>
             </div>

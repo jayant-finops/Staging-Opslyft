@@ -8,6 +8,7 @@ import {
   getCustomerStoriesHero,
   getCustomerStories,
   getProductBanner,
+  getNavbar,
 } from "@/lib/sanity";
 import {
   customerStoriesHeroFallback,
@@ -16,15 +17,16 @@ import {
 
 export default async function CustomerStoriesPage() {
   // Fetch data from Sanity
-  const [heroData, storiesData, bannerData] = await Promise.all([
+  const [heroData, storiesData, bannerData, navbarData] = await Promise.all([
     getCustomerStoriesHero(),
     getCustomerStories(),
     getProductBanner(),
+    getNavbar(),
   ]);
 
   return (
     <>
-      <Navbar />
+      <Navbar data={navbarData} />
       <main className="min-h-screen">
         <CustomerStoriesHeroSection
           data={heroData as typeof customerStoriesHeroFallback | null}

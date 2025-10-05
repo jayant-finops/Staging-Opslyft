@@ -70,6 +70,10 @@ function MobileWaypointDot({
 
 export default function TimelineSection({ data }: Props) {
   const content = data?.items ?? companyTimelineFallback;
+  const heading = data?.heading || "Our Story";
+  const subheading =
+    data?.subheading ||
+    "Our story of becoming one of the most loved FinOps platform";
   const ref = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress: desktopScrollYProgress } = useScroll({
     target: ref,
@@ -105,13 +109,13 @@ export default function TimelineSection({ data }: Props) {
           className="text-[#d3d3d3] lg:text-[#f0f7ed] text-[28px] lg:text-[56px] font-semibold text-center leading-[34px] lg:leading-[1.2]"
           style={{ fontFamily: '"Funnel Display", sans-serif' }}
         >
-          Our Story
+          {heading}
         </h2>
         <p
           className="text-[#e8f6e3] text-center text-[14px] lg:text-[16px] font-light lg:font-normal leading-[21px] lg:leading-[24px] mt-2 w-[350px] lg:w-[700px] mx-auto "
           style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
         >
-          Our story of becoming one of the most loved FinOps platform
+          {subheading}
         </p>
       </div>
 
@@ -130,7 +134,7 @@ export default function TimelineSection({ data }: Props) {
       </div>
 
       <div
-        className="hidden lg:block absolute top-[0px] left-1/2 -translate-x-1/2 w-[874px] h-[374px] pointer-events-none "
+        className="hidden lg:block absolute -top-[75px] left-1/2 -translate-x-1/2 w-[1474px] h-[974px] pointer-events-none "
         aria-hidden
       >
         <Image

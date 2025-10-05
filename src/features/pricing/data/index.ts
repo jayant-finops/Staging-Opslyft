@@ -75,7 +75,7 @@ export const pricingFallback: LocalPricing = {
     { src: "/assets/images/testimonials/innovaccer.png", alt: "Innovaccer" },
   ],
   logosBottom: [
-    { src: "/assets/images/testimonials/Xactly.png", alt: "Xactly" },
+    { src: "/assets/images/testimonials/Xactly.svg", alt: "Xactly" },
     { src: "/assets/images/testimonials/HDFC-Life-Logo.png", alt: "HDFC Life" },
   ],
   form: {

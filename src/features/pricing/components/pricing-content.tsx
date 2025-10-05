@@ -132,7 +132,7 @@ export default function PricingContent({ data }: PricingContentProps) {
                   alt={logo.alt}
                   width={132}
                   height={28}
-                  className="w-[90px] h-[40px] lg:h-[55px] lg:w-[130px] 2xl:w-[140px] 2xl:h-[60px] object-contain invert brightness-0 opacity-90"
+                  className="w-[90px] h-[40px] lg:h-[55px] lg:w-[130px] 2xl:w-[140px] 2xl:h-[60px] object-contain invert"
                 />
               ))}
             </div>

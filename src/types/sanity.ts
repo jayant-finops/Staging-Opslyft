@@ -148,6 +148,8 @@ export interface AboutMissionSection {
 export interface CompanyTimelineDoc {
   _id: string;
   _type: "companyTimeline";
+  heading?: string;
+  subheading?: string;
   items: {
     id: number;
     phase: string;

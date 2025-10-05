@@ -72,7 +72,7 @@ const ProductDropdown = ({
                         window.dispatchEvent(new HashChangeEvent("hashchange"));
                       }
                     }}
-                    className="text-[#F1F1F1] text-[15px] leading-[20px] hover:text-white transition-colors"
+                    className="text-[#F1F1F1] text-[15px] leading-[20px] hover:text-white transition-colors underline underline-offset-2"
                     style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
                   >
                     {item.label}
@@ -225,7 +225,7 @@ export default function Navbar({ data }: NavbarProps = {}) {
               <div className="flex items-center justify-between h-14 sm:h-16">
                 {/* Logo */}
                 <Link href="/" className="flex items-center">
-                  <div className="relative w-20 h-6 sm:w-24 sm:h-8">
+                  <div className="relative w-[110px] h-9 sm:w-24 sm:h-8">
                     <Image
                       src={navData.logoSrc}
                       alt="Opslyft"
@@ -303,7 +303,7 @@ export default function Navbar({ data }: NavbarProps = {}) {
                             className="absolute left-0 top-full mt-6 w-[529px] rounded-[30px] z-50 origin-top"
                             style={{
                               background:
-                                "linear-gradient(176.26deg, rgba(0, 25, 16, 0.7) 7.42%, rgba(7, 8, 8, 0.49) 102.27%)",
+                                "linear-gradient(176.26deg, rgba(0, 25, 16, 0.82) 7.42%, rgba(7, 8, 8, 1) 102.27%)",
                               boxShadow:
                                 "inset 0px 3px 5px rgba(255, 255, 255, 0.5)",
                               backdropFilter: "blur(3.4px)",
@@ -378,7 +378,7 @@ export default function Navbar({ data }: NavbarProps = {}) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-[60] lg:hidden flex items-start justify-center p-4 bg-black/70 backdrop-blur-[2px]"
+            className="fixed inset-0 z-[60] lg:hidden flex items-start justify-center p-4 bg-black/70 backdrop-blur-[2px] "
           >
             <motion.div
               initial={{ y: -20, opacity: 0 }}
@@ -442,10 +442,10 @@ export default function Navbar({ data }: NavbarProps = {}) {
                             onClick={() =>
                               setMobileDropdownOpen(!mobileDropdownOpen)
                             }
-                            className={`flex items-center gap-2 px-4 py-2 rounded-[10px] border transition-all ${
+                            className={`flex items-center gap-2 px-4 py-2 rounded-[10px]  transition-all ${
                               mobileDropdownOpen
-                                ? "bg-[#0B2A1A] border-[#7C7C7C]"
-                                : "bg-transparent border-transparent"
+                                ? "bg-[#0B2A1A] border border-[#7C7C7C]"
+                                : "bg-transparent border-b border-[#343434]"
                             }`}
                           >
                             <span
@@ -502,7 +502,7 @@ export default function Navbar({ data }: NavbarProps = {}) {
                                           }}
                                           className="flex items-center gap-2 px-4 py-2 bg-[#0B2A1A] border border-[#7C7C7C] rounded-[10px] shadow-[0px_4px_15px_rgba(0,0,0,0.04)] hover:border-[#24823D] transition-colors"
                                         >
-                                          <div className="relative w-8 h-8 flex-shrink-0">
+                                          <div className="relative w-8 h-8 flex-shrink-0 ">
                                             <Image
                                               src={category.icon}
                                               alt={category.title}
@@ -551,7 +551,7 @@ export default function Navbar({ data }: NavbarProps = {}) {
                                                 setIsMobileMenuOpen(false);
                                                 setMobileDropdownOpen(false);
                                               }}
-                                              className="text-[#F1F1F1] text-[12px] leading-[16px] hover:text-white transition-colors"
+                                              className="text-[#F1F1F1] text-[12px] leading-[16px] hover:text-white transition-colors underline underline-offset-2"
                                               style={{
                                                 fontFamily:
                                                   '"IBM Plex Sans", sans-serif',

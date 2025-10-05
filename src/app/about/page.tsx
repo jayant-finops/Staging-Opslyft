@@ -1,4 +1,4 @@
-import { getAboutHero, getAboutMission } from "@/lib/sanity";
+import { getAboutHero, getAboutMission, getNavbar } from "@/lib/sanity";
 import { aboutHeroFallback, aboutMissionFallback } from "@/features/about";
 import { AboutHeroSection, AboutMissionSection } from "@/features/about";
 import { Navbar, Footer } from "@/components/layout";
@@ -11,14 +11,15 @@ export const metadata = {
 
 export default async function AboutPage() {
   // Fetch data from Sanity with fallbacks
-  const [aboutHeroData, aboutMissionData] = await Promise.all([
+  const [aboutHeroData, aboutMissionData, navbarData] = await Promise.all([
     getAboutHero().catch(() => null),
     getAboutMission().catch(() => null),
+    getNavbar().catch(() => null),
   ]);
 
   return (
     <>
-      <Navbar />
+      <Navbar data={navbarData} />
       <main>
         <AboutHeroSection
           data={aboutHeroData}

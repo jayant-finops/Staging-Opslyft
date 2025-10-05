@@ -163,6 +163,8 @@ export interface AboutMissionSection extends SanityDocument {
 // Company page types
 export interface CompanyTimelineDoc extends SanityDocument {
   _type: "companyTimeline";
+  heading?: string;
+  subheading?: string;
   items: {
     id: number;
     phase: string;

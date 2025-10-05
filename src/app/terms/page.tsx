@@ -1,4 +1,5 @@
 import { Navbar, Footer } from "@/components/layout";
+import { getNavbar } from "@/lib/sanity";
 
 export const metadata = {
   title: "Terms of Use – Opslyft",
@@ -6,10 +7,12 @@ export const metadata = {
     "Terms of Use for OpsLyft. These Terms of Use constitute a legally binding agreement concerning your access to and use of the www.opslyft.com website.",
 };
 
-export default function TermsPage() {
+export default async function TermsPage() {
+  const navbarData = await getNavbar();
+
   return (
     <>
-      <Navbar />
+      <Navbar data={navbarData} />
       <main className="bg-white min-h-screen pt-18">
         <div className="max-w-[1152px] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-24">
           {/* Main Title */}

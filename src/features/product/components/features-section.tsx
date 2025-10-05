@@ -175,7 +175,7 @@ export default function ProductFeaturesSection({
   return (
     <section className="relative" style={{ background: "#F1F1F1" }}>
       {/* Heading */}
-      <div className="relative mx-auto max-w-[375px] lg:max-w-[1440px] px-6 sm:px-6 lg:px-8 pt-[60px] lg:pt-8 pb-6 lg:pb-2">
+      <div className="relative mx-auto max-w-[375px] lg:max-w-[1440px] px-6 sm:px-6 lg:px-8 pt-[60px] lg:pt-8 pb-2">
         <div className="flex flex-col items-center justify-center gap-4 lg:gap-4">
           <div
             className="inline-flex items-center justify-center px-[14px] py-[4px] rounded-full border text-[#24823D] shadow-sm w-auto h-[25px] lg:h-auto"
@@ -215,9 +215,9 @@ export default function ProductFeaturesSection({
       </div>
 
       {/* Feature toggle row + stacked cards */}
-      <div className="relative mx-auto max-w-[1170px] px-4 sm:px-6 lg:px-0 pb-[24px] lg:pb-[90px] 2xl:pb-[110px] ">
+      <div className="relative mx-auto max-w-[1170px] px-4 sm:px-6 lg:px-0 pb-[90px] lg:pb-[90px] 2xl:pb-[110px]">
         {/* Toggle row */}
-        <div className="w-full mb-6 pt-20 lg:sticky top-5 lg:-top-12 z-[1]">
+        <div className="w-full mb-6 pt-10 lg:pt-20 lg:sticky top-5 lg:-top-12 z-[1]">
           <div className="flex flex-col md:flex-row md:justify-center md:items-center gap-1 md:gap-3">
             {features.map((item, i) => {
               const isActive = i === activeTab;
