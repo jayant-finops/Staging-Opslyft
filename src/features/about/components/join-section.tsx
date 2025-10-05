@@ -33,19 +33,18 @@ export default function JoinSection({ data }: Props) {
       </div> */}
 
       {/* Mobile team images - bottom center */}
-      <div className="absolute bottom-[40px] left-1/2 -translate-x-1/2 w-[350px] h-[350px] lg:hidden pointer-events-none">
+      <div className="absolute top-[50%] left-[43%] md:left-[48%]  -translate-x-1/2 w-[439px] h-[439px] lg:hidden pointer-events-none">
         <Image
           src={bg}
           alt="Join Team Mobile"
           fill
           className="object-contain object-center"
-          style={{ filter: "grayscale(100%)" }}
           priority
         />
       </div>
 
       {/* Desktop team images - positioned on the right */}
-      <div className="hidden lg:block absolute lg:right-[0px] lg:top-[265px] 3xl:right-[240px]  -translate-y-1/2 w-[604px] h-[542px]  pointer-events-none">
+      <div className="hidden lg:block absolute lg:right-[0px] lg:top-[315px] 2xl:right-[140px] 3xl:right-[270px]  -translate-y-1/2 w-[668px] h-[652px]  pointer-events-none">
         <Image
           src={bg}
           alt="Join Team Desktop"

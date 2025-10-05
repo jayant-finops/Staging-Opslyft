@@ -28,10 +28,9 @@ export default function ProductWinsSection({ data }: ProductWinsSectionProps) {
                 className="rounded-[30px] px-6 py-6"
                 style={{
                   background: "rgba(14, 24, 33, 0.38)",
-                  border:
-                    "1px solid linear-gradient(180deg, #6D6D6D 0%, #D3D3D3 0.01%) 1",
-                  boxShadow: "0px 1.44px 4px 0px rgba(0, 0, 0, 0.34)",
-                  backdropFilter: "blur(2px)",
+                  boxShadow: "inset 0px 3px 5px rgba(255, 255, 255, 0.5)",
+                  backdropFilter: "blur(3.4px)",
+                  borderRadius: "30px",
                 }}
               >
                 <div className="flex flex-col gap-2">
