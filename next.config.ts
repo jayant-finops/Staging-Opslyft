@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
       // Redirect old URLs to home page
       {
         source: "/blogs/:path*",
-        destination: "/",
+        destination: "/customer-stories",
         permanent: true,
       },
       {
@@ -52,6 +52,21 @@ const nextConfig: NextConfig = {
       {
         source: "/privacy-policy",
         destination: "/privacy",
+        permanent: true,
+      },
+      {
+        source: "/case-studies/:path*",
+        destination: "/customer-stories",
+        permanent: true,
+      },
+      {
+        source: "/join-waitlist",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/csi",
+        destination: "/",
         permanent: true,
       },
     ];
