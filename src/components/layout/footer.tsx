@@ -14,7 +14,7 @@ export default function Footer({ data }: FooterProps) {
   if (typeof window !== "undefined") {
     console.log("Footer Sanity data:", data);
   }
-  
+
   // Map Sanity data structure to match fallback structure
   const footer = data
     ? {
@@ -225,7 +225,7 @@ export default function Footer({ data }: FooterProps) {
             >
               👨‍💻 Crafted at 3AM with too much coffee — Animesh @ Opslyft
             </span>
-            {footer.socialLinks.map((social) => 
+            {footer.socialLinks.map((social) =>
               social.iconSrc ? (
                 <a
                   key={social.platform}
