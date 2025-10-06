@@ -1,16 +1,22 @@
 import { createClient } from "next-sanity";
 import imageUrlBuilder from "@sanity/image-url";
 
-// Use the same environment pattern as sanity/env.ts with proper fallbacks
-const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "6i1nvf02";
-const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || "production";
+// Sanity configuration - ensure these match your sanity/env.ts
 const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION || "2024-01-01";
+const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || "production";
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "6i1nvf02";
 
+// Create Sanity client with explicit configuration
 export const client = createClient({
-  projectId,
-  dataset,
-  apiVersion,
-  useCdn: false,
+  projectId: projectId,
+  dataset: dataset,
+  apiVersion: apiVersion,
+  useCdn: false, // Set to false for statically generating pages
+  perspective: "published", // Only fetch published documents
+  stega: {
+    enabled: false,
+    studioUrl: "/studio",
+  },
 });
 
 // Image URL builder
