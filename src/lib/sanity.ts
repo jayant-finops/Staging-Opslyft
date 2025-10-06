@@ -403,7 +403,8 @@ export async function getProductFeatures(category: string) {
         description
       },
       outcome,
-      "visualUrl": visualImage.asset->url
+      "visualUrl": visualImage.asset->url,
+      "mobileVisualUrl": mobileVisualImage.asset->url
     }
   }`;
 

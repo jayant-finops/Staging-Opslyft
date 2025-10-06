@@ -76,7 +76,7 @@ export default function ProductProblemSection({
               <div className="flex flex-col justify-center items-start gap-4 w-full max-w-[284px]">
                 {/* Heading */}
                 <h3
-                  className="text-[#24823D] font-semibold text-[24px] leading-[27px] w-full"
+                  className="text-[#24823D] font-semibold text-[24px] leading-[27px] w-full h-[44px]"
                   style={{
                     fontFamily: '"Funnel Display", sans-serif',
                   }}
@@ -85,7 +85,7 @@ export default function ProductProblemSection({
                 </h3>
                 {/* Sub-heading */}
                 <p
-                  className="text-[#343434] font-light text-[16px] leading-[22px] tracking-[-0.002em] w-full"
+                  className="text-[#343434] font-light text-[14px] leading-[22px] tracking-[-0.002em] w-full"
                   style={{
                     fontFamily: '"IBM Plex Sans", sans-serif',
                   }}

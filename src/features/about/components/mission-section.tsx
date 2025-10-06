@@ -23,7 +23,7 @@ export default function AboutMissionSection({ data, fallbackData }: Props) {
         </h2>
 
         <p
-          className="text-[#24823d] text-[24px] lg:text-[48px] leading-[1.2] font-medium mb-[57px] lg:mb-[72px] lg:opacity-[0.76]"
+          className="text-[#24823d] text-[24px] lg:text-[42px] leading-[1.2] font-medium mb-[57px] lg:mb-[72px] lg:opacity-[0.76]"
           style={{ fontFamily: '"Funnel Display", sans-serif' }}
         >
           {content.description}

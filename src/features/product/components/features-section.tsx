@@ -359,7 +359,7 @@ export default function ProductFeaturesSection({
                     ))}
                   </div>
 
-                  <div className="flex-1 hidden lg:block">
+                  <div className="flex-1 hidden lg:block mt-4 space-y-2">
                     <p
                       className="text-[#0E1821] "
                       style={{
@@ -376,7 +376,7 @@ export default function ProductFeaturesSection({
                       style={{
                         fontFamily: '"IBM Plex Sans", sans-serif',
                         fontSize: 16,
-                        lineHeight: "30px",
+                        lineHeight: "24px",
                         fontWeight: 400,
                       }}
                     >
@@ -384,7 +384,7 @@ export default function ProductFeaturesSection({
                     </p>
                   </div>
                   <button
-                    className="w-fit text-[#24823D]"
+                    className="w-fit text-[#24823D] mb-6"
                     style={{
                       fontFamily: '"IBM Plex Sans", sans-serif',
                       fontSize: 16,
@@ -399,20 +399,20 @@ export default function ProductFeaturesSection({
                 {/* Right visual */}
                 <div className="w-full lg:w-[592px] lg:h-[556px] lg:flex-shrink-0 order-1 lg:order-2">
                   {/* Desktop visual */}
-                  <div className="hidden lg:block relative w-full h-[556px] rounded-[30px] overflow-hidden">
+                  <div className="block relative w-full h-[356px] lg:h-[556px] rounded-[30px] overflow-hidden">
                     <Image
                       src={f.visualUrl}
                       alt={`${f.badge} visualization`}
                       fill
-                      className="block object-cover"
+                      className="hidden lg:block object-cover"
                     />
                     {/* Mobile image */}
-                    {/* <Image
+                    <Image
                       src={f.mobileVisualUrl}
                       alt={`${f.badge} visualization`}
                       fill
-                      className="lg:hidden object-cover"
-                    /> */}
+                      className="lg:hidden object-contain"
+                    />
                   </div>
                 </div>
               </div>
