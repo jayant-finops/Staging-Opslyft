@@ -106,9 +106,18 @@ export const productFeatures = defineType({
             }),
             defineField({
               name: "visualImage",
-              title: "Visual Image",
+              title: "Visual Image (Desktop)",
               type: "image",
-              description: "Feature visualization image",
+              description: "Feature visualization image for desktop",
+              options: {
+                hotspot: true,
+              },
+            }),
+            defineField({
+              name: "mobileVisualImage",
+              title: "Visual Image (Mobile)",
+              type: "image",
+              description: "Feature visualization image for mobile",
               options: {
                 hotspot: true,
               },

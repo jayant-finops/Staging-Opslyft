@@ -25,6 +25,7 @@ export const costGovernanceFeatures = [
     outcome:
       "IT and Finance gain complete visibility into cloud assets with audit-ready compliance tracking.",
     visualUrl: "/assets/images/features/asset.svg",
+    mobileVisualUrl: "/assets/images/features/asset-mobile.svg",
   },
   {
     id: "budgeting",
@@ -52,6 +53,7 @@ export const costGovernanceFeatures = [
     outcome:
       "Finance teams plan budgets accurately and engineering teams stay within guardrails.",
     visualUrl: "/assets/images/features/budgeting.svg",
+    mobileVisualUrl: "/assets/images/features/budgeting-mobile.svg",
   },
   {
     id: "unit-economics",
@@ -79,5 +81,6 @@ export const costGovernanceFeatures = [
     outcome:
       "Leadership connects cloud spending to business value and makes data-driven investment decisions.",
     visualUrl: "/assets/images/features/unit-economics.svg",
+    mobileVisualUrl: "/assets/images/features/unit-economics.svg",
   },
 ];

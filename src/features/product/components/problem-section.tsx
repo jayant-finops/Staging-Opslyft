@@ -13,14 +13,16 @@ export default function ProductProblemSection({
   return (
     <section className="relative h-auto lg:h-[805px] bg-[#F1F1F1] -mt-[1px]">
       {/* Decorative circles */}
-      <div className="pointer-events-none absolute inset-0 lg:h-[574px] lg:w-[574px] mx-auto mt-30">
-        <Image
-          src={problemData.decorativeImage}
-          alt=""
-          fill
-          className="object-contain"
-        />
-      </div>
+      {problemData.decorativeImage && (
+        <div className="pointer-events-none absolute inset-0 lg:h-[574px] lg:w-[574px] mx-auto mt-30">
+          <Image
+            src={problemData.decorativeImage}
+            alt=""
+            fill
+            className="object-contain"
+          />
+        </div>
+      )}
 
       {/* Heading area */}
       <div className="relative max-w-[375px] lg:max-w-[1440px] mx-auto flex flex-col items-center justify-center gap-4 px-6 lg:px-[218px] pt-[60px] lg:pt-[117px] pb-6">

@@ -398,11 +398,19 @@ export default function ProductFeaturesSection({
                 {/* Right visual */}
                 <div className="w-full lg:w-[592px] lg:h-[556px] lg:flex-shrink-0 order-1 lg:order-2">
                   <div className="relative w-full h-[348px] lg:h-[556px] rounded-[30px] overflow-hidden">
+                    {/* Desktop image */}
                     <Image
                       src={f.visualUrl}
                       alt={`${f.badge} visualization`}
                       fill
-                      className="object-cover"
+                      className="hidden lg:block object-cover"
+                    />
+                    {/* Mobile image */}
+                    <Image
+                      src={f.mobileVisualUrl}
+                      alt={`${f.badge} visualization`}
+                      fill
+                      className="lg:hidden object-cover"
                     />
                   </div>
                 </div>

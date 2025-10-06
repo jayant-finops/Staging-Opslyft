@@ -25,6 +25,7 @@ export const costControlFeatures = [
     outcome:
       "Finance and Engineering stop firefighting; anomalies are explained and resolved faster.",
     visualUrl: "/assets/images/features/feature2-card.svg",
+    mobileVisualUrl: "/assets/images/features/anomaly-mobile.svg",
   },
   {
     id: "contextual-optimisation",
@@ -53,6 +54,8 @@ export const costControlFeatures = [
     outcome:
       "Engineering teams confidently optimize costs without compromising performance or reliability.",
     visualUrl: "/assets/images/features/feature1-card.svg",
+    mobileVisualUrl:
+      "/assets/images/features/contexual-optimization-mobile.svg",
   },
   {
     id: "workflow-management",
@@ -78,5 +81,6 @@ export const costControlFeatures = [
     ],
     outcome: "Less chaos, more accountability, measurable ROI.",
     visualUrl: "/assets/images/features/feature3-card.svg",
+    mobileVisualUrl: "/assets/images/features/workflow-mobile.svg",
   },
 ];

@@ -61,13 +61,15 @@ export default function ProductHeroSection({ data }: ProductHeroSectionProps) {
                 {heroData.description}
               </p>
 
-              <div className="pt-2 sm:pt-4">
-                <Link href={heroData.ctaUrl}>
-                  <LegacyButton variant="primary" size="md">
-                    {heroData.ctaText}
-                  </LegacyButton>
-                </Link>
-              </div>
+              {heroData.ctaUrl && (
+                <div className="pt-2 sm:pt-4">
+                  <Link href={heroData.ctaUrl}>
+                    <LegacyButton variant="primary" size="md">
+                      {heroData.ctaText}
+                    </LegacyButton>
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
         </div>

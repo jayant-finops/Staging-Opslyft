@@ -25,6 +25,7 @@ export const costVisibilityFeatures = [
     outcome:
       "Finance teams get accurate cost allocation without manual tagging overhead.",
     visualUrl: "/assets/images/features/cost-allocation.svg",
+    mobileVisualUrl: "/assets/images/features/cost-allocation-mobile.svg",
   },
   {
     id: "showback-chargeback",
@@ -52,6 +53,7 @@ export const costVisibilityFeatures = [
     outcome:
       "Teams understand their spending and take ownership of cost optimization.",
     visualUrl: "/assets/images/features/Chargeback.svg",
+    mobileVisualUrl: "/assets/images/features/Chargeback-mobile.svg",
   },
   {
     id: "k8s-cost-visibility",
@@ -79,6 +81,7 @@ export const costVisibilityFeatures = [
     outcome:
       "Engineering teams optimize K8s resources with clear cost-to-performance visibility.",
     visualUrl: "/assets/images/features/cost-visibility.svg",
+    mobileVisualUrl: "/assets/images/features/cost-visibility-mobile.svg",
   },
   {
     id: "custom-dashboards",
@@ -106,5 +109,6 @@ export const costVisibilityFeatures = [
     outcome:
       "Every stakeholder has instant access to the cost insights they need, in the format they want.",
     visualUrl: "/assets/images/features/dashboards.svg",
+    mobileVisualUrl: "/assets/images/features/dashboards-mobile.svg",
   },
 ];

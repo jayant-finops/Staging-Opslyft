@@ -21,4 +21,5 @@ export type Feature = {
   points: FeaturePoint[];
   outcome?: string;
   visualUrl: string;
+  mobileVisualUrl: string;
 };
