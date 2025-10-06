@@ -19,33 +19,32 @@ export interface SanityDocument {
 // Home page types
 export interface Hero extends SanityDocument {
   _type: "hero";
-  title: string;
-  subtitle: string;
-  description: string;
-  ctaText: string;
-  ctaUrl: string;
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  ctaText?: string;
+  ctaUrl?: string;
   backgroundImage?: SanityImage;
   laptopImage?: SanityImage;
 }
 
 export interface TestimonialsSection extends SanityDocument {
   _type: "testimonialsSection";
+  badgeText?: string;
+  title?: string;
+  subtitle?: string;
   logoRowText?: string;
-  badgeText: string;
-  title: string;
-  subtitle: string;
-  testimonials: {
-    quote: string;
-    author: string;
-    position: string;
-    company: string;
+  testimonials?: {
+    quote?: string;
+    author?: string;
+    role?: string;
+    company?: string;
     avatar?: SanityImage;
     companyLogo?: SanityImage;
   }[];
-  companyLogos: {
-    name: string;
+  companyLogos?: {
     logo?: SanityImage;
-    alt: string;
+    alt?: string;
   }[];
 }
 
@@ -59,31 +58,34 @@ export interface Feature extends SanityDocument {
 
 export interface StruggleSection extends SanityDocument {
   _type: "struggleSection";
-  sectionLabel: string;
-  title: string;
-  subtitle: string;
+  sectionLabel?: string;
+  title?: string;
+  subtitle?: string;
   backgroundImage?: SanityImage;
-  features: {
-    title: string;
-    description: string;
+  features?: {
+    title?: string;
+    description?: string;
     icon?: SanityImage;
   }[];
 }
 
 export interface SolutionsSection extends SanityDocument {
   _type: "solutionsSection";
-  sectionLabel: string;
-  title: string;
-  subtitle: string;
-  features: {
-    title: string;
-    description: string;
+  sectionLabel?: string;
+  title?: string;
+  subtitle?: string;
+  features?: {
+    title?: string;
+    description?: string;
+    bulletPoints?: string[];
     buttonText?: string;
+    buttonUrl?: string;
     image?: SanityImage;
   }[];
   ctaCard?: {
-    title: string;
-    buttonText: string;
+    title?: string;
+    buttonText?: string;
+    buttonUrl?: string;
   };
 }
 
@@ -142,22 +144,20 @@ export interface PricingPageDoc extends SanityDocument {
 // About page types
 export interface AboutHeroSection extends SanityDocument {
   _type: "aboutHero";
-  badgeText: string;
-  titleLines: string[];
-  subtitle: string;
-  ctaButton: {
-    text: string;
-    url: string;
+  titleLines?: string[];
+  subtitle?: string;
+  ctaButton?: {
+    text?: string;
+    url?: string;
   };
-  backgroundImage?: SanityImage;
   decorativeCircles?: SanityImage;
 }
 
 export interface AboutMissionSection extends SanityDocument {
   _type: "aboutMission";
-  title: string;
-  description: string;
-  stats: { label: string; value: string }[];
+  title?: string;
+  description?: string;
+  stats?: { label?: string; value?: string }[];
 }
 
 // Company page types
@@ -177,20 +177,20 @@ export interface CompanyTimelineDoc extends SanityDocument {
 
 export interface TeamDoc extends SanityDocument {
   _type: "team";
-  heading: string;
-  subheading: string;
-  members: {
-    name: string;
-    title: string;
-    bio: string;
+  heading?: string;
+  subheading?: string;
+  members?: {
+    name?: string;
+    title?: string;
+    bio?: string;
     image?: SanityImage;
     linkedin?: string;
   }[];
-  investorsHeading: string;
-  investorsSubheading: string;
-  investors: {
-    name: string;
-    org: string;
+  investorsHeading?: string;
+  investorsSubheading?: string;
+  investors?: {
+    name?: string;
+    org?: string;
     image?: SanityImage;
     linkedin?: string;
   }[];

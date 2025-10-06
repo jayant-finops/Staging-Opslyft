@@ -18,7 +18,6 @@ export const productTrust = defineType({
           { title: "Cost Governance", value: "cost-governance" },
         ],
       },
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "heading",
@@ -26,7 +25,6 @@ export const productTrust = defineType({
       type: "string",
       description:
         "Trust section heading (e.g., 'Trusted by fast-growing companies around the world')",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "logos",
@@ -43,19 +41,16 @@ export const productTrust = defineType({
               options: {
                 hotspot: true,
               },
-              validation: (Rule) => Rule.required(),
             }),
             defineField({
               name: "alt",
               title: "Alt Text",
               type: "string",
               description: "Alternative text for the logo",
-              validation: (Rule) => Rule.required(),
             }),
           ],
         },
       ],
-      validation: (Rule) => Rule.required().min(1),
     }),
   ],
 });

@@ -126,23 +126,21 @@ export interface PricingPageDoc {
 export interface AboutHeroSection {
   _id: string;
   _type: "aboutHero";
-  badgeText: string;
-  titleLines: string[];
-  subtitle: string;
-  ctaButton: {
-    text: string;
-    url: string;
+  titleLines?: string[];
+  subtitle?: string;
+  ctaButton?: {
+    text?: string;
+    url?: string;
   };
-  backgroundImage?: SanityImage;
   decorativeCircles?: SanityImage;
 }
 
 export interface AboutMissionSection {
   _id: string;
   _type: "aboutMission";
-  title: string;
-  description: string;
-  stats: { label: string; value: string }[];
+  title?: string;
+  description?: string;
+  stats?: { label?: string; value?: string }[];
 }
 
 export interface CompanyTimelineDoc {
@@ -163,20 +161,20 @@ export interface CompanyTimelineDoc {
 export interface TeamDoc {
   _id: string;
   _type: "team";
-  heading: string;
-  subheading: string;
-  members: {
-    name: string;
-    title: string;
-    bio: string;
+  heading?: string;
+  subheading?: string;
+  members?: {
+    name?: string;
+    title?: string;
+    bio?: string;
     image?: SanityImage;
     linkedin?: string;
   }[];
-  investorsHeading: string;
-  investorsSubheading: string;
-  investors: {
-    name: string;
-    org: string;
+  investorsHeading?: string;
+  investorsSubheading?: string;
+  investors?: {
+    name?: string;
+    org?: string;
     image?: SanityImage;
     linkedin?: string;
   }[];

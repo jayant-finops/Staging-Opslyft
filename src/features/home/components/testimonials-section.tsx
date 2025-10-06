@@ -28,7 +28,7 @@ export default function TestimonialsSection({
           key: String(i),
           quote: t.quote,
           author: t.author,
-          position: t.position,
+          position: t.role,
           avatarSrc: t.avatar
             ? urlFor(t.avatar).url()
             : fallback[i % fallback.length].avatarSrc,
@@ -237,7 +237,7 @@ export default function TestimonialsSection({
                     <div className="w-10 h-10 bg-gray-200 overflow-hidden relative rounded-[30px] border-1">
                       <Image
                         src={t.avatarSrc}
-                        alt={t.author}
+                        alt={t.author || "Testimonial author"}
                         fill
                         className="object-cover"
                       />
@@ -282,14 +282,14 @@ export default function TestimonialsSection({
           </p>
           <div className="flex flex-wrap justify-center items-center opacity-90 gap-x-2 sm:gap-x-6 gap-y-2">
             {data?.companyLogos && data.companyLogos.length > 0
-              ? data.companyLogos.map((l) => (
+              ? data.companyLogos.map((l, idx) => (
                   <div
-                    key={l.name}
+                    key={l.alt || idx}
                     className="relative w-[104px] h-[44px] md:w-[132px] md:h-[56px]"
                   >
                     <Image
-                      src={l.logo ? urlFor(l.logo).url() : ""}
-                      alt={l.alt}
+                      src={l.logo ? urlFor(l.logo).url() || "" : ""}
+                      alt={l.alt || "Company logo"}
                       fill
                       className="object-contain"
                     />

@@ -45,7 +45,7 @@ export default function AboutMissionSection({ data, fallbackData }: Props) {
 
         {/* Stats */}
         <div className="flex gap-[32px] ">
-          {content.stats.map((s) => (
+          {content.stats?.map((s) => (
             <div key={s.label} className="text-center mx-auto">
               <div
                 className="text-[#b3d0a9] text-[37px] lg:text-[72px] leading-[1.2] font-semibold"

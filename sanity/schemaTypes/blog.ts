@@ -14,28 +14,25 @@ export const blog = defineType({
         source: "title",
         maxLength: 96,
       },
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "category",
       title: "Category",
       type: "string",
-      description: "Blog post category (e.g., 'Case Studies', 'Technical', etc.)",
-      validation: (Rule) => Rule.required(),
+      description:
+        "Blog post category (e.g., 'Case Studies', 'Technical', etc.)",
     }),
     defineField({
       name: "title",
       title: "Title",
       type: "string",
       description: "Blog post title",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "excerpt",
       title: "Excerpt",
       type: "text",
       description: "Short description/preview of the blog post",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "featuredImage",
@@ -61,7 +58,6 @@ export const blog = defineType({
       type: "number",
       description:
         "Order in which this blog post appears (lower numbers appear first)",
-      validation: (Rule) => Rule.required().min(0),
     }),
   ],
   preview: {

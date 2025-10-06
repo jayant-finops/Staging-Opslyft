@@ -10,14 +10,12 @@ export const termsOfUse = defineType({
       title: "Page Title",
       type: "string",
       description: "Main page title (e.g., 'Terms of Use')",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "lastUpdated",
       title: "Last Updated",
       type: "string",
       description: "Last updated date text (e.g., 'Last updated July 2023')",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "sections",
@@ -31,7 +29,6 @@ export const termsOfUse = defineType({
               name: "heading",
               title: "Section Heading",
               type: "string",
-              validation: (Rule) => Rule.required(),
             }),
             defineField({
               name: "content",

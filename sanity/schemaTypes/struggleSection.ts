@@ -9,19 +9,16 @@ export default defineType({
       name: "sectionLabel",
       title: "Section Label",
       type: "string",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "title",
       title: "Title",
       type: "string",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "subtitle",
       title: "Subtitle",
       type: "text",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "backgroundImage",
@@ -44,13 +41,11 @@ export default defineType({
               name: "title",
               title: "Title",
               type: "string",
-              validation: (Rule) => Rule.required(),
             },
             {
               name: "description",
               title: "Description",
               type: "text",
-              validation: (Rule) => Rule.required(),
             },
             {
               name: "icon",
@@ -71,7 +66,6 @@ export default defineType({
           },
         },
       ],
-      validation: (Rule) => Rule.required().min(1).max(3),
     }),
   ],
 });

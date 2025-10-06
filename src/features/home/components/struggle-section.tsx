@@ -21,7 +21,7 @@ interface ExtendedFeature {
 export default function StruggleSection({ data }: StruggleSectionProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const features =
-    data?.features?.length > 0
+    data?.features && data.features.length > 0
       ? data.features.map((f, i) => ({
           title: f.title,
           description: f.description,
@@ -111,7 +111,7 @@ export default function StruggleSection({ data }: StruggleSectionProps) {
               <div className="relative w-[94px] h-[94px] md:w-[103px] md:h-[103px] flex-shrink-0 ">
                 <Image
                   src={(feature as ExtendedFeature).iconSrc}
-                  alt={feature.title}
+                  alt={feature.title || "Feature icon"}
                   fill
                   className="object-contain"
                 />

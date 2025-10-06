@@ -10,14 +10,12 @@ export default defineType({
       title: "Title Lines",
       type: "array",
       of: [{ type: "string" }],
-      validation: (Rule) => Rule.required().min(1).max(3),
       description: "Each line of the title (typically 2 lines)",
     }),
     defineField({
       name: "subtitle",
       title: "Subtitle",
       type: "text",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "ctaButton",
@@ -28,16 +26,22 @@ export default defineType({
           name: "text",
           title: "Button Text",
           type: "string",
-          validation: (Rule) => Rule.required(),
         },
         {
           name: "url",
           title: "Button URL",
           type: "string",
-          validation: (Rule) => Rule.required(),
         },
       ],
-      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "decorativeCircles",
+      title: "Decorative Circles Image",
+      type: "image",
+      description: "Decorative circles image for the hero section",
+      options: {
+        hotspot: true,
+      },
     }),
   ],
 });

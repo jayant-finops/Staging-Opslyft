@@ -52,7 +52,8 @@ export async function getAboutHero() {
     ctaButton{
       text,
       url
-    }
+    },
+    decorativeCircles
   }`;
 
   try {
@@ -144,7 +145,8 @@ export async function getHeroData() {
     subtitle,
     description,
     ctaText,
-    ctaUrl
+    ctaUrl,
+    laptopImage
   }`;
 
   try {
@@ -159,6 +161,9 @@ export async function getHeroData() {
 // Testimonials Section query
 export async function getTestimonialsSection() {
   const query = `*[_type == "testimonialsSection"][0]{
+    badgeText,
+    title,
+    subtitle,
     logoRowText,
     testimonials[]{
       quote,

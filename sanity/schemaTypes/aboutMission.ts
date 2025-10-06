@@ -9,13 +9,11 @@ export default defineType({
       name: "title",
       title: "Title",
       type: "string",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "description",
       title: "Description",
       type: "text",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "stats",
@@ -29,13 +27,11 @@ export default defineType({
               name: "label",
               title: "Label",
               type: "string",
-              validation: (Rule) => Rule.required(),
             },
             {
               name: "value",
               title: "Value",
               type: "string",
-              validation: (Rule) => Rule.required(),
             },
           ],
           preview: {
@@ -46,7 +42,6 @@ export default defineType({
           },
         },
       ],
-      validation: (Rule) => Rule.required().min(1),
     }),
   ],
 });

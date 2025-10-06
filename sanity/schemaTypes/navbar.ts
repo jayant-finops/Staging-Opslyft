@@ -13,7 +13,6 @@ export const navbar = defineType({
       options: {
         hotspot: true,
       },
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "navigation",
@@ -27,13 +26,11 @@ export const navbar = defineType({
               name: "title",
               title: "Title",
               type: "string",
-              validation: (Rule) => Rule.required(),
             }),
             defineField({
               name: "url",
               title: "URL",
               type: "url",
-              validation: (Rule) => Rule.required(),
             }),
             defineField({
               name: "hasDropdown",
@@ -53,7 +50,6 @@ export const navbar = defineType({
                       name: "title",
                       title: "Category Title",
                       type: "string",
-                      validation: (Rule) => Rule.required(),
                     }),
                     defineField({
                       name: "icon",
@@ -67,7 +63,6 @@ export const navbar = defineType({
                       name: "url",
                       title: "Category URL",
                       type: "url",
-                      validation: (Rule) => Rule.required(),
                     }),
                     defineField({
                       name: "items",
@@ -81,14 +76,12 @@ export const navbar = defineType({
                               name: "label",
                               title: "Label",
                               type: "string",
-                              validation: (Rule) => Rule.required(),
                             }),
                             defineField({
                               name: "featureId",
                               title: "Feature ID",
                               type: "string",
                               description: "URL-friendly ID for anchor links",
-                              validation: (Rule) => Rule.required(),
                             }),
                           ],
                         },
@@ -120,26 +113,22 @@ export const navbar = defineType({
       title: "Login Text",
       type: "string",
       description: "Text for login link",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "loginUrl",
       title: "Login URL",
       type: "url",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "ctaText",
       title: "CTA Button Text",
       type: "string",
       description: "Text for main CTA button",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "ctaUrl",
       title: "CTA Button URL",
       type: "url",
-      validation: (Rule) => Rule.required(),
     }),
   ],
 });

@@ -6,6 +6,24 @@ export default defineType({
   type: "document",
   fields: [
     defineField({
+      name: "badgeText",
+      title: "Badge Text",
+      type: "string",
+      description: "Text displayed in the badge (e.g., 'TESTIMONIALS')",
+    }),
+    defineField({
+      name: "title",
+      title: "Section Title",
+      type: "string",
+      description: "Main heading for the testimonials section",
+    }),
+    defineField({
+      name: "subtitle",
+      title: "Section Subtitle",
+      type: "text",
+      description: "Subtitle text below the heading",
+    }),
+    defineField({
       name: "logoRowText",
       title: "Company Logos Row Text",
       type: "string",
@@ -24,25 +42,21 @@ export default defineType({
               name: "quote",
               title: "Quote",
               type: "text",
-              validation: (Rule) => Rule.required(),
             },
             {
               name: "author",
               title: "Author Name",
               type: "string",
-              validation: (Rule) => Rule.required(),
             },
             {
               name: "role",
               title: "Role/Position",
               type: "string",
-              validation: (Rule) => Rule.required(),
             },
             {
               name: "company",
               title: "Company",
               type: "string",
-              validation: (Rule) => Rule.required(),
             },
             {
               name: "avatar",
@@ -83,7 +97,6 @@ export default defineType({
               name: "alt",
               title: "Alt Text",
               type: "string",
-              validation: (Rule) => Rule.required(),
             },
             {
               name: "logo",
@@ -92,7 +105,6 @@ export default defineType({
               options: {
                 hotspot: true,
               },
-              validation: (Rule) => Rule.required(),
             },
           ],
           preview: {

@@ -54,7 +54,7 @@ export default function TeamSection({ data }: Props) {
 
         {/* Team cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-[40px] lg:gap-[60px] lg:w-[1170px] mx-auto">
-          {content.members.map((m) => (
+          {content.members?.map((m) => (
             <div
               key={m.name}
               className="mx-auto p-[10px] rounded-2xl border border-[#DCE6DF] bg-[#e0e1df] shadow-[0_4px_20px_rgba(0,0,0,0.06)] overflow-hidden w-[322px] h-[418px]"
@@ -71,7 +71,7 @@ export default function TeamSection({ data }: Props) {
                 {/* Team member image */}
                 <Image
                   src={getImageSrc(m)}
-                  alt={m.name}
+                  alt={m.name || "Team member"}
                   fill
                   className="object-cover rounded-[10px]"
                 />
@@ -133,7 +133,7 @@ export default function TeamSection({ data }: Props) {
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4  mt-[52px] lg:mt-[123px] mx-auto w-[350px] lg:w-[1170px] space-y-[32px] lg:space-y-[11px]">
-            {content.investors.map((inv, i: number) => (
+            {content.investors?.map((inv, i: number) => (
               <div
                 key={i}
                 className="flex flex-col lg:flex-row items-center gap-3 lg:w-[262px] lg:h-[116px]  justify-start"
@@ -148,7 +148,7 @@ export default function TeamSection({ data }: Props) {
                   <div className="relative w-full h-full rounded-[400px] overflow-hidden ">
                     <Image
                       src={getImageSrc(inv)}
-                      alt={inv.name}
+                      alt={inv.name || "Investor"}
                       fill
                       className="object-cover"
                     />

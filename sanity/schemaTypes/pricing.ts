@@ -11,7 +11,6 @@ export const pricing = defineType({
       type: "string",
       description:
         "Badge text (e.g., 'BUILT FOR ENGINEERING AND FINANCE TEAMS')",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "titleLines",
@@ -19,7 +18,6 @@ export const pricing = defineType({
       type: "array",
       of: [{ type: "string" }],
       description: "Main title split into lines (3 lines)",
-      validation: (Rule) => Rule.required().min(1).max(3),
     }),
     defineField({
       name: "decorativeImage",
@@ -63,20 +61,17 @@ export const pricing = defineType({
               options: {
                 hotspot: true,
               },
-              validation: (Rule) => Rule.required(),
             }),
             defineField({
               name: "alt",
               title: "Alt Text",
               type: "string",
               description: "Alternative text for the logo",
-              validation: (Rule) => Rule.required(),
             }),
           ],
         },
       ],
       description: "Top row of company logos (3 logos)",
-      validation: (Rule) => Rule.required().min(3).max(3),
     }),
     defineField({
       name: "logosBottom",
@@ -93,27 +88,23 @@ export const pricing = defineType({
               options: {
                 hotspot: true,
               },
-              validation: (Rule) => Rule.required(),
             }),
             defineField({
               name: "alt",
               title: "Alt Text",
               type: "string",
               description: "Alternative text for the logo",
-              validation: (Rule) => Rule.required(),
             }),
           ],
         },
       ],
       description: "Bottom row of company logos (2 logos)",
-      validation: (Rule) => Rule.required().min(2).max(2),
     }),
     defineField({
       name: "formHeading",
       title: "Form Heading",
       type: "string",
       description: "Heading text for the contact form",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "formFields",
@@ -127,7 +118,6 @@ export const pricing = defineType({
               name: "placeholder",
               title: "Placeholder Text",
               type: "string",
-              validation: (Rule) => Rule.required(),
             }),
             defineField({
               name: "type",
@@ -145,14 +135,12 @@ export const pricing = defineType({
         },
       ],
       description: "Contact form fields",
-      validation: (Rule) => Rule.required().min(1),
     }),
     defineField({
       name: "submitText",
       title: "Submit Button Text",
       type: "string",
       description: "Text for the form submit button",
-      validation: (Rule) => Rule.required(),
     }),
   ],
 });

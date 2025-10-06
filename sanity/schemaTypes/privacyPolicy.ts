@@ -9,13 +9,11 @@ export default defineType({
       name: "title",
       title: "Title",
       type: "string",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "lastUpdated",
       title: "Last Updated",
       type: "string",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "sections",
@@ -29,7 +27,6 @@ export default defineType({
               name: "title",
               title: "Section Title",
               type: "string",
-              validation: (Rule) => Rule.required(),
             }),
             defineField({
               name: "content",
@@ -58,7 +55,6 @@ export default defineType({
                       name: "title",
                       title: "Subsection Title",
                       type: "string",
-                      validation: (Rule) => Rule.required(),
                     }),
                     defineField({
                       name: "content",

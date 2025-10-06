@@ -9,19 +9,16 @@ export default defineType({
       name: "sectionLabel",
       title: "Section Label",
       type: "string",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "title",
       title: "Title",
       type: "string",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "subtitle",
       title: "Subtitle",
       type: "text",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "features",
@@ -35,13 +32,11 @@ export default defineType({
               name: "title",
               title: "Title",
               type: "string",
-              validation: (Rule) => Rule.required(),
             },
             {
               name: "description",
               title: "Description",
               type: "text",
-              validation: (Rule) => Rule.required(),
             },
             {
               name: "bulletPoints",
@@ -80,7 +75,6 @@ export default defineType({
           },
         },
       ],
-      validation: (Rule) => Rule.required().min(1),
     }),
     defineField({
       name: "ctaCard",
@@ -91,19 +85,16 @@ export default defineType({
           name: "title",
           title: "Title",
           type: "string",
-          validation: (Rule) => Rule.required(),
         },
         {
           name: "buttonText",
           title: "Button Text",
           type: "string",
-          validation: (Rule) => Rule.required(),
         },
         {
           name: "buttonUrl",
           title: "Button URL",
           type: "string",
-          validation: (Rule) => Rule.required(),
         },
       ],
     }),

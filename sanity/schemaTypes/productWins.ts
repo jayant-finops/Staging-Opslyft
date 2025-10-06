@@ -18,14 +18,12 @@ export const productWins = defineType({
           { title: "Cost Governance", value: "cost-governance" },
         ],
       },
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "title",
       title: "Section Title",
       type: "string",
       description: "Main section heading (e.g., 'Why OpsLyft Wins')",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "decorativeImage",
@@ -48,18 +46,15 @@ export const productWins = defineType({
               name: "title",
               title: "Win Title",
               type: "string",
-              validation: (Rule) => Rule.required(),
             }),
             defineField({
               name: "description",
               title: "Win Description",
               type: "text",
-              validation: (Rule) => Rule.required(),
             }),
           ],
         },
       ],
-      validation: (Rule) => Rule.required().min(1),
     }),
   ],
 });

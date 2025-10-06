@@ -9,13 +9,11 @@ export default defineType({
       name: "heading",
       title: "Heading",
       type: "string",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "subheading",
       title: "Subheading",
       type: "string",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "members",
@@ -29,19 +27,16 @@ export default defineType({
               name: "name",
               title: "Name",
               type: "string",
-              validation: (Rule) => Rule.required(),
             },
             {
               name: "title",
               title: "Job Title",
               type: "string",
-              validation: (Rule) => Rule.required(),
             },
             {
               name: "bio",
               title: "Bio",
               type: "text",
-              validation: (Rule) => Rule.required(),
             },
             {
               name: "image",
@@ -50,7 +45,6 @@ export default defineType({
               options: {
                 hotspot: true,
               },
-              validation: (Rule) => Rule.required(),
             },
             {
               name: "linkedin",
@@ -67,19 +61,16 @@ export default defineType({
           },
         },
       ],
-      validation: (Rule) => Rule.required().min(1),
     }),
     defineField({
       name: "investorsHeading",
       title: "Investors Heading",
       type: "string",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "investorsSubheading",
       title: "Investors Subheading",
       type: "text",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "investors",
@@ -93,13 +84,11 @@ export default defineType({
               name: "name",
               title: "Name",
               type: "string",
-              validation: (Rule) => Rule.required(),
             },
             {
               name: "org",
               title: "Organization",
               type: "string",
-              validation: (Rule) => Rule.required(),
             },
             {
               name: "image",
@@ -108,7 +97,6 @@ export default defineType({
               options: {
                 hotspot: true,
               },
-              validation: (Rule) => Rule.required(),
             },
             {
               name: "linkedin",
@@ -125,7 +113,6 @@ export default defineType({
           },
         },
       ],
-      validation: (Rule) => Rule.required().min(1),
     }),
   ],
 });

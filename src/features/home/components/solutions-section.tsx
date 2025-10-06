@@ -144,7 +144,7 @@ function LottieFromSrc({
 
 export default function SolutionsSection({ data }: SolutionsSectionProps) {
   const features =
-    data?.features?.length > 0
+    data?.features && data.features.length > 0
       ? data.features.map((f, i) => ({
           title: f.title,
           description: f.description,

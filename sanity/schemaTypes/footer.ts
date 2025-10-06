@@ -13,38 +13,32 @@ export const footer = defineType({
       options: {
         hotspot: true,
       },
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "tagline",
       title: "Tagline",
       type: "string",
       description: "Company tagline",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "newsletterTitle",
       title: "Newsletter Title",
       type: "string",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "newsletterDescription",
       title: "Newsletter Description",
       type: "text",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "newsletterPlaceholder",
       title: "Newsletter Input Placeholder",
       type: "string",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "newsletterButtonText",
       title: "Newsletter Button Text",
       type: "string",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "navigationColumns",
@@ -58,7 +52,6 @@ export const footer = defineType({
               name: "title",
               title: "Column Title",
               type: "string",
-              validation: (Rule) => Rule.required(),
             }),
             defineField({
               name: "links",
@@ -72,13 +65,11 @@ export const footer = defineType({
                       name: "title",
                       title: "Link Title",
                       type: "string",
-                      validation: (Rule) => Rule.required(),
                     }),
                     defineField({
                       name: "url",
                       title: "URL",
                       type: "url",
-                      validation: (Rule) => Rule.required(),
                     }),
                   ],
                 },
@@ -105,13 +96,11 @@ export const footer = defineType({
               name: "platform",
               title: "Platform Name",
               type: "string",
-              validation: (Rule) => Rule.required(),
             }),
             defineField({
               name: "url",
               title: "URL",
               type: "url",
-              validation: (Rule) => Rule.required(),
             }),
             defineField({
               name: "icon",
@@ -120,7 +109,6 @@ export const footer = defineType({
               options: {
                 hotspot: true,
               },
-              validation: (Rule) => Rule.required(),
             }),
           ],
           preview: {
@@ -144,7 +132,6 @@ export const footer = defineType({
               name: "name",
               title: "Certification Name",
               type: "string",
-              validation: (Rule) => Rule.required(),
             }),
             defineField({
               name: "logo",
@@ -153,13 +140,11 @@ export const footer = defineType({
               options: {
                 hotspot: true,
               },
-              validation: (Rule) => Rule.required(),
             }),
             defineField({
               name: "alt",
               title: "Alt Text",
               type: "string",
-              validation: (Rule) => Rule.required(),
             }),
           ],
           preview: {
@@ -175,13 +160,11 @@ export const footer = defineType({
       name: "copyright",
       title: "Copyright Text",
       type: "string",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "address",
       title: "Company Address",
       type: "string",
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "legalLinks",
@@ -195,13 +178,11 @@ export const footer = defineType({
               name: "title",
               title: "Link Title",
               type: "string",
-              validation: (Rule) => Rule.required(),
             }),
             defineField({
               name: "url",
               title: "URL",
               type: "url",
-              validation: (Rule) => Rule.required(),
             }),
           ],
         },

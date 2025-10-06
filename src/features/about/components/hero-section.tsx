@@ -109,7 +109,7 @@ export default function AboutHeroSection({
           className="mb-[16px] lg:mb-[20px] lg:space-y-[0px] gap-[16px] flex flex-col"
           style={{ fontFamily: '"Funnel Display", sans-serif' }}
         >
-          {content.titleLines.map((line, index) => (
+          {content.titleLines?.map((line, index) => (
             <span key={index}>
               {index === 1 ? (
                 <span
@@ -133,39 +133,43 @@ export default function AboutHeroSection({
                   {line}
                 </span>
               )}
-              {index < content.titleLines.length - 1 && <br />}
+              {index < (content.titleLines?.length || 0) - 1 && <br />}
             </span>
           ))}
         </motion.h1>
 
         {/* Subtitle */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-[18px] text-[#9d9fa1] max-w-3xl mx-auto leading-[28px] tracking-[0.3px] font-normal w-[343px] lg:w-[437px] mb-[94px] lg:mb-[51px]"
-          style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
-        >
-          {content.subtitle}
-        </motion.p>
+        {content.subtitle && (
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="text-[18px] text-[#9d9fa1] max-w-3xl mx-auto leading-[28px] tracking-[0.3px] font-normal w-[343px] lg:w-[437px] mb-[94px] lg:mb-[51px]"
+            style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
+          >
+            {content.subtitle}
+          </motion.p>
+        )}
 
         {/* CTA Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-16"
-        >
-          <Link
-            href={content.ctaButton.url}
-            className=" px-[36px] lg:px-[72px] py-[16px]  bg-[#24823D] text-white rounded-xl transition-all duration-300 transform hover:scale-105 text-[18px]  relative overflow-hidden font-semibold leading-[16px] border-b border-white shadow-[1px_2px_0px_0px_#ffffff] hover:bg-white hover:text-[#051821] hover:shadow-[3px_3px_0px_0px_#24823d]"
-            style={{
-              fontFamily: '"IBM Plex Sans", sans-serif',
-            }}
+        {content.ctaButton?.text && content.ctaButton?.url && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="mt-16"
           >
-            {content.ctaButton.text}
-          </Link>
-        </motion.div>
+            <Link
+              href={content.ctaButton.url}
+              className=" px-[36px] lg:px-[72px] py-[16px]  bg-[#24823D] text-white rounded-xl transition-all duration-300 transform hover:scale-105 text-[18px]  relative overflow-hidden font-semibold leading-[16px] border-b border-white shadow-[1px_2px_0px_0px_#ffffff] hover:bg-white hover:text-[#051821] hover:shadow-[3px_3px_0px_0px_#24823d]"
+              style={{
+                fontFamily: '"IBM Plex Sans", sans-serif',
+              }}
+            >
+              {content.ctaButton.text}
+            </Link>
+          </motion.div>
+        )}
       </div>
     </section>
   );
