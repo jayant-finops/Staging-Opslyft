@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import Lottie, { type LottieRefCurrentProps } from "lottie-react";
 import { SolutionsSection as SolutionsSectionType } from "@/types";
 import { solutionsFallback } from "@/features/home/data/solutions";
@@ -17,6 +18,7 @@ interface ExtendedFeature {
   title: string;
   description: string;
   buttonText?: string;
+  buttonUrl?: string;
   imageSrc: string;
   bulletPoints?: string[];
 }
@@ -149,6 +151,8 @@ export default function SolutionsSection({ data }: SolutionsSectionProps) {
           title: f.title,
           description: f.description,
           buttonText: f.buttonText,
+          buttonUrl: f.buttonUrl,
+          bulletPoints: f.bulletPoints,
           // Use Sanity image if available, otherwise fallback to local images
           imageSrc: f.image
             ? urlFor(f.image).url()
@@ -271,7 +275,10 @@ export default function SolutionsSection({ data }: SolutionsSectionProps) {
                 )}
 
                 {(feature as ExtendedFeature).buttonText && (
-                  <div className="relative inline-block mt-[40px] sm:mt-0 my-[120px] sm:my-0 mx-auto">
+                  <Link
+                    href={(feature as ExtendedFeature).buttonUrl || "#"}
+                    className="relative inline-block mt-[40px] sm:mt-0 my-[120px] sm:my-0 mx-auto"
+                  >
                     <div className="absolute inset-0 rounded-[12px] bg-white" />
                     <LegacyButton
                       variant="primary"
@@ -292,7 +299,7 @@ export default function SolutionsSection({ data }: SolutionsSectionProps) {
                         <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z" />
                       </svg>
                     </LegacyButton>
-                  </div>
+                  </Link>
                 )}
               </div>
 
@@ -360,15 +367,23 @@ export default function SolutionsSection({ data }: SolutionsSectionProps) {
                   ))}
               </h3>
 
-              <LegacyButton variant="secondaryInverted" size="md">
-                <span
-                  className="text-[18px] font-semibold leading-[16px] text-[#ffffff"
-                  style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
-                >
-                  {data?.ctaCard?.buttonText ||
-                    solutionsFallback.ctaCard.buttonText}
-                </span>
-              </LegacyButton>
+              <Link
+                href={
+                  data?.ctaCard?.buttonUrl ||
+                  solutionsFallback.ctaCard.buttonUrl ||
+                  "#"
+                }
+              >
+                <LegacyButton variant="secondaryInverted" size="md">
+                  <span
+                    className="text-[18px] font-semibold leading-[16px] text-[#ffffff"
+                    style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
+                  >
+                    {data?.ctaCard?.buttonText ||
+                      solutionsFallback.ctaCard.buttonText}
+                  </span>
+                </LegacyButton>
+              </Link>
             </div>
           </div>
         </motion.div>

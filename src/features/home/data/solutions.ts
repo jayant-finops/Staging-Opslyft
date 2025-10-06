@@ -3,6 +3,7 @@ export type LocalSolutionFeature = {
   description: string;
   bulletPoints?: string[];
   buttonText?: string;
+  buttonUrl?: string;
   imageSrc: string;
 };
 
@@ -14,6 +15,7 @@ export type LocalSolutions = {
   ctaCard: {
     title: string;
     buttonText: string;
+    buttonUrl?: string;
   };
 };
 
@@ -32,6 +34,7 @@ export const solutionsFallback: LocalSolutions = {
         "and then recommends optimisations you can trust.",
       ],
       buttonText: "Know more",
+      buttonUrl: "#",
       imageSrc: "/assets/images/solution/feat1.json",
     },
     {
@@ -43,6 +46,7 @@ export const solutionsFallback: LocalSolutions = {
         "No spreadsheets, no guesswork.",
       ],
       buttonText: "Know more",
+      buttonUrl: "#",
       imageSrc: "/assets/images/solution/feat2.json",
     },
     {
@@ -54,6 +58,7 @@ export const solutionsFallback: LocalSolutions = {
         "And get instant answers with root causes and next steps..",
       ],
       buttonText: "Know more",
+      buttonUrl: "#",
       imageSrc: "/assets/images/solution/feat3.json",
     },
   ],
@@ -61,5 +66,6 @@ export const solutionsFallback: LocalSolutions = {
     title:
       "Cloud waste? Bench it.\nOpslyft puts the right players on the field",
     buttonText: "Speak to Us",
+    buttonUrl: "#",
   },
 };

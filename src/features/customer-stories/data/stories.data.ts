@@ -1,10 +1,12 @@
+import type { SanityImage } from "@/types/sanity";
+
 export type CustomerStory = {
   slug: string;
   category: string;
   title: string;
   excerpt: string;
-  featuredImage?: string;
-  cardBackgroundImage?: string;
+  featuredImage?: string | SanityImage;
+  cardBackgroundImage?: string | SanityImage;
   order: number;
 };
 

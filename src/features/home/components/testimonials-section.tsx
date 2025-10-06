@@ -139,28 +139,28 @@ export default function TestimonialsSection({
           loop
           slidesPerView={1}
           spaceBetween={16}
-          centeredSlides={true}
+          centeredSlides={false}
           autoplay={{ delay: 3000 }}
           breakpoints={{
             480: {
               slidesPerView: 1.5,
               spaceBetween: 20,
-              centeredSlides: true,
+              centeredSlides: false,
             },
             640: {
               slidesPerView: 2,
               spaceBetween: 24,
-              centeredSlides: true,
+              centeredSlides: false,
             },
             768: {
               slidesPerView: 2.5,
               spaceBetween: 24,
-              centeredSlides: true,
+              centeredSlides: false,
             },
             1024: {
               slidesPerView: 3,
               spaceBetween: 30,
-              centeredSlides: true,
+              centeredSlides: false,
             },
           }}
           className="!px-4 sm:!px-6 lg:!px-2 relative mx-auto w-full md:max-w-[1173px]"

@@ -69,7 +69,7 @@ export const footer = defineType({
                     defineField({
                       name: "url",
                       title: "URL",
-                      type: "url",
+                      type: "string",
                     }),
                   ],
                 },
@@ -100,7 +100,7 @@ export const footer = defineType({
             defineField({
               name: "url",
               title: "URL",
-              type: "url",
+              type: "string",
             }),
             defineField({
               name: "icon",
@@ -182,7 +182,7 @@ export const footer = defineType({
             defineField({
               name: "url",
               title: "URL",
-              type: "url",
+              type: "string",
             }),
           ],
         },

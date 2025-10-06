@@ -480,8 +480,8 @@ export async function getCustomerStories() {
     category,
     title,
     excerpt,
-    "featuredImage": featuredImage.asset->url,
-    "cardBackgroundImage": cardBackgroundImage.asset->url,
+    featuredImage,
+    cardBackgroundImage,
     order
   }`;
 

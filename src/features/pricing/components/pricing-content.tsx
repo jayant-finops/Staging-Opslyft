@@ -125,28 +125,32 @@ export default function PricingContent({ data }: PricingContentProps) {
           {/* Logos - 3 on top, 2 on bottom (centered) */}
           <div className="z-10 mt-8 space-y-8 w-fit mx-auto lg:mx-0 lg:ml-[60px] xl:ml-[80px] 2xl:ml-[60px]">
             <div className="grid grid-cols-3 gap-x-[16px] lg:gap-x-8 xl:gap-x-10 max-w-[345px] md:max-w-[420px] lg:max-w-[460px] xl:max-w-[477px] 2xl:max-w-[517px]">
-              {content.logosTop?.map((logo) => (
-                <Image
-                  key={logo.alt}
-                  src={logo.src}
-                  alt={logo.alt}
-                  width={132}
-                  height={28}
-                  className="w-[90px] h-[40px] lg:h-[55px] lg:w-[130px] 2xl:w-[140px] 2xl:h-[60px] object-contain invert"
-                />
-              ))}
+              {content.logosTop
+                ?.filter((logo) => logo.src)
+                .map((logo) => (
+                  <Image
+                    key={logo.alt}
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={132}
+                    height={28}
+                    className="w-[90px] h-[40px] lg:h-[55px] lg:w-[130px] 2xl:w-[140px] 2xl:h-[60px] object-contain invert"
+                  />
+                ))}
             </div>
             <div className="grid grid-cols-2 gap-x-16 w-fit mx-auto">
-              {content.logosBottom?.map((logo) => (
-                <Image
-                  key={logo.alt}
-                  src={logo.src}
-                  alt={logo.alt}
-                  width={132}
-                  height={28}
-                  className="h-7 w-auto object-contain invert brightness-0 opacity-90"
-                />
-              ))}
+              {content.logosBottom
+                ?.filter((logo) => logo.src)
+                .map((logo) => (
+                  <Image
+                    key={logo.alt}
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={132}
+                    height={28}
+                    className="h-7 w-auto object-contain invert brightness-0 opacity-90"
+                  />
+                ))}
             </div>
           </div>
         </div>

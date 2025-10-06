@@ -30,7 +30,7 @@ export const navbar = defineType({
             defineField({
               name: "url",
               title: "URL",
-              type: "url",
+              type: "string",
             }),
             defineField({
               name: "hasDropdown",
@@ -62,7 +62,7 @@ export const navbar = defineType({
                     defineField({
                       name: "url",
                       title: "Category URL",
-                      type: "url",
+                      type: "string",
                     }),
                     defineField({
                       name: "items",
@@ -117,7 +117,7 @@ export const navbar = defineType({
     defineField({
       name: "loginUrl",
       title: "Login URL",
-      type: "url",
+      type: "string",
     }),
     defineField({
       name: "ctaText",
@@ -128,7 +128,7 @@ export const navbar = defineType({
     defineField({
       name: "ctaUrl",
       title: "CTA Button URL",
-      type: "url",
+      type: "string",
     }),
   ],
 });
