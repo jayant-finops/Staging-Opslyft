@@ -72,16 +72,27 @@ export interface SolutionsSection {
 }
 
 export interface Footer {
-  _id: string;
-  _type: "footer";
+  _id?: string;
+  _type?: "footer";
   logoSrc?: string;
   tagline?: string;
+  newsletterTitle?: string;
+  newsletterDescription?: string;
+  newsletterPlaceholder?: string;
+  newsletterButtonText?: string;
   newsletter?: {
     title: string;
     description: string;
     placeholder: string;
     buttonText: string;
   };
+  navigationColumns?: {
+    title: string;
+    links: {
+      title: string;
+      url: string;
+    }[];
+  }[];
   navigation?: {
     title: string;
     links: {
@@ -98,6 +109,12 @@ export interface Footer {
     name: string;
     src: string;
     alt: string;
+  }[];
+  copyright?: string;
+  address?: string;
+  legalLinks?: {
+    title: string;
+    url: string;
   }[];
   legal?: {
     copyright: string;

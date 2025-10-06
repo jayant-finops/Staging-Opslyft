@@ -2,15 +2,43 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-// import { Footer as FooterType } from "@/types/sanity";
+import { Footer as FooterType } from "@/types/sanity";
 import { footerFallback } from "./footer.data";
 
-// interface FooterProps {
-//   data: FooterType | null;
-// }
+interface FooterProps {
+  data?: FooterType | null;
+}
 
-export default function Footer() {
-  // const footer = data || footerFallback;
+export default function Footer({ data }: FooterProps) {
+  // Debug: Log the data received from Sanity
+  if (typeof window !== "undefined") {
+    console.log("Footer Sanity data:", data);
+  }
+  
+  // Map Sanity data structure to match fallback structure
+  const footer = data
+    ? {
+        logoSrc: data.logoSrc || footerFallback.logoSrc,
+        tagline: data.tagline || footerFallback.tagline,
+        newsletter: {
+          title: data.newsletterTitle || footerFallback.newsletter.title,
+          description:
+            data.newsletterDescription || footerFallback.newsletter.description,
+          placeholder:
+            data.newsletterPlaceholder || footerFallback.newsletter.placeholder,
+          buttonText:
+            data.newsletterButtonText || footerFallback.newsletter.buttonText,
+        },
+        navigation: data.navigationColumns || footerFallback.navigation,
+        socialLinks: data.socialLinks || footerFallback.socialLinks,
+        certifications: data.certifications || footerFallback.certifications,
+        legal: {
+          copyright: data.copyright || footerFallback.legal.copyright,
+          address: data.address || footerFallback.legal.address,
+          legalLinks: data.legalLinks || footerFallback.legal.legalLinks,
+        },
+      }
+    : footerFallback;
 
   return (
     <footer
@@ -28,7 +56,7 @@ export default function Footer() {
             <div className="space-y-4 sm:space-y-6 lg:flex-shrink-0 md:ml-12 md:mr-32">
               <div className="relative w-20 h-10 sm:w-24 sm:h-12">
                 <Image
-                  src={footerFallback.logoSrc}
+                  src={footer.logoSrc}
                   alt="Opslyft"
                   fill
                   className="object-contain"
@@ -38,13 +66,13 @@ export default function Footer() {
                 className="text-lg text-gray-200 font-normal max-w-xs"
                 style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
               >
-                {footerFallback.tagline}
+                {footer.tagline}
               </p>
             </div>
 
             {/* Navigation links */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 sm:gap-x-12 lg:gap-x-20 gap-y-8 sm:gap-y-8 lg:flex-1">
-              {footerFallback.navigation.map((column, index) => (
+              {footer.navigation.map((column, index) => (
                 <motion.div
                   key={column.title}
                   initial={{ opacity: 0, y: 20 }}
@@ -82,13 +110,13 @@ export default function Footer() {
                   className="text-[#68CA68] text-base sm:text-lg font-medium mb-2"
                   style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
                 >
-                  {footerFallback.newsletter.title}
+                  {footer.newsletter.title}
                 </h3>
                 <p
                   className="text-gray-400 text-base leading-[1.5]"
                   style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
                 >
-                  {footerFallback.newsletter.description}
+                  {footer.newsletter.description}
                 </p>
               </div>
 
@@ -98,13 +126,13 @@ export default function Footer() {
                   className="sr-only"
                   style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
                 >
-                  {footerFallback.newsletter.placeholder}
+                  {footer.newsletter.placeholder}
                 </label>
                 <div className="relative flex items-center rounded-[4px] lg:rounded-xl border border-[#606060] bg-[#202020] opacity-92 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06)] w-[312px] lg::w-[372px] 2xl:w-[455px]">
                   <input
                     id="newsletter-email"
                     type="email"
-                    placeholder={footerFallback.newsletter.placeholder}
+                    placeholder={footer.newsletter.placeholder}
                     className="flex-1 h-[40px] lg:h-[42px]  rounded-[12px] bg-transparent text-[#5f5f5f] placeholder-[#5f5f5f] pl-4 sm:pl-5 pr-24 sm:pr-36 focus:outline-none text-sm sm:text-[14px]"
                     style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
                   />
@@ -113,7 +141,7 @@ export default function Footer() {
                     className="absolute right-0  px-[27.5px] lg:px-[24px] py-[8px] lg:py-[12px] lg:rounded-xl rounded-[4px] bg-[#24823D] hover:bg-[#1f6e33] text-white font-normal transition-colors text-sm  w-[119px] h-[42px] lg:w-[114px] lg:h-[48px] leading-[92%] tracking-[-0.28px]"
                     style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
                   >
-                    {footerFallback.newsletter.buttonText}
+                    {footer.newsletter.buttonText}
                   </button>
                 </div>
               </form>
@@ -123,7 +151,7 @@ export default function Footer() {
 
         {/* Certifications */}
         <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-8 md:gap-16 lg:gap-[114px] py-6 sm:py-8 border-t border-b border-[#767676]">
-          {footerFallback.certifications.map((cert) => (
+          {footer.certifications.map((cert) => (
             <div
               key={cert.name}
               className="relative h-[67px] w-[65px] sm:h-20 sm:w-32 lg:h-[111px] lg:w-[109px] opacity-80 hover:opacity-100 transition-opacity"
@@ -146,7 +174,7 @@ export default function Footer() {
               className="flex flex-wrap justify-center lg:justify-start gap-4 sm:gap-6 text-[#bababa] text-xs"
               style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
             >
-              {footerFallback.legal.legalLinks.map((link, index) => (
+              {footer.legal.legalLinks.map((link, index) => (
                 <div
                   key={link.title}
                   className="flex items-center gap-4 sm:gap-6"
@@ -157,7 +185,7 @@ export default function Footer() {
                   >
                     {link.title}
                   </a>
-                  {index < footerFallback.legal.legalLinks.length - 1 && (
+                  {index < footer.legal.legalLinks.length - 1 && (
                     <span className="text-gray-400 text-lg sm:text-xl font-light">
                       |
                     </span>
@@ -171,13 +199,13 @@ export default function Footer() {
                 className="text-gray-600 text-[13px] font-normal sm:text-sm"
                 style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
               >
-                {footerFallback.legal.copyright}
+                {footer.legal.copyright}
               </p>
               <p
                 className="text-gray-600 text-[13px] font-normal sm:text-sm"
                 style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
               >
-                {footerFallback.legal.address}
+                {footer.legal.address}
               </p>
             </div>
           </div>
@@ -197,22 +225,24 @@ export default function Footer() {
             >
               👨‍💻 Crafted at 3AM with too much coffee — Animesh @ Opslyft
             </span>
-            {footerFallback.socialLinks.map((social) => (
-              <a
-                key={social.platform}
-                href={social.url}
-                className="w-5 h-5 relative opacity-70 hover:opacity-100 transition-opacity"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Image
-                  src={social.iconSrc}
-                  alt={social.platform}
-                  fill
-                  className="object-contain"
-                />
-              </a>
-            ))}
+            {footer.socialLinks.map((social) => 
+              social.iconSrc ? (
+                <a
+                  key={social.platform}
+                  href={social.url}
+                  className="w-5 h-5 relative opacity-70 hover:opacity-100 transition-opacity"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image
+                    src={social.iconSrc}
+                    alt={social.platform}
+                    fill
+                    className="object-contain"
+                  />
+                </a>
+              ) : null
+            )}
           </div>
         </div>
       </div>

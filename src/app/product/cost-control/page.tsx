@@ -16,6 +16,7 @@ import {
   getProductBanner,
   getProductFeatures,
   getNavbar,
+  getFooter,
 } from "@/lib/sanity";
 
 export default async function CostControlPage() {
@@ -30,6 +31,7 @@ export default async function CostControlPage() {
     bannerData,
     featuresData,
     navbarData,
+    footerData,
   ] = await Promise.all([
     getProductHero(category),
     getProductTrust(category),
@@ -38,6 +40,7 @@ export default async function CostControlPage() {
     getProductBanner(category),
     getProductFeatures(category),
     getNavbar(),
+    getFooter(),
   ]);
 
   // Use Sanity data for features if available, otherwise use fallback
@@ -64,7 +67,7 @@ export default async function CostControlPage() {
         />
         <ProductWinsSection data={winsData} />
         <ProductBannerSection data={bannerData} />
-        <Footer />
+        <Footer data={footerData} />
       </main>
     </>
   );

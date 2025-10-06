@@ -11,6 +11,7 @@ import {
   getStruggleSection,
   getSolutionsSection,
   getNavbar,
+  getFooter,
 } from "@/lib/sanity";
 
 export default async function Home() {
@@ -21,12 +22,14 @@ export default async function Home() {
     struggleData,
     solutionsData,
     navbarData,
+    footerData,
   ] = await Promise.all([
     getHeroData().catch(() => null),
     getTestimonialsSection().catch(() => null),
     getStruggleSection().catch(() => null),
     getSolutionsSection().catch(() => null),
     getNavbar().catch(() => null),
+    getFooter().catch(() => null),
   ]);
 
   return (
@@ -37,7 +40,7 @@ export default async function Home() {
         <TestimonialsSection data={testimonialsSection} />
         <StruggleSection data={struggleData} />
         <SolutionsSection data={solutionsData} />
-        <Footer />
+        <Footer data={footerData} />
       </main>
     </>
   );

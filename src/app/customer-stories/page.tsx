@@ -9,6 +9,7 @@ import {
   getCustomerStories,
   getProductBanner,
   getNavbar,
+  getFooter,
 } from "@/lib/sanity";
 import {
   customerStoriesHeroFallback,
@@ -17,12 +18,14 @@ import {
 
 export default async function CustomerStoriesPage() {
   // Fetch data from Sanity
-  const [heroData, storiesData, bannerData, navbarData] = await Promise.all([
-    getCustomerStoriesHero(),
-    getCustomerStories(),
-    getProductBanner("customer-stories"),
-    getNavbar(),
-  ]);
+  const [heroData, storiesData, bannerData, navbarData, footerData] =
+    await Promise.all([
+      getCustomerStoriesHero(),
+      getCustomerStories(),
+      getProductBanner("customer-stories"),
+      getNavbar(),
+      getFooter(),
+    ]);
 
   return (
     <>
@@ -35,7 +38,7 @@ export default async function CustomerStoriesPage() {
           stories={storiesData as CustomerStory[] | null}
         />
         <ProductBannerSection data={bannerData} />
-        <Footer />
+        <Footer data={footerData} />
       </main>
     </>
   );

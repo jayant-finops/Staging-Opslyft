@@ -1,6 +1,6 @@
 import { Navbar, Footer } from "@/components/layout";
 import { PrivacySection } from "@/features/privacy";
-import { getPrivacyPolicy, getNavbar } from "@/lib/sanity";
+import { getPrivacyPolicy, getNavbar, getFooter } from "@/lib/sanity";
 import { privacyPolicyFallback, PrivacySectionType } from "@/features/privacy";
 
 export const metadata = {
@@ -11,9 +11,10 @@ export const metadata = {
 
 export default async function PrivacyPage() {
   // Fetch data from Sanity with fallback
-  const [privacyData, navbarData] = await Promise.all([
+  const [privacyData, navbarData, footerData] = await Promise.all([
     getPrivacyPolicy(),
     getNavbar(),
+    getFooter(),
   ]);
   const content = privacyData || privacyPolicyFallback;
 
@@ -46,7 +47,7 @@ export default async function PrivacyPage() {
           )}
         </div>
       </main>
-      <Footer />
+      <Footer data={footerData} />
     </>
   );
 }

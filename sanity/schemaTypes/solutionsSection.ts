@@ -52,7 +52,7 @@ export default defineType({
             {
               name: "buttonUrl",
               title: "Button URL",
-              type: "url",
+              type: "string",
               description: "URL for the button link",
             },
             {

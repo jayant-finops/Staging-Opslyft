@@ -1,5 +1,5 @@
 import { Navbar, Footer } from "@/components/layout";
-import { getNavbar } from "@/lib/sanity";
+import { getNavbar, getFooter } from "@/lib/sanity";
 
 export const metadata = {
   title: "Terms of Use – Opslyft",
@@ -8,7 +8,10 @@ export const metadata = {
 };
 
 export default async function TermsPage() {
-  const navbarData = await getNavbar();
+  const [navbarData, footerData] = await Promise.all([
+    getNavbar(),
+    getFooter(),
+  ]);
 
   return (
     <>
@@ -838,7 +841,7 @@ export default async function TermsPage() {
           </section>
         </div>
       </main>
-      <Footer />
+      <Footer data={footerData} />
     </>
   );
 }

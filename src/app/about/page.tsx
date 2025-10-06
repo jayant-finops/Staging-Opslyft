@@ -1,4 +1,9 @@
-import { getAboutHero, getAboutMission, getNavbar } from "@/lib/sanity";
+import {
+  getAboutHero,
+  getAboutMission,
+  getNavbar,
+  getFooter,
+} from "@/lib/sanity";
 import { aboutHeroFallback, aboutMissionFallback } from "@/features/about";
 import { AboutHeroSection, AboutMissionSection } from "@/features/about";
 import { Navbar, Footer } from "@/components/layout";
@@ -11,11 +16,13 @@ export const metadata = {
 
 export default async function AboutPage() {
   // Fetch data from Sanity with fallbacks
-  const [aboutHeroData, aboutMissionData, navbarData] = await Promise.all([
-    getAboutHero().catch(() => null),
-    getAboutMission().catch(() => null),
-    getNavbar().catch(() => null),
-  ]);
+  const [aboutHeroData, aboutMissionData, navbarData, footerData] =
+    await Promise.all([
+      getAboutHero().catch(() => null),
+      getAboutMission().catch(() => null),
+      getNavbar().catch(() => null),
+      getFooter().catch(() => null),
+    ]);
 
   return (
     <>
@@ -30,7 +37,7 @@ export default async function AboutPage() {
           fallbackData={aboutMissionFallback}
         />
       </main>
-      <Footer />
+      <Footer data={footerData} />
     </>
   );
 }

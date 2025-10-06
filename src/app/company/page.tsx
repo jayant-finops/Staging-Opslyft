@@ -4,6 +4,7 @@ import {
   getAboutMission,
   getTeam,
   getNavbar,
+  getFooter,
 } from "@/lib/sanity";
 import { aboutHeroFallback, aboutMissionFallback } from "@/features/about";
 import { Navbar, Footer } from "@/components/layout";
@@ -20,14 +21,21 @@ export const metadata = {
 };
 
 export default async function CompanyPage() {
-  const [heroData, missionData, timelineData, teamData, navbarData] =
-    await Promise.all([
-      getAboutHero().catch(() => null),
-      getAboutMission().catch(() => null),
-      getCompanyTimeline().catch(() => null),
-      getTeam().catch(() => null),
-      getNavbar().catch(() => null),
-    ]);
+  const [
+    heroData,
+    missionData,
+    timelineData,
+    teamData,
+    navbarData,
+    footerData,
+  ] = await Promise.all([
+    getAboutHero().catch(() => null),
+    getAboutMission().catch(() => null),
+    getCompanyTimeline().catch(() => null),
+    getTeam().catch(() => null),
+    getNavbar().catch(() => null),
+    getFooter().catch(() => null),
+  ]);
 
   return (
     <>
@@ -42,7 +50,7 @@ export default async function CompanyPage() {
         <TeamSection data={teamData} />
         <JoinSection />
       </main>
-      <Footer />
+      <Footer data={footerData} />
     </>
   );
 }

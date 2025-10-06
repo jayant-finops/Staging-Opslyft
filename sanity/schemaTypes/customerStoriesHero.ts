@@ -32,7 +32,7 @@ export const customerStoriesHero = defineType({
     defineField({
       name: "ctaUrl",
       title: "CTA Button URL",
-      type: "url",
+      type: "string",
       description: "Call-to-action button URL",
     }),
     defineField({

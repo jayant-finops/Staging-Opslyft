@@ -99,13 +99,15 @@ export default function CustomerStoriesHeroSection({
               </p>
 
               {/* CTA */}
-              <div className="pt-2">
-                <Link href={heroData.ctaUrl}>
-                  <LegacyButton variant="primary" size="md">
-                    {heroData.ctaText}
-                  </LegacyButton>
-                </Link>
-              </div>
+              {heroData.ctaUrl && (
+                <div className="pt-2">
+                  <Link href={heroData.ctaUrl}>
+                    <LegacyButton variant="primary" size="md">
+                      {heroData.ctaText}
+                    </LegacyButton>
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
         </div>

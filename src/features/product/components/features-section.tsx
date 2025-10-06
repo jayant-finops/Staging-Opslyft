@@ -263,13 +263,14 @@ export default function ProductFeaturesSection({
               id={f.id}
               data-index={idx}
               data-feature-card="true"
-              className="rounded-[10px] lg:rounded-[30px] lg:bg-white lg:shadow-[0_5px_15px_rgba(8,15,52,0.04)] py-6 px-4 lg:p-6 lg:sticky border-[1px]"
+              className="rounded-[20px] lg:rounded-[30px] bg-white shadow-[0_5px_15px_rgba(8,15,52,0.04)] py-6 px-4 lg:p-6 lg:sticky border-[1px]"
               style={{
                 top: isMobile ? 100 : 120 + idx * 20,
                 scrollMarginTop: isMobile ? 100 : 120 + idx * 20,
                 zIndex: 10 + idx,
                 borderColor: `${idx === activeTab ? "#24823D" : "#EFF0F7"}`,
-                gap: isMobile ? undefined : "50px",
+                padding: isMobile ? "24px 16px" : undefined,
+                gap: isMobile ? "24px" : "50px",
               }}
             >
               <div className="flex flex-col lg:flex-row justify-between items-start gap-6 lg:gap-[50px]">
@@ -397,21 +398,21 @@ export default function ProductFeaturesSection({
 
                 {/* Right visual */}
                 <div className="w-full lg:w-[592px] lg:h-[556px] lg:flex-shrink-0 order-1 lg:order-2">
-                  <div className="relative w-full h-[348px] lg:h-[556px] rounded-[30px] overflow-hidden">
-                    {/* Desktop image */}
+                  {/* Desktop visual */}
+                  <div className="hidden lg:block relative w-full h-[556px] rounded-[30px] overflow-hidden">
                     <Image
                       src={f.visualUrl}
                       alt={`${f.badge} visualization`}
                       fill
-                      className="hidden lg:block object-cover"
+                      className="block object-cover"
                     />
                     {/* Mobile image */}
-                    <Image
+                    {/* <Image
                       src={f.mobileVisualUrl}
                       alt={`${f.badge} visualization`}
                       fill
                       className="lg:hidden object-cover"
-                    />
+                    /> */}
                   </div>
                 </div>
               </div>
