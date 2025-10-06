@@ -17,14 +17,14 @@ import {
 } from "@/features/customer-stories";
 
 export default async function CustomerStoriesPage() {
-  // Fetch data from Sanity
+  // Fetch data from Sanity with error handling
   const [heroData, storiesData, bannerData, navbarData, footerData] =
     await Promise.all([
-      getCustomerStoriesHero(),
-      getCustomerStories(),
-      getProductBanner("customer-stories"),
-      getNavbar(),
-      getFooter(),
+      getCustomerStoriesHero().catch(() => null),
+      getCustomerStories().catch(() => null),
+      getProductBanner("customer-stories").catch(() => null),
+      getNavbar().catch(() => null),
+      getFooter().catch(() => null),
     ]);
 
   return (

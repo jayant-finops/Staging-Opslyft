@@ -3,6 +3,7 @@ import {
   getAboutHero,
   getAboutMission,
   getTeam,
+  getJoin,
   getNavbar,
   getFooter,
 } from "@/lib/sanity";
@@ -26,6 +27,7 @@ export default async function CompanyPage() {
     missionData,
     timelineData,
     teamData,
+    joinData,
     navbarData,
     footerData,
   ] = await Promise.all([
@@ -33,6 +35,7 @@ export default async function CompanyPage() {
     getAboutMission().catch(() => null),
     getCompanyTimeline().catch(() => null),
     getTeam().catch(() => null),
+    getJoin().catch(() => null),
     getNavbar().catch(() => null),
     getFooter().catch(() => null),
   ]);
@@ -48,7 +51,7 @@ export default async function CompanyPage() {
         />
         <TimelineSection data={timelineData} />
         <TeamSection data={teamData} />
-        <JoinSection />
+        <JoinSection data={joinData} />
       </main>
       <Footer data={footerData} />
     </>

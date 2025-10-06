@@ -149,6 +149,27 @@ export async function getTeam() {
   }
 }
 
+// Join Section query
+export async function getJoin() {
+  const query = `*[_type == "join"][0]{
+    _id,
+    _type,
+    heading,
+    subheading,
+    ctaText,
+    ctaHref,
+    background
+  }`;
+
+  try {
+    const data = await client.fetch(query);
+    return data;
+  } catch (error) {
+    console.error("Error fetching join section from Sanity:", error);
+    return null;
+  }
+}
+
 // Hero Data query (for home page)
 export async function getHeroData() {
   const query = `*[_type == "homeHero"][0]{

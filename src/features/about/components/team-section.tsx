@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { TeamDoc } from "@/types";
 import { teamFallback } from "@/features/about/data";
+import { urlFor } from "@/lib/sanity";
 
 interface Props {
   data?: TeamDoc | null;
@@ -12,15 +13,13 @@ export default function TeamSection({ data }: Props) {
   const content = data ?? teamFallback;
 
   // Helper function to get image src
-  const getImageSrc = (member: {
-    image?: { asset?: { url?: string } };
-    imageSrc?: string;
-  }) => {
-    return (
-      member.image?.asset?.url ||
-      member.imageSrc ||
-      "/assets/images/team/aayush.png"
-    );
+  const getImageSrc = (member: { image?: any; imageSrc?: string }) => {
+    // If we have Sanity image data, use urlFor to convert it
+    if (member.image?.asset) {
+      return urlFor(member.image).url();
+    }
+    // Otherwise use local fallback
+    return member.imageSrc || "/assets/images/team/aayush.png";
   };
   return (
     <section className="relative bg-white pt-[66px] pb-[21px] lg:pb-[229px] lg:pt-[102px] overflow-hidden">

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { JoinDoc } from "@/types";
 import { joinFallback } from "@/features/about/data";
 import LegacyButton from "@/components/ui/legacy-button";
+import { urlFor } from "@/lib/sanity";
 
 interface Props {
   data?: JoinDoc | null;
@@ -12,10 +13,18 @@ interface Props {
 
 export default function JoinSection({ data }: Props) {
   const content = data ?? joinFallback;
-  const bg =
-    data?.background?.asset?._ref ||
-    (content as typeof joinFallback).backgroundSrc;
+
+  // Get image source - use Sanity urlFor if we have Sanity data, otherwise use fallback
+  const getImageSrc = () => {
+    if (data?.background) {
+      return urlFor(data.background).url();
+    }
+    return (content as typeof joinFallback).backgroundSrc;
+  };
+
+  const imageSrc = getImageSrc();
   const heading = (content.heading || "").split("\n");
+
   return (
     <section
       className="relative overflow-hidden py-16 lg:py-24  h-[788px] lg:h-[689px]"
@@ -35,7 +44,7 @@ export default function JoinSection({ data }: Props) {
       {/* Mobile team images - bottom center */}
       <div className="absolute top-[50%] left-[43%] md:left-[48%]  -translate-x-1/2 w-[439px] h-[439px] lg:hidden pointer-events-none">
         <Image
-          src={bg}
+          src={imageSrc}
           alt="Join Team Mobile"
           fill
           className="object-contain object-center"
@@ -46,7 +55,7 @@ export default function JoinSection({ data }: Props) {
       {/* Desktop team images - positioned on the right */}
       <div className="hidden lg:block absolute lg:right-[0px] lg:top-[315px] 2xl:right-[140px] 3xl:right-[270px]  -translate-y-1/2 w-[668px] h-[652px]  pointer-events-none">
         <Image
-          src={bg}
+          src={imageSrc}
           alt="Join Team Desktop"
           fill
           className="object-contain object-center"
