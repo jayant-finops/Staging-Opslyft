@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { Footer as FooterType } from "@/types/sanity";
 import { footerFallback } from "./footer.data";
 
@@ -10,11 +11,6 @@ interface FooterProps {
 }
 
 export default function Footer({ data }: FooterProps) {
-  // Debug: Log the data received from Sanity
-  if (typeof window !== "undefined") {
-    console.log("Footer Sanity data:", data);
-  }
-
   // Map Sanity data structure to match fallback structure
   const footer = data
     ? {
@@ -84,16 +80,38 @@ export default function Footer({ data }: FooterProps) {
                     {column.title}
                   </h4>
                   <ul className="space-y-3 sm:space-y-3">
-                    {column.links.map((link) => (
-                      <li key={link.title}>
-                        <a
-                          href={link.url}
-                          className="text-gray-400 hover:text-[#68CA68] transition-colors text-xs sm:text-sm"
-                        >
-                          {link.title}
-                        </a>
-                      </li>
-                    ))}
+                    {column.links.map((link) => {
+                      const isExternal =
+                        link.url.startsWith("http") ||
+                        link.url.startsWith("//");
+                      const isPlaceholder = link.url === "#";
+
+                      return (
+                        <li key={link.title}>
+                          {isExternal || isPlaceholder ? (
+                            <a
+                              href={link.url}
+                              className="text-gray-400 hover:text-[#68CA68] transition-colors text-xs sm:text-sm"
+                              {...(isExternal && !isPlaceholder
+                                ? {
+                                    target: "_blank",
+                                    rel: "noopener noreferrer",
+                                  }
+                                : {})}
+                            >
+                              {link.title}
+                            </a>
+                          ) : (
+                            <Link
+                              href={link.url}
+                              className="text-gray-400 hover:text-[#68CA68] transition-colors text-xs sm:text-sm"
+                            >
+                              {link.title}
+                            </Link>
+                          )}
+                        </li>
+                      );
+                    })}
                   </ul>
                 </motion.div>
               ))}
@@ -174,24 +192,42 @@ export default function Footer({ data }: FooterProps) {
               className="flex flex-wrap justify-center lg:justify-start gap-4 sm:gap-6 text-[#bababa] text-xs"
               style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
             >
-              {footer.legal.legalLinks.map((link, index) => (
-                <div
-                  key={link.title}
-                  className="flex items-center gap-4 sm:gap-6"
-                >
-                  <a
-                    href={link.url}
-                    className="text-gray-400 hover:text-white text-xs sm:text-sm transition-colors"
+              {footer.legal.legalLinks.map((link, index) => {
+                const isExternal =
+                  link.url.startsWith("http") || link.url.startsWith("//");
+                const isPlaceholder = link.url === "#";
+
+                return (
+                  <div
+                    key={link.title}
+                    className="flex items-center gap-4 sm:gap-6"
                   >
-                    {link.title}
-                  </a>
-                  {index < footer.legal.legalLinks.length - 1 && (
-                    <span className="text-gray-400 text-lg sm:text-xl font-light">
-                      |
-                    </span>
-                  )}
-                </div>
-              ))}
+                    {isExternal || isPlaceholder ? (
+                      <a
+                        href={link.url}
+                        className="text-gray-400 hover:text-white text-xs sm:text-sm transition-colors"
+                        {...(isExternal && !isPlaceholder
+                          ? { target: "_blank", rel: "noopener noreferrer" }
+                          : {})}
+                      >
+                        {link.title}
+                      </a>
+                    ) : (
+                      <Link
+                        href={link.url}
+                        className="text-gray-400 hover:text-white text-xs sm:text-sm transition-colors"
+                      >
+                        {link.title}
+                      </Link>
+                    )}
+                    {index < footer.legal.legalLinks.length - 1 && (
+                      <span className="text-gray-400 text-lg sm:text-xl font-light">
+                        |
+                      </span>
+                    )}
+                  </div>
+                );
+              })}
             </div>
             {/* Legal info */}
             <div className="flex flex-col lg:flex-row">

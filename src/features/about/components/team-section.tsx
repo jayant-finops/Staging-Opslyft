@@ -75,7 +75,7 @@ export default function TeamSection({ data }: Props) {
                   className="object-cover rounded-[10px]"
                 />
               </div>
-              <div className="py-4 lg:pt-6  space-y-[10px]">
+              <div className="py-4 lg:pt-6  space-y-6">
                 <div
                   className="text-[#24823D] text-[24px] font-bold leading-[18px]"
                   style={{ fontFamily: '"Funnel Display", sans-serif' }}
@@ -83,7 +83,7 @@ export default function TeamSection({ data }: Props) {
                   {m.name}
                 </div>
                 <div
-                  className=" bg-[rgba(60,195,94,0.48)] rounded-[17px]  justify-center items-center flex h-[24px] w-fit px-[10px]"
+                  className=" bg-[rgba(60,195,94,0.48)] rounded-[17px]  justify-center items-center flex h-[24px] w-fit px-[10px] "
                   style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
                 >
                   <span className="text-[15px] text-[#202020] font-medium leading-[18px] ">

@@ -127,7 +127,7 @@ export default function AboutHeroSection({
                 </span>
               ) : (
                 <span
-                  className="text-white text-[34px] lg:text-[72px] leading-[40px] lg:leading-[86px] tracking-[-1px] lg:tracking-[1.2px] font-semibold"
+                  className="text-white text-[34px] lg:text-[72px] leading-[40px] lg:leading-[86px] tracking-[-1px] lg:tracking-[1.2px] font-semibold "
                   style={{ fontFamily: '"Funnel Display", sans-serif' }}
                 >
                   {line}
@@ -144,7 +144,7 @@ export default function AboutHeroSection({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-[18px] text-[#9d9fa1] max-w-3xl mx-auto leading-[28px] tracking-[0.3px] font-normal w-[343px] lg:w-[437px] mb-[94px] lg:mb-[51px]"
+            className="text-[18px] text-[#9d9fa1] mx-auto leading-[28px] tracking-[0.3px] font-normal w-[343px] lg:w-[637px] mb-[94px] lg:mb-[51px] "
             style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
           >
             {content.subtitle}

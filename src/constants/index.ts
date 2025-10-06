@@ -13,7 +13,6 @@ export const COMPANY = {
 // Navigation routes
 export const ROUTES = {
   home: "/",
-  about: "/about",
   pricing: "/pricing",
   company: "/company",
   contact: "/contact",
