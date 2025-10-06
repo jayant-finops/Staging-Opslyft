@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { TeamDoc } from "@/types";
+import { TeamDoc, SanityImage } from "@/types";
 import { teamFallback } from "@/features/about/data";
 import { urlFor } from "@/lib/sanity";
 
@@ -13,7 +13,7 @@ export default function TeamSection({ data }: Props) {
   const content = data ?? teamFallback;
 
   // Helper function to get image src
-  const getImageSrc = (member: { image?: any; imageSrc?: string }) => {
+  const getImageSrc = (member: { image?: SanityImage; imageSrc?: string }) => {
     // If we have Sanity image data, use urlFor to convert it
     if (member.image?.asset) {
       return urlFor(member.image).url();
