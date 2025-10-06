@@ -92,8 +92,8 @@ export const navbarFallback: LocalNavbar = {
   ],
   cta: {
     loginText: "Log in",
-    loginUrl: "/login",
+    loginUrl: "https://app.opslyft.com/",
     buttonText: "Book a Demo",
-    buttonUrl: "/book-demo",
+    buttonUrl: "/pricing",
   },
 };
