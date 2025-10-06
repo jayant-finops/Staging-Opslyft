@@ -83,8 +83,7 @@ export default function TestimonialsSection({
             className="text-[#154b23]  max-w-full sm:max-w-2xl mx-auto font-normal text-base lg:text-sm opacity-60 px-4 sm:px-0 w-[340px] lg:w-[420px]"
             style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
           >
-            {data?.subtitle ??
-              "Join hundreds of engineering teams who trust Opslyft to optimize their cloud infrastructure costs."}
+            {data?.subtitle}
           </p>
         </div>
 
@@ -228,7 +227,7 @@ export default function TestimonialsSection({
                     </svg>
                   </div>
                   <p
-                    className="testimonial-quote text-gray-800 text-[21px] md:text-[24px] leading-[1.3] font-normal mb-4 sm:mb-6 lg:mb-8 transition-colors duration-300 flex-grow"
+                    className="testimonial-quote text-gray-800 text-[16px] md:text-[21px] leading-[1.5] font-normal mb-4 sm:mb-6 lg:mb-8 transition-colors duration-300 flex-grow"
                     style={{ fontFamily: '"Funnel Display", sans-serif' }}
                   >
                     {t.quote}
