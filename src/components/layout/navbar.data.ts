@@ -87,7 +87,7 @@ export const navbarFallback: LocalNavbar = {
     },
     {
       title: "DOCS",
-      url: "/docs",
+      url: "https://docs.opslyft.com/",
     },
   ],
   cta: {
