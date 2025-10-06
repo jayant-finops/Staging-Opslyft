@@ -134,7 +134,7 @@ export default function TimelineSection({ data }: Props) {
       </div>
 
       <div
-        className="hidden lg:block absolute -top-[75px] left-1/2 -translate-x-1/2 w-[1474px] h-[974px] pointer-events-none "
+        className="hidden lg:block absolute -top-[95px] left-1/2 -translate-x-1/2 w-[1474px] h-[974px] pointer-events-none "
         aria-hidden
       >
         <Image
