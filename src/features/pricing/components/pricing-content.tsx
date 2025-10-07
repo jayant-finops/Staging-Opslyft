@@ -148,7 +148,7 @@ export default function PricingContent({ data }: PricingContentProps) {
                     alt={logo.alt}
                     width={132}
                     height={28}
-                    className="h-7 w-auto object-contain invert brightness-0 opacity-90"
+                    className="h-10 w-auto object-contain invert brightness-0 opacity-90"
                   />
                 ))}
             </div>
