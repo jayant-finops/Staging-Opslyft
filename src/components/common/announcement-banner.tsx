@@ -13,16 +13,27 @@ export default function AnnouncementBanner({ data }: AnnouncementBannerProps) {
   // Show banner if: user hasn't closed it AND (Sanity data is active OR no data exists yet - use fallback)
   const shouldShow = isVisible && (!data || data.isActive);
 
-  // Update body padding when banner visibility changes
+  // Update body padding and navbar position when banner visibility changes
   useEffect(() => {
+    const navbar = document.querySelector("nav") as HTMLElement;
+
     if (shouldShow) {
       document.body.style.paddingTop = "39px";
+      if (navbar) {
+        navbar.style.setProperty("--banner-offset", "39px");
+      }
     } else {
       document.body.style.paddingTop = "0px";
+      if (navbar) {
+        navbar.style.setProperty("--banner-offset", "0px");
+      }
     }
 
     return () => {
       document.body.style.paddingTop = "0px";
+      if (navbar) {
+        navbar.style.setProperty("--banner-offset", "0px");
+      }
     };
   }, [shouldShow]);
 
