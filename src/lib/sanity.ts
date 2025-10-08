@@ -590,3 +590,22 @@ export async function getTermsOfUse() {
     return null;
   }
 }
+
+// Announcement Banner query
+export async function getAnnouncementBanner() {
+  const query = `*[_type == "announcementBanner" && isActive == true][0]{
+    _id,
+    title,
+    linkText,
+    linkUrl,
+    isActive
+  }`;
+
+  try {
+    const data = await client.fetch(query);
+    return data;
+  } catch (error) {
+    console.error("Error fetching announcement banner from Sanity:", error);
+    return null;
+  }
+}

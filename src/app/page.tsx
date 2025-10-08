@@ -5,6 +5,7 @@ import {
   SolutionsSection,
 } from "@/features/home";
 import { Footer, Navbar } from "@/components/layout";
+import { AnnouncementBanner } from "@/components/common";
 import {
   getHeroData,
   getTestimonialsSection,
@@ -12,6 +13,7 @@ import {
   getSolutionsSection,
   getNavbar,
   getFooter,
+  getAnnouncementBanner,
 } from "@/lib/sanity";
 
 export default async function Home() {
@@ -23,6 +25,7 @@ export default async function Home() {
     solutionsData,
     navbarData,
     footerData,
+    bannerData,
   ] = await Promise.all([
     getHeroData().catch(() => null),
     getTestimonialsSection().catch(() => null),
@@ -30,10 +33,12 @@ export default async function Home() {
     getSolutionsSection().catch(() => null),
     getNavbar().catch(() => null),
     getFooter().catch(() => null),
+    getAnnouncementBanner().catch(() => null),
   ]);
 
   return (
     <>
+      <AnnouncementBanner data={bannerData} />
       <Navbar data={navbarData} />
       <main className="min-h-screen bg-[#f2f2f2]">
         <HeroSection data={heroData} />

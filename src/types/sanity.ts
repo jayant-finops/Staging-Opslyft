@@ -206,3 +206,12 @@ export interface JoinDoc {
   ctaHref: string;
   background?: SanityImage;
 }
+
+export interface AnnouncementBanner {
+  _id: string;
+  _type: "announcementBanner";
+  title: string;
+  linkText: string;
+  linkUrl: string;
+  isActive: boolean;
+}

@@ -191,6 +191,28 @@ body {
   animation-delay: 1.5s;
 }
 
+/* Shimmer effect for banner */
+.shimmer-banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 25%,
+    rgba(60, 195, 94, 0.44) 50%,
+    transparent 75%,
+    transparent 100%
+  );
+  transform: translateX(-100%) skewX(-25deg);
+  animation: shimmer 3s ease-in-out infinite;
+  pointer-events: none;
+  opacity: 1;
+}
+
 /* Subtle grid lines on dark cards */
 .grid-bg-dark {
   background-image:

@@ -213,7 +213,7 @@ export default function Navbar({ data }: NavbarProps = {}) {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -100, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed top-4 sm:top-6 lg:top-10 inset-x-4 lg:left-1/2 lg:-translate-x-1/2 lg:inset-x-auto lg:transform z-50 rounded-[16px] sm:rounded-[20px] backdrop-blur-md backdrop-saturate-125 border border-white/8 w-[calc(100vw-2rem)] lg:w-[calc(100vw-200px)] 2xl:w-[calc(100vw-300px)]"
+            className="fixed top-[55px] sm:top-[61px] lg:top-[65px] inset-x-4 lg:left-1/2 lg:-translate-x-1/2 lg:inset-x-auto lg:transform z-50 rounded-[16px] sm:rounded-[20px] backdrop-blur-md backdrop-saturate-125 border border-white/8 w-[calc(100vw-2rem)] lg:w-[calc(100vw-200px)] 2xl:w-[calc(100vw-300px)]"
             style={{
               background:
                 "linear-gradient(176deg, rgba(7,8,8,0.72) -23.3%, rgba(0,25,16,0.52) 89.49%)",

@@ -20,6 +20,7 @@ import { blog } from "./blog";
 import { termsOfUse } from "./termsOfUse";
 import { navbar } from "./navbar";
 import { footer } from "./footer";
+import { announcementBanner } from "./announcementBanner";
 
 // Company page schemas (Join Section)
 const joinSchema: SchemaTypeDefinition = {
@@ -75,6 +76,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     // Layout components
     navbar,
     footer,
+    announcementBanner,
 
     // Legal pages
     privacyPolicy,
