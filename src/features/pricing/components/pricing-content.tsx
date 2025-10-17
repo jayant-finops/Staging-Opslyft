@@ -15,7 +15,26 @@ export default function PricingContent({ data }: PricingContentProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+
+    const form = e.currentTarget as HTMLFormElement;
+
+    const submitButton = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    submitButton.disabled = true; 
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    fetch("https://script.google.com/macros/s/AKfycbx6LmoFUNfUFAhxk0HmSMO7Z-yRetiEq7PcemX76quFTreJ9ns1OXQhs8-kIsO-wZQp/exec", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': "text/plain;charset=utf-8"
+          }
+      })
+      .then(() => console.log("Success"))
+      .catch((err) => console.error("Error:", err))
+      .finally(() => setSubmitted(true)); 
+
   };
 
   return (
@@ -197,7 +216,7 @@ export default function PricingContent({ data }: PricingContentProps) {
 
                 <button
                   type="submit"
-                  className="w-full mt-2 rounded-[12px] text-white text-sm lg:text-[18px] font-medium py-3 shimmer-button relative overflow-hidden border border-white/20 shadow-lg mb-[100px] lg:mb-0"
+                  className="w-full mt-2 rounded-[12px] cursor-pointer text-white text-sm lg:text-[18px] font-medium py-3 shimmer-button relative overflow-hidden border border-white/20 shadow-lg mb-[100px] lg:mb-0 disabled:cursor-not-allowed disabled:opacity-50 transition"
                   style={{
                     background:
                       "linear-gradient(180deg, #2D9B4B 0%, #1E7A37 100%)",
