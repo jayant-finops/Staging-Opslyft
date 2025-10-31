@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { PortableText } from "@portabletext/react";
 import { portableTextCustomerStoryComponent } from "./portableTextComponents";
 import Link from "next/link";
-import Image from "next/image";
 
 export default function StoryContentSection({
   storyData,
@@ -13,8 +12,6 @@ export default function StoryContentSection({
   storyData: CustomerStory;
 }) {
   const [activeSection, setActiveSection] = useState<string | null>(null);
-
-  if (!storyData.sections?.length) return null;
 
   // ✅ Scroll spy effect to highlight active jumplink
   useEffect(() => {
@@ -43,7 +40,7 @@ export default function StoryContentSection({
     handleScroll(); // run once on mount
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [storyData.sections]);
+  }, []);
 
   return (
     <section className="container-1170 bg-white sm:py-[80px] py-[60px] px-4 sm:px-0">

@@ -3,7 +3,7 @@ export * from "./home";
 export * from "./about";
 export * from "./product";
 export * from "./customer-stories";
-export * from "./blogs";
+// export * from "./blogs";
 export * from "./pricing";
 export * from "./company";
 export * from "./privacy";

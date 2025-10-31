@@ -102,7 +102,10 @@ export interface SanityComponentBlock {
   _key: string;
   _type: "componentBlock";
   component: string;
-  props: Record<string, any>;
+  props: {
+    color: string;
+    text: string;
+  };
 }
 
 /** Union of all block types that can appear inside `content[]` */

@@ -7,19 +7,19 @@ import { useEffect, useState } from "react";
 export default function ShareStorySection() {
   const pathname = usePathname();
   const [url, setUrl] = useState(""); // initially empty
-  const [copied, setCopied] = useState(false);
+  //const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     // ✅ runs only on client
     setUrl(window.location.origin + pathname);
   }, [pathname]);
 
-  const handleCopy = async () => {
-    if (!url) return;
-    await navigator.clipboard.writeText(url);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
+  // const handleCopy = async () => {
+  //   if (!url) return;
+  //   await navigator.clipboard.writeText(url);
+  //   setCopied(true);
+  //   setTimeout(() => setCopied(false), 2000);
+  // };
 
   if (!url) return null; // ✅ don't render links until url is ready
 

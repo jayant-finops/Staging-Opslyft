@@ -1,6 +1,7 @@
 // portableTextComponents.tsx
 import React from "react";
 import type { PortableTextComponents } from "@portabletext/react";
+import Image from "next/image";
 
 /**
  * Type-safe Portable Text components for @portabletext/react.
@@ -10,15 +11,21 @@ import type { PortableTextComponents } from "@portabletext/react";
 export const portableTextCustomerStoryComponent: PortableTextComponents = {
   types: {
     // image block
-    image: ({ value }: { value: any }) => {
+    image: ({ value }: { value: { asset?: { url?: string; _ref?: string }; alt?: string }; }) => {
       const url = value?.asset?.url || value?.asset?._ref;
       if (!url) return null;
       return (
-        <img
-          src={url}
-          alt={value?.alt || ""}
-          className="rounded-lg my-6 w-full h-auto"
-        />
+        <div className="relative w-full h-auto my-6">
+          <Image
+            src={url}
+            alt={value?.alt || ""}
+            width={1200} // can adjust as per your layout
+            height={800}
+            className="rounded-lg w-full h-auto"
+            sizes="100vw"
+            style={{ height: "auto" }}
+          />
+        </div>
       );
     },
   },

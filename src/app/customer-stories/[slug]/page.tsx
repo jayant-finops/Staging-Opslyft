@@ -118,8 +118,10 @@ export default async function StoryPage( props: {params: Promise<{ slug: string 
                 </div>
             </section>
 
-            <StoryContentSection storyData={storyData} />
-
+            {
+               storyData.sections && storyData.sections?.length > 0 && <StoryContentSection storyData={storyData} />
+            }
+           
             <section className="bg-[#05160D] py-[60px] px-4 sm:px-0">
                 <div className="container-1170 ">
                     <h2 className="text-[#F1F1F1] sm:text-[40px] text-[32px] font-semibold leading-[140%] pb-[50px] text-center"
