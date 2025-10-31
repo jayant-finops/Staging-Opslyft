@@ -16,7 +16,7 @@ import { productBanner } from "./productBanner";
 import { productFeatures } from "./productFeatures";
 import { pricing } from "./pricing";
 import { customerStoriesHero } from "./customerStoriesHero";
-import { blog } from "./blog";
+import { customerStories } from "./customerStories";
 import { termsOfUse } from "./termsOfUse";
 import { navbar } from "./navbar";
 import { footer } from "./footer";
@@ -69,9 +69,9 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     team, // Complete team schema
     joinSchema,
 
-    // Customer Stories / Blog page schemas
+    // Customer Stories
     customerStoriesHero,
-    blog,
+    customerStories,
 
     // Layout components
     navbar,

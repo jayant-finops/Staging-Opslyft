@@ -67,7 +67,7 @@ export default function ProductBannerSection({
           {/* CTA */}
           <div className="absolute left-1/2 -translate-x-1/2 top-[211.88px] lg:top-[248px]">
             <Link href={bannerData.ctaUrl} className="block">
-              <button className="inline-flex items-center justify-center rounded-[12px] bg-[#24823D] text-white w-[220px] h-[60px] px-8 py-[22px] shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
+              <button className="cursor-pointer inline-flex items-center justify-center rounded-[12px] bg-[#24823D] text-white w-[220px] h-[60px] px-8 py-[22px] shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
                 <span
                   className="text-[18px] leading-[16px] font-semibold text-center"
                   style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}

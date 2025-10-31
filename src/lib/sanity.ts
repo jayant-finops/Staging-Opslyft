@@ -473,9 +473,22 @@ export async function getCustomerStoriesHero() {
   }
 }
 
-// Blog posts query
+export async function getAllCustomerStoriesSlugs(){
+
+  try{
+    const slugs = await client.fetch(`*[_type == "customerStories" && defined(slug.current)][].slug.current`);
+    return slugs;
+  } catch(err){
+    console.error("Error fetching customerStories from Sanity:", err);
+    return null;
+  }
+
+}
+
+
+// customerStories posts query
 export async function getCustomerStories() {
-  const query = `*[_type == "blog"] | order(order asc){
+  const query = `*[_type == "customerStories"] | order(order asc){
     "slug": slug.current,
     category,
     title,
@@ -489,7 +502,58 @@ export async function getCustomerStories() {
     const data = await client.fetch(query);
     return data;
   } catch (error) {
-    console.error("Error fetching blog posts from Sanity:", error);
+    console.error("Error fetching customerStories from Sanity:", error);
+    return null;
+  }
+}
+
+// customerStories posts query
+export async function getCustomerStory(slug: string) {
+  const query = `*[_type == "customerStories" && slug.current == $slug][0]{
+  _id,
+  title,
+  category,
+  excerpt,
+  order,
+  "slug": slug.current,
+  "featuredImageUrl": featuredImage.asset->url,
+  "ogImage": ogImage.asset->url,
+  "logo": logo.asset->url,
+  industry,
+  usecase,
+  metaTitle,
+  metaDescription,
+  scale,
+  sections[]{
+    jumplinkContent,
+    content[]{
+      ...,
+      // expand image blocks
+      _type == "image" => {
+        ...,
+        asset->{
+          url,
+          metadata { lqip, dimensions }
+        }
+      },
+      // expand component blocks
+      _type == "componentBlock" => {
+        component,
+        props
+      }
+    }
+  },
+  impactCards[]{
+    metricValue,
+    explainingText
+  }
+}`;
+
+  try {
+    const data = await client.fetch(query, { slug });
+    return data;
+  } catch (error) {
+    console.error("Error fetching customerStories from Sanity:", error);
     return null;
   }
 }

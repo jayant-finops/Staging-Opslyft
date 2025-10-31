@@ -4,13 +4,13 @@ import Link from "next/link";
 import Image from "next/image";
 import {
   customerStoriesFallback,
-  type CustomerStory,
+  type CustomerStories,
 } from "@/features/customer-stories/data";
 import { urlFor } from "@/lib/sanity";
 import type { SanityImage } from "@/types/sanity";
 
 type CustomerStoriesListSectionProps = {
-  stories?: CustomerStory[] | null;
+  stories?: CustomerStories[] | null;
 };
 
 export default function CustomerStoriesListSection({
@@ -44,13 +44,13 @@ export default function CustomerStoriesListSection({
             {/* Single column on mobile, 3 columns on desktop */}
             <div className="flex flex-col lg:grid lg:grid-cols-3 gap-12 lg:gap-8">
               {storiesData.slice(0, 3).map((post) => (
-                <ArticleCard key={post.slug} post={post} />
+                <ArticleCard key={post.slug} post={post} type="listingPage" />
               ))}
             </div>
 
             <div className="flex flex-col lg:grid lg:grid-cols-3 gap-12 lg:gap-8">
               {storiesData.slice(3, 6).map((post) => (
-                <ArticleCard key={post.slug} post={post} />
+                <ArticleCard key={post.slug} post={post} type="listingPage" />
               ))}
             </div>
           </div>
@@ -60,7 +60,7 @@ export default function CustomerStoriesListSection({
   );
 }
 
-function ArticleCard({ post }: { post: CustomerStory }) {
+export function ArticleCard({ post,type }: { post: CustomerStories; type: "storyPage" | "listingPage" }) {
   // Helper to get image URL from either string or Sanity image object
   const getImageUrl = (image?: string | SanityImage): string | null => {
     if (!image) return null;
@@ -79,10 +79,10 @@ function ArticleCard({ post }: { post: CustomerStory }) {
   const cardBackgroundImageUrl = getImageUrl(post.cardBackgroundImage);
 
   return (
-    <Link href={`${post.slug}`} className="block">
-      <article className="flex flex-col gap-6 lg:gap-8 bg-white rounded-[30px] shadow-[0px_12px_16px_-4px_rgba(16,24,40,0.08),0px_4px_6px_-2px_rgba(16,24,40,0.03)] p-6 pb-8 w-full max-w-[338px] lg:max-w-none mx-auto lg:h-[580px] transition-all duration-300 hover:shadow-[0px_20px_24px_-4px_rgba(16,24,40,0.12),0px_8px_10px_-2px_rgba(16,24,40,0.05)] hover:-translate-y-2 group cursor-pointer">
+    <Link href={`/customer-stories/${post.slug}`} className="block">
+      <article className={`flex flex-col gap-6 lg:gap-8 ${type === "listingPage" ? "bg-white" : "bg-[#E5FFED]"} rounded-[30px] shadow-[0px_12px_16px_-4px_rgba(16,24,40,0.08),0px_4px_6px_-2px_rgba(16,24,40,0.03)] p-6 pb-8 w-full max-w-[338px] lg:max-w-none mx-auto lg:h-full transition-all duration-300 hover:shadow-[0px_20px_24px_-4px_rgba(16,24,40,0.12),0px_8px_10px_-2px_rgba(16,24,40,0.05)] hover:-translate-y-2 group cursor-pointer`} >
         {/* Media */}
-        <div className="relative w-full h-[240px] rounded-[30px] bg-[#0E1821] overflow-hidden flex-shrink-0 transition-transform duration-300 group-hover:scale-[1.02]">
+        <div className="relative w-full h-[240px] self-stretch rounded-[30px] bg-[#0E1821] overflow-hidden flex-shrink-0 transition-transform duration-300 group-hover:scale-[1.02]">
           {/* Card background image */}
           {cardBackgroundImageUrl ? (
             <Image
@@ -124,12 +124,15 @@ function ArticleCard({ post }: { post: CustomerStory }) {
               </div>
             </div>
 
-            <p
-              className="text-[#667085] text-[16px] leading-[24px]"
-              style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
-            >
-              {post.excerpt}
-            </p>
+            {
+              type === "listingPage" &&
+              <p
+                className="text-[#667085] text-[16px] leading-[24px]"
+                style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
+              >
+                {post.excerpt}
+              </p>
+            }
           </div>
 
           {/* Read more link removed on mobile per spec, keeping for consistency */}

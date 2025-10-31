@@ -1,9 +1,6 @@
 import { Navbar, Footer } from "@/components/layout";
-import {
-  CustomerStoriesHeroSection,
-  CustomerStoriesListSection,
-  ProductBannerSection,
-} from "@/features";
+import { CustomerStoriesHeroSection, CustomerStoriesListSection } from "@/features/customer-stories/components";
+import { ProductBannerSection } from "@/features/product";
 import {
   getCustomerStoriesHero,
   getCustomerStories,
@@ -13,7 +10,7 @@ import {
 } from "@/lib/sanity";
 import {
   customerStoriesHeroFallback,
-  type CustomerStory,
+  type CustomerStories,
 } from "@/features/customer-stories";
 
 export default async function CustomerStoriesPage() {
@@ -35,7 +32,7 @@ export default async function CustomerStoriesPage() {
           data={heroData as typeof customerStoriesHeroFallback | null}
         />
         <CustomerStoriesListSection
-          stories={storiesData as CustomerStory[] | null}
+          stories={storiesData as CustomerStories[] | null}
         />
         <ProductBannerSection data={bannerData} />
         <Footer data={footerData} />

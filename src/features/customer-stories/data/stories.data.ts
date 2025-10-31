@@ -1,6 +1,6 @@
 import type { SanityImage } from "@/types/sanity";
 
-export type CustomerStory = {
+export type CustomerStories = {
   slug: string;
   category: string;
   title: string;
@@ -10,7 +10,7 @@ export type CustomerStory = {
   order: number;
 };
 
-export const customerStoriesFallback: CustomerStory[] = [
+export const customerStoriesFallback: CustomerStories[] = [
   {
     slug: "how-purple-saved-200k",
     category: "Case Studies",
@@ -50,3 +50,94 @@ export const customerStoriesFallback: CustomerStory[] = [
     order: 3,
   },
 ];
+
+
+
+
+/** A single span of text inside a block */
+export interface SanitySpan {
+  _key: string;
+  _type: "span";
+  text: string;
+  marks: string[]; // e.g. ["strong", "em", "linkKey123"]
+}
+
+/** Mark definition for links, annotations, etc. */
+export interface SanityMarkDef {
+  _key: string;
+  _type: string; // e.g. "link"
+  href?: string;
+}
+
+/** A rich text content block (paragraph, heading, list item, etc.) */
+export interface SanityBlock {
+  _key: string;
+  _type: "block";
+  children: SanitySpan[];
+  markDefs?: SanityMarkDef[];
+  style?: string; // "normal", "h1", "h2", etc.
+  listItem?: "bullet" | "number";
+  level?: number;
+}
+
+/** An inline image block (expanded via asset-> in GROQ) */
+export interface ImageBlock {
+  _key: string;
+  _type: "image";
+  asset: {
+    url: string;
+    metadata?: {
+      lqip?: string;
+      dimensions?: {
+        width: number;
+        height: number;
+        aspectRatio?: number;
+      };
+    };
+  };
+}
+
+/** A custom component block (e.g., GreenCard, Testimonial, etc.) */
+export interface SanityComponentBlock {
+  _key: string;
+  _type: "componentBlock";
+  component: string;
+  props: Record<string, any>;
+}
+
+/** Union of all block types that can appear inside `content[]` */
+export type PortableTextBlock =
+  | SanityBlock
+  | ImageBlock
+  | SanityComponentBlock;
+
+/** A full section in your story */
+export interface Section {
+  jumplinkContent: string;
+  content: PortableTextBlock[];
+}
+
+export interface ImpactCard {
+  metricValue: string;
+  explainingText: string;
+}
+
+/** The main customer story document */
+export interface CustomerStory {
+  _id: string;
+  title: string;
+  slug: string;
+  category?: string;
+  excerpt?: string;
+  order?: number;
+  featuredImageUrl?: string;
+  ogImage?: string;
+  logo?: string;
+  industry?: string;
+  usecase?: string;
+  metaDescription?: string;
+  metaTitle?: string;
+  scale?: string;
+  sections: Section[];
+  impactCards?: ImpactCard[];
+}

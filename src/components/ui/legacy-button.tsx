@@ -2,7 +2,7 @@ import React from "react";
 
 interface LegacyButtonProps {
   children: React.ReactNode;
-  variant?: "primary" | "secondary" | "secondaryInverted";
+  variant?: "primary" | "secondary" | "secondaryInverted" | "secondaryNavbarLight";
   size?: "sm" | "md" | "lg";
   className?: string;
   onClick?: () => void;
@@ -29,6 +29,8 @@ export default function LegacyButton({
       "bg-white text-[#0E1821] hover:bg-[#248238] hover:text-white rounded-[12px] shadow-[0_4px_4px_rgba(0,0,0,0.33)]",
     secondaryInverted:
       "bg-[#248238] text-white border rounded-[12px] hover:bg-white hover:text-[#0E1821] transition-colors shadow-[0_4px_4px_rgba(0,0,0,0.20)]",
+    secondaryNavbarLight:
+      "bg-[#0E1821] text-white hover:bg-[#248238] hover:text-white rounded-[12px] shadow-[0_4px_4px_rgba(0,0,0,0.33)]",
   };
 
   const sizeClasses = {
@@ -42,7 +44,7 @@ export default function LegacyButton({
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className={`${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`}
+      className={`${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className} cursor-pointer`}
       style={{
         gap: "10.396px",
       }}

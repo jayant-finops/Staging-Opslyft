@@ -13,6 +13,7 @@ import { LegacyButton, Button } from "@/components/ui";
 
 type NavbarProps = {
   data?: LocalNavbar | null;
+  mode?: "light" | "dark";
 };
 
 // Product Dropdown Component
@@ -93,7 +94,7 @@ const ProductDropdown = ({
   );
 };
 
-export default function Navbar({ data }: NavbarProps = {}) {
+export default function Navbar({ data, mode = "dark" }: NavbarProps = {}) {
   const navData = data || navbarFallback;
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -213,13 +214,17 @@ export default function Navbar({ data }: NavbarProps = {}) {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -100, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed inset-x-4 lg:left-1/2 lg:-translate-x-1/2 lg:inset-x-auto lg:transform z-50 rounded-[16px] sm:rounded-[20px] backdrop-blur-md backdrop-saturate-125 border border-white/8 w-[calc(100vw-2rem)] lg:w-[calc(100vw-200px)] 2xl:w-[calc(100vw-300px)] transition-[top] duration-300"
+            className={` border ${mode === "light" ? "border-[rgba(14,24,33,0.5)]" : "border-white/8" } fixed inset-x-4 lg:left-1/2 lg:-translate-x-1/2 lg:inset-x-auto lg:transform z-50 rounded-[16px] sm:rounded-[20px] backdrop-blur-md backdrop-saturate-125  w-[calc(100vw-2rem)] lg:w-[calc(100vw-200px)] 2xl:w-[calc(100vw-300px)] transition-[top] duration-300`}
             style={{
               top: "calc(var(--banner-offset, 39px) + 16px)",
               background:
-                "linear-gradient(176deg, rgba(7,8,8,0.72) -23.3%, rgba(0,25,16,0.52) 89.49%)",
+                mode === "dark"
+                  ? "linear-gradient(176deg, rgba(7,8,8,0.72) -23.3%, rgba(0,25,16,0.52) 89.49%)"
+                  : "linear-gradient(176deg, #F7FFF9 12.83%, #F7FFF9 96.88%)",
               boxShadow:
-                "inset 0 1px 0 rgba(255,255,255,0.05), 0 8px 20px rgba(0,0,0,0.25)",
+                mode === "dark"
+                  ? "inset 0 1px 0 rgba(255,255,255,0.05), 0 8px 20px rgba(0,0,0,0.25)"
+                  : "none",
             }}
           >
             <div className="px-4 sm:px-6">
@@ -251,14 +256,14 @@ export default function Navbar({ data }: NavbarProps = {}) {
                     >
                       {item.hasDropdown ? (
                         <div
-                          className={`flex items-center py-2 rounded-[10px] border transition-all cursor-pointer ${
+                          className={`flex items-center py-2 rounded-[10px] border transition-all cursor-pointer px-3 ${
                             activeDropdown === item.title
-                              ? "bg-[#0B2A1A] border-[#7C7C7C] px-3"
-                              : "bg-transparent border-transparent"
+                              ? "text-white bg-[#0B2A1A] border-[#7C7C7C]"
+                              : `${mode === "light" ? "text-[#0E1821]" : "text-[#CACACA]"} bg-transparent border-transparent`
                           }`}
                         >
                           <span
-                            className="text-[#CACACA] hover:text-white text-[15px] font-normal transition-colors"
+                            className={` text-[15px] font-normal transition-colors`}
                             style={{
                               fontFamily: '"IBM Plex Sans", sans-serif',
                             }}
@@ -276,7 +281,7 @@ export default function Navbar({ data }: NavbarProps = {}) {
                           >
                             <path
                               d="M7 10L12 15L17 10"
-                              stroke="#C2C2C2"
+                              stroke={` ${mode === "light" ? "#0E1821" : "#C2C2C2"} `}
                               strokeWidth="2"
                               strokeLinecap="round"
                               strokeLinejoin="round"
@@ -286,7 +291,7 @@ export default function Navbar({ data }: NavbarProps = {}) {
                       ) : (
                         <Link
                           href={item.url}
-                          className="text-[#CACACA] hover:text-white text-[15px] font-normal transition-colors"
+                          className={` ${mode === "light" ? "text-[#0E1821 hover:text-[#248238]" : "text-[#CACACA] hover:text-white"} text-[15px] font-normal transition-colors`}
                           style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
                         >
                           {item.title}
@@ -325,14 +330,14 @@ export default function Navbar({ data }: NavbarProps = {}) {
                 <div className="hidden lg:flex items-center space-x-4">
                   <Link
                     href={navData.cta.loginUrl}
-                    className="text-[#CACACA] hover:text-white text-[14px] font-normal transition-colors"
+                    className={` ${mode === "light" ? "text-[#0E1821 hover:text-[#248238]" : "text-[#CACACA] hover:text-white"} text-[14px] font-normal transition-colors`}
                   >
                     <span style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}>
                       {navData.cta.loginText}
                     </span>
                   </Link>
                   <Link href={navData.cta.buttonUrl}>
-                    <LegacyButton variant="secondary" size="sm">
+                    <LegacyButton variant={`${mode === "light" ? "secondaryNavbarLight" : "secondary"}`} size="sm">
                       <span
                         style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}
                       >
